@@ -94,8 +94,14 @@ body {
 .nav-ydelser-dropdown {
     display: none;
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
     left: 0;
+    padding-top: 8px;
+    background: transparent;
+    z-index: 100;
+}
+
+.nav-ydelser-dropdown-inner {
     background: rgba(26,26,26,0.97);
     backdrop-filter: blur(16px);
     border: 1px solid rgba(255,255,255,0.1);
@@ -103,13 +109,13 @@ body {
     padding: 8px;
     min-width: 220px;
     box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-    z-index: 100;
+    display: flex;
     flex-direction: column;
     gap: 2px;
 }
 
 .nav-ydelser-item:hover .nav-ydelser-dropdown {
-    display: flex;
+    display: block;
 }
 
 .nav-ydelser-dropdown a {
