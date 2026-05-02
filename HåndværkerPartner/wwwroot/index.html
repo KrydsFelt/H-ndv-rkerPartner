@@ -130,7 +130,7 @@
             }
 
             function tryHide() {
-                if (!typingDone) return;
+                if (!typingDone || !blazorReady) return;
                 var elapsed = Date.now() - started;
                 var remaining = minDuration - elapsed;
                 setTimeout(function () {
@@ -148,14 +148,22 @@
             // Start typing immediately
             setTimeout(typeNext, 120);
 
-            // Blazor calls this when the app is ready — we listen via MutationObserver
-            // on #app to detect when Blazor has replaced the loading screen content
-            var observer = new MutationObserver(function () {
-                blazorReady = true;
-                tryHide();
-            });
-            // We watch document.body for Blazor removing #loading-screen from #app
-            observer.observe(document.getElementById('app'), { childList: true, subtree: false });
+            // Poll for Blazor having rendered actual page content into #app
+            var pollInterval = setInterval(function () {
+                var app = document.getElementById('app');
+                if (!app) return;
+                // Blazor adds a <div> or router element alongside/replacing loading-screen
+                // We check if there's any element that is NOT the loading-screen
+                var children = app.children;
+                for (var c = 0; c < children.length; c++) {
+                    if (children[c].id !== 'loading-screen') {
+                        clearInterval(pollInterval);
+                        blazorReady = true;
+                        tryHide();
+                        return;
+                    }
+                }
+            }, 100);
         })();
     </script>
     <script src="js/site.js"></script>
