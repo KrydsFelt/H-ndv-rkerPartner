@@ -306,6 +306,10 @@ body {
 .testimonials .section-title span { color: var(--orange); }
 .testimonials-header { text-align: center; margin-bottom: 56px; }
 .testimonials-track { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+.carousel-dots { display: none; justify-content: center; gap: 8px; margin-top: 24px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; transition: background .2s, transform .2s; }
+.dot--active { background: var(--orange); transform: scale(1.3); }
 .tcard {
     background: #1a2218;
     border: 1px solid rgba(255,255,255,0.07);
@@ -526,8 +530,24 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     /* All grids → single column */
     .services-grid { grid-template-columns: 1fr; margin-top: 32px; }
     .results-grid { grid-template-columns: 1fr; }
-    .testimonials-track { grid-template-columns: 1fr; }
     .cases-grid { grid-template-columns: 1fr; }
+
+    /* Testimonials → swipe carousel */
+    .testimonials-track {
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        padding-bottom: 8px;
+        scrollbar-width: none;
+    }
+    .testimonials-track::-webkit-scrollbar { display: none; }
+    .testimonials-track .tcard {
+        flex: 0 0 calc(100% - 32px);
+        scroll-snap-align: center;
+    }
+    .carousel-dots { display: flex; }
     .subpage-grid { grid-template-columns: 1fr; gap: 32px; }
     .match-split { grid-template-columns: 1fr; gap: 24px; }
     .match-divider { display: none; }
