@@ -840,6 +840,10 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 .subpage-text { min-width: 0; }
 .subpage-stats { min-width: 0; }
 
+@media (max-width: 768px) {
+    .subpage-grid { grid-template-columns: 1fr !important; gap: 32px; }
+}
+
 .subpage-stats {
     display: flex;
     flex-direction: column;
