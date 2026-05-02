@@ -25,7 +25,10 @@ jobs:
           dotnet publish "$PROJ" -c Release -o release --nologo
 
       - name: Fix static files
-        run: touch release/wwwroot/.nojekyll
+        run: |
+          touch release/wwwroot/.nojekyll
+          SRCDIR=$(find . -path "*/wwwroot/404.html" | grep -v "release\|bin\|obj" | head -1)
+          if [ -n "$SRCDIR" ]; then cp "$SRCDIR" release/wwwroot/404.html; fi
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
