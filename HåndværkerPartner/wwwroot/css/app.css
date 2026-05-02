@@ -53,6 +53,81 @@ body {
     transition: color .2s, background .2s;
 }
 .nav-links a:hover, .nav-links a.nav-active { color: var(--white); background: rgba(255,255,255,0.08); }
+/* ── NAV YDELSER DROPDOWN ── */
+.nav-ydelser-item {
+    position: relative;
+    list-style: none;
+}
+
+.nav-ydelser-trigger {
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color .2s, background .2s;
+    white-space: nowrap;
+}
+
+.nav-ydelser-trigger::after {
+    content: '';
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid rgba(255,255,255,0.5);
+    transition: transform .2s;
+}
+
+.nav-ydelser-item:hover .nav-ydelser-trigger {
+    color: var(--white);
+    background: rgba(255,255,255,0.08);
+}
+
+.nav-ydelser-item:hover .nav-ydelser-trigger::after {
+    transform: rotate(180deg);
+}
+
+.nav-ydelser-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: rgba(26,26,26,0.97);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 8px;
+    min-width: 220px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    z-index: 100;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.nav-ydelser-item:hover .nav-ydelser-dropdown {
+    display: flex;
+}
+
+.nav-ydelser-dropdown a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: background .15s, color .15s;
+    white-space: nowrap;
+}
+
+.nav-ydelser-dropdown a:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+}
+
 .nav-cta {
     background: var(--orange) !important;
     color: var(--white) !important;
@@ -520,6 +595,22 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 }
 
 .mobile-nav a:hover { color: var(--orange); }
+
+.mobile-nav-group-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--orange);
+    padding: 16px 0 8px;
+}
+
+.mobile-nav-sub {
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    padding-left: 12px !important;
+    color: rgba(255,255,255,0.6) !important;
+}
 
 .mobile-menu-cta {
     display: block;
