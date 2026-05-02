@@ -423,6 +423,62 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 .stars { color: var(--orange); font-size: 14px; margin-bottom: 10px; }
 .testimonial-quote { font-size: 15px; line-height: 1.7; color: var(--dark); font-style: italic; }
 
+/* ── SERVICES ACCORDION (mobile only) ── */
+.services-accordion { display: none; flex-direction: column; gap: 0; margin-top: 32px; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray); }
+
+.acc-item { border-bottom: 1px solid var(--gray); }
+.acc-item:last-child { border-bottom: none; }
+
+.acc-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    cursor: pointer;
+    background: var(--white);
+    transition: background .15s;
+    user-select: none;
+}
+.acc-item.acc-open .acc-header { background: rgba(232,119,34,0.05); }
+
+.acc-icon {
+    width: 40px; height: 40px;
+    background: rgba(232,119,34,0.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+.acc-header span { font-size: 15px; font-weight: 700; flex: 1; color: var(--dark); }
+
+.acc-chevron {
+    width: 20px; height: 20px;
+    flex-shrink: 0;
+    position: relative;
+}
+.acc-chevron::before, .acc-chevron::after {
+    content: '';
+    position: absolute;
+    width: 8px; height: 2px;
+    background: var(--gray-text);
+    border-radius: 2px;
+    top: 50%;
+    transition: transform .2s;
+}
+.acc-chevron::before { left: 2px; transform: translateY(-50%) rotate(45deg); }
+.acc-chevron::after { right: 2px; transform: translateY(-50%) rotate(-45deg); }
+.acc-item.acc-open .acc-chevron::before { transform: translateY(-50%) rotate(-45deg); }
+.acc-item.acc-open .acc-chevron::after { transform: translateY(-50%) rotate(45deg); }
+
+.acc-body {
+    display: none;
+    padding: 0 18px 18px 72px;
+    font-size: 14px;
+    color: var(--gray-text);
+    line-height: 1.65;
+}
+.acc-item.acc-open .acc-body { display: block; }
+
 /* ── MOBILE MENU OVERLAY ── */
 .mobile-menu {
     position: fixed;
@@ -584,22 +640,9 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     .results-grid { grid-template-columns: 1fr; }
     .cases-grid { grid-template-columns: 1fr; }
 
-    /* Services → swipe carousel */
-    .services-grid {
-        display: flex;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 16px;
-        margin-top: 32px;
-        padding-bottom: 8px;
-        scrollbar-width: none;
-    }
-    .services-grid::-webkit-scrollbar { display: none; }
-    .services-grid .service-card {
-        flex: 0 0 85%;
-        scroll-snap-align: center;
-    }
+    /* Services: hide grid, show accordion */
+    .services-grid { display: none; }
+    .services-accordion { display: flex; }
 
     /* Testimonials → swipe carousel */
     .testimonials-track {
