@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@800;900&display=swap');
 
 :root {
     --orange: #E87722;
@@ -42,6 +42,16 @@ body {
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
 .nav-logo img { height: 44px; mix-blend-mode: screen; }
+.nav-logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 1;
+    text-transform: uppercase;
+}
+.nav-logo-text span { color: var(--orange); }
 .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
 .nav-links a {
     text-decoration: none;
@@ -580,6 +590,9 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 .mobile-menu-logo img {
     height: 44px;
     mix-blend-mode: screen;
+}
+.mobile-menu-logo.nav-logo-text {
+    font-size: 20px;
 }
 
 .mobile-nav {
