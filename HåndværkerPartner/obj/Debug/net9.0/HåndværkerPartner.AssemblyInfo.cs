@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HaandvaerkerPartner")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b230b42d1f9fa2e66e05acc983805179887aaa5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c9ccb05f7dbeeec55a948e21559368101f064e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("HaandvaerkerPartner")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HaandvaerkerPartner")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
