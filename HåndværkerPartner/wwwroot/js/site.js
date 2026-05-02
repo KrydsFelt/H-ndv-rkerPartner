@@ -1,3 +1,6 @@
+window.lockScroll = () => { document.body.style.overflow = 'hidden'; };
+window.unlockScroll = () => { document.body.style.overflow = ''; };
+
 window.initScrollHandler = (dotNetRef) => {
     window.addEventListener('scroll', () => {
         dotNetRef.invokeMethodAsync('OnScroll', window.scrollY);
