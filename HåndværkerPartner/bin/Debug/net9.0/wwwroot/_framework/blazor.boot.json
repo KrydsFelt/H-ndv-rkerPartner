@@ -1,7 +1,7 @@
 {
-  "mainAssemblyName": "HåndværkerPartner",
+  "mainAssemblyName": "HaandvaerkerPartner",
   "resources": {
-    "hash": "sha256-WmZduzmj/eYfbmmCMAAKjfQHjfi1+MMdlD9F1UESyH8=",
+    "hash": "sha256-OC+aRoyy+XfzkBX+fZs/vzCMHKj+PttZpLnABm9SnDo=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.j0mj4vhukl.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.h3xttq5c32.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -201,8 +201,8 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "HåndværkerPartner.5efnw6e6cf.wasm": "HåndværkerPartner.wasm",
-      "HåndværkerPartner.t280e2jmvg.pdb": "HåndværkerPartner.pdb"
+      "HaandvaerkerPartner.fq1vlplzlp.wasm": "HaandvaerkerPartner.wasm",
+      "HaandvaerkerPartner.s6id2p1mfc.pdb": "HaandvaerkerPartner.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.xidrk0eo52.js": "sha256-OfGprhDb4vgzxzOBj9RRMcRnAdSZR0hH5g5LHA0MzIE="
@@ -412,10 +412,10 @@
       "WindowsBase.300iq62cmr.wasm": "sha256-gyJyeSLAns1YIwrPLmw2VAbNeQgpzgW5xIJovvySzEc=",
       "mscorlib.560m239brp.wasm": "sha256-XShGzkyhqE1Qwz15C0W5EDSl0wiqbw4NUP1UtzupbE4=",
       "netstandard.yg21u65s4h.wasm": "sha256-PjcsgKDGCmf1+ahJpjBZtaqHugXi6ZJaAVAkX0OzhaI=",
-      "HåndværkerPartner.5efnw6e6cf.wasm": "sha256-U/rKMs4WRRXvi2wObyhu2tOjs+p21zYGR0U9lPwoHH4="
+      "HaandvaerkerPartner.fq1vlplzlp.wasm": "sha256-eZy95hjGiWLVD51FaAV0Sf+mv3Sh8Q1DstCHxSB+vSA="
     },
     "pdb": {
-      "HåndværkerPartner.t280e2jmvg.pdb": "sha256-5e5ijOut3kxtiV6vDIpTeB2xHAtkppfDbKEq2qYVFEc="
+      "HaandvaerkerPartner.s6id2p1mfc.pdb": "sha256-rIwxcMke6bbepMPBu3aDmrte1e+Ofl82ZFFz1q+v0Kc="
     }
   },
   "cacheBootResources": true,
