@@ -1,0 +1,419 @@
+@page "/"
+@inject IJSRuntime JS
+
+<PageTitle>HåndværkerPartner – Din faglige samarbejdspartner</PageTitle>
+
+<!-- NAVBAR -->
+<div class="nav-wrapper">
+    <nav class="@NavbarClass">
+        <ul class="@NavLinksClass">
+            <li><a href="#services" @onclick="NavServices" @onclick:preventDefault>Ydelser</a></li>
+            <li><a href="#results" @onclick="NavResults" @onclick:preventDefault>Resultater</a></li>
+            <li><a href="#om-os" @onclick="NavOmOs" @onclick:preventDefault>Om os</a></li>
+            <li><a href="#testimonials" @onclick="NavTestimonials" @onclick:preventDefault>Kunder</a></li>
+            <li><a href="#kontakt" class="nav-cta" @onclick="NavKontakt" @onclick:preventDefault>Kontakt os</a></li>
+        </ul>
+        <button class="hamburger" @onclick="ToggleMenu" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+    <div class="hero-inner">
+        <img src="logo.jpg" alt="HåndværkerPartner" class="hero-logo" />
+        <div class="hero-badge">Din faglige samarbejdspartner</div>
+        <h1>Vækst til <span>håndværkere</span><br>der vil mere</h1>
+        <p>Vi hjælper håndværksvirksomheder med at skaffe flere kunder, styrke deres synlighed og skabe reel omsætningsvækst – gennem dokumenterede marketing- og leadstrategier.</p>
+        <div class="hero-buttons">
+            <button class="btn-primary" @onclick="HeroScrollKontakt">Få gratis rådgivning</button>
+            <button class="btn-outline" @onclick="HeroScrollServices">Se vores ydelser</button>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-card">
+                <div class="number">500+</div>
+                <div class="label">Leads/md.</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">33 kr</div>
+                <div class="label">Laveste leadpris</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">50+</div>
+                <div class="label">Tilfredse kunder</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CLIENTS MARQUEE -->
+<div class="clients-strip">
+    <div class="marquee-track">
+        <div class="marquee-inner">
+            <div class="client-logo">SKIMMELCONSULT</div>
+            <div class="client-logo">FACADE RENOVERING DANMARK</div>
+            <div class="client-logo">ISHØY &amp; PEDERSEN</div>
+            <div class="client-logo">MPUDS.DK</div>
+            <div class="client-logo">MB VINDUESPOLERING</div>
+            <div class="client-logo">KASPER WEST</div>
+            <div class="client-logo">CT ISOLERING</div>
+            <div class="client-logo">NORD POLERING</div>
+            <!-- duplicate for seamless loop -->
+            <div class="client-logo">SKIMMELCONSULT</div>
+            <div class="client-logo">FACADE RENOVERING DANMARK</div>
+            <div class="client-logo">ISHØY &amp; PEDERSEN</div>
+            <div class="client-logo">MPUDS.DK</div>
+            <div class="client-logo">MB VINDUESPOLERING</div>
+            <div class="client-logo">KASPER WEST</div>
+            <div class="client-logo">CT ISOLERING</div>
+            <div class="client-logo">NORD POLERING</div>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+    <div class="section-inner">
+        <span class="section-tag">Vores ydelser</span>
+        <h2 class="section-title">Alt hvad din virksomhed behøver for at <span>vækste</span></h2>
+        <p class="section-subtitle">Vi tilbyder en komplet pakke af digitale marketing-løsninger skræddersyet til håndværksvirksomheder.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </div>
+                <h3>Facebook &amp; Instagram Ads</h3>
+                <p>Målrettede annoncekampagner på Meta's platforme der genererer billige, kvalitetsleads til din håndværksvirksomhed.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <h3>Google Ads</h3>
+                <p>Vis dig øverst i Google-søgninger når kunderne aktivt søger efter netop de ydelser du tilbyder.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                </div>
+                <h3>SEO – Organisk synlighed</h3>
+                <p>Bliv fundet gratis på Google over tid med en stærk SEO-strategi der giver langsigtet og bæredygtig trafik.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3>Hjemmeside</h3>
+                <p>Professionelle, hurtige og konverterende hjemmesider der overbeviser besøgende om at vælge dig.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                </div>
+                <h3>Leadgenerering</h3>
+                <p>Systematisk tilgang til at skaffe kvalificerede henvendelser – vi sætter systemer op der arbejder for dig døgnet rundt.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <h3>Analyse &amp; Rapportering</h3>
+                <p>Gennemsigtig rapportering så du altid ved præcis hvad du får for dine marketingkroner – ingen skjulte tal.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- MATCH -->
+<section class="section match" id="match">
+    <div class="section-inner">
+        <h2 class="section-title">Er vi et <span>match</span>?</h2>
+        <p class="section-subtitle">Vi arbejder kun med virksomheder vi ved vi kan skabe resultater for. Her er hvad der adskiller de rette fra de forkerte kunder.</p>
+
+        <div class="match-grid">
+            <div class="match-col no">
+                <h3>Ikke et match</h3>
+                <ul class="match-list">
+                    <li class="match-item"><span class="match-icon">✕</span> Ønsker engangsopsætning</li>
+                    <li class="match-item"><span class="match-icon">✕</span> Tænker kortsigtet</li>
+                    <li class="match-item"><span class="match-icon">✕</span> Er ikke villig til at yde en indsats selv</li>
+                    <li class="match-item"><span class="match-icon">✕</span> Er ikke interesseret i at lytte til forslag</li>
+                    <li class="match-item"><span class="match-icon">✕</span> Kan ikke håndtere mange henvendelser</li>
+                </ul>
+            </div>
+            <div class="match-col yes">
+                <h3>Et match</h3>
+                <ul class="match-list">
+                    <li class="match-item"><span class="match-icon">✓</span> Forstår at det koster penge at tjene penge</li>
+                    <li class="match-item"><span class="match-icon">✓</span> Har et godt eller unikt produkt/ydelse</li>
+                    <li class="match-item"><span class="match-icon">✓</span> Ønsker et langvarigt samarbejde</li>
+                    <li class="match-item"><span class="match-icon">✓</span> Er klar på at lytte til forslag og ideer</li>
+                    <li class="match-item"><span class="match-icon">✓</span> Er ambitiøs og kan håndtere vækst</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="testimonials">
+    <div class="section-inner">
+        <div class="testimonials-header">
+            <span class="section-tag">Hvad siger vores kunder</span>
+            <h2 class="section-title">Resultater skabt i <span>tæt samarbejde</span></h2>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-author">
+                    <div class="author-avatar">B</div>
+                    <div>
+                        <div class="author-name">Berthel Kryger</div>
+                        <div class="author-title">Ejer af Berthels Vinduespolering</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-quote">"Jeg har brugt HåndværkerPartner i cirka to år – af to omgange. Første gang hjalp de mig fra 20 kunder til 275, hvorefter jeg solgte min virksomhed. Nu har jeg valgt at starte op for mig selv igen, og allerede i februar har de hjulpet mig fra omkring 10 kunder til over 50 kunder."</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-author">
+                    <div class="author-avatar">K</div>
+                    <div>
+                        <div class="author-name">Kasper West</div>
+                        <div class="author-title">Ejer af Kasper West</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-quote">"HåndværkerPartner står for min hjemmeside samt Google og Facebook Ads. De er en stor del af, at min virksomhed på lidt under 1 år, er gået fra at være split nye, til at være 2 mand og leverer en omsætning på formentligt over 2 millioner."</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-author">
+                    <div class="author-avatar">E</div>
+                    <div>
+                        <div class="author-name">Eisho Dalil</div>
+                        <div class="author-title">Ejer af Francis Marketing</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-quote">"Vi har efterhånden prøvet diverse bureauer til at lave vores hjemmeside uden at ende med det resultat som vi ønskede. HåndværkerPartner greb opgaven, og udførte præcis den visuelle identitet som vi ønskede! Stor anbefaling herfra."</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-author">
+                    <div class="author-avatar">M</div>
+                    <div>
+                        <div class="author-name">Morten Resen</div>
+                        <div class="author-title">Mambeno og GoLittle Play</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-quote">"For Mambeno og GoLittle Play har HåndværkerPartner vækset vores forretning i en hidtil uset grad igennem de sidste mange måneder. Samarbejdet og performance kører forbilledligt. Hurra!"</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="om-os">
+    <div class="section-inner">
+        <div class="about-inner">
+            <div>
+                <span class="section-tag">Om HåndværkerPartner</span>
+                <h2 class="section-title">Vi er <span>specialister</span> i håndværksbranchen</h2>
+                <p class="section-subtitle">HåndværkerPartner er et bureau der udelukkende fokuserer på håndværks- og servicevirksomheder. Vi ved hvad der virker i din branche – fordi vi kun arbejder med den.</p>
+
+                <ul class="about-list">
+                    <li><span class="check-icon">✓</span> Specialist-bureau kun for håndværkere og servicevirksomheder</li>
+                    <li><span class="check-icon">✓</span> Ingen binding – vi beholder dig fordi vi leverer resultater</li>
+                    <li><span class="check-icon">✓</span> Gennemsigtig rapportering og direkte kommunikation</li>
+                    <li><span class="check-icon">✓</span> Dokumenterede resultater med rigtige tal</li>
+                    <li><span class="check-icon">✓</span> Personlig kontaktperson der kender din forretning</li>
+                </ul>
+            </div>
+
+            <div class="about-visual">
+                <div class="about-big-card">
+                    <h3>HåndværkerPartner</h3>
+                    <div class="tagline">Din faglige samarbejdspartner</div>
+                    <p style="color:rgba(255,255,255,0.65); font-size:15px; line-height:1.7;">Vi besidder en indgående forståelse af de digitale kanaler, hvor dine kunder bruger deres tid, og vi udnytter avancerede planlægnings-, indkøbs- og analysemetoder til at inspirere potentielle kunder til handling.</p>
+                    <div class="about-numbers">
+                        <div class="about-num">
+                            <div class="n">50+</div>
+                            <div class="l">Aktive kunder</div>
+                        </div>
+                        <div class="about-num">
+                            <div class="n">2 mio+</div>
+                            <div class="l">Leads genereret</div>
+                        </div>
+                        <div class="about-num">
+                            <div class="n">33 kr</div>
+                            <div class="l">Laveste leadpris</div>
+                        </div>
+                        <div class="about-num">
+                            <div class="n">0</div>
+                            <div class="l">Binding</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="kontakt">
+    <div class="section-inner">
+        <div class="contact-inner">
+            <div class="contact-text">
+                <span class="section-tag">Kom i gang</span>
+                <h2 class="section-title">Lad os snakke om din vækst</h2>
+                <p class="section-subtitle">Book en gratis og uforpligtende samtale, og find ud af om vi er det rette match for din virksomhed.</p>
+
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <span>Ring til os – ingen binding, kun rådgivning</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <span>info@haandvaerkerpartner.dk</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <span>Danmark – vi arbejder med kunder i hele landet</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <span>Svar inden for 24 timer på hverdage</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="font-size:22px; font-weight:800; margin-bottom:6px;">Gratis rådgivning</h3>
+                <p style="font-size:14px; color:#666; margin-bottom:24px;">Udfyld formularen og vi kontakter dig hurtigst muligt.</p>
+
+                @if (formSent)
+                {
+                    <div class="success-msg">
+                        ✓ Tak! Vi kontakter dig inden for 24 timer.
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <label class="form-label">Navn</label>
+                        <input class="form-control" type="text" placeholder="Dit fulde navn" @bind="formName" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Telefon</label>
+                        <input class="form-control" type="tel" placeholder="Dit telefonnummer" @bind="formPhone" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">E-mail</label>
+                        <input class="form-control" type="email" placeholder="din@email.dk" @bind="formEmail" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Virksomhed</label>
+                        <input class="form-control" type="text" placeholder="Hvad laver din virksomhed?" @bind="formCompany" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Besked (valgfrit)</label>
+                        <textarea class="form-control" placeholder="Fortæl os lidt om din situation..." @bind="formMessage"></textarea>
+                    </div>
+                    <button class="form-submit" @onclick="SubmitForm">Send besked →</button>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-logo-text">Håndværker<span>Partner</span></div>
+        <p style="font-size:14px;">© 2024 HåndværkerPartner – Din faglige samarbejdspartner</p>
+        <ul class="footer-links">
+            <li><a href="#services" @onclick="NavServices" @onclick:preventDefault>Ydelser</a></li>
+            <li><a href="#kontakt" @onclick="NavKontakt" @onclick:preventDefault>Kontakt</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- SCROLL TOP -->
+<button class="@ScrollTopClass" @onclick="ScrollToTop" title="Gå til toppen">↑</button>
+
+@code {
+    private bool scrolled = false;
+    private bool menuOpen = false;
+    private bool showScrollTop = false;
+
+    private bool formSent = false;
+    private string formName = "";
+    private string formPhone = "";
+    private string formEmail = "";
+    private string formCompany = "";
+    private string formMessage = "";
+
+    private string NavbarClass => scrolled ? "navbar scrolled" : "navbar";
+    private string NavLinksClass => menuOpen ? "nav-links open" : "nav-links";
+    private string ScrollTopClass => showScrollTop ? "scroll-top" : "scroll-top hidden";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initScrollHandler", DotNetObjectReference.Create(this));
+        }
+    }
+
+    [JSInvokable]
+    public void OnScroll(double scrollY)
+    {
+        scrolled = scrollY > 50;
+        showScrollTop = scrollY > 400;
+        StateHasChanged();
+    }
+
+    private void ToggleMenu() => menuOpen = !menuOpen;
+
+    private async Task NavHero() { menuOpen = false; await ScrollTo("hero"); }
+    private async Task NavServices() { menuOpen = false; await ScrollTo("services"); }
+    private async Task NavResults() { menuOpen = false; await ScrollTo("results"); }
+    private async Task NavOmOs() { menuOpen = false; await ScrollTo("om-os"); }
+    private async Task NavTestimonials() { menuOpen = false; await ScrollTo("testimonials"); }
+    private async Task NavKontakt() { menuOpen = false; await ScrollTo("kontakt"); }
+
+    private async Task HeroScrollKontakt() => await ScrollTo("kontakt");
+    private async Task HeroScrollServices() => await ScrollTo("services");
+    private async Task ScrollToTop() => await ScrollTo("hero");
+
+    private async Task ScrollTo(string id)
+    {
+        await JS.InvokeVoidAsync("scrollToSection", id);
+    }
+
+    private void SubmitForm()
+    {
+        if (!string.IsNullOrWhiteSpace(formName) && !string.IsNullOrWhiteSpace(formEmail))
+        {
+            formSent = true;
+        }
+    }
+}
