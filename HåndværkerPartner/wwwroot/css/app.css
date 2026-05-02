@@ -777,6 +777,11 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     .subpage-hero-inner h1 { font-size: clamp(28px, 7vw, 48px); }
     .subpage-content { padding: 48px 0; }
     .subpage-cta { padding: 60px 20px; }
+    .subpage-grid { grid-template-columns: 1fr; gap: 40px; }
+    .subpage-stats { display: flex; flex-direction: column; gap: 16px; }
+    .result-metrics-light { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .metric-value { font-size: 20px !important; }
+    .result-card-light { padding: 20px; }
 
     /* Scroll top */
     .scroll-top { bottom: 20px; right: 16px; width: 40px; height: 40px; font-size: 16px; }
@@ -831,6 +836,9 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     gap: 64px;
     align-items: start;
 }
+
+.subpage-text { min-width: 0; }
+.subpage-stats { min-width: 0; }
 
 .subpage-stats {
     display: flex;
