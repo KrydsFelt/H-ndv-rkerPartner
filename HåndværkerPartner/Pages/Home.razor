@@ -251,7 +251,7 @@
     <button class="tfs-arrow tfs-arrow--next" @onclick="NextTestimonial">&#8250;</button>
 
     <div class="tfs-dots">
-        @for (int i = 0; i < testimonials.Length; i++)
+        @for (int i = 0; i < testimonials.Count; i++)
         {
             int idx = i;
             <span class="tfs-dot @(activeCard == idx ? "tfs-dot--active" : "")" @onclick="@(() => activeCard = idx)"></span>
@@ -406,34 +406,27 @@
     private int openService = -1;
     private void ToggleService(int i) => openService = openService == i ? -1 : i;
 
-    private void PrevTestimonial() => activeCard = (activeCard - 1 + testimonials.Length) % testimonials.Length;
-    private void NextTestimonial() => activeCard = (activeCard + 1) % testimonials.Length;
-
-    private record Testimonial(string Quote, string Name, string Role, string Initials);
-    private Testimonial[] testimonials = new[]
+    private class TestimonialItem
     {
-        new Testimonial(
-            "\"Inden vi startede med HåndværkerPartner brugte vi tid og penge på annoncering der ikke gav noget. Efter tre måneder med dem fyldte vores kalender sig op af sig selv. Vi har ikke haft et stille kvartal siden.\"",
-            "Mikkel Andersen", "Ejer af Andersen VVS", "MA"),
-        new Testimonial(
-            "\"Vi gik fra næsten ingen online tilstedeværelse til at være den mest synlige maler i vores område på Google. HåndværkerPartner forstår håndværksbranchen på en måde som andre bureauer simpelthen ikke gør.\"",
-            "Jakob Lund", "Indehaver af Lund Maler & Gulv", "JL"),
-        new Testimonial(
-            "\"Jeg var skeptisk i starten – jeg har prøvet to andre bureauer der lovede meget og leverede lidt. Her er det anderledes. De rapporterer på rigtige tal, svarer hurtigt og giver mig følelsen af at være prioriteret.\"",
-            "Rasmus Kjær", "Ejer af Kjær El & Teknik", "RK"),
-        new Testimonial(
-            "\"Vores nye hjemmeside er den bedste investering vi nogensinde har lavet. Inden for den første uge efter lancering fik vi tre nye henvendelser direkte via formularen. Den konverterer faktisk.\"",
-            "Nicolai Brandt", "Indehaver af Brandt Tømrer & Snedker", "NB"),
-        new Testimonial(
-            "\"Jeg troede ikke at sociale medier var noget for en lille rørleggervirksomhed som vores. Men efter to måneder med Meta-annoncer havde vi mere end nok at lave – vi måtte faktisk takke nej til opgaver.\"",
-            "Thomas Holm", "Ejer af Holm VVS & Badeværelse", "TH"),
-        new Testimonial(
-            "\"Det der adskiller HåndværkerPartner fra alle andre er at de faktisk forstår vores branche. De taler ikke i marketing-jargon – de taler om leads, jobs og omsætning. Det er det der tæller.\"",
-            "Søren Dalgaard", "Indehaver af Dalgaard Murer & Anlæg", "SD"),
-        new Testimonial(
-            "\"Fra første møde var det tydeligt at de vidste hvad de snakkede om. Vi har tredoblet vores antal af månedlige henvendelser på under et halvt år, og leadprisen er lavere end hvad vi troede var muligt.\"",
-            "Brian Vestergaard", "Direktør i Vestergaard Tag & Facade", "BV"),
+        public string Quote { get; set; } = "";
+        public string Name { get; set; } = "";
+        public string Role { get; set; } = "";
+        public string Initials { get; set; } = "";
+    }
+
+    private List<TestimonialItem> testimonials = new List<TestimonialItem>
+    {
+        new TestimonialItem { Quote = "\"Inden vi startede med HåndværkerPartner brugte vi tid og penge på annoncering der ikke gav noget. Efter tre måneder med dem fyldte vores kalender sig op af sig selv. Vi har ikke haft et stille kvartal siden.\"", Name = "Mikkel Andersen", Role = "Ejer af Andersen VVS", Initials = "MA" },
+        new TestimonialItem { Quote = "\"Vi gik fra næsten ingen online tilstedeværelse til at være den mest synlige maler i vores område på Google. HåndværkerPartner forstår håndværksbranchen på en måde som andre bureauer simpelthen ikke gør.\"", Name = "Jakob Lund", Role = "Indehaver af Lund Maler & Gulv", Initials = "JL" },
+        new TestimonialItem { Quote = "\"Jeg var skeptisk i starten – jeg har prøvet to andre bureauer der lovede meget og leverede lidt. Her er det anderledes. De rapporterer på rigtige tal, svarer hurtigt og giver mig følelsen af at være prioriteret.\"", Name = "Rasmus Kjær", Role = "Ejer af Kjær El & Teknik", Initials = "RK" },
+        new TestimonialItem { Quote = "\"Vores nye hjemmeside er den bedste investering vi nogensinde har lavet. Inden for den første uge efter lancering fik vi tre nye henvendelser direkte via formularen. Den konverterer faktisk.\"", Name = "Nicolai Brandt", Role = "Indehaver af Brandt Tømrer & Snedker", Initials = "NB" },
+        new TestimonialItem { Quote = "\"Jeg troede ikke at sociale medier var noget for en lille rørleggervirksomhed som vores. Men efter to måneder med Meta-annoncer havde vi mere end nok at lave – vi måtte faktisk takke nej til opgaver.\"", Name = "Thomas Holm", Role = "Ejer af Holm VVS & Badeværelse", Initials = "TH" },
+        new TestimonialItem { Quote = "\"Det der adskiller HåndværkerPartner fra alle andre er at de faktisk forstår vores branche. De taler ikke i marketing-jargon – de taler om leads, jobs og omsætning. Det er det der tæller.\"", Name = "Søren Dalgaard", Role = "Indehaver af Dalgaard Murer & Anlæg", Initials = "SD" },
+        new TestimonialItem { Quote = "\"Fra første møde var det tydeligt at de vidste hvad de snakkede om. Vi har tredoblet vores antal af månedlige henvendelser på under et halvt år, og leadprisen er lavere end hvad vi troede var muligt.\"", Name = "Brian Vestergaard", Role = "Direktør i Vestergaard Tag & Facade", Initials = "BV" },
     };
+
+    private void PrevTestimonial() => activeCard = (activeCard - 1 + testimonials.Count) % testimonials.Count;
+    private void NextTestimonial() => activeCard = (activeCard + 1) % testimonials.Count;
 
     private bool formSent = false;
     private string formName = "";
