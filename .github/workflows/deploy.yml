@@ -6,11 +6,20 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -24,16 +33,20 @@ jobs:
           PROJ=$(find . -name "*.csproj" | head -1)
           dotnet publish "$PROJ" -c Release -o release --nologo
 
-      - name: Fix static files
+      - name: Patch base href and copy SPA files
         run: |
-          touch release/wwwroot/.nojekyll
-          SRCDIR=$(find . -path "*/wwwroot/404.html" | grep -v "release\|bin\|obj" | head -1)
-          if [ -n "$SRCDIR" ]; then cp "$SRCDIR" release/wwwroot/404.html; fi
           sed -i 's|<base href="/" />|<base href="/H-ndv-rkerPartner/" />|g' release/wwwroot/index.html
+          touch release/wwwroot/.nojekyll
+          cp release/wwwroot/index.html release/wwwroot/404.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: release/wwwroot
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: release/wwwroot
-          branch: gh-pages
-          clean: true
+        id: deployment
+        uses: actions/deploy-pages@v4
