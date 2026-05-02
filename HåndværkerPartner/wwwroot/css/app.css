@@ -528,9 +528,25 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     .section-subtitle { font-size: 15px; }
 
     /* All grids → single column */
-    .services-grid { grid-template-columns: 1fr; margin-top: 32px; }
     .results-grid { grid-template-columns: 1fr; }
     .cases-grid { grid-template-columns: 1fr; }
+
+    /* Services → swipe carousel */
+    .services-grid {
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        margin-top: 32px;
+        padding-bottom: 8px;
+        scrollbar-width: none;
+    }
+    .services-grid::-webkit-scrollbar { display: none; }
+    .services-grid .service-card {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
 
     /* Testimonials → swipe carousel */
     .testimonials-track {
