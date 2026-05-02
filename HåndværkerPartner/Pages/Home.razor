@@ -232,59 +232,30 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section testimonials" id="testimonials">
-    <div class="section-inner">
-        <div class="testimonials-header">
-            <span class="section-tag">Hvad siger vores kunder</span>
-            <h2 class="section-title">Ord fra dem vi <span>arbejder for</span></h2>
-        </div>
+<section class="testimonials-fullscreen" id="testimonials">
+    <button class="tfs-arrow tfs-arrow--prev" @onclick="PrevTestimonial">&#8249;</button>
 
-        <!-- Desktop: grid, Mobil: carousel -->
-        <div class="testimonials-track">
-            <div class="tcard">
-                <div class="tcard-quote">"</div>
-                <p class="tcard-text">Inden vi startede med HåndværkerPartner brugte vi tid og penge på annoncering der ikke gav noget. Efter tre måneder med dem fyldte vores kalender sig op af sig selv. Vi har ikke haft et stille kvartal siden.</p>
-                <div class="tcard-bottom">
-                    <div class="tcard-avatar">M</div>
-                    <div><div class="tcard-name">Mikkel Andersen</div><div class="tcard-role">Ejer af Andersen VVS</div></div>
-                    <div class="tcard-stars">★★★★★</div>
-                </div>
-            </div>
-            <div class="tcard tcard--accent">
-                <div class="tcard-quote">"</div>
-                <p class="tcard-text">Vi gik fra næsten ingen online tilstedeværelse til at være den mest synlige maler i vores område på Google. HåndværkerPartner forstår håndværksbranchen på en måde som andre bureauer simpelthen ikke gør.</p>
-                <div class="tcard-bottom">
-                    <div class="tcard-avatar">J</div>
-                    <div><div class="tcard-name">Jakob Lund</div><div class="tcard-role">Indehaver af Lund Maler &amp; Gulv</div></div>
-                    <div class="tcard-stars">★★★★★</div>
-                </div>
-            </div>
-            <div class="tcard">
-                <div class="tcard-quote">"</div>
-                <p class="tcard-text">Jeg var skeptisk i starten – jeg har prøvet to andre bureauer der lovede meget og leverede lidt. Her er det anderledes. De rapporterer på rigtige tal, svarer hurtigt og giver mig en følelse af at være prioriteret.</p>
-                <div class="tcard-bottom">
-                    <div class="tcard-avatar">R</div>
-                    <div><div class="tcard-name">Rasmus Kjær</div><div class="tcard-role">Ejer af Kjær El &amp; Teknik</div></div>
-                    <div class="tcard-stars">★★★★★</div>
-                </div>
-            </div>
-            <div class="tcard">
-                <div class="tcard-quote">"</div>
-                <p class="tcard-text">Vores nye hjemmeside er det bedste vi nogensinde har investeret i. Inden for den første uge efter lanceringen fik vi tre nye henvendelser via kontaktformularen. Siden er hurtig, ser professionel ud og konverterer.</p>
-                <div class="tcard-bottom">
-                    <div class="tcard-avatar">N</div>
-                    <div><div class="tcard-name">Nicolai Brandt</div><div class="tcard-role">Indehaver af Brandt Tømrer &amp; Snedker</div></div>
-                    <div class="tcard-stars">★★★★★</div>
-                </div>
+    <div class="tfs-inner">
+        <div class="tfs-quote">
+            @testimonials[activeCard].Quote
+        </div>
+        <div class="tfs-author">
+            <div class="tfs-avatar">@testimonials[activeCard].Initials</div>
+            <div class="tfs-author-info">
+                <div class="tfs-name">@testimonials[activeCard].Name</div>
+                <div class="tfs-role">@testimonials[activeCard].Role.ToUpper()</div>
             </div>
         </div>
+    </div>
 
-        <div class="carousel-dots">
-            <span class="dot @(activeCard == 0 ? "dot--active" : "")" @onclick="@(() => GoToCard(0))"></span>
-            <span class="dot @(activeCard == 1 ? "dot--active" : "")" @onclick="@(() => GoToCard(1))"></span>
-            <span class="dot @(activeCard == 2 ? "dot--active" : "")" @onclick="@(() => GoToCard(2))"></span>
-            <span class="dot @(activeCard == 3 ? "dot--active" : "")" @onclick="@(() => GoToCard(3))"></span>
-        </div>
+    <button class="tfs-arrow tfs-arrow--next" @onclick="NextTestimonial">&#8250;</button>
+
+    <div class="tfs-dots">
+        @for (int i = 0; i < testimonials.Length; i++)
+        {
+            int idx = i;
+            <span class="tfs-dot @(activeCard == idx ? "tfs-dot--active" : "")" @onclick="@(() => activeCard = idx)"></span>
+        }
     </div>
 </section>
 
@@ -435,6 +406,35 @@
     private int openService = -1;
     private void ToggleService(int i) => openService = openService == i ? -1 : i;
 
+    private void PrevTestimonial() => activeCard = (activeCard - 1 + testimonials.Length) % testimonials.Length;
+    private void NextTestimonial() => activeCard = (activeCard + 1) % testimonials.Length;
+
+    private record Testimonial(string Quote, string Name, string Role, string Initials);
+    private Testimonial[] testimonials = new[]
+    {
+        new Testimonial(
+            "\"Inden vi startede med HåndværkerPartner brugte vi tid og penge på annoncering der ikke gav noget. Efter tre måneder med dem fyldte vores kalender sig op af sig selv. Vi har ikke haft et stille kvartal siden.\"",
+            "Mikkel Andersen", "Ejer af Andersen VVS", "MA"),
+        new Testimonial(
+            "\"Vi gik fra næsten ingen online tilstedeværelse til at være den mest synlige maler i vores område på Google. HåndværkerPartner forstår håndværksbranchen på en måde som andre bureauer simpelthen ikke gør.\"",
+            "Jakob Lund", "Indehaver af Lund Maler & Gulv", "JL"),
+        new Testimonial(
+            "\"Jeg var skeptisk i starten – jeg har prøvet to andre bureauer der lovede meget og leverede lidt. Her er det anderledes. De rapporterer på rigtige tal, svarer hurtigt og giver mig følelsen af at være prioriteret.\"",
+            "Rasmus Kjær", "Ejer af Kjær El & Teknik", "RK"),
+        new Testimonial(
+            "\"Vores nye hjemmeside er den bedste investering vi nogensinde har lavet. Inden for den første uge efter lancering fik vi tre nye henvendelser direkte via formularen. Den konverterer faktisk.\"",
+            "Nicolai Brandt", "Indehaver af Brandt Tømrer & Snedker", "NB"),
+        new Testimonial(
+            "\"Jeg troede ikke at sociale medier var noget for en lille rørleggervirksomhed som vores. Men efter to måneder med Meta-annoncer havde vi mere end nok at lave – vi måtte faktisk takke nej til opgaver.\"",
+            "Thomas Holm", "Ejer af Holm VVS & Badeværelse", "TH"),
+        new Testimonial(
+            "\"Det der adskiller HåndværkerPartner fra alle andre er at de faktisk forstår vores branche. De taler ikke i marketing-jargon – de taler om leads, jobs og omsætning. Det er det der tæller.\"",
+            "Søren Dalgaard", "Indehaver af Dalgaard Murer & Anlæg", "SD"),
+        new Testimonial(
+            "\"Fra første møde var det tydeligt at de vidste hvad de snakkede om. Vi har tredoblet vores antal af månedlige henvendelser på under et halvt år, og leadprisen er lavere end hvad vi troede var muligt.\"",
+            "Brian Vestergaard", "Direktør i Vestergaard Tag & Facade", "BV"),
+    };
+
     private bool formSent = false;
     private string formName = "";
     private string formPhone = "";
@@ -452,7 +452,6 @@
         {
             var ref_ = DotNetObjectReference.Create(this);
             await JS.InvokeVoidAsync("initScrollHandler", ref_);
-            await JS.InvokeVoidAsync("initCarousel", ref_);
             await JS.InvokeVoidAsync("initCountUp");
         }
     }
