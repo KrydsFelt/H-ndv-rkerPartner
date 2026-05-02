@@ -37,7 +37,7 @@ jobs:
         run: |
           sed -i 's|<base href="/" />|<base href="/H-ndv-rkerPartner/" />|g' release/wwwroot/index.html
           touch release/wwwroot/.nojekyll
-          cp release/wwwroot/index.html release/wwwroot/404.html
+          cp 'HåndværkerPartner/wwwroot/404.html' release/wwwroot/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
