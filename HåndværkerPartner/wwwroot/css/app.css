@@ -40,7 +40,7 @@ body {
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; }
 .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-.nav-logo img { height: 36px; mix-blend-mode: screen; }
+.nav-logo img { height: 48px; filter: brightness(0) invert(1); }
 .nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
 .nav-links a {
     text-decoration: none;
@@ -558,7 +558,7 @@ textarea.form-control { resize: none; min-height: 100px; }
     height: 100%;
     padding: 28px 32px 40px;
 }
-.mobile-menu-logo img { height: 36px; mix-blend-mode: screen; }
+.mobile-menu-logo img { height: 48px; filter: brightness(0) invert(1); }
 .mobile-nav {
     display: flex;
     flex-direction: column;
