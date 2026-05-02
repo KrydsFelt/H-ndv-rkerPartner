@@ -279,19 +279,19 @@
                     <div class="tagline">Din faglige samarbejdspartner</div>
                     <p style="color:rgba(255,255,255,0.65); font-size:15px; line-height:1.7;">Vi besidder en indgående forståelse af de digitale kanaler, hvor dine kunder bruger deres tid, og vi udnytter avancerede planlægnings-, indkøbs- og analysemetoder til at inspirere potentielle kunder til handling.</p>
                     <div class="about-numbers">
-                        <div class="about-num">
+                        <div class="about-num about-num-0">
                             <div class="n">50+</div>
                             <div class="l">Aktive kunder</div>
                         </div>
-                        <div class="about-num">
+                        <div class="about-num about-num-1">
                             <div class="n">2 mio+</div>
                             <div class="l">Leads genereret</div>
                         </div>
-                        <div class="about-num">
+                        <div class="about-num about-num-2">
                             <div class="n">33 kr</div>
                             <div class="l">Laveste leadpris</div>
                         </div>
-                        <div class="about-num">
+                        <div class="about-num about-num-3">
                             <div class="n">0</div>
                             <div class="l">Binding</div>
                         </div>
@@ -420,6 +420,7 @@
             var ref_ = DotNetObjectReference.Create(this);
             await JS.InvokeVoidAsync("initScrollHandler", ref_);
             await JS.InvokeVoidAsync("initCarousel", ref_);
+            await JS.InvokeVoidAsync("initCountUp");
         }
     }
 
