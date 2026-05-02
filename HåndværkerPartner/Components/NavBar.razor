@@ -1,0 +1,29 @@
+@inject NavigationManager Nav
+
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">
+            <img src="/logo.png" alt="HåndværkerPartner" />
+        </a>
+        <ul class="@(menuOpen ? "nav-links open" : "nav-links")">
+            <li><a href="/facebook-instagram" class="@Active("facebook-instagram")">Facebook / Instagram</a></li>
+            <li><a href="/google-ads" class="@Active("google-ads")">Google Ads</a></li>
+            <li><a href="/seo" class="@Active("seo")">SEO</a></li>
+            <li><a href="/webudvikling" class="@Active("webudvikling")">Webudvikling</a></li>
+            <li><a href="/cases" class="@Active("cases")">Cases</a></li>
+            <li><a href="/kontakt" class="@("nav-cta " + Active("kontakt"))">Kontakt os</a></li>
+        </ul>
+        <button class="hamburger" @onclick="() => menuOpen = !menuOpen" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+@code {
+    private bool menuOpen = false;
+
+    private string Active(string segment)
+    {
+        return Nav.Uri.Contains("/" + segment, StringComparison.OrdinalIgnoreCase) ? "nav-active" : "";
+    }
+}

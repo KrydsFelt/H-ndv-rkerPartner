@@ -4,48 +4,34 @@
 <PageTitle>HåndværkerPartner – Din faglige samarbejdspartner</PageTitle>
 
 <!-- NAVBAR -->
-<div class="nav-wrapper">
-    <nav class="@NavbarClass">
+<nav class="@NavbarClass">
+    <div class="nav-inner">
+        <a href="#hero" class="nav-logo" @onclick="NavHero" @onclick:preventDefault>
+            <img src="logo.png" alt="HåndværkerPartner" />
+        </a>
         <ul class="@NavLinksClass">
-            <li><a href="#services" @onclick="NavServices" @onclick:preventDefault>Ydelser</a></li>
-            <li><a href="#results" @onclick="NavResults" @onclick:preventDefault>Resultater</a></li>
-            <li><a href="#om-os" @onclick="NavOmOs" @onclick:preventDefault>Om os</a></li>
-            <li><a href="#testimonials" @onclick="NavTestimonials" @onclick:preventDefault>Kunder</a></li>
-            <li><a href="#kontakt" class="nav-cta" @onclick="NavKontakt" @onclick:preventDefault>Kontakt os</a></li>
+            <li><a href="/facebook-instagram">Facebook / Instagram</a></li>
+            <li><a href="/google-ads">Google Ads</a></li>
+            <li><a href="/seo">SEO</a></li>
+            <li><a href="/webudvikling">Webudvikling</a></li>
+            <li><a href="/cases">Cases</a></li>
+            <li><a href="/kontakt" class="nav-cta">Kontakt os</a></li>
         </ul>
         <button class="hamburger" @onclick="ToggleMenu" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
-    </nav>
-</div>
+    </div>
+</nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-    <div class="hero-blob hero-blob-3"></div>
+    <div class="hero-overlay"></div>
     <div class="hero-inner">
-        <img src="logo.jpg" alt="HåndværkerPartner" class="hero-logo" />
-        <div class="hero-badge">Din faglige samarbejdspartner</div>
-        <h1>Vækst til <span>håndværkere</span><br>der vil mere</h1>
-        <p>Vi hjælper håndværksvirksomheder med at skaffe flere kunder, styrke deres synlighed og skabe reel omsætningsvækst – gennem dokumenterede marketing- og leadstrategier.</p>
+        <p class="hero-badge">Din faglige samarbejdspartner</p>
+        <h1>Vækst til håndværkere<br>der vil mere</h1>
+        <p class="hero-sub">Vi hjælper håndværksvirksomheder med at skaffe flere kunder, styrke deres synlighed og skabe reel omsætningsvækst – gennem dokumenterede marketing- og leadstrategier.</p>
         <div class="hero-buttons">
             <button class="btn-primary" @onclick="HeroScrollKontakt">Få gratis rådgivning</button>
-            <button class="btn-outline" @onclick="HeroScrollServices">Se vores ydelser</button>
-        </div>
-        <div class="hero-stats">
-            <div class="stat-card">
-                <div class="number">500+</div>
-                <div class="label">Leads/md.</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">33 kr</div>
-                <div class="label">Laveste leadpris</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">50+</div>
-                <div class="label">Tilfredse kunder</div>
-            </div>
         </div>
     </div>
 </section>

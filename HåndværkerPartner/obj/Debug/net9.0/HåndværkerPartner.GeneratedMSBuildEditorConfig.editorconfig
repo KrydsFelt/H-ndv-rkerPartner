@@ -30,16 +30,48 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Components/NavBar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9OYXZCYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Components/SiteFooter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaXRlRm9vdGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Pages/Cases.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2FzZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Pages/FacebookInstagram.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmFjZWJvb2tJbnN0YWdyYW0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Pages/GoogleAds.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvR29vZ2xlQWRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Pages/Kontakt.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvS29udGFrdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Pages/Seo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2VvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2VhdGhlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/Pages/Webudvikling.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2VidWR2aWtsaW5nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/_Imports.razor]
