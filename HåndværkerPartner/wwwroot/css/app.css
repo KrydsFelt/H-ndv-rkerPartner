@@ -894,6 +894,14 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     border: 1px solid var(--gray);
     border-radius: 16px;
     padding: 28px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .cases-grid { grid-template-columns: 1fr !important; }
+    .result-metrics-light { grid-template-columns: repeat(3, 1fr) !important; gap: 8px; }
+    .metric-value { font-size: 18px !important; }
 }
 
 .case-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
