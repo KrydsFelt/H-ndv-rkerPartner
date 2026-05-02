@@ -20,12 +20,12 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Publish
-        run: dotnet publish "HåndværkerPartner/HåndværkerPartner.csproj" -c Release -o release --nologo
-
-      - name: Copy 404 and .nojekyll
         run: |
-          cp release/wwwroot/404.html release/wwwroot/404.html || true
-          touch release/wwwroot/.nojekyll
+          PROJ=$(find . -name "*.csproj" | head -1)
+          dotnet publish "$PROJ" -c Release -o release --nologo
+
+      - name: Fix static files
+        run: touch release/wwwroot/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
