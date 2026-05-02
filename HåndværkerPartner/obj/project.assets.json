@@ -426,7 +426,7 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/10.0.2": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/10.0.0": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -859,7 +859,7 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/10.0.2": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/10.0.0": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -1705,10 +1705,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.NET.Sdk.WebAssembly.Pack/10.0.2": {
-      "sha512": "ZDAtI9V2EQajyccTZ67JtJWMCIpK3ZFgwqNHyfMieossRdB90WJ+IbYVKObLOLIv9Vkc3eJcrJD2CeffsF/nUA==",
+    "Microsoft.NET.Sdk.WebAssembly.Pack/10.0.0": {
+      "sha512": "bewqpnzRlrdGaiT4f8aSbHiKuFhm/HWKcOAgvhFpYL1OhWR0zWakDnCB67XaJ33yQKj0gsIEMl1vry6c9iGpwQ==",
       "type": "package",
-      "path": "microsoft.net.sdk.webassembly.pack/10.0.2",
+      "path": "microsoft.net.sdk.webassembly.pack/10.0.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -1738,7 +1738,7 @@
         "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets",
         "build/Wasm.web.config",
         "build/browser.runtimeconfig.template.json",
-        "microsoft.net.sdk.webassembly.pack.10.0.2.nupkg.sha512",
+        "microsoft.net.sdk.webassembly.pack.10.0.0.nupkg.sha512",
         "microsoft.net.sdk.webassembly.pack.nuspec",
         "tools/net10.0/Microsoft.NET.Sdk.WebAssembly.Pack.Tasks.dll",
         "tools/net10.0/Microsoft.NET.WebAssembly.Webcil.dll",
@@ -1752,32 +1752,29 @@
       "Microsoft.AspNetCore.Components.WebAssembly >= 9.0.12",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 9.0.12",
       "Microsoft.NET.ILLink.Tasks >= 9.0.11",
-      "Microsoft.NET.Sdk.WebAssembly.Pack >= 10.0.2"
+      "Microsoft.NET.Sdk.WebAssembly.Pack >= 10.0.0"
     ]
   },
   "packageFolders": {
-    "/Users/minhdinh/.nuget/packages/": {}
+    "/Users/giobeshara/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
+      "projectUniqueName": "/Users/giobeshara/src/Krydsfelt-repo/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
       "projectName": "HåndværkerPartner",
-      "projectPath": "/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
-      "packagesPath": "/Users/minhdinh/.nuget/packages/",
-      "outputPath": "/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/",
+      "projectPath": "/Users/giobeshara/src/Krydsfelt-repo/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
+      "packagesPath": "/Users/giobeshara/.nuget/packages/",
+      "outputPath": "/Users/giobeshara/src/Krydsfelt-repo/H-ndv-rkerPartner/HåndværkerPartner/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/minhdinh/.nuget/NuGet/NuGet.Config"
+        "/Users/giobeshara/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "/Users/minhdinh/Desktop/Packages/LocalNuGet": {},
-        "/usr/local/share/dotnet/library-packs": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.pkg.github.com/The-Avengers-APS/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
@@ -1819,7 +1816,7 @@
           "Microsoft.NET.Sdk.WebAssembly.Pack": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[10.0.2, )",
+            "version": "[10.0.0, )",
             "autoReferenced": true
           }
         },
@@ -1840,8 +1837,12 @@
             "version": "[9.0.11, 9.0.11]"
           },
           {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[9.0.11, 9.0.11]"
+          },
+          {
             "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-            "version": "[9.0.12, 9.0.12]"
+            "version": "[9.0.11, 9.0.11]"
           }
         ],
         "frameworkReferences": {
