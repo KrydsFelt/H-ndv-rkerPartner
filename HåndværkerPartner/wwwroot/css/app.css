@@ -213,7 +213,7 @@ body {
     margin-bottom: 20px;
     font-style: italic;
 }
-.hero h1 {
+.hero h2 {
     font-size: clamp(36px, 6vw, 68px);
     font-weight: 800;
     color: var(--white);
@@ -533,7 +533,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 .subpage-hero { min-height: 60vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 140px 24px 80px; }
 .subpage-hero::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat; opacity: 0.12; }
 .subpage-hero-inner { position: relative; z-index: 1; max-width: 760px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.subpage-hero-inner h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.12; margin-bottom: 20px; }
+.subpage-hero-inner h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.12; margin-bottom: 20px; }
 .subpage-content { padding: 80px 0; }
 .subpage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 .subpage-text { min-width: 0; }
@@ -714,7 +714,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     margin: 0 auto;
 }
 
-.kontakt-hero h1 {
+.kontakt-hero h2 {
     font-size: clamp(32px, 5vw, 52px);
     font-weight: 800;
     color: var(--white);
@@ -841,7 +841,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 
     /* Hero */
     .hero { min-height: 100svh; padding: 100px 20px 60px; }
-    .hero h1 { font-size: clamp(32px, 8vw, 52px); }
+    .hero h2 { font-size: clamp(32px, 8vw, 52px); }
     .hero-sub { font-size: 15px; }
     .hero-buttons { flex-direction: column; width: 100%; }
     .hero-buttons .btn-primary, .hero-buttons .btn-outline { width: 100%; text-align: center; }

@@ -816,10 +816,6 @@
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/swae.build.ex.cache
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/H_ndv_rk.F11B290A.Up2Date
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/HåndværkerPartner.sourcelink.json
-/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/wwwroot/_framework/HaandvaerkerPartner.fq1vlplzlp.wasm
-/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/wwwroot/_framework/HaandvaerkerPartner.s6id2p1mfc.pdb
-/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/wwwroot/_framework/HaandvaerkerPartner.fq1vlplzlp.wasm.gz
-/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/wwwroot/_framework/HaandvaerkerPartner.s6id2p1mfc.pdb.gz
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/HaandvaerkerPartner.staticwebassets.runtime.json
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/HaandvaerkerPartner.staticwebassets.endpoints.json
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/HaandvaerkerPartner.dll
@@ -829,7 +825,6 @@
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/scopedcss/bundle/HaandvaerkerPartner.styles.css
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/scopedcss/projectbundle/HaandvaerkerPartner.bundle.scp.css
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/8xzqahjbkq-{0}-9j89lmnj82-9j89lmnj82.gz
-/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/4tn5r0y9np-{0}-yybtcm05vv-yybtcm05vv.gz
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/avotwu5fxk-{0}-0f9wo6wfyx-0f9wo6wfyx.gz
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/yw7dpdsiyr-{0}-i6hga89th4-i6hga89th4.gz
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/3c1tmxz9qw-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -1081,10 +1076,15 @@
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/r9p508h2xr-{0}-tptq2av103-tptq2av103.gz
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/kuoqe7jdus-{0}-lfu7j35m59-lfu7j35m59.gz
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/aoxgxarbs8-{0}-ec9yy67949-ec9yy67949.gz
-/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/or8trvyuq2-{0}-fq1vlplzlp-fq1vlplzlp.gz
-/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/ci82gfoene-{0}-s6id2p1mfc-s6id2p1mfc.gz
-/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/2bph5won0e-{0}-a08v8km2zd-a08v8km2zd.gz
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/HaandvaerkerPartner.dll
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/refint/HaandvaerkerPartner.dll
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/HaandvaerkerPartner.pdb
 /Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/ref/HaandvaerkerPartner.dll
+/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/4tn5r0y9np-{0}-rr6da2ded1-rr6da2ded1.gz
+/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/wwwroot/_framework/HaandvaerkerPartner.1edtgc3w2b.wasm
+/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/wwwroot/_framework/HaandvaerkerPartner.k9awemgzbq.pdb
+/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/wwwroot/_framework/HaandvaerkerPartner.1edtgc3w2b.wasm.gz
+/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/bin/Debug/net9.0/wwwroot/_framework/HaandvaerkerPartner.k9awemgzbq.pdb.gz
+/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/or8trvyuq2-{0}-1edtgc3w2b-1edtgc3w2b.gz
+/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/ci82gfoene-{0}-k9awemgzbq-k9awemgzbq.gz
+/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/Debug/net9.0/compressed/2bph5won0e-{0}-crmqf6r55k-crmqf6r55k.gz
