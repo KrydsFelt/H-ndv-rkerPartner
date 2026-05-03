@@ -25,40 +25,42 @@ body {
 /* ── NAVBAR ── */
 .navbar {
     position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 48px);
-    max-width: 1100px;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
-    background: rgba(26,26,26,0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 8px 8px 8px 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-bottom: none;
+    border-radius: 0;
+    padding: 28px 40px;
+    box-shadow: none;
 }
-.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.nav-inner { display: flex; align-items: center; justify-content: center; gap: 40px; max-width: 1100px; margin: 0 auto; }
 .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
 .nav-logo img { height: 44px; mix-blend-mode: screen; }
 .nav-logo-text {
     font-family: 'Poppins', sans-serif;
     font-weight: 900;
-    font-size: 15px;
     letter-spacing: 0.04em;
     color: var(--white);
     line-height: 1;
     text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
-.nav-logo-text span { color: var(--orange); }
+.nav-logo-line1 { font-size: 30px; color: var(--white); }
+.nav-logo-line2 { font-size: 30px; color: var(--orange); }
 .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
 .nav-links a {
     text-decoration: none;
     color: rgba(255,255,255,0.7);
     font-weight: 500;
-    font-size: 14px;
-    padding: 8px 14px;
+    font-size: 16px;
+    padding: 10px 16px;
     border-radius: 10px;
     transition: color .2s, background .2s;
 }
@@ -180,20 +182,20 @@ body {
     align-items: center;
     justify-content: center;
     padding: 120px 24px 80px;
-    background: #1a2e2a;
+    background: #1a1a1a;
     overflow: hidden;
 }
 .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+    background: url('/Handvaerker.gif') center/cover no-repeat;
     opacity: 0.18;
 }
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(160deg, rgba(26,46,42,0.7) 0%, rgba(15,25,22,0.85) 100%);
+    background: rgba(232,119,34,0.2);
 }
 .hero-inner {
     position: relative;
@@ -327,7 +329,7 @@ body {
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .service-card {
     background: var(--white);
-    border: 1px solid var(--gray);
+    border: 2px solid rgba(232,119,34,0.75);
     border-radius: 20px;
     overflow: hidden;
     transition: box-shadow .25s, transform .25s;
@@ -405,7 +407,7 @@ body {
 
 /* ── TESTIMONIALS FULLSCREEN ── */
 .testimonials-fullscreen {
-    background: #0a0a0a;
+    background: rgba(232,119,34,0.15);
     min-height: 560px;
     display: flex;
     align-items: center;
@@ -423,7 +425,7 @@ body {
 }
 .tfs-quote {
     font-size: clamp(18px, 2.4vw, 28px);
-    color: rgba(255,255,255,0.82);
+    color: #1a1a1a;
     line-height: 1.7;
     font-weight: 400;
     font-style: italic;
@@ -432,10 +434,11 @@ body {
     display: flex;
     align-items: center;
     gap: 14px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(0,0,0,0.08);
     border-radius: 50px;
     padding: 10px 20px 10px 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 .tfs-avatar {
     width: 40px; height: 40px;
@@ -447,23 +450,23 @@ body {
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
 }
-.tfs-name { font-size: 14px; font-weight: 700; color: var(--white); }
-.tfs-role { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; margin-top: 1px; }
+.tfs-name { font-size: 14px; font-weight: 700; color: #1a1a1a; }
+.tfs-role { font-size: 11px; color: rgba(0,0,0,0.5); letter-spacing: 0.08em; margin-top: 1px; }
 .tfs-arrow {
     position: absolute;
     top: 50%; transform: translateY(-50%);
     width: 44px; height: 44px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.15);
+    border: 1px solid rgba(0,0,0,0.2);
+    color: #1a1a1a;
     font-size: 24px;
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     transition: background .2s, color .2s;
     line-height: 1;
 }
-.tfs-arrow:hover { background: rgba(255,255,255,0.12); color: var(--white); }
+.tfs-arrow:hover { background: rgba(0,0,0,0.25); color: #000; }
 .tfs-arrow--prev { left: 40px; }
 .tfs-arrow--next { right: 40px; }
 .tfs-dots {
@@ -531,7 +534,8 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 /* ── SUBPAGES ── */
 .subpage { padding-top: 0; }
 .subpage-hero { min-height: 60vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 140px 24px 80px; }
-.subpage-hero::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat; opacity: 0.12; }
+.subpage-hero::before { content: ''; position: absolute; inset: 0; background: url('/Handvaerker.gif') center/cover no-repeat; opacity: 0.18; }
+.subpage-hero::after { content: ''; position: absolute; inset: 0; background: rgba(232,119,34,0.2); }
 .subpage-hero-inner { position: relative; z-index: 1; max-width: 760px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .subpage-hero-inner h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.12; margin-bottom: 20px; }
 .subpage-content { padding: 80px 0; }

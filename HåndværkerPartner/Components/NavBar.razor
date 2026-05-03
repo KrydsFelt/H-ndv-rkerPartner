@@ -4,20 +4,13 @@
 <nav class="navbar">
     <div class="nav-inner">
         <a href="" class="nav-logo nav-logo-text">
-            HÅNDVÆRKER<span>PARTNER</span>
+            <span class="nav-logo-line1">HÅNDVÆRKER</span><span class="nav-logo-line2">PARTNER</span>
         </a>
         <ul class="nav-links">
-            <li class="nav-ydelser-item">
-                <span class="nav-ydelser-trigger">Ydelser</span>
-                <div class="nav-ydelser-dropdown">
-                    <div class="nav-ydelser-dropdown-inner">
-                        <a href="facebook-instagram">Facebook / Instagram Ads</a>
-                        <a href="google-ads">Google Ads</a>
-                        <a href="seo">SEO</a>
-                        <a href="webudvikling">Webudvikling</a>
-                    </div>
-                </div>
-            </li>
+            <li><a href="facebook-instagram" class="@Active("facebook-instagram")">Facebook / Instagram Ads</a></li>
+            <li><a href="google-ads" class="@Active("google-ads")">Google Ads</a></li>
+            <li><a href="seo" class="@Active("seo")">SEO</a></li>
+            <li><a href="webudvikling" class="@Active("webudvikling")">Hjemmesider</a></li>
             <li><a href="cases" class="@Active("cases")">Cases</a></li>
             <li><a href="kontakt" class="@("nav-cta " + Active("kontakt"))">Kontakt os</a></li>
         </ul>
@@ -32,14 +25,13 @@
     <div class="mobile-menu">
         <div class="mobile-menu-inner">
             <a href="" class="mobile-menu-logo nav-logo-text" @onclick="CloseMenu">
-                HÅNDVÆRKER<span>PARTNER</span>
+                <span class="nav-logo-line1">HÅNDVÆRKER</span><span class="nav-logo-line2">PARTNER</span>
             </a>
             <nav class="mobile-nav">
-                <div class="mobile-nav-group-label">Ydelser</div>
-                <a href="facebook-instagram" @onclick="CloseMenu" class="mobile-nav-sub">Facebook / Instagram</a>
-                <a href="google-ads" @onclick="CloseMenu" class="mobile-nav-sub">Google Ads</a>
-                <a href="seo" @onclick="CloseMenu" class="mobile-nav-sub">SEO</a>
-                <a href="webudvikling" @onclick="CloseMenu" class="mobile-nav-sub">Webudvikling</a>
+                <a href="facebook-instagram" @onclick="CloseMenu">Facebook / Instagram Ads</a>
+                <a href="google-ads" @onclick="CloseMenu">Google Ads</a>
+                <a href="seo" @onclick="CloseMenu">SEO</a>
+                <a href="webudvikling" @onclick="CloseMenu">Hjemmesider</a>
                 <a href="cases" @onclick="CloseMenu">Cases</a>
             </nav>
             <a href="kontakt" class="mobile-menu-cta" @onclick="CloseMenu">Kontakt os</a>

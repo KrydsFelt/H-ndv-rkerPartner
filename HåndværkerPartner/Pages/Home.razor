@@ -7,20 +7,13 @@
 <nav class="@NavbarClass">
     <div class="nav-inner">
         <a href="#hero" class="nav-logo nav-logo-text" @onclick="NavHero" @onclick:preventDefault>
-            HÅNDVÆRKER<span>PARTNER</span>
+            <span class="nav-logo-line1">HÅNDVÆRKER</span><span class="nav-logo-line2">PARTNER</span>
         </a>
         <ul class="@NavLinksClass">
-            <li class="nav-ydelser-item">
-                <span class="nav-ydelser-trigger">Ydelser</span>
-                <div class="nav-ydelser-dropdown">
-                    <div class="nav-ydelser-dropdown-inner">
-                        <a href="facebook-instagram">Facebook / Instagram Ads</a>
-                        <a href="google-ads">Google Ads</a>
-                        <a href="seo">SEO</a>
-                        <a href="webudvikling">Webudvikling</a>
-                    </div>
-                </div>
-            </li>
+            <li><a href="facebook-instagram">Facebook / Instagram Ads</a></li>
+            <li><a href="google-ads">Google Ads</a></li>
+            <li><a href="seo">SEO</a></li>
+            <li><a href="webudvikling">Hjemmesider</a></li>
             <li><a href="cases">Cases</a></li>
             <li><a href="kontakt" class="nav-cta">Kontakt os</a></li>
         </ul>
@@ -38,7 +31,7 @@
         <h2>Vækst til håndværkere<br>der vil mere</h2>
         <p class="hero-sub">Vi hjælper håndværksvirksomheder med at skaffe flere kunder, styrke deres synlighed og skabe reel omsætningsvækst – gennem dokumenterede marketing- og leadstrategier.</p>
         <div class="hero-buttons">
-            <button class="btn-primary" @onclick="HeroScrollKontakt">Få gratis rådgivning</button>
+            <button class="btn-primary" @onclick="HeroScrollKontakt">Bliv kontaktet</button>
         </div>
     </div>
 </section>
@@ -201,7 +194,7 @@
             <div class="match-side match-side--no">
                 <div class="match-side-label">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    Det passer ikke
+                    Det passer ikke hvis
                 </div>
                 <ul class="match-list">
                     <li class="match-item">Du vil have ét quick-fix og er videre</li>
@@ -217,7 +210,7 @@
             <div class="match-side match-side--yes">
                 <div class="match-side-label">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    Det passer perfekt
+                    Det passer perfekt hvis
                 </div>
                 <ul class="match-list">
                     <li class="match-item">Du er klar til at investere i din vækst langsigtet</li>
