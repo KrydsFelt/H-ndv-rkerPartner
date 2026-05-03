@@ -119,7 +119,7 @@
             var typingCompletedAt = 0;
             var appReady = false;
             var revealQueued = false;
-            var isHomeRoute = normalizePath(window.location.pathname) === '/';
+            var isHomeRoute = isHomeEntryPath(window.location.pathname);
 
             if (!screen || !isHomeRoute) {
                 if (screen) {
@@ -160,6 +160,29 @@
             function normalizePath(pathname) {
                 var normalized = pathname.replace(/\/+$/, '');
                 return normalized === '' ? '/' : normalized;
+            }
+
+            function isHomeEntryPath(pathname) {
+                var normalized = normalizePath(pathname);
+                var segments = normalized.split('/').filter(Boolean);
+
+                if (segments.length === 0) {
+                    return true;
+                }
+
+                var lastSegment = segments[segments.length - 1].toLowerCase();
+                var knownSubpages = {
+                    'facebook-instagram': true,
+                    'google-ads': true,
+                    'seo': true,
+                    'webudvikling': true,
+                    'cases': true,
+                    'kontakt': true,
+                    'counter': true,
+                    'weather': true
+                };
+
+                return lastSegment === 'index.html' || !knownSubpages[lastSegment];
             }
 
             function typeSubtitle() {
