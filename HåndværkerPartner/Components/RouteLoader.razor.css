@@ -1,0 +1,101 @@
+.route-loader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at top, rgba(232, 119, 34, 0.18), transparent 38%),
+        linear-gradient(180deg, #181818 0%, #111111 100%);
+    z-index: 9999;
+    transition: opacity 0.24s ease, visibility 0.24s ease;
+}
+
+.route-loader.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.route-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.route-loader__shell {
+    width: min(88vw, 420px);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.route-loader__logo {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5vw, 40px);
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    min-height: 1.2em;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.route-loader__cursor {
+    width: 2px;
+    height: 1.02em;
+    background: #E87722;
+    box-shadow: 0 0 14px rgba(232, 119, 34, 0.45);
+    animation: route-loader-blink 0.8s step-end infinite;
+}
+
+.route-loader__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.route-loader__status {
+    color: rgba(255, 255, 255, 0.62);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.route-loader__percent {
+    color: rgba(255, 255, 255, 0.72);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+
+.route-loader__bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.route-loader__bar-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #E87722 0%, #f5a14d 100%);
+    border-radius: inherit;
+    box-shadow: 0 0 24px rgba(232, 119, 34, 0.45);
+    transition: width 0.12s linear;
+}
+
+@keyframes route-loader-blink {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}

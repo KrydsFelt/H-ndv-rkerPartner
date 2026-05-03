@@ -1,4 +1,9 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿<RouteLoader IsVisible="@_loaderVisible"
+             TypedText="@_typedText"
+             Status="@_status"
+             Progress="@_progress" />
+
+<Router AppAssembly="@typeof(App).Assembly" OnNavigateAsync="HandleNavigationAsync">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h2" />
@@ -10,3 +15,77 @@
         </LayoutView>
     </NotFound>
 </Router>
+
+@code {
+    private const string LoaderText = "Håndværker";
+
+    private bool _hasHandledInitialNavigation;
+    private bool _loaderVisible;
+    private double _progress;
+    private string _typedText = string.Empty;
+    private string _status = "Indlæser HåndværkerPartner";
+    private int _navigationSequence;
+
+    private async Task HandleNavigationAsync(NavigationContext context)
+    {
+        if (!_hasHandledInitialNavigation)
+        {
+            _hasHandledInitialNavigation = true;
+            return;
+        }
+
+        var sequence = Interlocked.Increment(ref _navigationSequence);
+
+        _loaderVisible = true;
+        _progress = 0;
+        _typedText = string.Empty;
+        _status = "Indlæser HåndværkerPartner";
+        await InvokeAsync(StateHasChanged);
+
+        try
+        {
+            await RunLoaderAnimationAsync(sequence, context.CancellationToken);
+        }
+        catch (OperationCanceledException)
+        {
+            if (sequence == _navigationSequence)
+            {
+                _loaderVisible = false;
+                await InvokeAsync(StateHasChanged);
+            }
+        }
+    }
+
+    private async Task RunLoaderAnimationAsync(int sequence, CancellationToken cancellationToken)
+    {
+        var totalChars = LoaderText.Length;
+
+        for (var index = 1; index <= totalChars; index++)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+
+            if (sequence != _navigationSequence)
+            {
+                return;
+            }
+
+            _typedText = LoaderText[..index];
+            _progress = 8 + ((double)index / totalChars) * 78;
+            await InvokeAsync(StateHasChanged);
+            await Task.Delay(85, cancellationToken);
+        }
+
+        _status = "Klar";
+        _progress = 100;
+        await InvokeAsync(StateHasChanged);
+        await Task.Delay(2000, cancellationToken);
+
+        if (sequence != _navigationSequence)
+        {
+            return;
+        }
+
+        _loaderVisible = false;
+        await InvokeAsync(StateHasChanged);
+    }
+}

@@ -1,0 +1,22 @@
+<div class="route-loader @(IsVisible ? "is-visible" : "is-hidden")" aria-hidden="@(!IsVisible)">
+    <div class="route-loader__shell">
+        <div class="route-loader__logo">
+            <span>@TypedText</span>
+            <span class="route-loader__cursor"></span>
+        </div>
+        <div class="route-loader__meta">
+            <div class="route-loader__status">@Status</div>
+            <div class="route-loader__percent">@($"{Math.Round(Progress)}%")</div>
+        </div>
+        <div class="route-loader__bar">
+            <div class="route-loader__bar-fill" style="@($"width: {Progress:0.0}%;")"></div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public string TypedText { get; set; } = string.Empty;
+    [Parameter] public string Status { get; set; } = "Indlæser HåndværkerPartner";
+    [Parameter] public double Progress { get; set; }
+}
