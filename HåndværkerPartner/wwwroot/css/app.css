@@ -13,16 +13,19 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; min-height: 100%; background: #111111; }
+html { scroll-behavior: smooth; min-height: 100%; background: var(--white); }
 body {
     font-family: 'Inter', sans-serif;
     color: var(--black);
-    background: #111111;
+    background: var(--white);
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100%;
 }
-#app { min-height: 100vh; }
+#app {
+    min-height: 100vh;
+    background: var(--white);
+}
 
 /* ── NAVBAR ── */
 .navbar {
@@ -879,8 +882,8 @@ textarea.form-control { resize: vertical; min-height: 110px; }
         position: absolute;
         top: calc(100% + 12px);
         right: 0;
-        left: auto;
-        width: min(320px, calc(100vw - 32px));
+        left: 0;
+        width: auto;
         background: rgba(26,26,26,0.97);
         backdrop-filter: blur(16px);
         padding: 14px;
