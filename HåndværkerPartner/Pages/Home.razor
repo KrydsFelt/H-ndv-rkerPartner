@@ -10,11 +10,26 @@
             <span class="nav-logo-line1">HÅNDVÆRKER</span><span class="nav-logo-line2">PARTNER</span>
         </a>
         <ul class="@NavLinksClass">
-            <li><a href="facebook-instagram">Facebook / Instagram Ads</a></li>
-            <li><a href="google-ads">Google Ads</a></li>
-            <li><a href="seo">SEO</a></li>
-            <li><a href="webudvikling">Hjemmesider</a></li>
-            <li><a href="cases">Cases</a></li>
+            <li><a href="#om-os" @onclick="NavOmOs" @onclick:preventDefault>Om HåndværkerPartner</a></li>
+            <li class="nav-ydelser-item">
+                <button type="button" class="nav-ydelser-trigger">Services</button>
+                <div class="nav-ydelser-dropdown">
+                    <div class="nav-ydelser-dropdown-inner">
+                        <a href="facebook-instagram">
+                            <span class="nav-service-title">Meta Ads</span>
+                            <span class="nav-service-note">Betalt synlighed på Meta</span>
+                        </a>
+                        <a href="google-ads">
+                            <span class="nav-service-title">Google Ads</span>
+                            <span class="nav-service-note">Fang kunder med købssignal</span>
+                        </a>
+                        <a href="webudvikling">
+                            <span class="nav-service-title">Hjemmesider</span>
+                            <span class="nav-service-note">Designet til at konvertere</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
             <li><a href="kontakt" class="nav-cta">Kontakt os</a></li>
         </ul>
         <button class="hamburger" @onclick="ToggleMenu" aria-label="Menu">
@@ -25,6 +40,14 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
+    <video class="hero-video"
+           src="/herovideo/herovideo.mp4"
+           autoplay
+           muted
+           loop
+           playsinline
+           preload="auto">
+    </video>
     <div class="hero-overlay"></div>
     <div class="hero-inner">
         <p class="hero-badge">Din faglige samarbejdspartner</p>
@@ -35,31 +58,6 @@
         </div>
     </div>
 </section>
-
-<!-- CLIENTS MARQUEE -->
-<div class="clients-strip">
-    <div class="marquee-track">
-        <div class="marquee-inner">
-            <div class="client-logo">SKIMMELCONSULT</div>
-            <div class="client-logo">FACADE RENOVERING DANMARK</div>
-            <div class="client-logo">ISHØY &amp; PEDERSEN</div>
-            <div class="client-logo">MPUDS.DK</div>
-            <div class="client-logo">MB VINDUESPOLERING</div>
-            <div class="client-logo">KASPER WEST</div>
-            <div class="client-logo">CT ISOLERING</div>
-            <div class="client-logo">NORD POLERING</div>
-            <!-- duplicate for seamless loop -->
-            <div class="client-logo">SKIMMELCONSULT</div>
-            <div class="client-logo">FACADE RENOVERING DANMARK</div>
-            <div class="client-logo">ISHØY &amp; PEDERSEN</div>
-            <div class="client-logo">MPUDS.DK</div>
-            <div class="client-logo">MB VINDUESPOLERING</div>
-            <div class="client-logo">KASPER WEST</div>
-            <div class="client-logo">CT ISOLERING</div>
-            <div class="client-logo">NORD POLERING</div>
-        </div>
-    </div>
-</div>
 
 <!-- SERVICES -->
 <section class="section section--light" id="services">
@@ -226,29 +224,23 @@
 
 <!-- TESTIMONIALS -->
 <section class="testimonials-fullscreen" id="testimonials">
-    <button class="tfs-arrow tfs-arrow--prev" @onclick="PrevTestimonial">&#8249;</button>
-
     <div class="tfs-inner">
-        <div class="tfs-quote">
-            @testimonials[activeCard].Quote
-        </div>
-        <div class="tfs-author">
-            <div class="tfs-avatar">@testimonials[activeCard].Initials</div>
-            <div class="tfs-author-info">
-                <div class="tfs-name">@testimonials[activeCard].Name</div>
-                <div class="tfs-role">@testimonials[activeCard].Role.ToUpper()</div>
+        <div class="tfs-kicker"><span class="tfs-kicker-dot"></span>Testimonials</div>
+        <h2 class="tfs-heading">Lyt ikke kun til os,<br><span>lyt til hvad vores kunder siger</span></h2>
+        <div class="tfs-card">
+            <div class="tfs-card-avatar">
+                <img src="testimonials/emilsmultifix.jpg" alt="Emil fra Emils Multifix" />
+            </div>
+            <div class="tfs-quote">
+                "Vi gik fra at have absolut nul kunder til at have en fuld kalender, hver eneste dag på kun 2 måneder. Det bedste af det hele er, at leadprisen er utrolig lav. Håndværkerpartner er squ den rigtige partner for os!"
+            </div>
+            <div class="tfs-author">
+                <div class="tfs-author-info">
+                    <div class="tfs-name">Emil</div>
+                    <div class="tfs-role">Co-founder &amp; medarbejder af Emils Multifix</div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <button class="tfs-arrow tfs-arrow--next" @onclick="NextTestimonial">&#8250;</button>
-
-    <div class="tfs-dots">
-        @for (int i = 0; i < testimonials.Count; i++)
-        {
-            int idx = i;
-            <span class="tfs-dot @(activeCard == idx ? "tfs-dot--active" : "")" @onclick="@(() => activeCard = idx)"></span>
-        }
     </div>
 </section>
 
@@ -274,14 +266,14 @@
                 <div class="about-big-card">
                     <h3>HåndværkerPartner</h3>
                     <div class="tagline">Din faglige samarbejdspartner</div>
-                    <p style="color:rgba(255,255,255,0.65); font-size:15px; line-height:1.7;">Vi besidder en indgående forståelse af de digitale kanaler, hvor dine kunder bruger deres tid, og vi udnytter avancerede planlægnings-, indkøbs- og analysemetoder til at inspirere potentielle kunder til handling.</p>
+                    <p style="color:#ffffff; font-size:15px; line-height:1.7;">Vi besidder en indgående forståelse af de digitale kanaler, hvor dine kunder bruger deres tid, og vi udnytter avancerede planlægnings-, indkøbs- og analysemetoder til at inspirere potentielle kunder til handling.</p>
                     <div class="about-numbers">
                         <div class="about-num about-num-0">
                             <div class="n">50+</div>
                             <div class="l">Aktive kunder</div>
                         </div>
                         <div class="about-num about-num-1">
-                            <div class="n">2 mio+</div>
+                            <div class="n">1.000+</div>
                             <div class="l">Leads genereret</div>
                         </div>
                         <div class="about-num about-num-2">
@@ -289,7 +281,7 @@
                             <div class="l">Laveste leadpris</div>
                         </div>
                         <div class="about-num about-num-3">
-                            <div class="n">0</div>
+                            <div class="n">0 dage</div>
                             <div class="l">Binding</div>
                         </div>
                     </div>
@@ -395,31 +387,8 @@
     private bool menuOpen = false;
     private bool showScrollTop = false;
 
-    private int activeCard = 0;
     private int openService = -1;
     private void ToggleService(int i) => openService = openService == i ? -1 : i;
-
-    private class TestimonialItem
-    {
-        public string Quote { get; set; } = "";
-        public string Name { get; set; } = "";
-        public string Role { get; set; } = "";
-        public string Initials { get; set; } = "";
-    }
-
-    private List<TestimonialItem> testimonials = new List<TestimonialItem>
-    {
-        new TestimonialItem { Quote = "\"Inden vi startede med HåndværkerPartner brugte vi tid og penge på annoncering der ikke gav noget. Efter tre måneder med dem fyldte vores kalender sig op af sig selv. Vi har ikke haft et stille kvartal siden.\"", Name = "Mikkel Andersen", Role = "Ejer af Andersen VVS", Initials = "MA" },
-        new TestimonialItem { Quote = "\"Vi gik fra næsten ingen online tilstedeværelse til at være den mest synlige maler i vores område på Google. HåndværkerPartner forstår håndværksbranchen på en måde som andre bureauer simpelthen ikke gør.\"", Name = "Jakob Lund", Role = "Indehaver af Lund Maler & Gulv", Initials = "JL" },
-        new TestimonialItem { Quote = "\"Jeg var skeptisk i starten – jeg har prøvet to andre bureauer der lovede meget og leverede lidt. Her er det anderledes. De rapporterer på rigtige tal, svarer hurtigt og giver mig følelsen af at være prioriteret.\"", Name = "Rasmus Kjær", Role = "Ejer af Kjær El & Teknik", Initials = "RK" },
-        new TestimonialItem { Quote = "\"Vores nye hjemmeside er den bedste investering vi nogensinde har lavet. Inden for den første uge efter lancering fik vi tre nye henvendelser direkte via formularen. Den konverterer faktisk.\"", Name = "Nicolai Brandt", Role = "Indehaver af Brandt Tømrer & Snedker", Initials = "NB" },
-        new TestimonialItem { Quote = "\"Jeg troede ikke at sociale medier var noget for en lille rørleggervirksomhed som vores. Men efter to måneder med Meta-annoncer havde vi mere end nok at lave – vi måtte faktisk takke nej til opgaver.\"", Name = "Thomas Holm", Role = "Ejer af Holm VVS & Badeværelse", Initials = "TH" },
-        new TestimonialItem { Quote = "\"Det der adskiller HåndværkerPartner fra alle andre er at de faktisk forstår vores branche. De taler ikke i marketing-jargon – de taler om leads, jobs og omsætning. Det er det der tæller.\"", Name = "Søren Dalgaard", Role = "Indehaver af Dalgaard Murer & Anlæg", Initials = "SD" },
-        new TestimonialItem { Quote = "\"Fra første møde var det tydeligt at de vidste hvad de snakkede om. Vi har tredoblet vores antal af månedlige henvendelser på under et halvt år, og leadprisen er lavere end hvad vi troede var muligt.\"", Name = "Brian Vestergaard", Role = "Direktør i Vestergaard Tag & Facade", Initials = "BV" },
-    };
-
-    private void PrevTestimonial() => activeCard = (activeCard - 1 + testimonials.Count) % testimonials.Count;
-    private void NextTestimonial() => activeCard = (activeCard + 1) % testimonials.Count;
 
     private bool formSent = false;
     private string formName = "";
@@ -440,19 +409,6 @@
             await JS.InvokeVoidAsync("initScrollHandler", ref_);
             await JS.InvokeVoidAsync("initCountUp");
         }
-    }
-
-    [JSInvokable]
-    public void SetActiveCard(int index)
-    {
-        activeCard = index;
-        StateHasChanged();
-    }
-
-    private async Task GoToCard(int index)
-    {
-        activeCard = index;
-        await JS.InvokeVoidAsync("scrollCarouselTo", index);
     }
 
     [JSInvokable]

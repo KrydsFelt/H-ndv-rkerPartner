@@ -36,7 +36,7 @@
             width: min(88vw, 420px);
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 6px;
         }
         .ls-logo {
             font-family: 'Poppins', 'Inter', sans-serif;
@@ -61,40 +61,19 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-        .ls-status {
-            color: rgba(255, 255, 255, 0.62);
+        .ls-subtitle {
+            color: #ffffff;
             font-family: 'Inter', sans-serif;
-            font-size: 14px;
+            font-weight: 100;
+            font-size: clamp(15px, 2.5vw, 18px);
             letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-        .ls-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 999px;
-            overflow: hidden;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-        }
-        .ls-bar-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #E87722 0%, #f5a14d 100%);
-            border-radius: inherit;
-            box-shadow: 0 0 24px rgba(232, 119, 34, 0.45);
-            transition: width 0.18s ease-out;
-        }
-        .ls-meta {
+            min-height: 1.3em;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            gap: 2px;
         }
-        .ls-percent {
-            color: rgba(255, 255, 255, 0.72);
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-variant-numeric: tabular-nums;
+        .ls-cursor--subtitle {
+            height: 0.95em;
         }
     </style>
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -106,13 +85,12 @@
         <div class="ls-shell">
             <div class="ls-logo" id="ls-logo">
                 <span id="ls-logo-text"></span>
-                <span class="ls-cursor"></span>
+                <span class="ls-cursor" id="ls-logo-cursor"></span>
             </div>
-            <div class="ls-meta">
-                <div class="ls-status" id="ls-status">Indlæser website</div>
-                <div class="ls-percent" id="ls-percent">0%</div>
+            <div class="ls-subtitle">
+                <span id="ls-subtitle-text"></span>
+                <span class="ls-cursor ls-cursor--subtitle" id="ls-subtitle-cursor" hidden></span>
             </div>
-            <div class="ls-bar"><div class="ls-bar-fill" id="ls-bar-fill"></div></div>
         </div>
     </div>
 
@@ -126,48 +104,32 @@
     <script>
         window.siteLoader = (function () {
             var screen = document.getElementById('loading-screen');
-            var bar = document.getElementById('ls-bar-fill');
-            var percent = document.getElementById('ls-percent');
-            var status = document.getElementById('ls-status');
             var logoText = document.getElementById('ls-logo-text');
+            var logoCursor = document.getElementById('ls-logo-cursor');
+            var subtitleText = document.getElementById('ls-subtitle-text');
+            var subtitleCursor = document.getElementById('ls-subtitle-cursor');
             var startedAt = Date.now();
-            var minVisibleMs = 1800;
-            var typeText = 'Håndværker';
-            var typedChars = 0;
-            var typingDone = false;
-            var progress = 0;
-            var target = 0;
+            var holdAfterTypedMs = 3000;
+            var titleText = 'Håndværkerpartner';
+            var titleChars = 0;
+            var subtitleLine = 'Når det skal gøres ordenligt';
+            var subtitleChars = 0;
+            var titleDone = false;
+            var subtitleDone = false;
+            var typingCompletedAt = 0;
             var appReady = false;
             var revealQueued = false;
-            var rafId = 0;
+            var isHomeRoute = normalizePath(window.location.pathname) === '/';
 
-            function paint() {
-                bar.style.width = progress.toFixed(1) + '%';
-                percent.textContent = Math.round(progress) + '%';
-            }
-
-            function tick() {
-                progress += (target - progress) * ((appReady && typingDone) ? 0.26 : 0.08);
-
-                if (Math.abs(target - progress) < 0.2) {
-                    progress = target;
+            if (!screen || !isHomeRoute) {
+                if (screen) {
+                    screen.remove();
                 }
 
-                paint();
-
-                if (progress < 100 || !(appReady && typingDone)) {
-                    rafId = requestAnimationFrame(tick);
-                }
-            }
-
-            function setTarget(nextTarget) {
-                target = Math.max(target, Math.min(nextTarget, (appReady && typingDone) ? 100 : 94));
-                if (!rafId) {
-                    rafId = requestAnimationFrame(function () {
-                        rafId = 0;
-                        tick();
-                    });
-                }
+                return {
+                    complete: function () {},
+                    fail: function () {}
+                };
             }
 
             function hide() {
@@ -183,48 +145,64 @@
             }
 
             function queueReveal() {
-                if (revealQueued || !appReady || !typingDone) {
+                if (revealQueued || !appReady || !titleDone || !subtitleDone) {
                     return;
                 }
 
                 revealQueued = true;
 
-                var remaining = Math.max(0, minVisibleMs - (Date.now() - startedAt));
-                status.textContent = 'Klar';
-
+                var remaining = Math.max(0, holdAfterTypedMs - (Date.now() - typingCompletedAt));
                 setTimeout(function () {
-                    setTarget(100);
-                    setTimeout(hide, 2000);
+                    hide();
                 }, remaining);
             }
 
-            function typeNext() {
-                typedChars += 1;
-                logoText.textContent = typeText.slice(0, typedChars);
-                setTarget(12 + (typedChars / typeText.length) * 72);
+            function normalizePath(pathname) {
+                var normalized = pathname.replace(/\/+$/, '');
+                return normalized === '' ? '/' : normalized;
+            }
 
-                if (typedChars < typeText.length) {
-                    setTimeout(typeNext, 90);
+            function typeSubtitle() {
+                subtitleChars += 1;
+                subtitleText.textContent = subtitleLine.slice(0, subtitleChars);
+
+                if (subtitleChars < subtitleLine.length) {
+                    setTimeout(typeSubtitle, 42);
                     return;
                 }
 
-                typingDone = true;
-                status.textContent = appReady ? 'Klar' : 'Starter app';
-                setTarget(94);
+                subtitleDone = true;
+                typingCompletedAt = Date.now();
                 queueReveal();
             }
 
-            paint();
-            setTimeout(typeNext, 140);
+            function typeTitle() {
+                titleChars += 1;
+                logoText.textContent = titleText.slice(0, titleChars);
+
+                if (titleChars < titleText.length) {
+                    setTimeout(typeTitle, 90);
+                    return;
+                }
+
+                titleDone = true;
+                setTimeout(function () {
+                    logoCursor.hidden = true;
+                    subtitleCursor.hidden = false;
+                    typeSubtitle();
+                }, 450);
+                queueReveal();
+            }
+
+            setTimeout(typeTitle, 140);
 
             return {
                 complete: function () {
                     appReady = true;
-                    status.textContent = typingDone ? 'Klar' : 'Indlæser HåndværkerPartner';
                     queueReveal();
                 },
                 fail: function () {
-                    status.textContent = 'Kunne ikke indlæse';
+                    hide();
                 }
             };
         })();

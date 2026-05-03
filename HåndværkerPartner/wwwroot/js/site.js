@@ -1,21 +1,6 @@
 window.lockScroll = () => { document.body.style.overflow = 'hidden'; };
 window.unlockScroll = () => { document.body.style.overflow = ''; };
 
-window.initCarousel = (dotNetRef) => {
-    const track = document.querySelector('.testimonials-track');
-    if (!track) return;
-    track.addEventListener('scroll', () => {
-        const index = Math.round(track.scrollLeft / track.offsetWidth);
-        dotNetRef.invokeMethodAsync('SetActiveCard', index);
-    }, { passive: true });
-};
-
-window.scrollCarouselTo = (index) => {
-    const track = document.querySelector('.testimonials-track');
-    if (!track) return;
-    track.scrollTo({ left: index * track.offsetWidth, behavior: 'smooth' });
-};
-
 window.initScrollHandler = (dotNetRef) => {
     window.addEventListener('scroll', () => {
         dotNetRef.invokeMethodAsync('OnScroll', window.scrollY);
@@ -34,9 +19,9 @@ window.scrollToSection = (id) => {
 window.initCountUp = () => {
     const targets = [
         { selector: '.about-num-0', end: 50, suffix: '+', duration: 1600 },
-        { selector: '.about-num-1', end: 2000000, suffix: ' mio+', display: (v) => Math.round(v / 1000000) + ' mio+', duration: 2000 },
+        { selector: '.about-num-1', end: 1000, suffix: '+', display: (v) => v.toLocaleString('da-DK') + '+', duration: 1800 },
         { selector: '.about-num-2', end: 33, suffix: ' kr', duration: 1400 },
-        { selector: '.about-num-3', end: 0, suffix: '', duration: 800 },
+        { selector: '.about-num-3', end: 0, suffix: ' dage', duration: 800 },
     ];
 
     const easeOut = (t) => 1 - Math.pow(1 - t, 3);

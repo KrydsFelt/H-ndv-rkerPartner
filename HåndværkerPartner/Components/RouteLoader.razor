@@ -2,14 +2,17 @@
     <div class="route-loader__shell">
         <div class="route-loader__logo">
             <span>@TypedText</span>
-            <span class="route-loader__cursor"></span>
+            @if (ShowTitleCursor)
+            {
+                <span class="route-loader__cursor"></span>
+            }
         </div>
-        <div class="route-loader__meta">
-            <div class="route-loader__status">@Status</div>
-            <div class="route-loader__percent">@($"{Math.Round(Progress)}%")</div>
-        </div>
-        <div class="route-loader__bar">
-            <div class="route-loader__bar-fill" style="@($"width: {Progress:0.0}%;")"></div>
+        <div class="route-loader__subtitle">
+            <span>@TypedSubtitle</span>
+            @if (ShowSubtitleCursor)
+            {
+                <span class="route-loader__cursor route-loader__cursor--subtitle"></span>
+            }
         </div>
     </div>
 </div>
@@ -17,6 +20,7 @@
 @code {
     [Parameter] public bool IsVisible { get; set; }
     [Parameter] public string TypedText { get; set; } = string.Empty;
-    [Parameter] public string Status { get; set; } = "Indlæser HåndværkerPartner";
-    [Parameter] public double Progress { get; set; }
+    [Parameter] public string TypedSubtitle { get; set; } = string.Empty;
+    [Parameter] public bool ShowTitleCursor { get; set; }
+    [Parameter] public bool ShowSubtitleCursor { get; set; }
 }

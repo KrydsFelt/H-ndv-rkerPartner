@@ -27,7 +27,7 @@
     width: min(88vw, 420px);
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 6px;
 }
 
 .route-loader__logo {
@@ -42,6 +42,18 @@
     gap: 2px;
 }
 
+.route-loader__subtitle {
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 100;
+    font-size: clamp(15px, 2.5vw, 18px);
+    letter-spacing: 0.08em;
+    min-height: 1.3em;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
 .route-loader__cursor {
     width: 2px;
     height: 1.02em;
@@ -50,44 +62,8 @@
     animation: route-loader-blink 0.8s step-end infinite;
 }
 
-.route-loader__meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-}
-
-.route-loader__status {
-    color: rgba(255, 255, 255, 0.62);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.route-loader__percent {
-    color: rgba(255, 255, 255, 0.72);
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-variant-numeric: tabular-nums;
-}
-
-.route-loader__bar {
-    width: 100%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 999px;
-    overflow: hidden;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-}
-
-.route-loader__bar-fill {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(90deg, #E87722 0%, #f5a14d 100%);
-    border-radius: inherit;
-    box-shadow: 0 0 24px rgba(232, 119, 34, 0.45);
-    transition: width 0.12s linear;
+.route-loader__cursor--subtitle {
+    height: 0.95em;
 }
 
 @keyframes route-loader-blink {

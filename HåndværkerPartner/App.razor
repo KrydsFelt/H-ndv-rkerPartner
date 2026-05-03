@@ -1,12 +1,12 @@
 ﻿<RouteLoader IsVisible="@_loaderVisible"
              TypedText="@_typedText"
-             Status="@_status"
-             Progress="@_progress" />
+             TypedSubtitle="@_typedSubtitle"
+             ShowTitleCursor="@_showTitleCursor"
+             ShowSubtitleCursor="@_showSubtitleCursor" />
 
 <Router AppAssembly="@typeof(App).Assembly" OnNavigateAsync="HandleNavigationAsync">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h2" />
     </Found>
     <NotFound>
         <PageTitle>Not found</PageTitle>
@@ -17,29 +17,39 @@
 </Router>
 
 @code {
-    private const string LoaderText = "Håndværker";
+    private const string LoaderTitle = "Håndværkerpartner";
+    private const string LoaderSubtitle = "Når det skal gøres ordenligt";
 
     private bool _hasHandledInitialNavigation;
     private bool _loaderVisible;
-    private double _progress;
     private string _typedText = string.Empty;
-    private string _status = "Indlæser HåndværkerPartner";
+    private string _typedSubtitle = string.Empty;
+    private bool _showTitleCursor;
+    private bool _showSubtitleCursor;
     private int _navigationSequence;
 
     private async Task HandleNavigationAsync(NavigationContext context)
     {
+        var sequence = Interlocked.Increment(ref _navigationSequence);
+
         if (!_hasHandledInitialNavigation)
         {
             _hasHandledInitialNavigation = true;
             return;
         }
 
-        var sequence = Interlocked.Increment(ref _navigationSequence);
+        if (!IsHomePath(context.Path))
+        {
+            _loaderVisible = false;
+            await InvokeAsync(StateHasChanged);
+            return;
+        }
 
         _loaderVisible = true;
-        _progress = 0;
         _typedText = string.Empty;
-        _status = "Indlæser HåndværkerPartner";
+        _typedSubtitle = string.Empty;
+        _showTitleCursor = true;
+        _showSubtitleCursor = false;
         await InvokeAsync(StateHasChanged);
 
         try
@@ -58,9 +68,9 @@
 
     private async Task RunLoaderAnimationAsync(int sequence, CancellationToken cancellationToken)
     {
-        var totalChars = LoaderText.Length;
+        var totalTitleChars = LoaderTitle.Length;
 
-        for (var index = 1; index <= totalChars; index++)
+        for (var index = 1; index <= totalTitleChars; index++)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
@@ -69,16 +79,34 @@
                 return;
             }
 
-            _typedText = LoaderText[..index];
-            _progress = 8 + ((double)index / totalChars) * 78;
+            _typedText = LoaderTitle[..index];
             await InvokeAsync(StateHasChanged);
-            await Task.Delay(85, cancellationToken);
+            await Task.Delay(90, cancellationToken);
         }
 
-        _status = "Klar";
-        _progress = 100;
+        await Task.Delay(450, cancellationToken);
+
+        _showTitleCursor = false;
+        _showSubtitleCursor = true;
         await InvokeAsync(StateHasChanged);
-        await Task.Delay(2000, cancellationToken);
+
+        var totalSubtitleChars = LoaderSubtitle.Length;
+
+        for (var index = 1; index <= totalSubtitleChars; index++)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+
+            if (sequence != _navigationSequence)
+            {
+                return;
+            }
+
+            _typedSubtitle = LoaderSubtitle[..index];
+            await InvokeAsync(StateHasChanged);
+            await Task.Delay(42, cancellationToken);
+        }
+
+        await Task.Delay(3000, cancellationToken);
 
         if (sequence != _navigationSequence)
         {
@@ -87,5 +115,16 @@
 
         _loaderVisible = false;
         await InvokeAsync(StateHasChanged);
+    }
+
+    private static bool IsHomePath(string? path)
+    {
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            return true;
+        }
+
+        var cleanPath = path.Split('?', '#')[0].Trim('/');
+        return string.IsNullOrEmpty(cleanPath);
     }
 }

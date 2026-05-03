@@ -7,11 +7,26 @@
             <span class="nav-logo-line1">HÅNDVÆRKER</span><span class="nav-logo-line2">PARTNER</span>
         </a>
         <ul class="nav-links">
-            <li><a href="facebook-instagram" class="@Active("facebook-instagram")">Facebook / Instagram Ads</a></li>
-            <li><a href="google-ads" class="@Active("google-ads")">Google Ads</a></li>
-            <li><a href="seo" class="@Active("seo")">SEO</a></li>
-            <li><a href="webudvikling" class="@Active("webudvikling")">Hjemmesider</a></li>
-            <li><a href="cases" class="@Active("cases")">Cases</a></li>
+            <li><a href="/#om-os">Om HåndværkerPartner</a></li>
+            <li class="nav-ydelser-item">
+                <button type="button" class="nav-ydelser-trigger @(AnyServiceActive() ? "nav-active" : "")">Services</button>
+                <div class="nav-ydelser-dropdown">
+                    <div class="nav-ydelser-dropdown-inner">
+                        <a href="facebook-instagram" class="@Active("facebook-instagram")">
+                            <span class="nav-service-title">Meta Ads</span>
+                            <span class="nav-service-note">Betalt synlighed på Meta</span>
+                        </a>
+                        <a href="google-ads" class="@Active("google-ads")">
+                            <span class="nav-service-title">Google Ads</span>
+                            <span class="nav-service-note">Fang kunder med købssignal</span>
+                        </a>
+                        <a href="webudvikling" class="@Active("webudvikling")">
+                            <span class="nav-service-title">Hjemmesider</span>
+                            <span class="nav-service-note">Designet til at konvertere</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
             <li><a href="kontakt" class="@("nav-cta " + Active("kontakt"))">Kontakt os</a></li>
         </ul>
         <button class="hamburger @(menuOpen ? "open" : "")" @onclick="ToggleMenu" aria-label="Menu">
@@ -28,11 +43,11 @@
                 <span class="nav-logo-line1">HÅNDVÆRKER</span><span class="nav-logo-line2">PARTNER</span>
             </a>
             <nav class="mobile-nav">
-                <a href="facebook-instagram" @onclick="CloseMenu">Facebook / Instagram Ads</a>
-                <a href="google-ads" @onclick="CloseMenu">Google Ads</a>
-                <a href="seo" @onclick="CloseMenu">SEO</a>
-                <a href="webudvikling" @onclick="CloseMenu">Hjemmesider</a>
-                <a href="cases" @onclick="CloseMenu">Cases</a>
+                <a href="/#om-os" @onclick="CloseMenu">Om HåndværkerPartner</a>
+                <div class="mobile-nav-group-label">Services</div>
+                <a href="facebook-instagram" class="mobile-nav-sub" @onclick="CloseMenu">Meta Ads</a>
+                <a href="google-ads" class="mobile-nav-sub" @onclick="CloseMenu">Google Ads</a>
+                <a href="webudvikling" class="mobile-nav-sub" @onclick="CloseMenu">Hjemmesider</a>
             </nav>
             <a href="kontakt" class="mobile-menu-cta" @onclick="CloseMenu">Kontakt os</a>
         </div>
@@ -58,5 +73,12 @@
     private string Active(string segment)
     {
         return Nav.Uri.Contains("/" + segment, StringComparison.OrdinalIgnoreCase) ? "nav-active" : "";
+    }
+
+    private bool AnyServiceActive()
+    {
+        return Active("facebook-instagram").Length > 0
+            || Active("google-ads").Length > 0
+            || Active("webudvikling").Length > 0;
     }
 }
