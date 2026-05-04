@@ -1,5 +1,6 @@
 window.lockScroll = () => { document.body.style.overflow = 'hidden'; };
 window.unlockScroll = () => { document.body.style.overflow = ''; };
+window.setSkipLoader = () => { sessionStorage.setItem('skipLoader', '1'); };
 
 window.initScrollHandler = (dotNetRef) => {
     window.addEventListener('scroll', () => {

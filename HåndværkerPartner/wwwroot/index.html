@@ -33,15 +33,18 @@
             visibility: hidden;
         }
         .ls-shell {
-            width: min(95vw, 800px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ls-line {
+            width: min(95vw, 1100px);
             white-space: nowrap;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 6px;
+            align-items: baseline;
+            justify-content: center;
         }
-        .ls-logo {
+        .ls-title {
             font-family: 'Poppins', 'Inter', sans-serif;
             font-weight: 900;
             font-size: clamp(28px, 5vw, 40px);
@@ -49,9 +52,6 @@
             color: #ffffff;
             text-transform: none;
             min-height: 1.2em;
-            display: flex;
-            align-items: center;
-            gap: 2px;
         }
         .ls-cursor {
             width: 2px;
@@ -66,11 +66,11 @@
         }
         .ls-subtitle {
             color: #ffffff;
-            font-family: 'Poppins', 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: clamp(28px, 5vw, 40px);
-            letter-spacing: 0.04em;
-            min-height: 1.2em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: clamp(15px, 2.4vw, 20px);
+            letter-spacing: 0.08em;
+            min-height: 1.3em;
             display: flex;
             align-items: center;
             gap: 2px;
@@ -86,12 +86,10 @@
 <body>
     <div id="loading-screen" aria-live="polite" aria-busy="true">
         <div class="ls-shell">
-            <div class="ls-logo" id="ls-logo">
-                <span id="ls-logo-text"></span>
+            <div class="ls-line">
+                <span class="ls-title" id="ls-logo-text"></span>
                 <span class="ls-cursor" id="ls-logo-cursor"></span>
-            </div>
-            <div class="ls-subtitle">
-                <span id="ls-subtitle-text"></span>
+                <span class="ls-subtitle" id="ls-subtitle-text"></span>
                 <span class="ls-cursor ls-cursor--subtitle" id="ls-subtitle-cursor" hidden></span>
             </div>
         </div>
@@ -123,10 +121,11 @@
             var appReady = false;
             var revealQueued = false;
             var isHomeRoute = isHomeEntryPath(window.location.pathname);
+            var hasSeenLoader = sessionStorage.getItem('siteLoaderSeen') === '1';
             var skipLoader = sessionStorage.getItem('skipLoader') === '1';
             if (skipLoader) sessionStorage.removeItem('skipLoader');
 
-            if (!screen || !isHomeRoute || skipLoader) {
+            if (!screen || !isHomeRoute || skipLoader || hasSeenLoader) {
                 if (screen) {
                     screen.remove();
                 }
@@ -136,6 +135,8 @@
                     fail: function () {}
                 };
             }
+
+            sessionStorage.setItem('siteLoaderSeen', '1');
 
             function hide() {
                 if (!screen) {
@@ -209,11 +210,12 @@
                     titleChars -= 1;
                     logoText.textContent = titleText.slice(0, titleChars);
                     setTimeout(eraseTitle, 45);
-                } else {
-                    logoCursor.hidden = true;
-                    subtitleCursor.hidden = false;
-                    setTimeout(typeSubtitle, 200);
+                    return;
                 }
+
+                logoCursor.hidden = true;
+                subtitleCursor.hidden = false;
+                setTimeout(typeSubtitle, 200);
             }
 
             function typeTitle() {
@@ -226,7 +228,7 @@
                 }
 
                 titleDone = true;
-                setTimeout(eraseTitle, 600);
+                setTimeout(eraseTitle, 450);
                 queueReveal();
             }
 

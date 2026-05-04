@@ -24,10 +24,12 @@
 }
 
 .route-loader__shell {
-    width: min(88vw, 420px);
+    width: min(95vw, 980px);
     display: flex;
-    flex-direction: column;
-    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    white-space: nowrap;
 }
 
 .route-loader__logo {
@@ -46,7 +48,7 @@
     color: #ffffff;
     font-family: 'Inter', sans-serif;
     font-weight: 100;
-    font-size: clamp(15px, 2.5vw, 18px);
+    font-size: clamp(15px, 2.4vw, 20px);
     letter-spacing: 0.08em;
     min-height: 1.3em;
     display: flex;

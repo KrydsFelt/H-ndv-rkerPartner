@@ -1,5 +1,6 @@
 @page "/"
 @inject IJSRuntime JS
+@inject NavigationManager Nav
 
 <PageTitle>HåndværkerPartner – Din faglige samarbejdspartner</PageTitle>
 
@@ -52,12 +53,11 @@
             <p class="section-subtitle">Tre dokumenterede marketingløsninger der tilsammen fylder din kalender, styrker din synlighed og skalerer din omsætning.</p>
         </div>
 
-        <!-- Desktop: grid -->
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-card-illustration">
                     <div class="sci-icon-wrap sci-orange">
-                        <img src="/Meta.png" alt="Meta" style="width:40px;height:40px;object-fit:contain;" />
+                        <img src="Pictures/Meta.png" alt="Meta" style="width:40px;height:40px;object-fit:contain;" />
                     </div>
                 </div>
                 <h3>Facebook &amp; Instagram Ads</h3>
@@ -66,7 +66,7 @@
             <div class="service-card">
                 <div class="service-card-illustration">
                     <div class="sci-icon-wrap sci-orange">
-                        <img src="/Google.png" alt="Google" style="width:40px;height:40px;object-fit:contain;" />
+                        <img src="Pictures/Google.png" alt="Google" style="width:40px;height:40px;object-fit:contain;" />
                     </div>
                 </div>
                 <h3>Google Ads</h3>
@@ -75,7 +75,7 @@
             <div class="service-card">
                 <div class="service-card-illustration">
                     <div class="sci-icon-wrap sci-orange">
-                        <img src="/Websites.png" alt="Hjemmeside" style="width:40px;height:40px;object-fit:contain;" />
+                        <img src="Pictures/Websites.png" alt="Hjemmeside" style="width:40px;height:40px;object-fit:contain;" />
                     </div>
                 </div>
                 <h3>Hjemmeside</h3>
@@ -83,7 +83,6 @@
             </div>
         </div>
 
-        <!-- Mobil: accordion -->
         <div class="services-accordion">
             <div class="acc-item @(openService == 0 ? "acc-open" : "")" @onclick="@(() => ToggleService(0))">
                 <div class="acc-header">
@@ -137,49 +136,34 @@
     </div>
 </section>
 
-
-<!-- MATCH -->
 <section class="section match" id="match">
     <div class="section-inner">
         <span class="section-tag">Er vi det rette valg?</span>
         <h2 class="section-title">Ikke for alle – <span>men måske for dig</span></h2>
-        <p class="section-subtitle">Vi arbejder kun med håndværkere der er klar til at tage næste skridt. Læs herunder og mærk efter om det lyder som dig.</p>
+        <p class="section-subtitle">Vi passer bedst til virksomheder, der vil væk fra tilfældige henvendelser og begynde at bygge en stærkere og mere stabil strøm af de rigtige kunder.</p>
 
-        <div class="match-split">
-            <div class="match-side match-side--no">
-                <div class="match-side-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    Det passer ikke hvis
-                </div>
-                <ul class="match-list">
-                    <li class="match-item">Du leder efter en hurtig løsning uden langsigtet plan</li>
-                    <li class="match-item">Du forventer fyldte kalendere fra dag ét</li>
-                    <li class="match-item">Du ønsker ikke at være med til at forme budskabet</li>
-                    <li class="match-item">Du er ikke klar til at følge op på nye henvendelser</li>
-                    <li class="match-item">Vækst er ikke en prioritet lige nu</li>
-                </ul>
-            </div>
-
-            <div class="match-divider"></div>
-
-            <div class="match-side match-side--yes">
+        <div class="match-shell">
+            <div class="match-lead">
                 <div class="match-side-label">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    Det passer perfekt hvis
+                    Vi er dit match, hvis din virksomhed
                 </div>
+                <p class="match-intro">er klar til at blive valgt på kvalitet, tillid og en stærkere position i markedet.</p>
+            </div>
+
+            <div class="match-side match-side--yes">
                 <ul class="match-list">
-                    <li class="match-item">Du vil have flere af de rigtige kunder – ikke bare flere</li>
-                    <li class="match-item">Du er stolt af dit håndværk og vil have det vist frem</li>
-                    <li class="match-item">Du vil have en samarbejdspartner der forstår din branche</li>
-                    <li class="match-item">Du er klar til at vokse og har kapacitet til det</li>
-                    <li class="match-item">Du vil have resultater du selv kan se i bundlinjen</li>
+                    <li class="match-item">I vil hellere vælges til de rigtige opgaver end drukne i tilfældige henvendelser.</li>
+                    <li class="match-item">I er stolte af jeres arbejde og vil have en fremtoning, der faktisk matcher kvaliteten.</li>
+                    <li class="match-item">I forstår, at hurtig opfølgning gør forskellen, når nye leads kommer ind.</li>
+                    <li class="match-item">I vil stå skarpere end konkurrenterne, ikke bare være endnu en lokal håndværker online.</li>
+                    <li class="match-item">I vil kunne mærke indsatsen i ordrebogen, ikke kun i en rapport.</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials-fullscreen" id="testimonials">
     <div class="tfs-inner">
         <h2 class="tfs-heading">Lyt ikke kun til os,<br><span>lyt til hvad vores kunder siger</span></h2>
@@ -200,7 +184,6 @@
     </div>
 </section>
 
-<!-- ABOUT -->
 <section class="section" id="om-os">
     <div class="section-inner">
         <div class="about-inner">
@@ -342,9 +325,7 @@
     private bool scrolled = false;
     private bool menuOpen = false;
     private bool showScrollTop = false;
-
     private int openService = -1;
-    private void ToggleService(int i) => openService = openService == i ? -1 : i;
 
     private bool formSent = false;
     private string formName = "";
@@ -364,6 +345,7 @@
             var ref_ = DotNetObjectReference.Create(this);
             await JS.InvokeVoidAsync("initScrollHandler", ref_);
             await JS.InvokeVoidAsync("initCountUp");
+            await ScrollToFragmentIfPresentAsync();
         }
     }
 
@@ -375,22 +357,31 @@
         StateHasChanged();
     }
 
+    private void ToggleService(int i) => openService = openService == i ? -1 : i;
     private void ToggleMenu() => menuOpen = !menuOpen;
 
     private async Task NavHero() { menuOpen = false; await ScrollTo("hero"); }
     private async Task NavServices() { menuOpen = false; await ScrollTo("services"); }
-    private async Task NavResults() { menuOpen = false; await ScrollTo("results"); }
     private async Task NavOmOs() { menuOpen = false; await ScrollTo("om-os"); }
-    private async Task NavTestimonials() { menuOpen = false; await ScrollTo("testimonials"); }
     private async Task NavKontakt() { menuOpen = false; await ScrollTo("kontakt"); }
 
     private async Task HeroScrollKontakt() => await ScrollTo("kontakt");
-    private async Task HeroScrollServices() => await ScrollTo("services");
     private async Task ScrollToTop() => await ScrollTo("hero");
 
     private async Task ScrollTo(string id)
     {
         await JS.InvokeVoidAsync("scrollToSection", id);
+    }
+
+    private async Task ScrollToFragmentIfPresentAsync()
+    {
+        var fragment = new Uri(Nav.Uri).Fragment;
+        if (string.IsNullOrWhiteSpace(fragment) || fragment.Length <= 1)
+        {
+            return;
+        }
+
+        await JS.InvokeVoidAsync("scrollToSection", fragment[1..]);
     }
 
     private void SubmitForm()
