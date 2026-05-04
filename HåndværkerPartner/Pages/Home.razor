@@ -11,25 +11,9 @@
         </a>
         <ul class="@NavLinksClass">
             <li><a href="#om-os" @onclick="NavOmOs" @onclick:preventDefault>Om HåndværkerPartner</a></li>
-            <li class="nav-ydelser-item">
-                <button type="button" class="nav-ydelser-trigger">Services</button>
-                <div class="nav-ydelser-dropdown">
-                    <div class="nav-ydelser-dropdown-inner">
-                        <a href="facebook-instagram">
-                            <span class="nav-service-title">Meta Ads</span>
-                            <span class="nav-service-note">Betalt synlighed på Meta</span>
-                        </a>
-                        <a href="google-ads">
-                            <span class="nav-service-title">Google Ads</span>
-                            <span class="nav-service-note">Fang kunder med købssignal</span>
-                        </a>
-                        <a href="webudvikling">
-                            <span class="nav-service-title">Hjemmesider</span>
-                            <span class="nav-service-note">Designet til at konvertere</span>
-                        </a>
-                    </div>
-                </div>
-            </li>
+            <li><a href="facebook-instagram">Meta Ads</a></li>
+            <li><a href="google-ads">Google Ads</a></li>
+            <li><a href="webudvikling">Hjemmesider</a></li>
             <li><a href="kontakt" class="nav-cta">Kontakt os</a></li>
         </ul>
         <button class="hamburger" @onclick="ToggleMenu" aria-label="Menu">
@@ -65,7 +49,7 @@
         <div class="services-header">
             <span class="section-tag">Vores ydelser</span>
             <h2 class="section-title">Boost din virksomhed med <span>de rigtigeværktøjer</span></h2>
-            <p class="section-subtitle">Seks dokumenterede marketingløsninger der tilsammen fylder din kalender, styrker din synlighed og skalerer din omsætning.</p>
+            <p class="section-subtitle">Tre dokumenterede marketingløsninger der tilsammen fylder din kalender, styrker din synlighed og skalerer din omsætning.</p>
         </div>
 
         <!-- Desktop: grid -->
@@ -73,7 +57,7 @@
             <div class="service-card">
                 <div class="service-card-illustration">
                     <div class="sci-icon-wrap sci-orange">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        <img src="/Meta.png" alt="Meta" style="width:40px;height:40px;object-fit:contain;" />
                     </div>
                 </div>
                 <h3>Facebook &amp; Instagram Ads</h3>
@@ -82,7 +66,7 @@
             <div class="service-card">
                 <div class="service-card-illustration">
                     <div class="sci-icon-wrap sci-orange">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <img src="/Google.png" alt="Google" style="width:40px;height:40px;object-fit:contain;" />
                     </div>
                 </div>
                 <h3>Google Ads</h3>
@@ -91,38 +75,11 @@
             <div class="service-card">
                 <div class="service-card-illustration">
                     <div class="sci-icon-wrap sci-orange">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                    </div>
-                </div>
-                <h3>SEO – Organisk synlighed</h3>
-                <p>Byg en stærk tilstedeværelse på Google der giver dig gratis, vedvarende trafik – uden at betale per klik hver måned.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-card-illustration">
-                    <div class="sci-icon-wrap sci-orange">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <img src="/Websites.png" alt="Hjemmeside" style="width:40px;height:40px;object-fit:contain;" />
                     </div>
                 </div>
                 <h3>Hjemmeside</h3>
                 <p>Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-card-illustration">
-                    <div class="sci-icon-wrap sci-orange">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                    </div>
-                </div>
-                <h3>Leadgenerering</h3>
-                <p>Sæt systemer op der automatisk finder og kvalificerer nye kunder – så din pipeline aldrig står stille, selv når du sover.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-card-illustration">
-                    <div class="sci-icon-wrap sci-orange">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                    </div>
-                </div>
-                <h3>Analyse &amp; Rapportering</h3>
-                <p>Se præcis hvad der virker med gennemsigtig rapportering på rigtige tal – ingen fine grafer der skjuler dårlige resultater.</p>
             </div>
         </div>
 
@@ -184,9 +141,9 @@
 <!-- MATCH -->
 <section class="section match" id="match">
     <div class="section-inner">
-        <span class="section-tag">Passer vi sammen?</span>
-        <h2 class="section-title">Vi vælger vores kunder <span>med omhu</span></h2>
-        <p class="section-subtitle">Vi siger nej til opgaver vi ikke kan skabe reel værdi på. Det betyder at dem vi siger ja til, altid får vores fulde fokus.</p>
+        <span class="section-tag">Er vi det rette valg?</span>
+        <h2 class="section-title">Ikke for alle – <span>men måske for dig</span></h2>
+        <p class="section-subtitle">Vi arbejder kun med håndværkere der er klar til at tage næste skridt. Læs herunder og mærk efter om det lyder som dig.</p>
 
         <div class="match-split">
             <div class="match-side match-side--no">
@@ -195,11 +152,11 @@
                     Det passer ikke hvis
                 </div>
                 <ul class="match-list">
-                    <li class="match-item">Du vil have ét quick-fix og er videre</li>
-                    <li class="match-item">Du forventer resultater inden for den første uge</li>
-                    <li class="match-item">Du ønsker ikke at samarbejde om indhold og retning</li>
-                    <li class="match-item">Du er ikke klar til at håndtere flere henvendelser</li>
-                    <li class="match-item">Din virksomhed er ikke sat op til vækst</li>
+                    <li class="match-item">Du leder efter en hurtig løsning uden langsigtet plan</li>
+                    <li class="match-item">Du forventer fyldte kalendere fra dag ét</li>
+                    <li class="match-item">Du ønsker ikke at være med til at forme budskabet</li>
+                    <li class="match-item">Du er ikke klar til at følge op på nye henvendelser</li>
+                    <li class="match-item">Vækst er ikke en prioritet lige nu</li>
                 </ul>
             </div>
 
@@ -211,11 +168,11 @@
                     Det passer perfekt hvis
                 </div>
                 <ul class="match-list">
-                    <li class="match-item">Du er klar til at investere i din vækst langsigtet</li>
-                    <li class="match-item">Du leverer en ydelse du selv er stolt af</li>
-                    <li class="match-item">Du vil gerne have en partner – ikke bare en leverandør</li>
-                    <li class="match-item">Du er ambitiøs og klar til at skalere</li>
-                    <li class="match-item">Du sætter pris på ærlighed og klare tal</li>
+                    <li class="match-item">Du vil have flere af de rigtige kunder – ikke bare flere</li>
+                    <li class="match-item">Du er stolt af dit håndværk og vil have det vist frem</li>
+                    <li class="match-item">Du vil have en samarbejdspartner der forstår din branche</li>
+                    <li class="match-item">Du er klar til at vokse og har kapacitet til det</li>
+                    <li class="match-item">Du vil have resultater du selv kan se i bundlinjen</li>
                 </ul>
             </div>
         </div>
@@ -225,7 +182,6 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials-fullscreen" id="testimonials">
     <div class="tfs-inner">
-        <div class="tfs-kicker"><span class="tfs-kicker-dot"></span>Testimonials</div>
         <h2 class="tfs-heading">Lyt ikke kun til os,<br><span>lyt til hvad vores kunder siger</span></h2>
         <div class="tfs-card">
             <div class="tfs-card-avatar">

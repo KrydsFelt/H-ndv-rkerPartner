@@ -33,9 +33,12 @@
             visibility: hidden;
         }
         .ls-shell {
-            width: min(88vw, 420px);
+            width: min(95vw, 800px);
+            white-space: nowrap;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
             gap: 6px;
         }
         .ls-logo {
@@ -63,11 +66,11 @@
         }
         .ls-subtitle {
             color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            font-weight: 100;
-            font-size: clamp(15px, 2.5vw, 18px);
-            letter-spacing: 0.08em;
-            min-height: 1.3em;
+            font-family: 'Poppins', 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: clamp(28px, 5vw, 40px);
+            letter-spacing: 0.04em;
+            min-height: 1.2em;
             display: flex;
             align-items: center;
             gap: 2px;
@@ -120,8 +123,10 @@
             var appReady = false;
             var revealQueued = false;
             var isHomeRoute = isHomeEntryPath(window.location.pathname);
+            var skipLoader = sessionStorage.getItem('skipLoader') === '1';
+            if (skipLoader) sessionStorage.removeItem('skipLoader');
 
-            if (!screen || !isHomeRoute) {
+            if (!screen || !isHomeRoute || skipLoader) {
                 if (screen) {
                     screen.remove();
                 }
@@ -199,6 +204,18 @@
                 queueReveal();
             }
 
+            function eraseTitle() {
+                if (titleChars > 0) {
+                    titleChars -= 1;
+                    logoText.textContent = titleText.slice(0, titleChars);
+                    setTimeout(eraseTitle, 45);
+                } else {
+                    logoCursor.hidden = true;
+                    subtitleCursor.hidden = false;
+                    setTimeout(typeSubtitle, 200);
+                }
+            }
+
             function typeTitle() {
                 titleChars += 1;
                 logoText.textContent = titleText.slice(0, titleChars);
@@ -209,11 +226,7 @@
                 }
 
                 titleDone = true;
-                setTimeout(function () {
-                    logoCursor.hidden = true;
-                    subtitleCursor.hidden = false;
-                    typeSubtitle();
-                }, 450);
+                setTimeout(eraseTitle, 600);
                 queueReveal();
             }
 
