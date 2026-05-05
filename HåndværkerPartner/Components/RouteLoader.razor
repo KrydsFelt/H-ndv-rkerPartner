@@ -1,26 +1,45 @@
-<div class="route-loader @(IsVisible ? "is-visible" : "is-hidden")" aria-hidden="@(!IsVisible)">
-    <div class="route-loader__shell">
-        <div class="route-loader__logo">
-            <span>@TypedText</span>
-            @if (ShowTitleCursor)
-            {
-                <span class="route-loader__cursor"></span>
-            }
-        </div>
-        <div class="route-loader__subtitle">
-            <span>@TypedSubtitle</span>
-            @if (ShowSubtitleCursor)
-            {
-                <span class="route-loader__cursor route-loader__cursor--subtitle"></span>
-            }
+<div class="route-loader @(isComplete ? "route-loader--complete" : "")" aria-hidden="@(!isVisible)">
+    <div class="route-loader-content">
+        <div class="route-loader-text-container">
+            <div class="route-loader-title @(titleTypingOut ? "typing-out" : "typing-in")">
+                <span class="route-loader-part1">HÅNDVÆRKER</span><span class="route-loader-part2">PARTNER</span>
+            </div>
+            <div class="route-loader-subtitle @(showSubtitle ? "typing-visible" : "")">
+                NÅR DET SKAL GØRES ORDENLIGT
+            </div>
         </div>
     </div>
 </div>
 
+@inject IJSRuntime JS
+
 @code {
-    [Parameter] public bool IsVisible { get; set; }
-    [Parameter] public string TypedText { get; set; } = string.Empty;
-    [Parameter] public string TypedSubtitle { get; set; } = string.Empty;
-    [Parameter] public bool ShowTitleCursor { get; set; }
-    [Parameter] public bool ShowSubtitleCursor { get; set; }
+    private bool isVisible = true;
+    private bool showSubtitle = false;
+    private bool titleTypingOut = false;
+    private bool isComplete = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Wait for HÅNDVÆRKER + PARTNER typing in animation to complete (2.3 seconds)
+        await Task.Delay(2300);
+        titleTypingOut = true;
+        StateHasChanged();
+
+        // Wait for title typing out animation (2.2 seconds)
+        await Task.Delay(2200);
+        showSubtitle = true;
+        StateHasChanged();
+
+        // Wait for subtitle typing animation to complete (2.5 seconds)
+        await Task.Delay(2500);
+        isComplete = true;
+        StateHasChanged();
+
+        // Swipe up animation completes after 0.8 seconds, then hide and enable scrolling
+        await Task.Delay(800);
+        isVisible = false;
+        await JS.InvokeVoidAsync("eval", "document.body.classList.add('route-complete')");
+        StateHasChanged();
+    }
 }

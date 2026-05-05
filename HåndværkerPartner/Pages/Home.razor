@@ -35,11 +35,19 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-inner">
-        <p class="hero-badge">Din faglige samarbejdspartner</p>
-        <h2>Vækst til håndværkere<br>der vil mere</h2>
-        <p class="hero-sub">Vi hjælper håndværksvirksomheder med at skaffe flere kunder, styrke deres synlighed og skabe reel omsætningsvækst – gennem dokumenterede marketing- og leadstrategier.</p>
-        <div class="hero-buttons">
-            <button class="btn-primary" @onclick="HeroScrollKontakt">Bliv kontaktet</button>
+        <div class="hero-content">
+            <p class="hero-badge">Din faglige samarbejdspartner</p>
+            <h2>Vækst til håndværkere<br>der vil mere</h2>
+            <p class="hero-sub">Vi hjælper håndværksvirksomheder med at skaffe flere kunder, styrke deres synlighed og skabe reel omsætningsvækst – gennem dokumenterede marketing- og leadstrategier.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" @onclick="HeroScrollKontakt">Bliv kontaktet</button>
+            </div>
+        </div>
+        <div class="hero-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
         </div>
     </div>
 </section>
@@ -49,37 +57,40 @@
     <div class="section-inner">
         <div class="services-header">
             <span class="section-tag">Vores ydelser</span>
-            <h2 class="section-title">Boost din virksomhed med <span>de rigtigeværktøjer</span></h2>
+            <h2 class="section-title">Boost din virksomhed med <span>de rigtige værktøjer</span></h2>
             <p class="section-subtitle">Tre dokumenterede marketingløsninger der tilsammen fylder din kalender, styrker din synlighed og skalerer din omsætning.</p>
         </div>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-card-illustration">
-                    <div class="sci-icon-wrap sci-orange">
-                        <img src="Pictures/Meta.png" alt="Meta" style="width:40px;height:40px;object-fit:contain;" />
-                    </div>
+        <div class="services-grid-new">
+            <div class="service-card-new">
+                <div class="service-card-header">
+                    <h3>Meta Ads</h3>
+                    <svg class="service-logo" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
                 </div>
-                <h3>Facebook &amp; Instagram Ads</h3>
-                <p>Kør målrettede Meta-kampagner der rammer præcis de kunder der har brug for en håndværker – og gør dem til billige, kvalificerede leads.</p>
+                <p>Kør målrettede Meta-kampagner der rammer præcis de kunder der har brug for en håndværker – og gør dem til billige, kvalificerede leads. Vi håndterer opsætning, optimering og rapportering for maksimal ROI.</p>
+                <a href="facebook-instagram" class="service-link-more">Se mere <span>→</span></a>
             </div>
-            <div class="service-card">
-                <div class="service-card-illustration">
-                    <div class="sci-icon-wrap sci-orange">
-                        <img src="Pictures/Google.png" alt="Google" style="width:40px;height:40px;object-fit:contain;" />
-                    </div>
+            <div class="service-card-new">
+                <div class="service-card-header">
+                    <h3>Google Ads</h3>
+                    <svg class="service-logo" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
                 </div>
-                <h3>Google Ads</h3>
-                <p>Lad din virksomhed dukke op øverst, præcis når kunderne søger efter det du laver – og betal kun når de klikker.</p>
+                <p>Lad din virksomhed dukke op øverst, præcis når kunderne søger efter det du laver – og betal kun når de klikker. Vi optimerer dine Google Ads-kampagner for bedre synlighed og flere kvalificerede leads til lavere omkostninger.</p>
+                <a href="google-ads" class="service-link-more">Se mere <span>→</span></a>
             </div>
-            <div class="service-card">
-                <div class="service-card-illustration">
-                    <div class="sci-icon-wrap sci-orange">
-                        <img src="Pictures/Websites.png" alt="Hjemmeside" style="width:40px;height:40px;object-fit:contain;" />
-                    </div>
+            <div class="service-card-new">
+                <div class="service-card-header">
+                    <h3>Hjemmeside</h3>
+                    <svg class="service-logo" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" opacity="0.3"/><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 12H4V6h16v10z"/>
+                    </svg>
                 </div>
-                <h3>Hjemmeside</h3>
-                <p>Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs.</p>
+                <p>Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs. Vi bygger responsive websites der er optimeret for søgninger og designet til at generere flere orders.</p>
+                <a href="webudvikling" class="service-link-more">Se mere <span>→</span></a>
             </div>
         </div>
 
@@ -136,34 +147,6 @@
     </div>
 </section>
 
-<section class="section match" id="match">
-    <div class="section-inner">
-        <span class="section-tag">Er vi det rette valg?</span>
-        <h2 class="section-title">Ikke for alle – <span>men måske for dig</span></h2>
-        <p class="section-subtitle">Vi passer bedst til virksomheder, der vil væk fra tilfældige henvendelser og begynde at bygge en stærkere og mere stabil strøm af de rigtige kunder.</p>
-
-        <div class="match-shell">
-            <div class="match-lead">
-                <div class="match-side-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    Vi er dit match, hvis din virksomhed
-                </div>
-                <p class="match-intro">er klar til at blive valgt på kvalitet, tillid og en stærkere position i markedet.</p>
-            </div>
-
-            <div class="match-side match-side--yes">
-                <ul class="match-list">
-                    <li class="match-item">I vil hellere vælges til de rigtige opgaver end drukne i tilfældige henvendelser.</li>
-                    <li class="match-item">I er stolte af jeres arbejde og vil have en fremtoning, der faktisk matcher kvaliteten.</li>
-                    <li class="match-item">I forstår, at hurtig opfølgning gør forskellen, når nye leads kommer ind.</li>
-                    <li class="match-item">I vil stå skarpere end konkurrenterne, ikke bare være endnu en lokal håndværker online.</li>
-                    <li class="match-item">I vil kunne mærke indsatsen i ordrebogen, ikke kun i en rapport.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="testimonials-fullscreen" id="testimonials">
     <div class="tfs-inner">
         <h2 class="tfs-heading">Lyt ikke kun til os,<br><span>lyt til hvad vores kunder siger</span></h2>
@@ -184,10 +167,10 @@
     </div>
 </section>
 
-<section class="section" id="om-os">
+<section class="section kpi-section" id="om-os">
     <div class="section-inner">
-        <div class="about-inner">
-            <div>
+        <div class="kpi-layout">
+            <div class="kpi-left">
                 <span class="section-tag">Om HåndværkerPartner</span>
                 <h2 class="section-title">Vi er <span>specialister</span> i håndværksbranchen</h2>
                 <p class="section-subtitle">HåndværkerPartner er et bureau der udelukkende fokuserer på håndværks- og servicevirksomheder. Vi ved hvad der virker i din branche – fordi vi kun arbejder med den.</p>
@@ -201,28 +184,23 @@
                 </ul>
             </div>
 
-            <div class="about-visual">
-                <div class="about-big-card">
-                    <h3>HåndværkerPartner</h3>
-                    <div class="tagline">Din faglige samarbejdspartner</div>
-                    <p style="color:#ffffff; font-size:15px; line-height:1.7;">Vi besidder en indgående forståelse af de digitale kanaler, hvor dine kunder bruger deres tid, og vi udnytter avancerede planlægnings-, indkøbs- og analysemetoder til at inspirere potentielle kunder til handling.</p>
-                    <div class="about-numbers">
-                        <div class="about-num about-num-0">
-                            <div class="n">50+</div>
-                            <div class="l">Aktive kunder</div>
-                        </div>
-                        <div class="about-num about-num-1">
-                            <div class="n">1.000+</div>
-                            <div class="l">Leads genereret</div>
-                        </div>
-                        <div class="about-num about-num-2">
-                            <div class="n">33 kr</div>
-                            <div class="l">Laveste leadpris</div>
-                        </div>
-                        <div class="about-num about-num-3">
-                            <div class="n">0 dage</div>
-                            <div class="l">Binding</div>
-                        </div>
+            <div class="kpi-right">
+                <div class="kpi-grid-horizontal">
+                    <div class="kpi-item">
+                        <div class="kpi-value">2.484</div>
+                        <div class="kpi-label">Kunder oprettet</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">183</div>
+                        <div class="kpi-label">Leads modtaget</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">202</div>
+                        <div class="kpi-label">Tilbud sendt</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">105</div>
+                        <div class="kpi-label">Projekter startet</div>
                     </div>
                 </div>
             </div>
@@ -309,7 +287,7 @@
 <!-- FOOTER -->
 <footer class="footer">
     <div class="footer-inner">
-        <div class="footer-logo-text">Håndværker<span>Partner</span></div>
+        <div class="footer-logo-text">HÅNDVÆRKER<span>PARTNER</span></div>
         <p style="font-size:14px;">© 2024 HåndværkerPartner – Din faglige samarbejdspartner</p>
         <ul class="footer-links">
             <li><a href="#services" @onclick="NavServices" @onclick:preventDefault>Ydelser</a></li>

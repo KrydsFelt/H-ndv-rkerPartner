@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj": {}
+    "/Users/tonyxtruong/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj": {}
   },
   "projects": {
-    "/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj": {
+    "/Users/tonyxtruong/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
+        "projectUniqueName": "/Users/tonyxtruong/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
         "projectName": "HaandvaerkerPartner",
-        "projectPath": "/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
-        "packagesPath": "/Users/minhdinh/.nuget/packages/",
-        "outputPath": "/Users/minhdinh/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/",
+        "projectPath": "/Users/tonyxtruong/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
+        "packagesPath": "/Users/tonyxtruong/.nuget/packages/",
+        "outputPath": "/Users/tonyxtruong/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/minhdinh/.nuget/NuGet/NuGet.Config"
+          "/Users/tonyxtruong/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "/Users/minhdinh/Desktop/Packages/LocalNuGet": {},
           "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://nuget.pkg.github.com/The-Avengers-APS/index.json": {}
@@ -65,7 +64,7 @@
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.2, )",
+              "version": "[10.0.0, )",
               "autoReferenced": true
             }
           },
@@ -86,8 +85,12 @@
               "version": "[9.0.11, 9.0.11]"
             },
             {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.11, 9.0.11]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[9.0.12, 9.0.12]"
+              "version": "[9.0.11, 9.0.11]"
             }
           ],
           "frameworkReferences": {
