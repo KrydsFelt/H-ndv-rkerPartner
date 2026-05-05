@@ -1750,6 +1750,11 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     left: 0;
     right: 0;
     top: 0;
+    white-space: nowrap;
+}
+
+.route-loader-title.hidden {
+    display: none;
 }
 
 .route-loader-title.typing-in {
@@ -1757,7 +1762,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 }
 
 .route-loader-title.typing-out {
-    animation: typeOutAnimation 2.2s steps(24, end) forwards;
+    animation: typeOutAnimation 2s steps(18, end) forwards;
 }
 
 @keyframes typeOutAnimation {
@@ -1777,7 +1782,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 .route-loader-part1 {
     color: var(--white);
     display: inline;
-    animation: typeInAnimation 1.3s steps(10, end) forwards;
+    animation: typeInAnimation 1s steps(10, end) forwards;
     position: relative;
 }
 
@@ -1789,14 +1794,14 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     bottom: 0;
     width: 2px;
     background: var(--white);
-    animation: blink 0.8s steps(2) infinite;
+    animation: blink 0.6s steps(2) infinite;
 }
 
 .route-loader-part2 {
     color: #3a4fd8;
     display: inline;
-    margin-left: 6px;
-    animation: typeInAnimation 1s steps(7, end) 1.3s forwards;
+    margin-left: 4px;
+    animation: typeInAnimation 0.7s steps(7, end) 1s forwards;
     animation-fill-mode: both;
     opacity: 0;
     position: relative;
@@ -1810,7 +1815,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     bottom: 0;
     width: 2px;
     background: #3a4fd8;
-    animation: blink 0.8s steps(2) 1.3s infinite;
+    animation: blink 0.6s steps(2) 1s infinite;
 }
 
 @keyframes typeInAnimation {
@@ -1838,17 +1843,22 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     text-transform: uppercase;
     color: var(--white);
     opacity: 0;
-    min-height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
 }
 
-.route-loader-subtitle::after {
+.route-loader-subtitle-text {
+    position: relative;
+}
+
+.route-loader-subtitle-text::after {
     content: '';
     position: absolute;
     right: -4px;
@@ -1859,11 +1869,11 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 }
 
 .route-loader-subtitle.typing-visible {
-    animation: subtitleTypeIn 2.5s steps(28, end) forwards;
+    animation: subtitleTypeIn 2.5s steps(29, end) forwards;
 }
 
-.route-loader-subtitle.typing-visible::after {
-    animation: blink 0.8s steps(2) infinite;
+.route-loader-subtitle.typing-visible .route-loader-subtitle-text::after {
+    animation: blink 0.6s steps(2) infinite;
 }
 
 @keyframes subtitleTypeIn {
