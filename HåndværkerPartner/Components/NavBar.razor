@@ -1,13 +1,12 @@
 @inject NavigationManager Nav
-@inject IJSRuntime JS
 
 <nav class="navbar">
     <div class="nav-inner">
-        <a href="" class="nav-logo nav-logo-text" @onclick="NavigateHome" @onclick:preventDefault>
+        <a href="/" class="nav-logo nav-logo-text">
             <span class="nav-logo-line1">HÅNDVÆRKER</span><span class="nav-logo-line2">PARTNER</span>
         </a>
         <ul class="nav-links">
-            <li><a href="" @onclick="NavigateToAboutSection" @onclick:preventDefault>Om HåndværkerPartner</a></li>
+            <li><a href="/#om-os">Om HåndværkerPartner</a></li>
             <li><a href="facebook-instagram" class="@Active("facebook-instagram")">Meta Ads</a></li>
             <li><a href="google-ads" class="@Active("google-ads")">Google Ads</a></li>
             <li><a href="webudvikling" class="@Active("webudvikling")">Hjemmesider</a></li>
@@ -24,12 +23,12 @@
     <div class="mobile-menu">
         <div class="mobile-menu-inner">
             <nav class="mobile-nav">
-                <a href="" @onclick="NavigateToAboutSection" @onclick:preventDefault>Om HåndværkerPartner</a>
-                <a href="facebook-instagram" @onclick="CloseMenu">Meta Ads</a>
-                <a href="google-ads" @onclick="CloseMenu">Google Ads</a>
-                <a href="webudvikling" @onclick="CloseMenu">Hjemmesider</a>
+                <a href="/#om-os">Om HåndværkerPartner</a>
+                <a href="facebook-instagram">Meta Ads</a>
+                <a href="google-ads">Google Ads</a>
+                <a href="webudvikling">Hjemmesider</a>
             </nav>
-            <a href="kontakt" class="mobile-menu-cta" @onclick="CloseMenu">Kontakt os</a>
+            <a href="kontakt" class="mobile-menu-cta">Kontakt os</a>
         </div>
     </div>
 }
@@ -37,36 +36,10 @@
 @code {
     private bool menuOpen = false;
 
-    private async Task ToggleMenu()
-    {
-        menuOpen = !menuOpen;
-        if (menuOpen) await JS.InvokeVoidAsync("lockScroll");
-        else await JS.InvokeVoidAsync("unlockScroll");
-    }
-
-    private async Task CloseMenu()
-    {
-        menuOpen = false;
-        await JS.InvokeVoidAsync("unlockScroll");
-    }
-
-    private async Task NavigateHome()
-    {
-        await CloseMenu();
-        await JS.InvokeVoidAsync("setSkipLoader");
-        Nav.NavigateTo(Nav.BaseUri, forceLoad: true);
-    }
-
-    private async Task NavigateToAboutSection()
-    {
-        await CloseMenu();
-        await JS.InvokeVoidAsync("setSkipLoader");
-        Nav.NavigateTo($"{Nav.BaseUri}#om-os", forceLoad: true);
-    }
+    private void ToggleMenu() => menuOpen = !menuOpen;
 
     private string Active(string segment)
     {
         return Nav.Uri.Contains("/" + segment, StringComparison.OrdinalIgnoreCase) ? "nav-active" : "";
     }
-
 }
