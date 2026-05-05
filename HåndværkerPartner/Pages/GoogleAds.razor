@@ -4,106 +4,146 @@
 
 <NavBar />
 
-<div class="subpage service-page service-page--google">
-    <section class="subpage-hero service-detail-hero service-detail-hero--google">
-        <div class="section-inner service-detail-hero-grid">
-            <div class="service-detail-copy service-detail-copy--google">
-                <p class="hero-badge">Google Ads for håndværkere</p>
-                <h2>Vi gør jer til det oplagte klik, når kunden søger efter en håndværker med et reelt behov her og nu.</h2>
-                <p class="hero-sub">Google Ads er ren intention. Folk søger, fordi de vil løse noget nu. Derfor arbejder vi med søgninger, struktur og sider, der gør det tydeligt, at jeres virksomhed er den sikre næste beslutning.</p>
-                <div class="service-detail-actions">
-                    <a href="kontakt" class="btn-primary">Anmod om gratis analyse</a>
-                </div>
-            </div>
-            <div class="google-query-sheet">
-                <div class="google-query-bar">
-                    <span class="google-dot"></span>
-                    <span>Google Search</span>
-                </div>
-                <div class="google-query-list">
-                    <article>
-                        <strong>“elektriker døgnvagt”</strong>
-                        <span>Høj intention</span>
-                    </article>
-                    <article>
-                        <strong>“murer tilbud [by]”</strong>
-                        <span>Lokal konkurrence</span>
-                    </article>
-                    <article>
-                        <strong>“nyt tag pris”</strong>
-                        <span>Klar købsfase</span>
-                    </article>
-                </div>
-                <p>Vi organiserer søgningerne, så budgettet følger det arbejde, I helst vil vinde.</p>
+<main class="google-hero-page">
+    <section class="google-hero">
+        <div class="google-hero-inner">
+            <p class="google-label">GOOGLE ADS</p>
+            <h1>
+                Bliv fundet af kunder med
+                <span>Google annoncer</span>
+                der er klar til at købe nu.
+            </h1>
+            <p class="google-sub">
+                Vi hjælper håndværksvirksomheder med at omsætte søgninger til kvalificerede henvendelser gennem skarp struktur, præcise søgeord og løbende optimering.
+            </p>
+            <div class="google-hero-actions">
+                <a href="kontakt" class="google-cta">Book en gratis Google-gennemgang</a>
             </div>
         </div>
     </section>
 
-    <section class="subpage-content service-detail-content">
-        <div class="section-inner">
-            <div class="service-detail-intro google-intro">
-                <span class="section-tag">Fokusområde</span>
-                <h2 class="section-title">Google handler om <span>klarhed under pres</span></h2>
-                <p class="section-subtitle">Når nogen søger efter hjælp, sammenligner de hurtigt. Derfor arbejder vi med skarp struktur, tydelige budskaber og mindre spild mellem søgning, klik og kontakt.</p>
-            </div>
+    <section class="google-cards-wrap">
+        <h2 class="google-cards-headline">
+            Det her <span>hjælper</span> vi dig med, i din <span>branche</span>.
+        </h2>
+        <div class="google-cards-controls">
+            @if (CanGoPrev)
+            {
+                <button type="button" class="google-cards-arrow" @onclick="GoPrev" aria-label="Forrige kort">
+                    <span>←</span>
+                </button>
+            }
+            <button type="button" class="google-cards-arrow" @onclick="GoNext" aria-label="Næste kort" disabled="@(!CanGoNext)">
+                <span>→</span>
+            </button>
+        </div>
+    </section>
 
-            <div class="google-intent-layout">
-                <div class="google-intent-main">
-                    <article class="google-intent-card">
-                        <span>Søgeord</span>
-                        <h3>Vi vælger færre, bedre søgninger</h3>
-                        <p>Det vigtigste er ikke volumen, men hvor tæt søgningen er på en reel opgave. Vi prioriterer de termer, der passer til jeres ydelse, område og økonomi.</p>
-                    </article>
-                    <article class="google-intent-card">
-                        <span>Annoncer</span>
-                        <h3>Vi skriver som nogen der vil vælges</h3>
-                        <p>Hastighed, lokalitet, specialisering og troværdighed skal frem med det samme. Ellers bliver klikprisen bare en udgift.</p>
-                    </article>
-                    <article class="google-intent-card">
-                        <span>Landing</span>
-                        <h3>Vi lader ikke intention gå tabt</h3>
-                        <p>Kunden skal lande på en side, der svarer præcist på det de søgte efter og gør kontaktvejen enkel.</p>
-                    </article>
+    <section class="google-cards">
+        <div class="google-cards-viewport">
+            <div class="google-cards-track" style="@($"--slide-index:{cardStartIndex};")">
+                @foreach (var card in cards)
+                {
+            <article class="google-card">
+                <div class="google-card-icon" aria-hidden="true">
+                    @if (card.Icon == "screen")
+                    {
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="3.5" y="5" width="17" height="14" rx="3"></rect>
+                            <line x1="7" y1="10" x2="17" y2="10"></line>
+                            <line x1="7" y1="14" x2="13" y2="14"></line>
+                        </svg>
+                    }
+                    else if (card.Icon == "doc")
+                    {
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="5" y="3.5" width="14" height="17" rx="3"></rect>
+                            <line x1="8" y1="9" x2="16" y2="9"></line>
+                            <line x1="8" y1="13" x2="16" y2="13"></line>
+                        </svg>
+                    }
+                    else if (card.Icon == "star")
+                    {
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 4.5l2.2 4.4 4.8.7-3.5 3.4.8 4.9L12 15.7 7.7 18l.8-4.9L5 9.6l4.8-.7L12 4.5z"></path>
+                        </svg>
+                    }
+                    else
+                    {
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="3.5" y="3.5" width="7" height="7" rx="2"></rect>
+                            <rect x="13.5" y="3.5" width="7" height="7" rx="2"></rect>
+                            <rect x="8.5" y="13.5" width="7" height="7" rx="2"></rect>
+                            <line x1="10.5" y1="7" x2="13.5" y2="7"></line>
+                            <line x1="12" y1="10.5" x2="12" y2="13.5"></line>
+                        </svg>
+                    }
                 </div>
-                <aside class="google-control-panel">
-                    <div class="google-control-head">
-                        <span>Det vi optimerer for</span>
-                        <h3>Flere klik er ikke målet.</h3>
-                    </div>
-                    <ul>
-                        <li>Relevant trafik frem for bred trafik</li>
-                        <li>Telefonopkald og formularer frem for tomme besøg</li>
-                        <li>Budgetstyring efter kapacitet og sæson</li>
-                        <li>Kontinuerlig oprydning i søgetermer der ikke sælger</li>
-                    </ul>
-                </aside>
-            </div>
-
-            <div class="google-decision-band">
-                <article>
-                    <strong>01</strong>
-                    <h3>Byg strukturen rigtigt</h3>
-                    <p>Ydelser, områder og søgeintention skal ikke blandes sammen.</p>
-                </article>
-                <article>
-                    <strong>02</strong>
-                    <h3>Vind klikket</h3>
-                    <p>Annoncen skal føles mere præcis og mere troværdig end alternativerne.</p>
-                </article>
-                <article>
-                    <strong>03</strong>
-                    <h3>Gør kontakten nem</h3>
-                    <p>Siden bagefter skal lukke afstanden mellem behov og handling.</p>
-                </article>
+                <h2>@card.Title</h2>
+                <p>@card.Body</p>
+            </article>
+                }
             </div>
         </div>
     </section>
 
-    <div class="subpage-cta service-detail-cta">
-        <h2>Klar til at komme øverst på Google?</h2>
-        <p>Vi viser gerne hvor der bliver søgt, hvad der kan vindes, og hvordan budgettet bedst bliver brugt.</p>
-        <a href="kontakt" class="btn-primary">Kom i gang</a>
-    </div>
-</div>
+    <section class="google-faq">
+        <div class="google-faq-intro">
+            <h2>FAQ</h2>
+            <p>
+                Her finder du de vigtigste svar om vores Google Ads-opsætning, proces og optimering.
+                Vi holder det konkret, så du hurtigt kan se, hvad der giver værdi i praksis.
+            </p>
+        </div>
+
+        <div class="google-faq-list">
+            <details class="faq-item">
+                <summary><span class="faq-title">Hvorfor vælge professionel Google Ads-håndtering?</span></summary>
+                <p>Du undgår dyre fejl, får hurtigere læring fra data og en skarpere prioritering af budgettet mod de søgninger, der skaber opgaver.</p>
+            </details>
+            <details class="faq-item">
+                <summary><span class="faq-title">Hvordan finder I de rigtige søgeord?</span></summary>
+                <p>Vi analyserer dine ydelser, lokalområder og konkurrence og udvælger søgeord med høj intention frem for bred, dyr trafik.</p>
+            </details>
+            <details class="faq-item">
+                <summary><span class="faq-title">Hvordan forbedrer I resultaterne over tid?</span></summary>
+                <p>Vi tester annoncer, justerer budstrategier og renser løbende søgetermer, så kampagnen bliver mere effektiv måned for måned.</p>
+            </details>
+            <details class="faq-item">
+                <summary><span class="faq-title">Hvad måler I på i rapporteringen?</span></summary>
+                <p>Vi fokuserer på klikrate, konverteringsrate, pris pr. lead og samlet afkast, så du får klare beslutninger baseret på performance.</p>
+            </details>
+        </div>
+    </section>
+</main>
 
 <SiteFooter />
+
+@code {
+    private const int CardsPerPage = 2;
+    private int cardStartIndex = 0;
+
+    private readonly List<ServiceCard> cards =
+    [
+        new("screen", "Søgeord med høj købsintention", "Vi vælger søgeord, der matcher konkrete behov her og nu, så budgettet bruges på kunder, der faktisk er tæt på at tage kontakt."),
+        new("doc", "Annoncer, der vinder klikket", "Vi skriver annoncetekster med tydelig værdi, så din virksomhed fremstår mere relevant og troværdig i søgeresultatet."),
+        new("star", "Landing pages der konverterer", "Vi sikrer, at besøgende lander på en side, der gør næste skridt enkelt og øger chancen for opkald eller formular."),
+        new("grid", "Løbende optimering af budget", "Vi justerer søgetermer, bud og struktur løbende, så prisen pr. lead forbedres og flere annoncekroner omsættes til reel forretning.")
+    ];
+
+    private int MaxSlideIndex => Math.Max(0, cards.Count - CardsPerPage);
+    private bool CanGoPrev => cardStartIndex > 0;
+    private bool CanGoNext => cardStartIndex < MaxSlideIndex;
+
+    private void GoNext()
+    {
+        if (CanGoNext) cardStartIndex++;
+    }
+
+    private void GoPrev()
+    {
+        if (CanGoPrev) cardStartIndex--;
+    }
+
+    private sealed record ServiceCard(string Icon, string Title, string Body);
+}

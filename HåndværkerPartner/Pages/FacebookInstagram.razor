@@ -1,83 +1,178 @@
-@page "/facebook-instagram"
+@page "/meta"
 
-<PageTitle>Facebook / Instagram – HåndværkerPartner</PageTitle>
+<PageTitle>Meta Ads – HåndværkerPartner</PageTitle>
 
 <NavBar />
 
-<div class="subpage service-page service-page--meta">
-    <section class="subpage-hero service-detail-hero service-detail-hero--meta">
-        <div class="section-inner service-detail-hero-grid">
-            <div class="service-detail-copy service-detail-copy--meta">
-                <p class="hero-badge">Meta Ads for håndværkere</p>
-                <h2>Vi får jer til at ligne det sikre valg i feedet, så de rigtige kunder får lyst til at tage kontakt.</h2>
-                <p class="hero-sub">Meta er ikke bare annoncer. Det er iscenesættelsen af jeres virksomhed. Vi bygger kampagner, der rammer rigtigt, ser skarpe ud og får de rigtige typer kunder til at reagere, før markedet bliver dyrt og støjende.</p>
-                <div class="service-detail-actions">
-                    <a href="kontakt" class="btn-primary">Anmod om gratis analyse</a>
-                </div>
-            </div>
-            <div class="meta-signal-panel">
-                <span>Det vi bygger i kampagnen</span>
-                <h3>Synlighed der føles relevant, professionel og svær at overse.</h3>
-                <p>Vi kombinerer kreativ retning, målgruppeforståelse og et skarpt tilbud, så Meta ikke bare skaber trafik, men skaber lyst til at tage kontakt.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="subpage-content service-detail-content">
-        <div class="section-inner">
-            <div class="service-detail-intro meta-intro">
-                <span class="section-tag">Det vi er gode til</span>
-                <h2 class="section-title">Meta handler om <span>opmærksomhed, tillid og timing</span></h2>
-                <p class="section-subtitle">Når nogen ser jeres annonce i et feed fyldt med støj, har I få sekunder til at virke relevante. Derfor bygger vi hele flowet omkring én ting: at det skal være let at forstå hvorfor netop jer.</p>
-            </div>
-
-            <div class="meta-angle-grid">
-                <article class="meta-angle-card">
-                    <span>Budskab</span>
-                    <h3>Vi finder den vinkel kunderne reagerer på</h3>
-                    <p>Nogle reagerer på hurtighed. Andre på dokumentation, prisniveau eller tryghed. Vi tester os frem til det der får markedet til at lytte.</p>
-                </article>
-                <article class="meta-angle-card">
-                    <span>Målgruppe</span>
-                    <h3>Vi matcher kampagnen med jeres hverdag</h3>
-                    <p>Kapacitet, geografi og type af opgaver afgør hvordan kampagnen skal bygges. Ellers bliver leads bare støj.</p>
-                </article>
-                <article class="meta-angle-card">
-                    <span>Landing</span>
-                    <h3>Vi sørger for at klikket ikke bliver spildt</h3>
-                    <p>Annoncen skal lede videre til en oplevelse, der føles skarp, troværdig og enkel at handle på.</p>
-                </article>
-            </div>
-
-            <div class="meta-process-band">
-                <div class="meta-process-copy">
-                    <span class="section-tag">Arbejdsgang</span>
-                    <h2 class="section-title">Vi bygger kampagner med <span>energi og disciplin</span></h2>
-                    <p class="section-subtitle">Meta kræver tempo. Vi producerer, tester og skærer fra hurtigt, så kampagnen hele tiden bliver skarpere i stedet for bare at køre videre på autopilot.</p>
-                </div>
-                <div class="meta-process-steps">
-                    <article>
-                        <strong>01</strong>
-                        <p>Skær tilbud og kundeprofil til</p>
-                    </article>
-                    <article>
-                        <strong>02</strong>
-                        <p>Test hooks og kreative retninger</p>
-                    </article>
-                    <article>
-                        <strong>03</strong>
-                        <p>Skru op for det, der skaber rigtige samtaler</p>
-                    </article>
-                </div>
+<main class="meta-hero-page">
+    <section class="meta-hero">
+        <div class="meta-hero-inner">
+            <p class="meta-label">META ADS</p>
+            <h1>
+                Få mere ud af dine kanaler med
+                <span>Meta annoncer</span>
+                der skaber interesse og konkrete henvendelser.
+            </h1>
+            <p class="meta-sub">
+                Vi hjælper håndværksvirksomheder med at tiltrække relevante kunder gennem præcis målretning, stærk kommunikation og en plan, der er bygget til stabile resultater.
+            </p>
+            <div class="meta-hero-actions">
+                <a href="kontakt" class="meta-cta">Book en gratis Meta-gennemgang</a>
             </div>
         </div>
     </section>
 
-    <div class="subpage-cta service-detail-cta">
-        <h2>Klar til flere leads fra Facebook?</h2>
-        <p>Vi viser gerne, hvor potentialet ligger, og hvad der realistisk skal til for at få Meta til at arbejde for jer.</p>
-        <a href="kontakt" class="btn-primary">Kom i gang</a>
-    </div>
-</div>
+    <section class="meta-cards-wrap">
+        <h2 class="meta-cards-headline">
+            Det her <span>hjælper</span> vi dig med, i din <span>branche</span>.
+        </h2>
+        <div class="meta-cards-controls">
+            @if (CanGoPrev)
+            {
+                <button type="button" class="meta-cards-arrow" @onclick="GoPrev" aria-label="Forrige kort">
+                    <span>←</span>
+                </button>
+            }
+            <button type="button" class="meta-cards-arrow" @onclick="GoNext" aria-label="Næste kort" disabled="@(!CanGoNext)">
+                <span>→</span>
+            </button>
+        </div>
+    </section>
+
+    <section class="meta-cards">
+        <div class="meta-cards-viewport">
+            <div class="meta-cards-track" style="@($"--slide-index:{cardStartIndex};")">
+                @foreach (var card in cards)
+                {
+            <article class="meta-card">
+                <div class="meta-card-icon" aria-hidden="true">
+                    @if (card.Icon == "screen")
+                    {
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="3.5" y="5" width="17" height="14" rx="3"></rect>
+                            <line x1="7" y1="10" x2="17" y2="10"></line>
+                            <line x1="7" y1="14" x2="13" y2="14"></line>
+                        </svg>
+                    }
+                    else if (card.Icon == "doc")
+                    {
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="5" y="3.5" width="14" height="17" rx="3"></rect>
+                            <line x1="8" y1="9" x2="16" y2="9"></line>
+                            <line x1="8" y1="13" x2="16" y2="13"></line>
+                        </svg>
+                    }
+                    else if (card.Icon == "star")
+                    {
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 4.5l2.2 4.4 4.8.7-3.5 3.4.8 4.9L12 15.7 7.7 18l.8-4.9L5 9.6l4.8-.7L12 4.5z"></path>
+                        </svg>
+                    }
+                    else
+                    {
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="3.5" y="3.5" width="7" height="7" rx="2"></rect>
+                            <rect x="13.5" y="3.5" width="7" height="7" rx="2"></rect>
+                            <rect x="8.5" y="13.5" width="7" height="7" rx="2"></rect>
+                            <line x1="10.5" y1="7" x2="13.5" y2="7"></line>
+                            <line x1="12" y1="10.5" x2="12" y2="13.5"></line>
+                        </svg>
+                    }
+                </div>
+                <h2>@card.Title</h2>
+                <p>@card.Body</p>
+            </article>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="meta-faq">
+        <div class="meta-faq-intro">
+            <h2>FAQ</h2>
+            <p>
+                Her finder du de vigtigste svar om vores Meta Ads-setup, arbejdsmetode og optimering.
+                Vi holder det konkret, så du hurtigt kan vurdere, om løsningen passer til din virksomhed.
+            </p>
+        </div>
+
+        <div class="meta-faq-list">
+            <details class="faq-item">
+                <summary>
+                    <span class="faq-title">Hvorfor vælge professionel Meta Ads-håndtering?</span>
+                </summary>
+                <p>
+                    Professionel håndtering giver bedre prioritering af budget, hurtigere læring fra data og færre dyre fejl i opsætningen.
+                    Det betyder typisk højere kvalitet i leads og mere stabile resultater måned for måned.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    <span class="faq-title">Hvordan sikrer I, at kampagnerne rammer rigtigt?</span>
+                </summary>
+                <p>
+                    Vi starter med dit mål, din kapacitet og din ideelle kundeprofil. Herefter bygger vi kampagner med klare segmenter og
+                    tester variationer systematisk, så vi kan forstærke det, der performer bedst.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    <span class="faq-title">Hvordan laver I annoncer, der konverterer?</span>
+                </summary>
+                <p>
+                    Vi udvikler budskaber ud fra kundens behov og beslutningsproces, og vi matcher format og vinkel til platformen.
+                    Hver annonce testes i flere versioner, så vi kan løfte CTR, relevans og konvertering med reel dokumentation.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    <span class="faq-title">Hvordan måler og forbedrer I resultaterne løbende?</span>
+                </summary>
+                <p>
+                    Vi følger KPI'er som pris pr. lead, klikrate, konverteringsrate og samlet afkast. På baggrund af data justerer vi
+                    budget, målgrupper og kreativ retning løbende, så indsatsen bliver skarpere for hver uge.
+                </p>
+            </details>
+        </div>
+    </section>
+</main>
 
 <SiteFooter />
+
+@code {
+    private const int CardsPerPage = 2;
+    private int cardStartIndex = 0;
+
+    private readonly List<ServiceCard> cards =
+    [
+        new("screen", "Hvad er Meta Ads, og hvorfor virker det?", "Meta Ads er annoncer på Facebook og Instagram, hvor vi styrer målretning, budskab og kreativ retning ned i detaljen. Det gør det muligt at ramme både nye potentielle kunder og varme målgrupper med relevant indhold på det rigtige tidspunkt. For dig betyder det mere stabil synlighed, lavere spild og et bedre flow af henvendelser."),
+        new("doc", "Kampagner bygget til performance", "Vi opsætter kampagner med tydelige mål fra start, så hvert trin i kunderejsen har en funktion. Strukturen designes til at kunne skaleres, testes og forbedres løbende uden at miste retning. Resultatet er en kampagne, der er bygget til handling frem for bare rækkevidde."),
+        new("star", "Annoncer, der fanger og overbeviser", "God performance starter med stærk kommunikation. Derfor udvikler vi annoncevinkler, der gør dit tilbud let at forstå og svært at ignorere i feedet. Vi kombinerer klar copy, skarpe visuelle valg og tydelige CTA'er, så annoncerne både bliver set og omsat til klik og henvendelser."),
+        new("grid", "Løbende optimering med fokus på bundlinje", "Når kampagnen er live, følger vi data tæt og justerer hurtigt på målgrupper, budgetter og budskaber. Vi arbejder systematisk med det, der faktisk flytter resultater, så dine annoncekroner arbejder mere effektivt over tid. Du får klar rapportering og konkrete beslutninger baseret på performance.")
+    ];
+
+    private int MaxSlideIndex => Math.Max(0, cards.Count - CardsPerPage);
+    private bool CanGoPrev => cardStartIndex > 0;
+    private bool CanGoNext => cardStartIndex < MaxSlideIndex;
+
+    private void GoNext()
+    {
+        if (CanGoNext)
+        {
+            cardStartIndex++;
+        }
+    }
+
+    private void GoPrev()
+    {
+        if (CanGoPrev)
+        {
+            cardStartIndex--;
+        }
+    }
+
+    private sealed record ServiceCard(string Icon, string Title, string Body);
+}

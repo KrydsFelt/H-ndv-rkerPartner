@@ -1,0 +1,351 @@
+.google-hero-page {
+    background: #ffffff;
+    color: #15171c;
+    padding: 5.5rem 1.5rem 5.5rem;
+}
+
+.google-hero {
+    max-width: 1160px;
+    margin: 0 auto;
+    min-height: calc(100vh - 5.5rem);
+    display: grid;
+    place-items: center;
+}
+
+.google-hero-inner {
+    max-width: 1020px;
+    text-align: center;
+}
+
+.google-label {
+    display: inline-flex;
+    margin: 0 0 1.4rem;
+    padding: 0.46rem 1rem;
+    border-radius: 999px;
+    border: 1px solid #ccd5e3;
+    background: #f7faff;
+    color: #315fbd;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.google-hero h1 {
+    margin: 0;
+    font-size: clamp(1.7rem, 5.8vw, 2rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+}
+
+.google-hero h1 span {
+    color: #2563eb;
+}
+
+.google-sub {
+    margin: 1.8rem 0 0;
+    max-width: 78ch;
+    font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+    line-height: 1.6;
+    color: #4a5565;
+}
+
+.google-hero-actions {
+    margin-top: 2.2rem;
+}
+
+.google-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.35rem;
+    border-radius: 12px;
+    border: 1px solid #2563eb;
+    background: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.google-cta:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.3);
+}
+
+.google-cards {
+    max-width: 1160px;
+    margin: 1.4rem auto 0;
+}
+
+.google-cards-wrap {
+    max-width: 1160px;
+    margin: 4rem auto 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.google-cards-headline {
+    margin: 0;
+    font-size: clamp(1.5rem, 3.1vw, 2.45rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: #15171c;
+}
+
+.google-cards-headline span {
+    color: #2563eb;
+}
+
+.google-cards-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-left: auto;
+}
+
+.google-cards-arrow {
+    appearance: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid #2563eb;
+    background: #2563eb;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.google-cards-arrow:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+}
+
+.google-card {
+    min-height: 420px;
+    border: 1px solid #2a3140;
+    border-radius: 24px;
+    padding: 2rem 2rem 2.2rem;
+    background:
+        radial-gradient(circle at 72% 0%, rgba(96, 165, 250, 0.16), transparent 42%),
+        linear-gradient(168deg, #161d28 0%, #0d121d 62%, #090d16 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.google-cards-viewport {
+    overflow: hidden;
+}
+
+.google-cards-track {
+    --gap: 1.1rem;
+    --card-width: calc((100% - var(--gap)) / 2.15);
+    --slide-step: calc(var(--card-width) + var(--gap));
+    display: flex;
+    gap: var(--gap);
+    transform: translateX(calc(-1 * var(--slide-index) * var(--slide-step)));
+    transition: transform 0.35s ease;
+}
+
+.google-cards-track .google-card {
+    flex: 0 0 var(--card-width);
+}
+
+.google-card h2 {
+    margin: 2.2rem 0 0;
+    font-size: clamp(1.55rem, 1.9vw, 2.05rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    color: #f5f7fb;
+    font-weight: 500;
+}
+
+.google-card p {
+    margin: 1rem 0 0;
+    font-size: 1.03rem;
+    line-height: 1.58;
+    color: rgba(230, 235, 245, 0.76);
+}
+
+.google-card-icon {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+}
+
+.google-card-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: #f8fafc;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    opacity: 0.95;
+}
+
+.google-card:hover {
+    background:
+        radial-gradient(circle at 72% 0%, rgba(147, 197, 253, 0.28), transparent 42%),
+        linear-gradient(168deg, #1f4fd6 0%, #1d46bc 58%, #183792 100%);
+    border-color: #6f9cf7;
+    transform: translateY(-2px);
+}
+
+.google-faq {
+    max-width: 1160px;
+    margin: 5rem auto 0;
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.google-faq-intro h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+.google-faq-intro p {
+    margin: 1.25rem 0 0;
+    max-width: 42ch;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #425067;
+}
+
+.google-faq-list {
+    border-top: 1px solid #d7dce6;
+}
+
+.faq-item {
+    border-bottom: 1px solid #d7dce6;
+    padding: 0;
+    background: #ffffff;
+}
+
+.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.9rem;
+    align-items: center;
+    font-size: clamp(1.02rem, 1.25vw, 1.55rem);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+    color: #1a202c;
+    padding: 1.9rem 0.2rem 1.9rem 0;
+    position: relative;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-title {
+    padding-right: 1.25rem;
+}
+
+.faq-item summary::after {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid #202734;
+    border-bottom: 2px solid #202734;
+    transform: rotate(45deg);
+    justify-self: end;
+    transition: transform 0.2s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(225deg);
+}
+
+.faq-item p {
+    margin: 0;
+    padding: 0 1.5rem 0 0;
+    font-size: 1.02rem;
+    line-height: 1.72;
+    color: #4a5568;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.2s ease;
+}
+
+.faq-item:hover p {
+    max-height: 260px;
+    opacity: 1;
+    padding: 0 1.5rem 1.5rem 0;
+}
+
+@media (max-width: 768px) {
+    .google-hero-page {
+        padding-top: 5.25rem;
+    }
+
+    .google-hero {
+        min-height: calc(86vh - 5.25rem);
+    }
+
+    .google-cards-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .google-cards-controls {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .google-cards-track {
+        --card-width: 100%;
+        --slide-step: 100%;
+        --gap: 0.8rem;
+    }
+
+    .google-card {
+        min-height: auto;
+        padding: 1.5rem;
+    }
+
+    .google-card h2 {
+        margin-top: 2rem;
+    }
+
+    .google-card p,
+    .faq-item p {
+        font-size: 1.08rem;
+    }
+
+    .google-faq {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .google-faq-intro h2 {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .faq-item summary {
+        padding: 1.3rem 0 1.3rem;
+    }
+
+    .faq-item p {
+        padding-left: 0;
+        max-height: none;
+        opacity: 1;
+        overflow: visible;
+    }
+}
