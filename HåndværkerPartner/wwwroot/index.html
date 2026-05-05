@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>HåndværkerPartner – Din faglige samarbejdspartner</title>
     <base href="/" />
     <script>
@@ -15,26 +15,248 @@
         }
     </script>
     <link rel="stylesheet" href="css/app.css" />
+    <style>
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at top, rgba(232, 119, 34, 0.18), transparent 38%),
+                linear-gradient(180deg, #181818 0%, #111111 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        #loading-screen.ls-hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .ls-shell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ls-line {
+            width: min(95vw, 1100px);
+            white-space: nowrap;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+        }
+        .ls-title {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: clamp(28px, 5vw, 40px);
+            letter-spacing: 0.04em;
+            color: #ffffff;
+            text-transform: none;
+            min-height: 1.2em;
+        }
+        .ls-cursor {
+            width: 2px;
+            height: 1.02em;
+            background: #E87722;
+            box-shadow: 0 0 14px rgba(232, 119, 34, 0.45);
+            animation: ls-blink 0.8s step-end infinite;
+        }
+        @keyframes ls-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .ls-subtitle {
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: clamp(15px, 2.4vw, 20px);
+            letter-spacing: 0.08em;
+            min-height: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .ls-cursor--subtitle {
+            height: 0.95em;
+        }
+    </style>
     <link rel="icon" type="image/png" href="favicon.png" />
-    <link href="HåndværkerPartner.styles.css" rel="stylesheet" />
+    <link href="HaandvaerkerPartner.styles.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
+    <div id="loading-screen" aria-live="polite" aria-busy="true">
+        <div class="ls-shell">
+            <div class="ls-line">
+                <span class="ls-title" id="ls-logo-text"></span>
+                <span class="ls-cursor" id="ls-logo-cursor"></span>
+                <span class="ls-subtitle" id="ls-subtitle-text"></span>
+                <span class="ls-cursor ls-cursor--subtitle" id="ls-subtitle-cursor" hidden></span>
+            </div>
+        </div>
     </div>
 
-    <div id="blazor-error-ui">
+    <div id="app"></div>
+
+    <div id="blazor-error-ui" style="display:none">
         Der opstod en fejl.
         <a href="." class="reload">Genindlæs</a>
         <span class="dismiss">🗙</span>
     </div>
+    <script>
+        window.siteLoader = (function () {
+            var screen = document.getElementById('loading-screen');
+            var logoText = document.getElementById('ls-logo-text');
+            var logoCursor = document.getElementById('ls-logo-cursor');
+            var subtitleText = document.getElementById('ls-subtitle-text');
+            var subtitleCursor = document.getElementById('ls-subtitle-cursor');
+            var startedAt = Date.now();
+            var holdAfterTypedMs = 3000;
+            var titleText = 'Håndværkerpartner';
+            var titleChars = 0;
+            var subtitleLine = 'Når det skal gøres ordenligt';
+            var subtitleChars = 0;
+            var titleDone = false;
+            var subtitleDone = false;
+            var typingCompletedAt = 0;
+            var appReady = false;
+            var revealQueued = false;
+            var isHomeRoute = isHomeEntryPath(window.location.pathname);
+            var hasSeenLoader = sessionStorage.getItem('siteLoaderSeen') === '1';
+            var skipLoader = sessionStorage.getItem('skipLoader') === '1';
+            if (skipLoader) sessionStorage.removeItem('skipLoader');
+
+            if (!screen || !isHomeRoute || skipLoader || hasSeenLoader) {
+                if (screen) {
+                    screen.remove();
+                }
+
+                return {
+                    complete: function () {},
+                    fail: function () {}
+                };
+            }
+
+            sessionStorage.setItem('siteLoaderSeen', '1');
+
+            function hide() {
+                if (!screen) {
+                    return;
+                }
+
+                screen.classList.add('ls-hide');
+
+                setTimeout(function () {
+                    screen.remove();
+                }, 500);
+            }
+
+            function queueReveal() {
+                if (revealQueued || !appReady || !titleDone || !subtitleDone) {
+                    return;
+                }
+
+                revealQueued = true;
+
+                var remaining = Math.max(0, holdAfterTypedMs - (Date.now() - typingCompletedAt));
+                setTimeout(function () {
+                    hide();
+                }, remaining);
+            }
+
+            function normalizePath(pathname) {
+                var normalized = pathname.replace(/\/+$/, '');
+                return normalized === '' ? '/' : normalized;
+            }
+
+            function isHomeEntryPath(pathname) {
+                var normalized = normalizePath(pathname);
+                var segments = normalized.split('/').filter(Boolean);
+
+                if (segments.length === 0) {
+                    return true;
+                }
+
+                var lastSegment = segments[segments.length - 1].toLowerCase();
+                var knownSubpages = {
+                    'facebook-instagram': true,
+                    'google-ads': true,
+                    'seo': true,
+                    'webudvikling': true,
+                    'cases': true,
+                    'kontakt': true,
+                    'counter': true,
+                    'weather': true
+                };
+
+                return lastSegment === 'index.html' || !knownSubpages[lastSegment];
+            }
+
+            function typeSubtitle() {
+                subtitleChars += 1;
+                subtitleText.textContent = subtitleLine.slice(0, subtitleChars);
+
+                if (subtitleChars < subtitleLine.length) {
+                    setTimeout(typeSubtitle, 42);
+                    return;
+                }
+
+                subtitleDone = true;
+                typingCompletedAt = Date.now();
+                queueReveal();
+            }
+
+            function eraseTitle() {
+                if (titleChars > 0) {
+                    titleChars -= 1;
+                    logoText.textContent = titleText.slice(0, titleChars);
+                    setTimeout(eraseTitle, 45);
+                    return;
+                }
+
+                logoCursor.hidden = true;
+                subtitleCursor.hidden = false;
+                setTimeout(typeSubtitle, 200);
+            }
+
+            function typeTitle() {
+                titleChars += 1;
+                logoText.textContent = titleText.slice(0, titleChars);
+
+                if (titleChars < titleText.length) {
+                    setTimeout(typeTitle, 90);
+                    return;
+                }
+
+                titleDone = true;
+                setTimeout(eraseTitle, 450);
+                queueReveal();
+            }
+
+            setTimeout(typeTitle, 140);
+
+            return {
+                complete: function () {
+                    appReady = true;
+                    queueReveal();
+                },
+                fail: function () {
+                    hide();
+                }
+            };
+        })();
+    </script>
     <script src="js/site.js"></script>
-    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+    <script>
+        Blazor.start()
+            .then(function () {
+                window.siteLoader.complete();
+            })
+            .catch(function (error) {
+                window.siteLoader.fail();
+                throw error;
+            });
+    </script>
 </body>
 
 </html>

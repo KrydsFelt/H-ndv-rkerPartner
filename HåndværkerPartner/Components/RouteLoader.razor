@@ -1,0 +1,45 @@
+<div class="route-loader @(isComplete ? "route-loader--complete" : "")" aria-hidden="@(!isVisible)">
+    <div class="route-loader-content">
+        <div class="route-loader-text-container">
+            <div class="route-loader-title @(titleTypingOut ? "typing-out" : "typing-in") @(showSubtitle ? "hidden" : "")">
+                <span class="route-loader-part1">HÅNDVÆRKER</span><span class="route-loader-part2">PARTNER</span>
+            </div>
+            <div class="route-loader-subtitle @(showSubtitle ? "typing-visible" : "")">
+                <span class="route-loader-subtitle-text">NÅR DET SKAL GØRES ORDENLIGT</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@inject IJSRuntime JS
+
+@code {
+    private bool isVisible = true;
+    private bool showSubtitle = false;
+    private bool titleTypingOut = false;
+    private bool isComplete = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Wait for HÅNDVÆRKER + PARTNER typing in (1.7s) + pause (0.5s) = 2.2s
+        await Task.Delay(2200);
+        titleTypingOut = true;
+        StateHasChanged();
+
+        // Wait for title typing out animation (2.0 seconds)
+        await Task.Delay(2000);
+        showSubtitle = true;
+        StateHasChanged();
+
+        // Wait for subtitle typing animation to complete (2.5 seconds)
+        await Task.Delay(2500);
+        isComplete = true;
+        StateHasChanged();
+
+        // Swipe up animation completes after 0.8 seconds, then hide and enable scrolling
+        await Task.Delay(800);
+        isVisible = false;
+        await JS.InvokeVoidAsync("eval", "document.body.classList.add('route-complete')");
+        StateHasChanged();
+    }
+}

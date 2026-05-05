@@ -1,20 +1,20 @@
 @page "/"
 @inject IJSRuntime JS
+@inject NavigationManager Nav
 
 <PageTitle>HåndværkerPartner – Din faglige samarbejdspartner</PageTitle>
 
 <!-- NAVBAR -->
 <nav class="@NavbarClass">
     <div class="nav-inner">
-        <a href="#hero" class="nav-logo" @onclick="NavHero" @onclick:preventDefault>
-            <img src="logo.png" alt="HåndværkerPartner" />
+        <a href="#hero" class="nav-logo nav-logo-text" @onclick="NavHero" @onclick:preventDefault>
+            <span class="nav-logo-line1">HÅNDVÆRKER</span><span class="nav-logo-line2">PARTNER</span>
         </a>
         <ul class="@NavLinksClass">
-            <li><a href="facebook-instagram">Facebook / Instagram</a></li>
+            <li><a href="#om-os" @onclick="NavOmOs" @onclick:preventDefault>Om HåndværkerPartner</a></li>
+            <li><a href="facebook-instagram">Meta Ads</a></li>
             <li><a href="google-ads">Google Ads</a></li>
-            <li><a href="seo">SEO</a></li>
-            <li><a href="webudvikling">Webudvikling</a></li>
-            <li><a href="cases">Cases</a></li>
+            <li><a href="webudvikling">Hjemmesider</a></li>
             <li><a href="kontakt" class="nav-cta">Kontakt os</a></li>
         </ul>
         <button class="hamburger" @onclick="ToggleMenu" aria-label="Menu">
@@ -25,207 +25,152 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
+    <video class="hero-video"
+           src="herovideo/herovideo.mp4"
+           autoplay
+           muted
+           loop
+           playsinline
+           preload="auto">
+    </video>
     <div class="hero-overlay"></div>
     <div class="hero-inner">
-        <p class="hero-badge">Din faglige samarbejdspartner</p>
-        <h1>Vækst til håndværkere<br>der vil mere</h1>
-        <p class="hero-sub">Vi hjælper håndværksvirksomheder med at skaffe flere kunder, styrke deres synlighed og skabe reel omsætningsvækst – gennem dokumenterede marketing- og leadstrategier.</p>
-        <div class="hero-buttons">
-            <button class="btn-primary" @onclick="HeroScrollKontakt">Få gratis rådgivning</button>
+        <div class="hero-content">
+            <p class="hero-badge">Din faglige samarbejdspartner</p>
+            <h2>Vækst til håndværkere<br>der vil mere</h2>
+            <p class="hero-sub">Vi hjælper håndværksvirksomheder med at skaffe flere kunder, styrke deres synlighed og skabe reel omsætningsvækst – gennem dokumenterede marketing- og leadstrategier.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" @onclick="HeroScrollKontakt">Bliv kontaktet</button>
+            </div>
+        </div>
+        <div class="hero-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
         </div>
     </div>
 </section>
-
-<!-- CLIENTS MARQUEE -->
-<div class="clients-strip">
-    <div class="marquee-track">
-        <div class="marquee-inner">
-            <div class="client-logo">SKIMMELCONSULT</div>
-            <div class="client-logo">FACADE RENOVERING DANMARK</div>
-            <div class="client-logo">ISHØY &amp; PEDERSEN</div>
-            <div class="client-logo">MPUDS.DK</div>
-            <div class="client-logo">MB VINDUESPOLERING</div>
-            <div class="client-logo">KASPER WEST</div>
-            <div class="client-logo">CT ISOLERING</div>
-            <div class="client-logo">NORD POLERING</div>
-            <!-- duplicate for seamless loop -->
-            <div class="client-logo">SKIMMELCONSULT</div>
-            <div class="client-logo">FACADE RENOVERING DANMARK</div>
-            <div class="client-logo">ISHØY &amp; PEDERSEN</div>
-            <div class="client-logo">MPUDS.DK</div>
-            <div class="client-logo">MB VINDUESPOLERING</div>
-            <div class="client-logo">KASPER WEST</div>
-            <div class="client-logo">CT ISOLERING</div>
-            <div class="client-logo">NORD POLERING</div>
-        </div>
-    </div>
-</div>
 
 <!-- SERVICES -->
-<section class="section" id="services">
+<section class="section section--light" id="services">
     <div class="section-inner">
-        <span class="section-tag">Vores ydelser</span>
-        <h2 class="section-title">Alt hvad din virksomhed behøver for at <span>vækste</span></h2>
-        <p class="section-subtitle">Vi tilbyder en komplet pakke af digitale marketing-løsninger skræddersyet til håndværksvirksomheder.</p>
+        <div class="services-header">
+            <span class="section-tag">Vores ydelser</span>
+            <h2 class="section-title">Boost din virksomhed med <span>de rigtige værktøjer</span></h2>
+            <p class="section-subtitle">Tre dokumenterede marketingløsninger der tilsammen fylder din kalender, styrker din synlighed og skalerer din omsætning.</p>
+        </div>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        <div class="services-grid-new">
+            <div class="service-card-new">
+                <div class="service-card-header">
+                    <h3>Meta Ads</h3>
+                    <svg class="service-logo" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
                 </div>
-                <h3>Facebook &amp; Instagram Ads</h3>
-                <p>Målrettede annoncekampagner på Meta's platforme der genererer billige, kvalitetsleads til din håndværksvirksomhed.</p>
+                <p>Kør målrettede Meta-kampagner der rammer præcis de kunder der har brug for en håndværker – og gør dem til billige, kvalificerede leads. Vi håndterer opsætning, optimering og rapportering for maksimal ROI.</p>
+                <a href="facebook-instagram" class="service-link-more">Se mere <span>→</span></a>
             </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <div class="service-card-new">
+                <div class="service-card-header">
+                    <h3>Google Ads</h3>
+                    <svg class="service-logo" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
                 </div>
-                <h3>Google Ads</h3>
-                <p>Vis dig øverst i Google-søgninger når kunderne aktivt søger efter netop de ydelser du tilbyder.</p>
+                <p>Lad din virksomhed dukke op øverst, præcis når kunderne søger efter det du laver – og betal kun når de klikker. Vi optimerer dine Google Ads-kampagner for bedre synlighed og flere kvalificerede leads til lavere omkostninger.</p>
+                <a href="google-ads" class="service-link-more">Se mere <span>→</span></a>
             </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            <div class="service-card-new">
+                <div class="service-card-header">
+                    <h3>Hjemmeside</h3>
+                    <svg class="service-logo" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" opacity="0.3"/><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 12H4V6h16v10z"/>
+                    </svg>
                 </div>
-                <h3>SEO – Organisk synlighed</h3>
-                <p>Bliv fundet gratis på Google over tid med en stærk SEO-strategi der giver langsigtet og bæredygtig trafik.</p>
+                <p>Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs. Vi bygger responsive websites der er optimeret for søgninger og designet til at generere flere orders.</p>
+                <a href="webudvikling" class="service-link-more">Se mere <span>→</span></a>
             </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+
+        <div class="services-accordion">
+            <div class="acc-item @(openService == 0 ? "acc-open" : "")" @onclick="@(() => ToggleService(0))">
+                <div class="acc-header">
+                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+                    <span>Facebook &amp; Instagram Ads</span>
+                    <div class="acc-chevron"></div>
                 </div>
-                <h3>Hjemmeside</h3>
-                <p>Professionelle, hurtige og konverterende hjemmesider der overbeviser besøgende om at vælge dig.</p>
+                <div class="acc-body">Målrettede annoncekampagner på Meta's platforme der genererer billige, kvalitetsleads til din håndværksvirksomhed.</div>
             </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <div class="acc-item @(openService == 1 ? "acc-open" : "")" @onclick="@(() => ToggleService(1))">
+                <div class="acc-header">
+                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                    <span>Google Ads</span>
+                    <div class="acc-chevron"></div>
                 </div>
-                <h3>Leadgenerering</h3>
-                <p>Systematisk tilgang til at skaffe kvalificerede henvendelser – vi sætter systemer op der arbejder for dig døgnet rundt.</p>
+                <div class="acc-body">Vis dig øverst i Google-søgninger når kunderne aktivt søger efter netop de ydelser du tilbyder.</div>
             </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <div class="acc-item @(openService == 2 ? "acc-open" : "")" @onclick="@(() => ToggleService(2))">
+                <div class="acc-header">
+                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+                    <span>SEO – Organisk synlighed</span>
+                    <div class="acc-chevron"></div>
                 </div>
-                <h3>Analyse &amp; Rapportering</h3>
-                <p>Gennemsigtig rapportering så du altid ved præcis hvad du får for dine marketingkroner – ingen skjulte tal.</p>
+                <div class="acc-body">Bliv fundet gratis på Google over tid med en stærk SEO-strategi der giver langsigtet og bæredygtig trafik.</div>
+            </div>
+            <div class="acc-item @(openService == 3 ? "acc-open" : "")" @onclick="@(() => ToggleService(3))">
+                <div class="acc-header">
+                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                    <span>Hjemmeside</span>
+                    <div class="acc-chevron"></div>
+                </div>
+                <div class="acc-body">Professionelle, hurtige og konverterende hjemmesider der overbeviser besøgende om at vælge dig.</div>
+            </div>
+            <div class="acc-item @(openService == 4 ? "acc-open" : "")" @onclick="@(() => ToggleService(4))">
+                <div class="acc-header">
+                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                    <span>Leadgenerering</span>
+                    <div class="acc-chevron"></div>
+                </div>
+                <div class="acc-body">Systematisk tilgang til at skaffe kvalificerede henvendelser – vi sætter systemer op der arbejder for dig døgnet rundt.</div>
+            </div>
+            <div class="acc-item @(openService == 5 ? "acc-open" : "")" @onclick="@(() => ToggleService(5))">
+                <div class="acc-header">
+                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+                    <span>Analyse &amp; Rapportering</span>
+                    <div class="acc-chevron"></div>
+                </div>
+                <div class="acc-body">Gennemsigtig rapportering så du altid ved præcis hvad du får for dine marketingkroner – ingen skjulte tal.</div>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- MATCH -->
-<section class="section match" id="match">
-    <div class="section-inner">
-        <span class="section-tag">Passer vi sammen?</span>
-        <h2 class="section-title">Vi vælger vores kunder <span>med omhu</span></h2>
-        <p class="section-subtitle">Vi siger nej til opgaver vi ikke kan skabe reel værdi på. Det betyder at dem vi siger ja til, altid får vores fulde fokus.</p>
-
-        <div class="match-split">
-            <div class="match-side match-side--no">
-                <div class="match-side-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    Det passer ikke
-                </div>
-                <ul class="match-list">
-                    <li class="match-item">Du vil have ét quick-fix og er videre</li>
-                    <li class="match-item">Du forventer resultater inden for den første uge</li>
-                    <li class="match-item">Du ønsker ikke at samarbejde om indhold og retning</li>
-                    <li class="match-item">Du er ikke klar til at håndtere flere henvendelser</li>
-                    <li class="match-item">Din virksomhed er ikke sat op til vækst</li>
-                </ul>
+<section class="testimonials-fullscreen" id="testimonials">
+    <div class="tfs-inner">
+        <h2 class="tfs-heading">Lyt ikke kun til os,<br><span>lyt til hvad vores kunder siger</span></h2>
+        <div class="tfs-card">
+            <div class="tfs-card-avatar">
+                <img src="testimonials/emilsmultifix.jpg" alt="Emil fra Emils Multifix" />
             </div>
-
-            <div class="match-divider"></div>
-
-            <div class="match-side match-side--yes">
-                <div class="match-side-label">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    Det passer perfekt
-                </div>
-                <ul class="match-list">
-                    <li class="match-item">Du er klar til at investere i din vækst langsigtet</li>
-                    <li class="match-item">Du leverer en ydelse du selv er stolt af</li>
-                    <li class="match-item">Du vil gerne have en partner – ikke bare en leverandør</li>
-                    <li class="match-item">Du er ambitiøs og klar til at skalere</li>
-                    <li class="match-item">Du sætter pris på ærlighed og klare tal</li>
-                </ul>
+            <div class="tfs-quote">
+                "Vi gik fra at have absolut nul kunder til at have en fuld kalender, hver eneste dag på kun 2 måneder. Det bedste af det hele er, at leadprisen er utrolig lav. Håndværkerpartner er squ den rigtige partner for os!"
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section testimonials" id="testimonials">
-    <div class="section-inner">
-        <div class="testimonials-header">
-            <span class="section-tag">Hvad siger vores kunder</span>
-            <h2 class="section-title">Ord fra dem vi <span>arbejder for</span></h2>
-        </div>
-
-        <div class="testimonials-track">
-            <div class="tcard">
-                <div class="tcard-quote">"</div>
-                <p class="tcard-text">Inden vi startede med HåndværkerPartner brugte vi tid og penge på annoncering der ikke gav noget. Efter tre måneder med dem fyldte vores kalender sig op af sig selv. Vi har ikke haft et stille kvartal siden.</p>
-                <div class="tcard-bottom">
-                    <div class="tcard-avatar">L</div>
-                    <div>
-                        <div class="tcard-name">Lars Mikkelsen</div>
-                        <div class="tcard-role">Ejer af LM VVS &amp; Blikkenslager</div>
-                    </div>
-                    <div class="tcard-stars">★★★★★</div>
-                </div>
-            </div>
-
-            <div class="tcard tcard--accent">
-                <div class="tcard-quote">"</div>
-                <p class="tcard-text">Vi gik fra næsten ingen online tilstedeværelse til at være den mest synlige maler i vores område på Google. HåndværkerPartner forstår håndværksbranchen på en måde som andre bureauer simpelthen ikke gør.</p>
-                <div class="tcard-bottom">
-                    <div class="tcard-avatar">S</div>
-                    <div>
-                        <div class="tcard-name">Søren Dalgaard</div>
-                        <div class="tcard-role">Indehaver af Dalgaard Malerfirma</div>
-                    </div>
-                    <div class="tcard-stars">★★★★★</div>
-                </div>
-            </div>
-
-            <div class="tcard">
-                <div class="tcard-quote">"</div>
-                <p class="tcard-text">Jeg var skeptisk i starten – jeg har prøvet to andre bureauer der lovede meget og leverede lidt. Her er det anderledes. De rapporterer på rigtige tal, svarer hurtigt og giver mig en følelse af at være prioriteret.</p>
-                <div class="tcard-bottom">
-                    <div class="tcard-avatar">A</div>
-                    <div>
-                        <div class="tcard-name">Anders Holm</div>
-                        <div class="tcard-role">Ejer af Holm El-Service</div>
-                    </div>
-                    <div class="tcard-stars">★★★★★</div>
-                </div>
-            </div>
-
-            <div class="tcard">
-                <div class="tcard-quote">"</div>
-                <p class="tcard-text">Vores nye hjemmeside er det bedste vi nogensinde har investeret i. Inden for den første uge efter lanceringen fik vi tre nye henvendelser via kontaktformularen. Siden er hurtig, ser professionel ud og konverterer.</p>
-                <div class="tcard-bottom">
-                    <div class="tcard-avatar">T</div>
-                    <div>
-                        <div class="tcard-name">Thomas Vestergaard</div>
-                        <div class="tcard-role">Indehaver af Vestergaard Tømrer</div>
-                    </div>
-                    <div class="tcard-stars">★★★★★</div>
+            <div class="tfs-author">
+                <div class="tfs-author-info">
+                    <div class="tfs-name">Emil</div>
+                    <div class="tfs-role">Co-founder &amp; medarbejder af Emils Multifix</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section" id="om-os">
+<section class="section kpi-section" id="om-os">
     <div class="section-inner">
-        <div class="about-inner">
-            <div>
+        <div class="kpi-layout">
+            <div class="kpi-left">
                 <span class="section-tag">Om HåndværkerPartner</span>
                 <h2 class="section-title">Vi er <span>specialister</span> i håndværksbranchen</h2>
                 <p class="section-subtitle">HåndværkerPartner er et bureau der udelukkende fokuserer på håndværks- og servicevirksomheder. Vi ved hvad der virker i din branche – fordi vi kun arbejder med den.</p>
@@ -239,28 +184,23 @@
                 </ul>
             </div>
 
-            <div class="about-visual">
-                <div class="about-big-card">
-                    <h3>HåndværkerPartner</h3>
-                    <div class="tagline">Din faglige samarbejdspartner</div>
-                    <p style="color:rgba(255,255,255,0.65); font-size:15px; line-height:1.7;">Vi besidder en indgående forståelse af de digitale kanaler, hvor dine kunder bruger deres tid, og vi udnytter avancerede planlægnings-, indkøbs- og analysemetoder til at inspirere potentielle kunder til handling.</p>
-                    <div class="about-numbers">
-                        <div class="about-num">
-                            <div class="n">50+</div>
-                            <div class="l">Aktive kunder</div>
-                        </div>
-                        <div class="about-num">
-                            <div class="n">2 mio+</div>
-                            <div class="l">Leads genereret</div>
-                        </div>
-                        <div class="about-num">
-                            <div class="n">33 kr</div>
-                            <div class="l">Laveste leadpris</div>
-                        </div>
-                        <div class="about-num">
-                            <div class="n">0</div>
-                            <div class="l">Binding</div>
-                        </div>
+            <div class="kpi-right">
+                <div class="kpi-grid-horizontal">
+                    <div class="kpi-item">
+                        <div class="kpi-value">+1.000</div>
+                        <div class="kpi-label">LEADS GENERERET</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">+50</div>
+                        <div class="kpi-label">AKTIVE KUNDER</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">33 kr.</div>
+                        <div class="kpi-label">LAVESTE LEADPRIS</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="kpi-value">0 DAGES</div>
+                        <div class="kpi-label">BINDING</div>
                     </div>
                 </div>
             </div>
@@ -347,7 +287,7 @@
 <!-- FOOTER -->
 <footer class="footer">
     <div class="footer-inner">
-        <div class="footer-logo-text">Håndværker<span>Partner</span></div>
+        <div class="footer-logo-text">HÅNDVÆRKER<span>PARTNER</span></div>
         <p style="font-size:14px;">© 2024 HåndværkerPartner – Din faglige samarbejdspartner</p>
         <ul class="footer-links">
             <li><a href="#services" @onclick="NavServices" @onclick:preventDefault>Ydelser</a></li>
@@ -363,6 +303,8 @@
     private bool scrolled = false;
     private bool menuOpen = false;
     private bool showScrollTop = false;
+    private bool atBottom = false;
+    private int openService = -1;
 
     private bool formSent = false;
     private string formName = "";
@@ -373,40 +315,53 @@
 
     private string NavbarClass => scrolled ? "navbar scrolled" : "navbar";
     private string NavLinksClass => menuOpen ? "nav-links open" : "nav-links";
-    private string ScrollTopClass => showScrollTop ? "scroll-top" : "scroll-top hidden";
+    private string ScrollTopClass => showScrollTop ? $"scroll-top{(atBottom ? " scroll-top--bottom" : "")}" : "scroll-top hidden";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JS.InvokeVoidAsync("initScrollHandler", DotNetObjectReference.Create(this));
+            var ref_ = DotNetObjectReference.Create(this);
+            await JS.InvokeVoidAsync("initScrollHandler", ref_);
+            await JS.InvokeVoidAsync("initCountUp");
+            await ScrollToFragmentIfPresentAsync();
         }
     }
 
     [JSInvokable]
-    public void OnScroll(double scrollY)
+    public void OnScroll(double scrollY, double scrollHeight, double clientHeight)
     {
         scrolled = scrollY > 50;
         showScrollTop = scrollY > 400;
+        atBottom = (scrollY + clientHeight) >= (scrollHeight - 100);
         StateHasChanged();
     }
 
+    private void ToggleService(int i) => openService = openService == i ? -1 : i;
     private void ToggleMenu() => menuOpen = !menuOpen;
 
     private async Task NavHero() { menuOpen = false; await ScrollTo("hero"); }
     private async Task NavServices() { menuOpen = false; await ScrollTo("services"); }
-    private async Task NavResults() { menuOpen = false; await ScrollTo("results"); }
     private async Task NavOmOs() { menuOpen = false; await ScrollTo("om-os"); }
-    private async Task NavTestimonials() { menuOpen = false; await ScrollTo("testimonials"); }
     private async Task NavKontakt() { menuOpen = false; await ScrollTo("kontakt"); }
 
     private async Task HeroScrollKontakt() => await ScrollTo("kontakt");
-    private async Task HeroScrollServices() => await ScrollTo("services");
     private async Task ScrollToTop() => await ScrollTo("hero");
 
     private async Task ScrollTo(string id)
     {
         await JS.InvokeVoidAsync("scrollToSection", id);
+    }
+
+    private async Task ScrollToFragmentIfPresentAsync()
+    {
+        var fragment = new Uri(Nav.Uri).Fragment;
+        if (string.IsNullOrWhiteSpace(fragment) || fragment.Length <= 1)
+        {
+            return;
+        }
+
+        await JS.InvokeVoidAsync("scrollToSection", fragment[1..]);
     }
 
     private void SubmitForm()

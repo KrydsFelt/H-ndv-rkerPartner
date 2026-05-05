@@ -37,7 +37,26 @@ jobs:
         run: |
           sed -i 's|<base href="/" />|<base href="/H-ndv-rkerPartner/" />|g' release/wwwroot/index.html
           touch release/wwwroot/.nojekyll
-          cp release/wwwroot/index.html release/wwwroot/404.html
+          cp 'HåndværkerPartner/wwwroot/404.html' release/wwwroot/404.html
+          # Strip integrity hashes from blazor.boot.json so GitHub Pages gzip serving doesn't break them
+          python3 -c "
+          import json, re, sys
+          with open('release/wwwroot/_framework/blazor.boot.json', 'r') as f:
+              content = f.read()
+          data = json.loads(content)
+          def strip_hashes(obj):
+              if isinstance(obj, dict):
+                  return {k: strip_hashes(v) for k, v in obj.items()}
+              if isinstance(obj, list):
+                  return [strip_hashes(i) for i in obj]
+              if isinstance(obj, str) and obj.startswith('sha256-'):
+                  return ''
+              return obj
+          data = strip_hashes(data)
+          with open('release/wwwroot/_framework/blazor.boot.json', 'w') as f:
+              json.dump(data, f)
+          print('Stripped integrity hashes from blazor.boot.json')
+          "
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

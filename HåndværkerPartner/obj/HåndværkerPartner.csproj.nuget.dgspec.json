@@ -1,26 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "/Users/giobeshara/src/Krydsfelt-repo/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj": {}
+    "/Users/tonyxtruong/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj": {}
   },
   "projects": {
-    "/Users/giobeshara/src/Krydsfelt-repo/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj": {
+    "/Users/tonyxtruong/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/giobeshara/src/Krydsfelt-repo/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
-        "projectName": "HåndværkerPartner",
-        "projectPath": "/Users/giobeshara/src/Krydsfelt-repo/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
-        "packagesPath": "/Users/giobeshara/.nuget/packages/",
-        "outputPath": "/Users/giobeshara/src/Krydsfelt-repo/H-ndv-rkerPartner/HåndværkerPartner/obj/",
+        "projectUniqueName": "/Users/tonyxtruong/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
+        "projectName": "HaandvaerkerPartner",
+        "projectPath": "/Users/tonyxtruong/Desktop/H-ndv-rkerPartner/HåndværkerPartner/HåndværkerPartner.csproj",
+        "packagesPath": "/Users/tonyxtruong/.nuget/packages/",
+        "outputPath": "/Users/tonyxtruong/Desktop/H-ndv-rkerPartner/HåndværkerPartner/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/giobeshara/.nuget/NuGet/NuGet.Config"
+          "/Users/tonyxtruong/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.pkg.github.com/The-Avengers-APS/index.json": {}
         },
         "frameworks": {
           "net9.0": {
