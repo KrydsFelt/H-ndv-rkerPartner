@@ -303,6 +303,7 @@
     private bool scrolled = false;
     private bool menuOpen = false;
     private bool showScrollTop = false;
+    private bool atBottom = false;
     private int openService = -1;
 
     private bool formSent = false;
@@ -314,7 +315,7 @@
 
     private string NavbarClass => scrolled ? "navbar scrolled" : "navbar";
     private string NavLinksClass => menuOpen ? "nav-links open" : "nav-links";
-    private string ScrollTopClass => showScrollTop ? "scroll-top" : "scroll-top hidden";
+    private string ScrollTopClass => showScrollTop ? $"scroll-top{(atBottom ? " scroll-top--bottom" : "")}" : "scroll-top hidden";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -328,10 +329,11 @@
     }
 
     [JSInvokable]
-    public void OnScroll(double scrollY)
+    public void OnScroll(double scrollY, double scrollHeight, double clientHeight)
     {
         scrolled = scrollY > 50;
         showScrollTop = scrollY > 400;
+        atBottom = (scrollY + clientHeight) >= (scrollHeight - 100);
         StateHasChanged();
     }
 

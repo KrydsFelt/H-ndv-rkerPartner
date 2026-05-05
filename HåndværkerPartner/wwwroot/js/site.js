@@ -4,7 +4,7 @@ window.setSkipLoader = () => { sessionStorage.setItem('skipLoader', '1'); };
 
 window.initScrollHandler = (dotNetRef) => {
     window.addEventListener('scroll', () => {
-        dotNetRef.invokeMethodAsync('OnScroll', window.scrollY);
+        dotNetRef.invokeMethodAsync('OnScroll', window.scrollY, document.documentElement.scrollHeight, window.innerHeight);
     }, { passive: true });
 };
 

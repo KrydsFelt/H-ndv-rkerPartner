@@ -739,7 +739,7 @@ video {
     background: #ddd;
 }
 .kpi-value {
-    font-size: 36px;
+    font-size: 14px;
     font-weight: 800;
     color: #1a1a1a;
     line-height: 1;
@@ -796,9 +796,10 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 .footer-links a:hover { color: var(--orange); }
 
 /* ── SCROLL TOP ── */
-.scroll-top { position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 16px rgba(232,119,34,0.4); transition: opacity .3s, transform .3s; border: none; color: var(--white); font-size: 18px; z-index: 999; }
+.scroll-top { position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px; background: #1a1a1a; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: none; transition: opacity .3s, transform .3s, background .3s, color .3s; border: none; color: var(--white); font-size: 18px; z-index: 999; }
 .scroll-top:hover { transform: translateY(-3px); }
 .scroll-top.hidden { opacity: 0; pointer-events: none; }
+.scroll-top--bottom { background: var(--white); color: #1a1a1a; }
 
 /* ── SUBPAGES ── */
 .subpage { padding-top: 0; }
