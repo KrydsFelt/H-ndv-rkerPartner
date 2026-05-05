@@ -475,6 +475,7 @@ video {
     height: 40px;
     flex-shrink: 0;
     fill: currentColor;
+    object-fit: contain;
 }
 .service-card-new p {
     font-size: 15px;
