@@ -19,7 +19,7 @@ window.runRouteLoaderAnimation = function (textEl, dotNetRef) {
         chars++;
         textEl.textContent = subtitle.slice(0, chars);
         if (chars < subtitle.length) {
-            setTimeout(typeSubtitle, jitter(70, 35));
+            setTimeout(typeSubtitle, jitter(55, 25));
         } else {
             dotNetRef.invokeMethodAsync('OnTypingComplete');
         }
@@ -29,7 +29,7 @@ window.runRouteLoaderAnimation = function (textEl, dotNetRef) {
         if (chars > 0) {
             chars--;
             setTitleContent(chars);
-            setTimeout(eraseTitle, jitter(85, 30));
+            setTimeout(eraseTitle, jitter(70, 25));
         } else {
             textEl.innerHTML = '';
             textEl.classList.add('rl-subtitle-mode');
@@ -43,9 +43,9 @@ window.runRouteLoaderAnimation = function (textEl, dotNetRef) {
         chars++;
         setTitleContent(chars);
         if (chars < title.length) {
-            setTimeout(typeTitle, jitter(130, 50));
+            setTimeout(typeTitle, jitter(95, 40));
         } else {
-            setTimeout(eraseTitle, 900);
+            setTimeout(eraseTitle, 1600);
         }
     }
 
