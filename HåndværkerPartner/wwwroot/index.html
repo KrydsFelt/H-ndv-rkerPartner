@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>HåndværkerPartner – Din faglige samarbejdspartner</title>
-    <base href="/H-ndv-rkerPartner/" />
+    <base href="/" />
     <script>
         var redirect = sessionStorage.getItem('redirect');
         if (redirect) {
@@ -15,14 +15,196 @@
         }
     </script>
     <link rel="stylesheet" href="css/app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         #loading-screen {
             position: fixed;
             inset: 0;
-            background:
-                radial-gradient(circle at top, rgba(232, 119, 34, 0.18), transparent 38%),
-                linear-gradient(180deg, #181818 0%, #111111 100%);
             z-index: 10000;
+            background: linear-gradient(180deg, #0e2236 0%, #081627 100%);
+            transition: opacity 0.5s ease;
+        }
+        #loading-screen.ls-hide { opacity: 0; pointer-events: none; }
+
+        #loading-screen .paper {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, #0e2236 0%, #081627 100%);
+        }
+        #loading-screen .paper::before {
+            content: ''; position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+            animation: grid-drift 8s ease-in-out infinite alternate;
+        }
+        @keyframes grid-drift {
+            0%   { background-position: 0 0, 0 0, 0 0, 0 0; }
+            100% { background-position: 20px 20px, 20px 20px, 100px 100px, 100px 100px; }
+        }
+        #loading-screen .paper::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 80% at 50% 40%, transparent 50%, rgba(0,0,0,0.55) 100%);
+        }
+        /* Svævende blueprint-linjer i baggrunden */
+        #loading-screen .bg-lines {
+            position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+        }
+        #loading-screen .bg-lines svg {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+        }
+        #loading-screen .bg-line {
+            fill: none; stroke: rgba(156,198,255,0.07); stroke-width: 1;
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+        }
+        #loading-screen .bg-line.l1 { animation: bg-draw 4s ease-in-out infinite; animation-delay: 0s; }
+        #loading-screen .bg-line.l2 { animation: bg-draw 4s ease-in-out infinite; animation-delay: 0.8s; }
+        #loading-screen .bg-line.l3 { animation: bg-draw 4s ease-in-out infinite; animation-delay: 1.6s; }
+        #loading-screen .bg-line.l4 { animation: bg-draw 4s ease-in-out infinite; animation-delay: 2.4s; }
+        #loading-screen .bg-line.l5 { animation: bg-draw 4s ease-in-out infinite; animation-delay: 3.2s; }
+        @keyframes bg-draw {
+            0%   { stroke-dashoffset: 300; opacity: 0; }
+            20%  { opacity: 1; }
+            60%  { stroke-dashoffset: 0; opacity: 0.6; }
+            100% { stroke-dashoffset: -300; opacity: 0; }
+        }
+        /* Orange puls-punkt i midten */
+        #loading-screen .pulse {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #E87722;
+            box-shadow: 0 0 12px rgba(232,119,34,0.6);
+            animation: pulse-ring 2s ease-out infinite;
+        }
+        @keyframes pulse-ring {
+            0%   { box-shadow: 0 0 0 0 rgba(232,119,34,0.4); }
+            70%  { box-shadow: 0 0 0 30px rgba(232,119,34,0); }
+            100% { box-shadow: 0 0 0 0 rgba(232,119,34,0); }
+        }
+        #loading-screen .corner {
+            position: absolute; width: 40px; height: 40px;
+            border-color: rgba(156,198,255,0.35); border-style: solid; border-width: 0;
+        }
+        #loading-screen .corner.tl { top: 16px; left: 16px; border-top-width: 1px; border-left-width: 1px; }
+        #loading-screen .corner.tr { top: 16px; right: 16px; border-top-width: 1px; border-right-width: 1px; }
+        #loading-screen .corner.bl { bottom: 16px; left: 16px; border-bottom-width: 1px; border-left-width: 1px; }
+        #loading-screen .corner.br { bottom: 16px; right: 16px; border-bottom-width: 1px; border-right-width: 1px; }
+
+        #loading-screen .header {
+            position: absolute; left: 50%; top: 10%;
+            transform: translateX(-50%);
+            text-align: center;
+            white-space: nowrap;
+        }
+        #loading-screen .wordmark {
+            display: inline-flex; align-items: center;
+            font-family: 'Poppins', Inter, system-ui, sans-serif;
+            font-weight: 900; letter-spacing: -0.01em; line-height: 1;
+            text-transform: uppercase; white-space: nowrap;
+            font-size: clamp(20px, 3vw, 34px);
+            opacity: 0;
+        }
+        #loading-screen .wordmark.visible { opacity: 1; }
+        #loading-screen .wm-h { color: #fff; }
+        #loading-screen .wm-p { color: #E87722; margin-left: 0.18em; }
+        #loading-screen .wm-cursor {
+            display: inline-block; width: 3px; height: 0.9em;
+            background: #E87722; margin-left: 4px; vertical-align: middle;
+            animation: cur-blink 0.7s step-end infinite;
+        }
+        @keyframes cur-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        #loading-screen .draft {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -46%);
+            width: min(72%, 520px);
+        }
+        #loading-screen svg.plan { width: 100%; height: auto; display: block; overflow: visible; }
+
+        /* Hver del starter usynlig og skubbet til siden */
+        #loading-screen svg.plan .part {
+            opacity: 0;
+            transition: none;
+        }
+        /* Fundament — kommer fra bunden */
+        #loading-screen svg.plan .p-foundation {
+            animation: from-bottom 0.3s cubic-bezier(.2,.8,.4,1) forwards;
+            animation-delay: 0.05s;
+        }
+        /* Venstre væg — fra venstre */
+        #loading-screen svg.plan .p-wall-l {
+            animation: from-left 0.3s cubic-bezier(.2,.8,.4,1) forwards;
+            animation-delay: 0.25s;
+        }
+        /* Højre væg — fra højre */
+        #loading-screen svg.plan .p-wall-r {
+            animation: from-right 0.3s cubic-bezier(.2,.8,.4,1) forwards;
+            animation-delay: 0.25s;
+        }
+        /* Tag — fra oven */
+        #loading-screen svg.plan .p-roof {
+            animation: from-top 0.35s cubic-bezier(.2,.8,.4,1) forwards;
+            animation-delay: 0.5s;
+        }
+        /* Dør — fra bunden */
+        #loading-screen svg.plan .p-door {
+            animation: from-bottom 0.25s cubic-bezier(.2,.8,.4,1) forwards;
+            animation-delay: 0.75s;
+        }
+        /* Vinduer — fade ind */
+        #loading-screen svg.plan .p-win-l {
+            animation: fade-in 0.25s ease forwards;
+            animation-delay: 0.9s;
+        }
+        #loading-screen svg.plan .p-win-r {
+            animation: fade-in 0.25s ease forwards;
+            animation-delay: 1.05s;
+        }
+        /* Skorsten — fra oven */
+        #loading-screen svg.plan .p-chimney {
+            animation: from-top 0.25s cubic-bezier(.2,.8,.4,1) forwards;
+            animation-delay: 1.15s;
+        }
+        /* Mål-linjer */
+        #loading-screen svg.plan .p-dim {
+            animation: fade-in 0.3s ease forwards;
+            animation-delay: 1.3s;
+        }
+
+        @keyframes from-bottom {
+            0%   { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes from-top {
+            0%   { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes from-left {
+            0%   { opacity: 0; transform: translateX(-30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes from-right {
+            0%   { opacity: 0; transform: translateX(30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fade-in {
+            0%   { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        #loading-screen .footer {
+            position: absolute; left: 50%; bottom: 14%;
+            transform: translateX(-50%);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+            color: rgba(246,244,239,0.55);
+            display: flex; align-items: center; gap: 14px;
         }
     </style>
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -30,7 +212,80 @@
 </head>
 
 <body>
-    <div id="loading-screen"></div>
+    <div id="loading-screen">
+        <div class="paper"></div>
+        <div class="bg-lines">
+            <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+                <line class="bg-line l1" x1="0" y1="150" x2="1000" y2="150"/>
+                <line class="bg-line l2" x1="200" y1="0" x2="200" y2="600"/>
+                <line class="bg-line l3" x1="0" y1="400" x2="1000" y2="400"/>
+                <line class="bg-line l4" x1="750" y1="0" x2="750" y2="600"/>
+                <line class="bg-line l5" x1="0" y1="280" x2="500" y2="280"/>
+                <rect class="bg-line l1" x="100" y="80" width="120" height="80" rx="4"/>
+                <rect class="bg-line l3" x="750" y="320" width="160" height="100" rx="4"/>
+                <line class="bg-line l2" x1="100" y1="230" x2="320" y2="230"/>
+                <line class="bg-line l4" x1="600" y1="100" x2="900" y2="100"/>
+            </svg>
+        </div>
+        <div class="pulse"></div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        <div class="header">
+            <div class="wordmark" id="ls-wordmark">
+                <span id="ls-wm-text"></span><span class="wm-cursor" id="ls-cursor"></span>
+            </div>
+            <div id="ls-subtitle" style="font-family:'Poppins',sans-serif;font-weight:300;font-size:clamp(13px,2vw,18px);color:rgba(255,255,255,0.6);letter-spacing:0.08em;margin-top:8px;min-height:1.4em;"></div>
+        </div>
+        <div class="draft">
+            <svg class="plan" viewBox="0 0 400 230" preserveAspectRatio="xMidYMid meet">
+                <!-- Fundament/gulv -->
+                <g class="part p-foundation" fill="none" stroke="#9CC6FF" stroke-width="1.5" stroke-linecap="round">
+                    <line x1="40" y1="160" x2="360" y2="160"/>
+                </g>
+                <!-- Venstre væg -->
+                <g class="part p-wall-l" fill="none" stroke="#9CC6FF" stroke-width="1.5" stroke-linecap="round">
+                    <line x1="40" y1="160" x2="40" y2="90"/>
+                </g>
+                <!-- Højre væg -->
+                <g class="part p-wall-r" fill="none" stroke="#9CC6FF" stroke-width="1.5" stroke-linecap="round">
+                    <line x1="360" y1="160" x2="360" y2="90"/>
+                </g>
+                <!-- Tag -->
+                <g class="part p-roof" fill="none" stroke="#B9D4FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+                    <polyline points="40,90 200,30 360,90"/>
+                </g>
+                <!-- Dør -->
+                <g class="part p-door" fill="none" stroke="#B9D4FF" stroke-width="1.5" stroke-linecap="round">
+                    <polyline points="180,160 180,120 220,120 220,160"/>
+                </g>
+                <!-- Vindue venstre -->
+                <g class="part p-win-l" fill="none" stroke="#DDE9FF" stroke-width="1.5" stroke-linecap="round">
+                    <rect x="80" y="100" width="50" height="30"/>
+                    <line x1="105" y1="100" x2="105" y2="130"/>
+                    <line x1="80" y1="115" x2="130" y2="115"/>
+                </g>
+                <!-- Vindue højre -->
+                <g class="part p-win-r" fill="none" stroke="#DDE9FF" stroke-width="1.5" stroke-linecap="round">
+                    <rect x="270" y="100" width="50" height="30"/>
+                    <line x1="295" y1="100" x2="295" y2="130"/>
+                    <line x1="270" y1="115" x2="320" y2="115"/>
+                </g>
+                <!-- Skorsten -->
+                <g class="part p-chimney" fill="none" stroke="#B9D4FF" stroke-width="1.5" stroke-linecap="round">
+                    <polyline points="280,72 280,40 300,40 300,60"/>
+                </g>
+                <!-- Mållinjer -->
+                <g class="part p-dim" fill="none" stroke="#E87722" stroke-width="1" stroke-linecap="round" filter="drop-shadow(0 0 4px rgba(242,106,31,0.5))">
+                    <line x1="40" y1="190" x2="360" y2="190"/>
+                    <line x1="40" y1="184" x2="40" y2="196"/>
+                    <line x1="360" y1="184" x2="360" y2="196"/>
+                    <text font-family="JetBrains Mono, monospace" font-size="8" fill="#E87722" x="200" y="206" text-anchor="middle">8.40 m</text>
+                </g>
+            </svg>
+        </div>
+    </div>
 
     <div id="app"></div>
 
@@ -40,29 +295,78 @@
         <span class="dismiss">🗙</span>
     </div>
     <script>
-        window.siteLoader = {
-            complete: function () {
-                var screen = document.getElementById('loading-screen');
-                if (screen) screen.remove();
-            },
-            fail: function () {
-                var screen = document.getElementById('loading-screen');
-                if (screen) screen.remove();
+        // Typewriter starter efter huset er bygget (~2.5s)
+        setTimeout(function() {
+            var wordmark = document.getElementById('ls-wordmark');
+            var textEl = document.getElementById('ls-wm-text');
+            if (!wordmark || !textEl) return;
+            wordmark.classList.add('visible');
+
+            var part1 = 'HÅNDVÆRKER';
+            var part2 = 'PARTNER';
+            var full = part1 + part2;
+            var i = 0;
+
+            function render() {
+                var p1 = full.slice(0, Math.min(i, part1.length));
+                var p2 = full.slice(part1.length, i);
+                textEl.innerHTML = '<span style="color:#ffffff">' + p1 + '</span>' + (p2 ? '<span style="color:#E87722;margin-left:0.18em">' + p2 + '</span>' : '');
             }
+
+            var subtitle = 'Når det skal gøres rigtigt';
+            var subtitleEl = document.getElementById('ls-subtitle');
+
+            function typeSubtitle() {
+                var j = 0;
+                function next() {
+                    if (j <= subtitle.length) {
+                        subtitleEl.textContent = subtitle.slice(0, j);
+                        j++;
+                        setTimeout(next, 55);
+                    }
+                }
+                next();
+            }
+
+            function type() {
+                if (i <= full.length) {
+                    render();
+                    i++;
+                    setTimeout(type, 80);
+                } else {
+                    setTimeout(typeSubtitle, 300);
+                }
+            }
+            type();
+        }, 1700);
+
+        var typingDone = false;
+        var blazorReady = false;
+
+        function hideLoader() {
+            var screen = document.getElementById('loading-screen');
+            if (!screen) return;
+            screen.classList.add('ls-hide');
+            setTimeout(function () { if (screen) screen.remove(); }, 500);
+        }
+
+        function tryHide() {
+            if (typingDone && blazorReady) hideLoader();
+        }
+
+        window.siteLoader = {
+            complete: function () { blazorReady = true; tryHide(); },
+            fail: function () { hideLoader(); }
         };
+
+        // Sæt typingDone når al tekst er skrevet + 0.5s pause
+        setTimeout(function () { typingDone = true; tryHide(); }, 3500);
+
+        // Absolut fallback
+        setTimeout(hideLoader, 12000);
     </script>
     <script src="js/site.js"></script>
-    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
-    <script>
-        Blazor.start()
-            .then(function () {
-                window.siteLoader.complete();
-            })
-            .catch(function (error) {
-                window.siteLoader.fail();
-                throw error;
-            });
-    </script>
+    <script src="_framework/blazor.webassembly.js"></script>
 </body>
 
 </html>

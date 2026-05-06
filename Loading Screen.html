@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8" />
+<title>HåndværkerPartner — Loading</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0d10;
+    --bg-2: #14161a;
+    --ink: #f6f4ef;
+    --ink-dim: rgba(246,244,239,0.55);
+    --ink-faint: rgba(246,244,239,0.18);
+    --blue: #1F4FE6;
+    --blue-2: #3D6BFF;
+    --orange: #F26A1F;
+    --orange-2: #FF8A3D;
+    --steel: #c8ccd2;
+    --steel-d: #6a6e76;
+    --tape: #FFC940;
+    --tape-d: #B9851A;
+    --wood: #c79a5e;
+    --wood-d: #8c6432;
+  }
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Inter, system-ui, sans-serif;
+    overflow: hidden;
+  }
+  #root { height: 100%; }
+  .grid {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 14px; padding: 14px; box-sizing: border-box;
+  }
+  @media (min-width: 1100px) {
+    .grid { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; }
+  }
+  .card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--bg);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.04);
+  }
+  .label {
+    position: absolute; left: 14px; top: 12px; z-index: 5;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    background: rgba(0,0,0,0.4);
+    padding: 4px 8px; border-radius: 4px;
+    backdrop-filter: blur(4px);
+  }
+  .label .v { color: var(--orange); margin-right: 8px; }
+  .stage { position: absolute; inset: 0; }
+
+  /* shared workshop background — not space, just a dark room with subtle warm key light */
+  .room { position: absolute; inset: 0; background: var(--bg); }
+  .room::before {
+    /* subtle top key light, no big glow */
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(255,180,120,0.05) 0%, rgba(0,0,0,0) 30%);
+    pointer-events: none;
+  }
+  .room::after {
+    /* faint vignette so cards feel framed */
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 50%, rgba(0,0,0,0.5) 100%);
+    pointer-events: none;
+  }
+
+  /* shared wordmark */
+  .wordmark {
+    display: inline-flex; align-items: center;
+    font-family: Inter, system-ui, sans-serif;
+    font-weight: 900; letter-spacing: -0.01em; line-height: 1;
+    text-transform: uppercase; white-space: nowrap;
+  }
+  .wm-h { color: #fff; }
+  .wm-p { color: var(--blue); margin-left: 0.18em; }
+  .accent {
+    display: inline-block;
+    width: 3px; height: 0.95em; margin-left: 0.22em;
+    background: var(--orange);
+  }
+
+  .center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+
+  .meta {
+    margin-top: 22px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .meta .pct { color: var(--orange); font-weight: 700; min-width: 3ch; text-align: right; }
+
+  /* ============================================================
+     A — MEASURING TAPE
+     A real yellow tape extends across the screen. Tick marks pass
+     under a cursor; numbers count up. Wordmark sits above.
+     ============================================================ */
+  .A .wordmark { font-size: clamp(22px, 3.6vw, 40px); }
+
+  .A .scene {
+    position: absolute; left: 0; right: 0; bottom: 28%;
+    height: 64px;
+    display: flex; align-items: center; justify-content: center;
+    perspective: 800px;
+  }
+  .A .case {
+    position: relative;
+    width: 56px; height: 56px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #d44a14 0%, #9c2f08 100%);
+    box-shadow: inset 0 -6px 0 rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.18), 0 4px 10px rgba(0,0,0,0.4);
+    flex-shrink: 0;
+  }
+  .A .case::before {
+    /* mouth where the tape comes out */
+    content: ''; position: absolute;
+    right: -4px; top: 50%; transform: translateY(-50%);
+    width: 8px; height: 18px;
+    background: #2a2a2a;
+    border-radius: 2px;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.6);
+  }
+  .A .case::after {
+    /* HP badge */
+    content: 'HP'; position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: Inter, sans-serif; font-weight: 900; font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.04em;
+  }
+  .A .tape {
+    position: relative;
+    height: 22px;
+    background: linear-gradient(180deg, #ffd860 0%, #f3b81f 60%, #d99812 100%);
+    border-top: 1px solid rgba(0,0,0,0.15);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    overflow: hidden;
+    width: 0;
+    animation: A-extend 4s cubic-bezier(.5,.0,.2,1) infinite;
+    transform-origin: left center;
+  }
+  @keyframes A-extend {
+    0%   { width: 0px; }
+    8%   { width: 0px; }
+    70%  { width: 460px; }
+    88%  { width: 460px; }
+    100% { width: 0px; }
+  }
+  /* tick marks on the tape */
+  .A .tape::before {
+    content: '';
+    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+    background-image:
+      repeating-linear-gradient(90deg,
+        rgba(0,0,0,0.55) 0 1px, transparent 1px 20px),
+      repeating-linear-gradient(90deg,
+        rgba(0,0,0,0.85) 0 1px, transparent 1px 100px);
+    background-position: 0 0, 0 0;
+  }
+  /* numbers along the tape */
+  .A .tape-numbers {
+    position: absolute; inset: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8px; font-weight: 700;
+    color: rgba(0,0,0,0.7);
+    pointer-events: none;
+  }
+  .A .tape-numbers span {
+    position: absolute; top: 11px;
+    transform: translateX(-50%);
+  }
+  .A .tape-end {
+    /* metal hook on the far end */
+    position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
+    width: 10px; height: 26px;
+    background: linear-gradient(180deg, #e8eaee, #9aa0a8);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  }
+  .A .meta-row {
+    position: absolute; left: 50%; bottom: 16%;
+    transform: translateX(-50%);
+  }
+  .A .meta .num::after {
+    content: '0';
+    counter-reset: cm 0;
+    animation: A-count 4s steps(100) infinite;
+  }
+  .A .meta .num {
+    color: var(--orange); font-weight: 700;
+    counter-reset: cm 0;
+    animation: A-count 4s linear infinite;
+  }
+  .A .meta .num::after {
+    content: counter(cm) " cm";
+  }
+  @keyframes A-count {
+    0%   { counter-reset: cm 0; }
+    70%  { counter-reset: cm 480; }
+    100% { counter-reset: cm 480; }
+  }
+
+  /* ============================================================
+     B — SPIRIT LEVEL
+     A real bubble level: bubble glides into center, settles, the
+     tube glows green, "I VATER" (level) shows, then resets.
+     ============================================================ */
+  .B .wordmark { font-size: clamp(22px, 3.6vw, 40px); }
+  .B .scene {
+    position: absolute; left: 50%; bottom: 26%;
+    transform: translateX(-50%);
+    width: min(80%, 520px); height: 56px;
+  }
+  .B .level-body {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, #2a3030 0%, #1a1f22 100%);
+    border-radius: 6px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      inset 0 -2px 0 rgba(0,0,0,0.4),
+      0 6px 14px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+  .B .level-body::before, .B .level-body::after {
+    /* milled end caps */
+    content: ''; position: absolute; top: 0; bottom: 0; width: 22px;
+    background: linear-gradient(180deg, #3a4044, #1a1f22);
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+  }
+  .B .level-body::before { left: 0; border-right: 1px solid rgba(0,0,0,0.5); }
+  .B .level-body::after  { right: 0; border-left:  1px solid rgba(0,0,0,0.5); }
+
+  .B .vial {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 70%; height: 24px;
+    transform: translate(-50%, -50%);
+    background:
+      linear-gradient(180deg, rgba(180,220,255,0.18), rgba(60,120,160,0.25));
+    border-radius: 12px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.25),
+      inset 0 -1px 0 rgba(0,0,0,0.4),
+      inset 0 0 14px rgba(120,200,255,0.18);
+    overflow: hidden;
+  }
+  /* center reference lines */
+  .B .vial::before, .B .vial::after {
+    content: ''; position: absolute; top: 4px; bottom: 4px;
+    width: 1px; background: rgba(255,255,255,0.55);
+  }
+  .B .vial::before { left: calc(50% - 16px); }
+  .B .vial::after  { left: calc(50% + 16px); }
+
+  .B .bubble {
+    position: absolute; top: 50%; left: 12%;
+    width: 44px; height: 18px;
+    margin-top: -9px;
+    border-radius: 50%;
+    background:
+      radial-gradient(ellipse at 35% 30%, rgba(255,255,255,0.95) 0%, rgba(220,240,255,0.85) 30%, rgba(140,200,240,0.75) 70%, rgba(80,140,200,0.6) 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.6),
+      inset 0 -2px 4px rgba(0,0,0,0.15),
+      0 0 8px rgba(180,220,255,0.4);
+    animation: B-bubble 4s cubic-bezier(.7,.0,.3,1) infinite;
+  }
+  @keyframes B-bubble {
+    0%   { left: 4%;  width: 36px; }
+    20%  { left: 36%; width: 40px; }
+    32%  { left: 60%; width: 38px; }
+    44%  { left: 44%; width: 42px; }
+    56%  { left: calc(50% - 22px); width: 44px; }
+    70%, 92% {
+      left: calc(50% - 22px); width: 44px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.7),
+        inset 0 -2px 4px rgba(0,0,0,0.15),
+        0 0 14px rgba(120,255,160,0.55);
+    }
+    100% { left: 4%; width: 36px; }
+  }
+  /* green "in vater" glow on the vial when bubble is centered */
+  .B .vial-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 30% 80% at 50% 50%, rgba(80,220,140,0.35), transparent 70%);
+    opacity: 0;
+    animation: B-glow 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes B-glow {
+    0%, 60% { opacity: 0; }
+    72%, 90% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .B .meta-row {
+    position: absolute; left: 50%; bottom: 14%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+  .B .meta .label-text { transition: color .2s; }
+  .B .meta .ok {
+    color: var(--ink-dim);
+    animation: B-ok 4s linear infinite;
+  }
+  @keyframes B-ok {
+    0%, 65% { color: var(--ink-dim); }
+    70%, 92% { color: #5DD896; }
+    100% { color: var(--ink-dim); }
+  }
+  /* engraved scale tick marks on level body */
+  .B .level-ticks {
+    position: absolute; left: 22px; right: 22px; top: 4px;
+    height: 6px;
+    background-image: repeating-linear-gradient(90deg,
+      rgba(255,255,255,0.18) 0 1px, transparent 1px 20px);
+  }
+  .B .level-ticks.bottom { top: auto; bottom: 4px; }
+
+  /* ============================================================
+     C — BLUEPRINT
+     Architectural blueprint lines draw themselves over a paper
+     texture; dimensions snap in. Quiet, technical, professional.
+     ============================================================ */
+  .C { background: #0e1722; }
+  .C .paper {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, #0e2236 0%, #081627 100%);
+  }
+  .C .paper::before {
+    /* grid */
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+    background-position: 0 0;
+  }
+  .C .paper::after {
+    /* paper grain / vignette */
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 50% 40%, transparent 50%, rgba(0,0,0,0.55) 100%);
+    pointer-events: none;
+  }
+
+  .C .draft {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -54%);
+    width: min(72%, 520px);
+  }
+  .C svg.plan {
+    width: 100%; height: auto; display: block;
+    overflow: visible;
+  }
+  .C svg.plan .stroke {
+    fill: none;
+    stroke: #9CC6FF;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: C-draw 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(120,180,255,0.35));
+  }
+  .C svg.plan .stroke.s2 { animation-delay: 0.3s; stroke: #B9D4FF; }
+  .C svg.plan .stroke.s3 { animation-delay: 0.6s; stroke: #DDE9FF; }
+  .C svg.plan .dim {
+    fill: none;
+    stroke: var(--orange);
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: C-dim 4s ease-in-out infinite;
+    animation-delay: 1.2s;
+    filter: drop-shadow(0 0 4px rgba(242,106,31,0.5));
+  }
+  .C svg.plan text {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8px;
+    fill: var(--orange);
+    opacity: 0;
+    animation: C-fade 4s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+  @keyframes C-draw {
+    0%   { stroke-dashoffset: 1200; }
+    35%  { stroke-dashoffset: 0; }
+    85%  { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+  @keyframes C-dim {
+    0%   { stroke-dashoffset: 200; }
+    25%  { stroke-dashoffset: 0; }
+    85%  { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+  @keyframes C-fade {
+    0%, 10%   { opacity: 0; }
+    25%, 85%  { opacity: 1; }
+    100%      { opacity: 0; }
+  }
+
+  .C .wordmark { font-size: clamp(20px, 3vw, 34px); }
+  .C .header {
+    position: absolute; left: 50%; top: 12%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .C .footer {
+    position: absolute; left: 50%; bottom: 14%;
+    transform: translateX(-50%);
+  }
+  /* small T-square mark in corners — workshop chrome */
+  .C .corner {
+    position: absolute;
+    width: 40px; height: 40px;
+    border-color: rgba(156,198,255,0.35);
+    border-style: solid; border-width: 0;
+  }
+  .C .corner.tl { top: 16px; left: 16px; border-top-width: 1px; border-left-width: 1px; }
+  .C .corner.tr { top: 16px; right: 16px; border-top-width: 1px; border-right-width: 1px; }
+  .C .corner.bl { bottom: 16px; left: 16px; border-bottom-width: 1px; border-left-width: 1px; }
+  .C .corner.br { bottom: 16px; right: 16px; border-bottom-width: 1px; border-right-width: 1px; }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="grid">
+
+    <!-- ====================== A — MEASURING TAPE ====================== -->
+    <div class="card A" data-screen-label="A — Maalebaand">
+      <div class="label"><span class="v">A</span>Målebånd</div>
+      <div class="stage">
+        <div class="room"></div>
+
+        <div class="center">
+          <div class="wordmark">
+            <span class="wm-h">HÅNDVÆRKER</span><span class="wm-p">PARTNER</span>
+            <span class="accent"></span>
+          </div>
+        </div>
+
+        <div class="scene">
+          <div class="case"></div>
+          <div class="tape">
+            <div class="tape-numbers" id="A-nums"></div>
+            <div class="tape-end"></div>
+          </div>
+        </div>
+
+        <div class="meta meta-row">
+          <span>Måler op</span>
+          <span class="num"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================== B — SPIRIT LEVEL ====================== -->
+    <div class="card B" data-screen-label="B — Vaterpas">
+      <div class="label"><span class="v">B</span>Vaterpas</div>
+      <div class="stage">
+        <div class="room"></div>
+
+        <div class="center" style="transform: translateY(-8%);">
+          <div class="wordmark">
+            <span class="wm-h">HÅNDVÆRKER</span><span class="wm-p">PARTNER</span>
+            <span class="accent"></span>
+          </div>
+        </div>
+
+        <div class="scene">
+          <div class="level-body">
+            <div class="level-ticks"></div>
+            <div class="level-ticks bottom"></div>
+            <div class="vial">
+              <div class="vial-glow"></div>
+              <div class="bubble"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="meta meta-row">
+          <span class="ok">I vater</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================== C — BLUEPRINT ====================== -->
+    <div class="card C" data-screen-label="C — Tegning">
+      <div class="label"><span class="v">C</span>Tegning</div>
+      <div class="stage">
+        <div class="paper"></div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+
+        <div class="header">
+          <div class="wordmark">
+            <span class="wm-h">HÅNDVÆRKER</span><span class="wm-p">PARTNER</span>
+            <span class="accent"></span>
+          </div>
+        </div>
+
+        <div class="draft">
+          <svg class="plan" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid meet">
+            <!-- house outline -->
+            <path class="stroke" d="M 40 160 L 40 90 L 200 30 L 360 90 L 360 160 Z"/>
+            <!-- floor line -->
+            <path class="stroke s2" d="M 40 160 L 360 160"/>
+            <!-- door -->
+            <path class="stroke s2" d="M 180 160 L 180 120 L 220 120 L 220 160"/>
+            <!-- windows -->
+            <path class="stroke s3" d="M 80 130 L 130 130 L 130 100 L 80 100 Z M 105 100 L 105 130 M 80 115 L 130 115"/>
+            <path class="stroke s3" d="M 270 130 L 320 130 L 320 100 L 270 100 Z M 295 100 L 295 130 M 270 115 L 320 115"/>
+            <!-- chimney -->
+            <path class="stroke s2" d="M 280 60 L 280 40 L 300 40 L 300 72"/>
+
+            <!-- dimension line -->
+            <path class="dim" d="M 40 190 L 360 190 M 40 184 L 40 196 M 360 184 L 360 196"/>
+            <text x="200" y="206" text-anchor="middle">8.40 m</text>
+
+            <!-- vertical dimension -->
+            <path class="dim" d="M 380 30 L 380 160 M 374 30 L 386 30 M 374 160 L 386 160"/>
+            <text x="380" y="98" text-anchor="middle" transform="rotate(90 380 98)">3.20 m</text>
+          </svg>
+        </div>
+
+        <div class="meta footer">
+          <span>Tegner plan</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Place numeric labels along the measuring tape
+  (function() {
+    const nums = document.getElementById('A-nums');
+    if (!nums) return;
+    // tape extends to 460px, marks every 50px starting at 10
+    for (let cm = 10; cm <= 90; cm += 10) {
+      const px = cm * 5;          // 50px per 10cm
+      if (px > 460) break;
+      const s = document.createElement('span');
+      s.style.left = px + 'px';
+      s.textContent = cm;
+      nums.appendChild(s);
+    }
+  })();
+</script>
+</body>
+</html>
