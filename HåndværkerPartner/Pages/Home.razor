@@ -14,7 +14,7 @@
             <li><a href="#om-os" @onclick="NavOmOs" @onclick:preventDefault>Om HåndværkerPartner</a></li>
             <li><a href="meta">Meta Ads</a></li>
             <li><a href="google-ads">Google Ads</a></li>
-            <li><a href="webudvikling">Hjemmesider</a></li>
+            <li><a href="webudvikling">WEB</a></li>
             <li><a href="kontakt" class="nav-cta">Kontakt os</a></li>
         </ul>
         <button class="hamburger" @onclick="ToggleMenu" aria-label="Menu">
@@ -61,33 +61,38 @@
             <p class="section-subtitle">Tre dokumenterede marketingløsninger der tilsammen fylder din kalender, styrker din synlighed og skalerer din omsætning.</p>
         </div>
 
-        <div class="services-grid-new">
-            <div class="service-card-new">
-                <div class="service-card-header">
-                    <h3>Meta Ads</h3>
-                    <img src="Pictures/meta-logo.png" alt="Meta" class="service-logo" />
+        <div class="services-grid-new" @onmouseleave="ResetActiveServicePanel">
+            @foreach (var service in servicePanels)
+            {
+                var isActive = activeServicePanel == service.Key;
+
+                <div class="service-card-new @(isActive ? "is-active" : null)"
+                     @onmouseover="@(() => SetActiveServicePanel(service.Key))">
+                    <div class="service-card-header">
+                        <h3>@service.Title</h3>
+                        @if (service.Key == "meta")
+                        {
+                            <img src="Pictures/meta-logo.png" alt="Meta" class="service-logo" />
+                        }
+                        else if (service.Key == "google")
+                        {
+                            <img src="Pictures/google-ads-logo.png" alt="Google Ads" class="service-logo" />
+                        }
+                        else
+                        {
+                            <svg class="service-logo" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M8 7l-5 5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 7l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 4l-4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        }
+                    </div>
+                    <div class="service-card-body @(isActive ? "is-active" : null)">
+                        <p>@service.Body</p>
+                        <a href="@service.Href" class="service-link-more">Se mere <span>→</span></a>
+                    </div>
                 </div>
-                <p>Kør målrettede Meta-kampagner der rammer præcis de kunder der har brug for en håndværker – og gør dem til billige, kvalificerede leads. Vi håndterer opsætning, optimering og rapportering for maksimal ROI.</p>
-                <a href="meta" class="service-link-more">Se mere <span>→</span></a>
-            </div>
-            <div class="service-card-new">
-                <div class="service-card-header">
-                    <h3>Google Ads</h3>
-                    <img src="Pictures/google-ads-logo.png" alt="Google Ads" class="service-logo" />
-                </div>
-                <p>Lad din virksomhed dukke op øverst, præcis når kunderne søger efter det du laver – og betal kun når de klikker. Vi optimerer dine Google Ads-kampagner for bedre synlighed og flere kvalificerede leads til lavere omkostninger.</p>
-                <a href="google-ads" class="service-link-more">Se mere <span>→</span></a>
-            </div>
-            <div class="service-card-new">
-                <div class="service-card-header">
-                    <h3>Hjemmeside</h3>
-                    <svg class="service-logo" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" opacity="0.3"/><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 12H4V6h16v10z"/>
-                    </svg>
-                </div>
-                <p>Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs. Vi bygger responsive websites der er optimeret for søgninger og designet til at generere flere orders.</p>
-                <a href="webudvikling" class="service-link-more">Se mere <span>→</span></a>
-            </div>
+            }
         </div>
 
         <div class="services-accordion">
@@ -204,80 +209,8 @@
     </div>
 </section>
 
-<!-- CONTACT -->
-<section class="section contact" id="kontakt">
-    <div class="section-inner">
-        <div class="contact-inner">
-            <div class="contact-text">
-                <span class="section-tag">Kom i gang</span>
-                <h2 class="section-title">Lad os snakke om din vækst</h2>
-                <p class="section-subtitle">Book en gratis og uforpligtende samtale, og find ud af om vi er det rette match for din virksomhed.</p>
-
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        </div>
-                        <span>Ring til os – ingen binding, kun rådgivning</span>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        </div>
-                        <span>info@haandvaerkerpartner.dk</span>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <span>Danmark – vi arbejder med kunder i hele landet</span>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        </div>
-                        <span>Svar inden for 24 timer på hverdage</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-form">
-                <h3 style="font-size:22px; font-weight:800; margin-bottom:6px;">Gratis rådgivning</h3>
-                <p style="font-size:14px; color:#666; margin-bottom:24px;">Udfyld formularen og vi kontakter dig hurtigst muligt.</p>
-
-                @if (formSent)
-                {
-                    <div class="success-msg">
-                        ✓ Tak! Vi kontakter dig inden for 24 timer.
-                    </div>
-                }
-                else
-                {
-                    <div class="form-group">
-                        <label class="form-label">Navn</label>
-                        <input class="form-control" type="text" placeholder="Dit fulde navn" @bind="formName" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Telefon</label>
-                        <input class="form-control" type="tel" placeholder="Dit telefonnummer" @bind="formPhone" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">E-mail</label>
-                        <input class="form-control" type="email" placeholder="din@email.dk" @bind="formEmail" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Virksomhed</label>
-                        <input class="form-control" type="text" placeholder="Hvad laver din virksomhed?" @bind="formCompany" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Besked (valgfrit)</label>
-                        <textarea class="form-control" placeholder="Fortæl os lidt om din situation..." @bind="formMessage"></textarea>
-                    </div>
-                    <button class="form-submit" @onclick="SubmitForm">Send besked →</button>
-                }
-            </div>
-        </div>
-    </div>
+<section id="kontakt">
+    <ProductPageCta />
 </section>
 
 <!-- FOOTER -->
@@ -301,13 +234,14 @@
     private bool showScrollTop = false;
     private bool atBottom = false;
     private int openService = -1;
+    private string activeServicePanel = "meta";
 
-    private bool formSent = false;
-    private string formName = "";
-    private string formPhone = "";
-    private string formEmail = "";
-    private string formCompany = "";
-    private string formMessage = "";
+    private readonly List<ServicePanel> servicePanels =
+    [
+        new("meta", "Meta Ads", "Kør målrettede Meta-kampagner der rammer præcis de kunder der har brug for en håndværker – og gør dem til billige, kvalificerede leads. Vi håndterer opsætning, optimering og rapportering for maksimal ROI.", "meta"),
+        new("google", "Google Ads", "Lad din virksomhed dukke op øverst, præcis når kunderne søger efter det du laver – og betal kun når de klikker. Vi optimerer dine Google Ads-kampagner for bedre synlighed og flere kvalificerede leads til lavere omkostninger.", "google-ads"),
+        new("web", "WEB", "Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs. Vi bygger responsive websites der er optimeret for søgninger og designet til at generere flere orders.", "webudvikling")
+    ];
 
     private string NavbarClass => scrolled ? "navbar scrolled" : "navbar";
     private string NavLinksClass => menuOpen ? "nav-links open" : "nav-links";
@@ -334,6 +268,8 @@
     }
 
     private void ToggleService(int i) => openService = openService == i ? -1 : i;
+    private void SetActiveServicePanel(string key) => activeServicePanel = key;
+    private void ResetActiveServicePanel() => activeServicePanel = "meta";
     private void ToggleMenu() => menuOpen = !menuOpen;
 
     private async Task NavHero() { menuOpen = false; await ScrollTo("hero"); }
@@ -360,11 +296,5 @@
         await JS.InvokeVoidAsync("scrollToSection", fragment[1..]);
     }
 
-    private void SubmitForm()
-    {
-        if (!string.IsNullOrWhiteSpace(formName) && !string.IsNullOrWhiteSpace(formEmail))
-        {
-            formSent = true;
-        }
-    }
+    private sealed record ServicePanel(string Key, string Title, string Body, string Href);
 }

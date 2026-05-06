@@ -1,5 +1,7 @@
 .google-hero-page {
-    background: #ffffff;
+    background:
+        radial-gradient(circle at top right, rgba(232, 119, 34, 0.08), transparent 24%),
+        linear-gradient(180deg, #f6f1eb 0%, #ffffff 42%);
     color: #15171c;
     padding: 5.5rem 1.5rem 5.5rem;
 }
@@ -8,13 +10,13 @@
     max-width: 1160px;
     margin: 0 auto;
     min-height: calc(100vh - 5.5rem);
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .google-hero-inner {
-    max-width: 1020px;
-    text-align: center;
+    max-width: 760px;
+    text-align: left;
 }
 
 .google-label {
@@ -22,31 +24,31 @@
     margin: 0 0 1.4rem;
     padding: 0.46rem 1rem;
     border-radius: 999px;
-    border: 1px solid #ccd5e3;
-    background: #f7faff;
-    color: #315fbd;
+    border: 1px solid #d9d1c8;
+    background: rgba(255,255,255,0.82);
+    color: var(--orange-dark);
     font-size: 0.78rem;
-    font-weight: 700;
+    font-weight: 100;
     letter-spacing: 0.12em;
 }
 
 .google-hero h1 {
     margin: 0;
-    font-size: clamp(1.7rem, 5.8vw, 2rem);
-    line-height: 1.04;
-    letter-spacing: -0.035em;
-    font-weight: 700;
+    font-size: clamp(2.5rem, 5.6vw, 4.9rem);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+    font-weight: 400;
 }
 
 .google-hero h1 span {
-    color: #2563eb;
+    color: var(--orange);
 }
 
 .google-sub {
     margin: 1.8rem 0 0;
-    max-width: 78ch;
-    font-size: clamp(0.92rem, 1.2vw, 1.05rem);
-    line-height: 1.6;
+    max-width: 62ch;
+    font-size: clamp(1rem, 1.35vw, 1.15rem);
+    line-height: 1.72;
     color: #4a5565;
 }
 
@@ -60,8 +62,8 @@
     justify-content: center;
     padding: 0.9rem 1.35rem;
     border-radius: 12px;
-    border: 1px solid #2563eb;
-    background: #2563eb;
+    border: 1px solid var(--orange);
+    background: var(--orange);
     color: #ffffff;
     text-decoration: none;
     font-weight: 700;
@@ -71,7 +73,162 @@
 .google-cta:hover {
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 12px 24px rgba(232, 119, 34, 0.28);
+}
+
+.google-process {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-top: 1rem;
+}
+
+.google-process-header {
+    margin-bottom: 1rem;
+}
+
+.google-process-eyebrow {
+    margin: 0;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7a6555;
+    font-weight: 600;
+}
+
+.google-process-track {
+    display: flex;
+    gap: 0.9rem;
+    align-items: stretch;
+}
+
+.google-process-card {
+    appearance: none;
+    flex: 0 0 13.6%;
+    min-height: 460px;
+    padding: 1.35rem 1.4rem 1.4rem;
+    border: 1px solid #ddd4ca;
+    background: rgba(255,255,255,0.74);
+    color: #15171c;
+    text-align: left;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    transition: flex-basis 0.35s ease, background 0.28s ease, color 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    overflow: hidden;
+}
+
+.google-process-card.is-active {
+    flex-basis: 39%;
+    background: #fffdfa;
+    color: #15171c;
+    border-color: #d7b796;
+    box-shadow: 0 18px 40px rgba(35, 28, 20, 0.08);
+}
+
+.google-process-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.google-process-number {
+    font-size: 1.8rem;
+    letter-spacing: -0.04em;
+    color: #9ca3af;
+}
+
+.google-process-card.is-active .google-process-number {
+    color: rgba(232, 119, 34, 0.55);
+}
+
+.google-process-head {
+    margin-top: 1.35rem;
+}
+
+.google-process-head h2 {
+    margin: 0;
+    font-size: clamp(1.25rem, 1.7vw, 1.8rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    color: inherit;
+}
+
+.google-process-head p {
+    margin: 0.9rem 0 0;
+    font-size: 0.98rem;
+    line-height: 1.45;
+    color: #4a5565;
+}
+
+.google-process-body {
+    margin-top: 2rem;
+    max-width: 34rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .22s ease, transform .22s ease;
+    pointer-events: none;
+}
+
+.google-process-body.is-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.google-process-body p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.56;
+    color: #5b6472;
+}
+
+.google-kpi-section {
+    max-width: 1180px;
+    margin: 4rem auto 0;
+}
+
+.google-kpi-grid {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid #ddd4ca;
+    border-bottom: 1px solid #ddd4ca;
+}
+
+.google-kpi-card {
+    flex: 1 1 0;
+    padding: 1.7rem 1.2rem;
+    border: none;
+    background: transparent;
+    text-align: center;
+    position: relative;
+}
+
+.google-kpi-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 1px;
+    height: 52px;
+    transform: translateY(-50%);
+    background: #ddd4ca;
+}
+
+.google-kpi-value {
+    font-size: clamp(1.9rem, 2.8vw, 2.7rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #15171c;
+    font-weight: 600;
+}
+
+.google-kpi-label {
+    margin-top: 0.55rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6a7280;
+    font-weight: 600;
 }
 
 .google-cards {
@@ -97,7 +254,7 @@
 }
 
 .google-cards-headline span {
-    color: #2563eb;
+    color: var(--orange);
 }
 
 .google-cards-controls {
@@ -112,8 +269,8 @@
     width: 44px;
     height: 44px;
     border-radius: 999px;
-    border: 1px solid #2563eb;
-    background: #2563eb;
+    border: 1px solid var(--orange);
+    background: var(--orange);
     color: #ffffff;
     display: inline-flex;
     align-items: center;
@@ -133,7 +290,7 @@
     border-radius: 24px;
     padding: 2rem 2rem 2.2rem;
     background:
-        radial-gradient(circle at 72% 0%, rgba(96, 165, 250, 0.16), transparent 42%),
+        radial-gradient(circle at 72% 0%, rgba(232, 119, 34, 0.14), transparent 42%),
         linear-gradient(168deg, #161d28 0%, #0d121d 62%, #090d16 100%);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
     transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
@@ -193,9 +350,9 @@
 
 .google-card:hover {
     background:
-        radial-gradient(circle at 72% 0%, rgba(147, 197, 253, 0.28), transparent 42%),
-        linear-gradient(168deg, #1f4fd6 0%, #1d46bc 58%, #183792 100%);
-    border-color: #6f9cf7;
+        radial-gradient(circle at 72% 0%, rgba(240, 138, 58, 0.24), transparent 42%),
+        linear-gradient(168deg, #f08a3a 0%, #e87722 58%, #c65f13 100%);
+    border-color: #f2a15e;
     transform: translateY(-2px);
 }
 
@@ -299,6 +456,42 @@
         min-height: calc(86vh - 5.25rem);
     }
 
+    .google-hero-inner {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .google-process-track {
+        flex-direction: column;
+    }
+
+    .google-process-card,
+    .google-process-card.is-active {
+        flex-basis: auto;
+        min-height: auto;
+    }
+
+    .google-process-head h2 {
+        font-size: clamp(1.7rem, 8vw, 2.4rem);
+    }
+
+    .google-process-body {
+        margin-top: 1.4rem;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    .google-kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0;
+    }
+
+    .google-kpi-card:not(:last-child)::after {
+        display: none;
+    }
+
     .google-cards-wrap {
         flex-direction: column;
         align-items: flex-start;
@@ -347,5 +540,15 @@
         max-height: none;
         opacity: 1;
         overflow: visible;
+    }
+}
+
+@media (max-width: 640px) {
+    .google-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .google-kpi-card {
+        padding: 1.3rem 1.1rem;
     }
 }

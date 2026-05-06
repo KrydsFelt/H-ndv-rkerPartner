@@ -4,23 +4,109 @@
 
 <NavBar />
 
-<main class="web-hero-page">
+<main class="web-page">
     <section class="web-hero">
-        <div class="web-hero-inner">
-            <p class="web-label">KOMMER SNART</p>
+        <div class="web-hero-copy">
+            <p class="web-label">WEB</p>
             <h1>
-                Få en moderne
-                <span>hjemmeside</span>
-                der skaber tillid og flere henvendelser.
+                Hjemmesider der ser
+                <span>skarpe ud</span>
+                og konverterer i praksis.
             </h1>
             <p class="web-sub">
-                Vi designer og udvikler hjemmesider til håndværkere, hvor budskab, struktur og visuel kvalitet arbejder sammen for at gøre det nemt at vælge dig.
+                Vi designer og udvikler hjemmesider til håndværkere, hvor struktur, hastighed, tillid og tydelige budskaber arbejder sammen for at skabe flere henvendelser.
             </p>
             <div class="web-hero-actions">
                 <a href="kontakt" class="web-cta">Book en gratis hjemmeside-gennemgang</a>
             </div>
         </div>
+
     </section>
+
+    <section class="web-suite">
+        <div class="web-suite-intro">
+            <p class="web-section-eyebrow">Website Development</p>
+            <h2>En hjemmeside skal være mere end bare flot</h2>
+            <p>
+                Inspirationen her er den samme disciplin, man ser i stærke front-end studios: tydelig struktur, skarpe layouts og en oplevelse der føles gennemtænkt.
+                Hos os bliver det oversat til håndværkerbranchen, så det ikke ender som design for designets skyld.
+            </p>
+        </div>
+
+        <div class="web-suite-grid">
+            @foreach (var item in suiteItems)
+            {
+                <article class="web-suite-card">
+                    <p class="web-suite-kicker">@item.Kicker</p>
+                    <h3>@item.Title</h3>
+                    <p>@item.Body</p>
+                </article>
+            }
+        </div>
+    </section>
+
+    <section class="web-process" @onmouseleave="ResetActiveStep">
+        <div class="web-process-header">
+            <p class="web-section-eyebrow">Process</p>
+            <h2>Fra første indtryk til færdig løsning</h2>
+        </div>
+
+        <div class="web-process-track">
+            @foreach (var step in processSteps)
+            {
+                var isActive = activeStep == step.Number;
+
+                <button type="button"
+                        class="web-process-card @(isActive ? "is-active" : null)"
+                        @onmouseover="@(() => SetActiveStep(step.Number))"
+                        aria-expanded="@isActive">
+                    <div class="web-process-top">
+                        <span class="web-process-number">@step.Number</span>
+                    </div>
+
+                    <div class="web-process-head">
+                        <h3>@step.Title</h3>
+                        <p>@step.Subtitle</p>
+                    </div>
+
+                    <div class="web-process-body @(isActive ? "is-active" : null)">
+                        <p>@step.Body</p>
+                    </div>
+                </button>
+            }
+        </div>
+    </section>
+
+    <ProductPageCta />
 </main>
 
 <SiteFooter />
+
+@code {
+    private string activeStep = "01";
+
+    private readonly List<SuiteItem> suiteItems =
+    [
+        new("01", "Struktur & wireframing", "Vi lægger en klar sidearkitektur, så brugeren hurtigt forstår, hvem du er, hvad du laver, og hvorfor de skal vælge dig."),
+        new("02", "UI design", "Vi designer sider med stærke kontraster, roligt hierarki og et udtryk der føles professionelt uden at blive generisk."),
+        new("03", "Responsiv udvikling", "Siden bygges responsivt fra starten, så den performer stabilt på tværs af skærmstørrelser og brugeradfærd."),
+        new("04", "Konverteringsfokus", "Kontaktpunkter, sektioner og CTA’er placeres med fokus på at skabe konkrete henvendelser frem for bare visuel wow-effekt."),
+        new("05", "Performance & kvalitet", "Vi prioriterer hurtig load, ryddelig frontend og en oplevelse der føles let, skarp og gennemført hele vejen igennem."),
+        new("06", "Løbende videreudvikling", "Når siden er live, kan vi justere indhold, sektioner og brugerflow efter det, der virker bedst i praksis.")
+    ];
+
+    private readonly List<ProcessStep> processSteps =
+    [
+        new("01", "Afdækning", "Mål, ydelser og position", "Vi starter med at forstå din forretning, de opgaver du vil have mere af, og hvordan din hjemmeside skal støtte salget i praksis."),
+        new("02", "Struktur", "Flow, sektioner og indhold", "Her definerer vi informationshierarki, sideopbygning og indhold, så brugeren hurtigt møder de vigtigste argumenter og CTA’er."),
+        new("03", "Design", "Visuelt udtryk og tillid", "Vi omsætter strategien til et design, der føles skarpt, moderne og troværdigt, uden at miste den kommercielle retning."),
+        new("04", "Udvikling", "Frontend, responsivitet og performance", "Designet bygges til en hurtig og smidig oplevelse, hvor siden fungerer stærkt på både mobil og desktop."),
+        new("05", "Launch", "Test, finpudsning og næste skridt", "Før lancering gennemgår vi siden med fokus på detaljer, hastighed og oplevelse, så den står skarpt fra første dag.")
+    ];
+
+    private void SetActiveStep(string number) => activeStep = number;
+    private void ResetActiveStep() => activeStep = "01";
+
+    private sealed record SuiteItem(string Kicker, string Title, string Body);
+    private sealed record ProcessStep(string Number, string Title, string Subtitle, string Body);
+}

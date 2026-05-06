@@ -4,85 +4,88 @@
 
 <NavBar />
 
-<div class="kontakt-hero">
-    <div class="kontakt-hero-inner">
-        <p class="section-tag">Kom i gang</p>
-        <h2>Lad os snakke om din vækst</h2>
-        <p class="kontakt-hero-sub">Book en gratis og uforpligtende samtale og find ud af, om vi er det rette match for din virksomhed.</p>
+<main class="contact-page">
+    <section class="contact-split">
+        <div class="contact-split-copy">
+            <p class="contact-eyebrow">Kontakt os</p>
+            <h1>
+                Sammen kan vi skabe
+                <span>ekstraordinær vækst.</span>
+            </h1>
 
-        <div class="kontakt-info-row">
-            <div class="kontakt-info-card">
-                <div class="kontakt-info-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </div>
-                <div class="kontakt-info-label">Telefon</div>
-                <div class="kontakt-info-value">Ring til os – ingen binding</div>
-            </div>
-            <div class="kontakt-info-card">
-                <div class="kontakt-info-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                </div>
-                <div class="kontakt-info-label">E-mail</div>
-                <div class="kontakt-info-value">info@haandvaerkerpartner.dk</div>
-            </div>
-            <div class="kontakt-info-card">
-                <div class="kontakt-info-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-                <div class="kontakt-info-label">Svartid</div>
-                <div class="kontakt-info-value">Inden for 24 timer på hverdage</div>
-            </div>
+            <a href="mailto:info@haandvaerkerpartner.dk" class="contact-mail-link">
+                <span class="contact-mail-link-text">info@haandvaerkerpartner.dk</span>
+            </a>
         </div>
-    </div>
-</div>
 
-<div class="kontakt-form-section">
-    <div class="kontakt-form-card">
-        <h2>Gratis rådgivning</h2>
-        <p class="kontakt-form-sub">Udfyld formularen – vi kontakter dig hurtigst muligt.</p>
+        <div class="contact-form-panel">
+            @if (formSent)
+            {
+                <div class="contact-success-card">
+                    <h2>Tak for din henvendelse</h2>
+                    <p>Vi vender tilbage inden for 24 timer på hverdage.</p>
+                </div>
+            }
+            else
+            {
+                <div class="contact-form-shell">
+                    <div class="contact-form-group">
+                        <input class="contact-input" type="text" placeholder="Dit fulde navn" @bind="formName" />
+                    </div>
 
-        @if (formSent)
-        {
-            <div class="success-msg">✓ Tak! Vi kontakter dig inden for 24 timer.</div>
-        }
-        else
-        {
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Navn</label>
-                    <input class="form-control" type="text" placeholder="Dit fulde navn" @bind="formName" />
+                    <div class="contact-form-group">
+                        <input class="contact-input" type="email" placeholder="Email" @bind="formEmail" />
+                    </div>
+
+                    <fieldset class="contact-interest-group">
+                        <legend>Hvad er du interesseret i? <span>*</span></legend>
+
+                        @foreach (var option in interestOptions)
+                        {
+                            <label class="contact-radio-option">
+                                <input type="radio" name="interest" checked="@(selectedInterest == option)" @onchange="@(_ => selectedInterest = option)" />
+                                <span class="contact-radio-mark" aria-hidden="true"></span>
+                                <span>@option</span>
+                            </label>
+                        }
+                    </fieldset>
+
+                    <div class="contact-form-group">
+                        <textarea class="contact-textarea" placeholder="Skriv din besked" @bind="formMessage"></textarea>
+                    </div>
+
+                    <button class="contact-submit" @onclick="SubmitForm">Send formular ↗</button>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Telefon</label>
-                    <input class="form-control" type="tel" placeholder="Dit telefonnummer" @bind="formPhone" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label">E-mail</label>
-                <input class="form-control" type="email" placeholder="din@email.dk" @bind="formEmail" />
-            </div>
-            <div class="form-group">
-                <label class="form-label">Virksomhed</label>
-                <input class="form-control" type="text" placeholder="Hvad laver din virksomhed?" @bind="formCompany" />
-            </div>
-            <div class="form-group">
-                <label class="form-label">Besked (valgfrit)</label>
-                <textarea class="form-control" placeholder="Fortæl os lidt om din situation..." @bind="formMessage"></textarea>
-            </div>
-            <button class="form-submit" @onclick="SubmitForm">Send besked →</button>
-        }
-    </div>
-</div>
+            }
+        </div>
+    </section>
+</main>
 
 <SiteFooter />
 
 @code {
-    private bool formSent = false;
-    private string formName = "", formPhone = "", formEmail = "", formCompany = "", formMessage = "";
+    private bool formSent;
+    private string formName = string.Empty;
+    private string formEmail = string.Empty;
+    private string formMessage = string.Empty;
+    private string selectedInterest = string.Empty;
+
+    private readonly string[] interestOptions =
+    [
+        "Meta Ads",
+        "Google Ads",
+        "Webudvikling",
+        "SEO",
+        "Noget andet"
+    ];
 
     private void SubmitForm()
     {
-        if (!string.IsNullOrWhiteSpace(formName) && !string.IsNullOrWhiteSpace(formEmail))
+        if (!string.IsNullOrWhiteSpace(formName)
+            && !string.IsNullOrWhiteSpace(formEmail)
+            && !string.IsNullOrWhiteSpace(selectedInterest))
+        {
             formSent = true;
+        }
     }
 }

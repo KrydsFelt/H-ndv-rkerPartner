@@ -22,6 +22,57 @@
         </div>
     </section>
 
+    <section class="google-process" @onmouseleave="ResetActiveProcess">
+        <div class="google-process-header">
+            <p class="google-process-eyebrow">Process</p>
+        </div>
+        <div class="google-process-track">
+            @foreach (var step in processSteps)
+            {
+                var isActive = activeProcessStep == step.Number;
+
+                <button type="button"
+                        class="google-process-card @(isActive ? "is-active" : null)"
+                        @onmouseover="@(() => SetActiveProcess(step.Number))"
+                        aria-expanded="@isActive">
+                    <div class="google-process-top">
+                        <span class="google-process-number">@step.Number</span>
+                    </div>
+
+                    <div class="google-process-head">
+                        <h2>@step.Title</h2>
+                        <p>@step.Subtitle</p>
+                    </div>
+
+                    <div class="google-process-body @(isActive ? "is-active" : null)">
+                        <p>@step.Body</p>
+                    </div>
+                </button>
+            }
+        </div>
+    </section>
+
+    <section class="google-kpi-section">
+        <div class="google-kpi-grid">
+            <article class="google-kpi-card">
+                <div class="google-kpi-value">33 kr.</div>
+                <div class="google-kpi-label">Laveste leadpris</div>
+            </article>
+            <article class="google-kpi-card">
+                <div class="google-kpi-value">Top 3</div>
+                <div class="google-kpi-label">Placeringer på søgninger</div>
+            </article>
+            <article class="google-kpi-card">
+                <div class="google-kpi-value">0 dages</div>
+                <div class="google-kpi-label">Binding</div>
+            </article>
+            <article class="google-kpi-card">
+                <div class="google-kpi-value">&gt;24 t</div>
+                <div class="google-kpi-label">Typisk svartid</div>
+            </article>
+        </div>
+    </section>
+
     <section class="google-cards-wrap">
         <h2 class="google-cards-headline">
             Det her <span>hjælper</span> vi dig med, i din <span>branche</span>.
@@ -115,6 +166,8 @@
             </details>
         </div>
     </section>
+
+    <ProductPageCta />
 </main>
 
 <SiteFooter />
@@ -122,6 +175,16 @@
 @code {
     private const int CardsPerPage = 2;
     private int cardStartIndex = 0;
+    private string activeProcessStep = "01";
+
+    private readonly List<ProcessStep> processSteps =
+    [
+        new("01", "Afdækning", "Ydelser, geografi og mål", "Vi starter med at kortlægge dine vigtigste ydelser, lokalområder og hvilken type opgaver du helst vil have flere af. Det giver os retning på, hvilke søgninger der er forretningskritiske, og hvilke der bør sorteres fra."),
+        new("02", "Vurdering", "Potentiale og købssignaler", "Herefter vurderer vi søgeintention, konkurrencesituation og budgetmuligheder. Du får en konkret vurdering af, hvor Google Ads kan skabe hurtig værdi, og hvor indsatsen kræver en mere langsigtet tilgang."),
+        new("03", "Struktur", "Søgeord, annoncer og landing pages", "Vi bygger en skarp kampagnestruktur med søgeord, annoncer og destinationssider, der hænger logisk sammen. Det gør kontoen lettere at styre, lettere at optimere og stærkere i forhold til både kvalitetsscore og konvertering."),
+        new("04", "Optimering", "Søgetermer, bud og kvalitet", "Når kampagnerne er live, arbejder vi løbende med søgetermer, budstrategier, annoncevarianter og negativ match. Målet er at bruge budgettet mere præcist og løfte kvaliteten af de henvendelser, du får ind."),
+        new("05", "Sparring", "Rapportering og næste skridt", "Du får ikke bare et overblik over klik og spend, men konkrete anbefalinger til næste skridt. På den måde bliver Google Ads en aktiv del af din vækst, ikke bare en konto der kører i baggrunden.")
+    ];
 
     private readonly List<ServiceCard> cards =
     [
@@ -135,6 +198,9 @@
     private bool CanGoPrev => cardStartIndex > 0;
     private bool CanGoNext => cardStartIndex < MaxSlideIndex;
 
+    private void SetActiveProcess(string number) => activeProcessStep = number;
+    private void ResetActiveProcess() => activeProcessStep = "01";
+
     private void GoNext()
     {
         if (CanGoNext) cardStartIndex++;
@@ -146,4 +212,5 @@
     }
 
     private sealed record ServiceCard(string Icon, string Title, string Body);
+    private sealed record ProcessStep(string Number, string Title, string Subtitle, string Body);
 }

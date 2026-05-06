@@ -22,6 +22,85 @@
         </div>
     </section>
 
+    <section class="meta-process" @onmouseleave="ResetActiveProcess">
+        <div class="meta-process-header">
+            <p class="meta-process-eyebrow">Process</p>
+        </div>
+        <div class="meta-process-track">
+            @foreach (var step in processSteps)
+            {
+                var isActive = activeProcessStep == step.Number;
+
+                <button type="button"
+                        class="meta-process-card @(isActive ? "is-active" : null)"
+                        @onmouseover="@(() => SetActiveProcess(step.Number))"
+                        aria-expanded="@isActive">
+                    <div class="meta-process-top">
+                        <span class="meta-process-number">@step.Number</span>
+                        <span class="meta-process-toggle" aria-hidden="true">@(isActive ? "×" : "+")</span>
+                    </div>
+
+                    <div class="meta-process-head">
+                        <h2>@step.Title</h2>
+                        <p>@step.Subtitle</p>
+                    </div>
+
+                    <div class="meta-process-body @(isActive ? "is-active" : null)">
+                        <p>@step.Body</p>
+                    </div>
+                </button>
+            }
+        </div>
+    </section>
+
+    <section class="meta-kpi-section">
+        <div class="meta-kpi-grid">
+            <article class="meta-kpi-card">
+                <div class="meta-kpi-value">33 kr.</div>
+                <div class="meta-kpi-label">Laveste leadpris</div>
+            </article>
+            <article class="meta-kpi-card">
+                <div class="meta-kpi-value">+1.000</div>
+                <div class="meta-kpi-label">Leads genereret</div>
+            </article>
+            <article class="meta-kpi-card">
+                <div class="meta-kpi-value">0 dages</div>
+                <div class="meta-kpi-label">Binding</div>
+            </article>
+            <article class="meta-kpi-card">
+                <div class="meta-kpi-value">&gt;24 t</div>
+                <div class="meta-kpi-label">Typisk svartid</div>
+            </article>
+        </div>
+    </section>
+
+    <section class="meta-story">
+        <div class="meta-story-row">
+            <div class="meta-story-copy">
+                <h2>Få mere ud af dit annoncebudget og find det, der virker i praksis</h2>
+                <p>
+                    Hos os starter det ikke med platformen. Det starter med din forretning, din kapacitet og den type opgaver, du faktisk vil have ind.
+                    Med flere års praktisk erfaring i marketing for håndværksvirksomheder ved vi, at et annoncebudget kun skaber værdi, hvis det bliver brugt med klar prioritering.
+                </p>
+                <p>
+                    Derfor arbejder vi ikke med standardopsætninger og løse antagelser. Du får en samarbejdspartner, der kombinerer teknisk styr på Meta Ads
+                    med reel forståelse for, hvordan håndværkerbranchen fungerer i praksis, så budgettet ender dér, hvor det giver flest relevante henvendelser.
+                </p>
+                <p>
+                    Stærk performance kommer sjældent af held. Den kommer af erfaring, struktur og løbende test. Gennem årene har vi arbejdet med forskellige
+                    målgrupper, lokalområder og håndværksydelser, og det har lært os, hvor hurtigt resultater ændrer sig, hvis budskab og målretning ikke bliver justeret.
+                </p>
+                <p>
+                    Derfor arbejder vi systematisk med paid social annoncering, hvor data, kreativ retning og branchekendskab spiller sammen. Vi optimerer løbende
+                    dine kampagner, så dine annoncekroner bliver brugt mere præcist, og så din social media annoncering skaber noget, der kan mærkes i kalenderen.
+                </p>
+            </div>
+            <div class="meta-story-media">
+                <img src="Handvaerker.gif" alt="Håndværker i arbejde" class="meta-story-image meta-story-image-cover" />
+            </div>
+        </div>
+    </section>
+
     <section class="meta-cards-wrap">
         <h2 class="meta-cards-headline">
             Det her <span>hjælper</span> vi dig med, i din <span>branche</span>.
@@ -138,6 +217,8 @@
             </details>
         </div>
     </section>
+
+    <ProductPageCta />
 </main>
 
 <SiteFooter />
@@ -145,6 +226,16 @@
 @code {
     private const int CardsPerPage = 2;
     private int cardStartIndex = 0;
+    private string activeProcessStep = "01";
+
+    private readonly List<ProcessStep> processSteps =
+    [
+        new("01", "Afdækning", "Virksomhed, mål og behov", "Vi starter med at gennemgå din virksomhed, hvilke opgaver du gerne vil have mere af, hvor du vil vokse, og hvad der allerede virker i dag. Det giver os et klart billede af, hvilken hjælp du faktisk har brug for, før vi anbefaler noget som helst."),
+        new("02", "Vurdering", "Erfaring møder forretning", "Herefter bruger vi vores erfaring fra håndværkerbranchen til at vurdere potentiale, målgrupper, budgetniveau og sandsynlige flaskehalse. Du får en ærlig vurdering af, hvad der giver mening nu, og hvad der eventuelt bør vente."),
+        new("03", "Strategi", "Budskab, målretning og setup", "Når retningen er på plads, lægger vi en konkret plan for kampagnestruktur, kreative vinkler, tilbud og målretning. Alt bliver bygget med fokus på relevante henvendelser frem for trafik, der bare ser pæn ud i rapporten."),
+        new("04", "Optimering", "Løbende forbedring i praksis", "Når kampagnerne kører, følger vi performance tæt og justerer løbende på budskaber, segmenter og budget. Målet er, at dine annoncekroner bliver brugt skarpere over tid, så indsatsen kan mærkes i kalenderen."),
+        new("05", "Sparring", "Rapportering og næste skridt", "Du får ikke bare tal, men konkret sparring på, hvad de betyder, og hvad vi gør herefter. Det sikrer, at samarbejdet hele tiden er forankret i din virkelighed og i de resultater, du vil skabe.")
+    ];
 
     private readonly List<ServiceCard> cards =
     [
@@ -157,6 +248,9 @@
     private int MaxSlideIndex => Math.Max(0, cards.Count - CardsPerPage);
     private bool CanGoPrev => cardStartIndex > 0;
     private bool CanGoNext => cardStartIndex < MaxSlideIndex;
+
+    private void SetActiveProcess(string number) => activeProcessStep = number;
+    private void ResetActiveProcess() => activeProcessStep = "01";
 
     private void GoNext()
     {
@@ -175,4 +269,5 @@
     }
 
     private sealed record ServiceCard(string Icon, string Title, string Body);
+    private sealed record ProcessStep(string Number, string Title, string Subtitle, string Body);
 }
