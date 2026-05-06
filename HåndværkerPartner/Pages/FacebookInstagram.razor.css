@@ -1,7 +1,30 @@
 .meta-hero-page {
-    background: #ffffff;
-    color: #15171c;
+    position: relative;
+    background:
+        linear-gradient(180deg, rgba(15, 17, 21, 0.68) 0%, rgba(15, 17, 21, 0.74) 100%),
+        rgba(15, 17, 21, 0.72);
+    color: #f5f7fb;
     padding: 5.5rem 1.5rem 5.5rem;
+    overflow: hidden;
+}
+
+.meta-hero-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('/Handvaerker.gif') center/cover no-repeat;
+    opacity: 0.28;
+    pointer-events: none;
+}
+
+.meta-hero-page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(232, 119, 34, 0.24), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(232, 119, 34, 0.16), transparent 26%);
+    pointer-events: none;
 }
 
 .meta-hero {
@@ -10,6 +33,8 @@
     min-height: calc(100vh - 5.5rem);
     display: grid;
     place-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .meta-hero-inner {
@@ -22,9 +47,9 @@
     margin: 0 0 1.4rem;
     padding: 0.46rem 1rem;
     border-radius: 999px;
-    border: 1px solid #ccd5e3;
-    background: #f7faff;
-    color: var(--orange-dark);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.08);
+    color: #f5f7fb;
     font-size: 0.78rem;
     font-weight: 100;
     letter-spacing: 0.12em;
@@ -36,6 +61,7 @@
     line-height: 1.04;
     letter-spacing: -0.035em;
     font-weight: 700;
+    color: #ffffff;
 }
 
 .meta-hero h1 span {
@@ -47,7 +73,7 @@
     max-width: 78ch;
     font-size: clamp(0.92rem, 1.2vw, 1.05rem);
     line-height: 1.6;
-    color: #4a5565;
+    color: rgba(245, 247, 251, 0.82);
 }
 
 .meta-hero-actions {
@@ -479,6 +505,24 @@
 }
 
 @media (max-width: 640px) {
+    .meta-process-card,
+    .meta-process-card.is-active {
+        background: #1f1f22;
+        color: #f6f7fa;
+        border-color: #1f1f22;
+    }
+
+    .meta-process-number,
+    .meta-process-card.is-active .meta-process-number {
+        color: rgba(246, 247, 250, 0.42);
+    }
+
+    .meta-process-head p,
+    .meta-process-card.is-active .meta-process-head p,
+    .meta-process-body p {
+        color: rgba(246, 247, 250, 0.9);
+    }
+
     .meta-kpi-grid {
         grid-template-columns: 1fr;
     }

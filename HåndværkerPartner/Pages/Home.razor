@@ -14,7 +14,7 @@
             <li><a href="#om-os" @onclick="NavOmOs" @onclick:preventDefault>Om HåndværkerPartner</a></li>
             <li><a href="meta">Meta Ads</a></li>
             <li><a href="google-ads">Google Ads</a></li>
-            <li><a href="webudvikling">WEB</a></li>
+            <li><a href="webudvikling">Hjemmesider</a></li>
             <li><a href="kontakt" class="nav-cta">Kontakt os</a></li>
         </ul>
         <button class="hamburger" @onclick="ToggleMenu" aria-label="Menu">
@@ -95,56 +95,6 @@
             }
         </div>
 
-        <div class="services-accordion">
-            <div class="acc-item @(openService == 0 ? "acc-open" : "")" @onclick="@(() => ToggleService(0))">
-                <div class="acc-header">
-                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
-                    <span>Facebook &amp; Instagram Ads</span>
-                    <div class="acc-chevron"></div>
-                </div>
-                <div class="acc-body">Målrettede annoncekampagner på Meta's platforme der genererer billige, kvalitetsleads til din håndværksvirksomhed.</div>
-            </div>
-            <div class="acc-item @(openService == 1 ? "acc-open" : "")" @onclick="@(() => ToggleService(1))">
-                <div class="acc-header">
-                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-                    <span>Google Ads</span>
-                    <div class="acc-chevron"></div>
-                </div>
-                <div class="acc-body">Vis dig øverst i Google-søgninger når kunderne aktivt søger efter netop de ydelser du tilbyder.</div>
-            </div>
-            <div class="acc-item @(openService == 2 ? "acc-open" : "")" @onclick="@(() => ToggleService(2))">
-                <div class="acc-header">
-                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
-                    <span>SEO – Organisk synlighed</span>
-                    <div class="acc-chevron"></div>
-                </div>
-                <div class="acc-body">Bliv fundet gratis på Google over tid med en stærk SEO-strategi der giver langsigtet og bæredygtig trafik.</div>
-            </div>
-            <div class="acc-item @(openService == 3 ? "acc-open" : "")" @onclick="@(() => ToggleService(3))">
-                <div class="acc-header">
-                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-                    <span>Hjemmeside</span>
-                    <div class="acc-chevron"></div>
-                </div>
-                <div class="acc-body">Professionelle, hurtige og konverterende hjemmesider der overbeviser besøgende om at vælge dig.</div>
-            </div>
-            <div class="acc-item @(openService == 4 ? "acc-open" : "")" @onclick="@(() => ToggleService(4))">
-                <div class="acc-header">
-                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-                    <span>Leadgenerering</span>
-                    <div class="acc-chevron"></div>
-                </div>
-                <div class="acc-body">Systematisk tilgang til at skaffe kvalificerede henvendelser – vi sætter systemer op der arbejder for dig døgnet rundt.</div>
-            </div>
-            <div class="acc-item @(openService == 5 ? "acc-open" : "")" @onclick="@(() => ToggleService(5))">
-                <div class="acc-header">
-                    <div class="acc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-                    <span>Analyse &amp; Rapportering</span>
-                    <div class="acc-chevron"></div>
-                </div>
-                <div class="acc-body">Gennemsigtig rapportering så du altid ved præcis hvad du får for dine marketingkroner – ingen skjulte tal.</div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -233,7 +183,6 @@
     private bool menuOpen = false;
     private bool showScrollTop = false;
     private bool atBottom = false;
-    private int openService = -1;
     private string activeServicePanel = "meta";
 
     private readonly List<ServicePanel> servicePanels =
@@ -267,7 +216,6 @@
         StateHasChanged();
     }
 
-    private void ToggleService(int i) => openService = openService == i ? -1 : i;
     private void SetActiveServicePanel(string key) => activeServicePanel = key;
     private void ResetActiveServicePanel() => activeServicePanel = "meta";
     private void ToggleMenu() => menuOpen = !menuOpen;

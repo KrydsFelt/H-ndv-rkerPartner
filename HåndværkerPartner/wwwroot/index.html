@@ -32,59 +32,6 @@
         }
         #loading-screen.ls-hide { opacity: 0; pointer-events: none; }
 
-        #loading-screen .paper {
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-            background-size: 32px 32px;
-            opacity: 0.55;
-            animation: grid-drift 10s linear infinite;
-        }
-        #loading-screen .paper::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 50% 45%, transparent 0%, transparent 32%, rgba(0,0,0,0.56) 100%);
-        }
-        @keyframes grid-drift {
-            from { transform: translate3d(0, 0, 0); }
-            to { transform: translate3d(16px, 16px, 0); }
-        }
-
-        #loading-screen .bg-lines {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        #loading-screen .bg-lines svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-        }
-        #loading-screen .bg-line {
-            fill: none;
-            stroke: rgba(255,255,255,0.05);
-            stroke-width: 1;
-            stroke-dasharray: 320;
-            stroke-dashoffset: 320;
-            animation: bg-draw 5.2s ease-in-out infinite;
-        }
-        #loading-screen .bg-line.l2 { animation-delay: 0.6s; }
-        #loading-screen .bg-line.l3 { animation-delay: 1.2s; }
-        #loading-screen .bg-line.l4 { animation-delay: 1.8s; }
-        #loading-screen .bg-line.l5 { animation-delay: 2.4s; }
-        @keyframes bg-draw {
-            0% { stroke-dashoffset: 320; opacity: 0; }
-            20% { opacity: 1; }
-            60% { stroke-dashoffset: 0; opacity: 0.35; }
-            100% { stroke-dashoffset: -320; opacity: 0; }
-        }
-
         #loading-screen .sequence {
             position: absolute;
             inset: 0;
@@ -173,20 +120,6 @@
 
 <body>
     <div id="loading-screen">
-        <div class="paper"></div>
-        <div class="bg-lines">
-            <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
-                <line class="bg-line l1" x1="0" y1="150" x2="1000" y2="150"/>
-                <line class="bg-line l2" x1="200" y1="0" x2="200" y2="600"/>
-                <line class="bg-line l3" x1="0" y1="400" x2="1000" y2="400"/>
-                <line class="bg-line l4" x1="750" y1="0" x2="750" y2="600"/>
-                <line class="bg-line l5" x1="0" y1="280" x2="500" y2="280"/>
-                <rect class="bg-line l1" x="100" y="80" width="120" height="80" rx="4"/>
-                <rect class="bg-line l3" x="750" y="320" width="160" height="100" rx="4"/>
-                <line class="bg-line l2" x1="100" y1="230" x2="320" y2="230"/>
-                <line class="bg-line l4" x1="600" y1="100" x2="900" y2="100"/>
-            </svg>
-        </div>
         <div class="sequence">
             <div class="brand-wrap" id="ls-brand">
                 <div class="brand-mark">HÅNDVÆRKER<span class="brand-mark-partner">PARTNER</span></div>
