@@ -14,7 +14,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: auto; min-height: 100%; background: var(--white); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html { scroll-behavior: smooth; min-height: 100%; background: var(--white); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body.route-complete { overflow: auto; }
 body {
     font-family: 'Inter', sans-serif;
