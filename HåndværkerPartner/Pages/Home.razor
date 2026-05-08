@@ -37,8 +37,11 @@
     <div class="hero-inner">
         <div class="hero-content">
             <p class="hero-badge">Din faglige samarbejdspartner</p>
-            <h2>Vækst til håndværkere<br>der vil mere</h2>
-            <p class="hero-sub">Vi hjælper håndværksvirksomheder med at skaffe flere kunder, styrke deres synlighed og skabe reel omsætningsvækst – gennem dokumenterede marketing- og leadstrategier.</p>
+            <h2 class="hero-headline">
+    <span>Flere leads, mere synlighed.</span>
+    <span>Ingen binding</span>
+</h2>
+            <p class="hero-sub">Vi hjælper håndværksvirksomheder med flere kundehenvendelser gennem Meta Ads, Google Ads og moderne hjemmesider</p>
             <div class="hero-buttons">
                 <button class="btn-primary" @onclick="HeroScrollKontakt">Bliv kontaktet</button>
             </div>
@@ -48,6 +51,38 @@
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <polyline points="19 12 12 19 5 12"></polyline>
             </svg>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust-strip">
+    <div class="trust-strip-inner">
+        <div class="trust-item">
+            <svg class="trust-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Ingen binding</span>
+        </div>
+        <div class="trust-item">
+            <svg class="trust-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Gennemsigtig rapportering</span>
+        </div>
+        <div class="trust-item">
+            <svg class="trust-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Specialister i håndværkere</span>
+        </div>
+        <div class="trust-item trust-item--stat">
+            <span class="trust-stat-num">1.000+</span>
+            <span>Leads genereret</span>
+        </div>
+        <div class="trust-item trust-item--stat">
+            <span class="trust-stat-num">30+</span>
+            <span>Virksomheder hjulpet</span>
         </div>
     </div>
 </section>
@@ -87,10 +122,22 @@
                             </svg>
                         }
                     </div>
-                    <div class="service-card-body @(isActive ? "is-active" : null)">
-                        <p>@service.Body</p>
-                        <a href="@service.Href" class="service-link-more">Se mere <span>→</span></a>
+                    <p class="service-card-teaser">@service.Teaser</p>
+                    <div class="service-card-case">
+                        <span class="service-card-case-label">Resultat:</span>
+                        <span>@service.Case</span>
                     </div>
+                    @if (isActive)
+                    {
+                        <p class="service-card-desc">@service.Body</p>
+                    }
+                    <a href="@service.Href" class="service-card-hint">
+                        <span>Læs mere</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
                 </div>
             }
         </div>
@@ -106,12 +153,27 @@
                 <img src="testimonials/emilsmultifix.jpg" alt="Emil fra Emils Multifix" />
             </div>
             <div class="tfs-quote">
-                "Vi gik fra at have absolut nul kunder til at have en fuld kalender, hver eneste dag på kun 2 måneder. Det bedste af det hele er, at leadprisen er utrolig lav. Håndværkerpartner er squ den rigtige partner for os!"
+                <span class="tfs-quote-mark" aria-hidden="true">&ldquo;</span>
+                Fra nul kunder til fuld kalender på bare 2 måneder. Det her var afgørende for os.
             </div>
             <div class="tfs-author">
                 <div class="tfs-author-info">
                     <div class="tfs-name">Emil</div>
-                    <div class="tfs-role">Co-founder &amp; medarbejder af Emils Multifix</div>
+                    <div class="tfs-role">Co-founder, Emils Multifix</div>
+                </div>
+            </div>
+            <div class="tfs-stats">
+                <div class="tfs-stat">
+                    <div class="tfs-stat-value">17</div>
+                    <div class="tfs-stat-label">Leads på 30 dage</div>
+                </div>
+                <div class="tfs-stat">
+                    <div class="tfs-stat-value">33 kr</div>
+                    <div class="tfs-stat-label">Pris pr. lead</div>
+                </div>
+                <div class="tfs-stat">
+                    <div class="tfs-stat-value">4&times;</div>
+                    <div class="tfs-stat-label">Flere henvendelser</div>
                 </div>
             </div>
         </div>
@@ -187,9 +249,9 @@
 
     private readonly List<ServicePanel> servicePanels =
     [
-        new("meta", "Meta Ads", "Kør målrettede Meta-kampagner der rammer præcis de kunder der har brug for en håndværker – og gør dem til billige, kvalificerede leads. Vi håndterer opsætning, optimering og rapportering for maksimal ROI.", "meta"),
-        new("google", "Google Ads", "Lad din virksomhed dukke op øverst, præcis når kunderne søger efter det du laver – og betal kun når de klikker. Vi optimerer dine Google Ads-kampagner for bedre synlighed og flere kvalificerede leads til lavere omkostninger.", "google-ads"),
-        new("web", "WEB", "Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs. Vi bygger responsive websites der er optimeret for søgninger og designet til at generere flere orders.", "webudvikling")
+        new("meta", "Meta Ads", "Find dine kunder mens de scroller på Facebook & Instagram.", "23 leads genereret på 30 dage", "Kør målrettede Meta-kampagner der rammer præcis de kunder der har brug for en håndværker – og gør dem til kvalificerede leads. Vi håndterer opsætning, optimering og rapportering for maksimal ROI.", "meta"),
+        new("google", "Google Ads", "Stå først når kunderne søger efter dit fag.", "Top 3 på Google på 14 dage", "Lad din virksomhed dukke op øverst, præcis når kunderne søger efter det du laver – og betal kun når de klikker. Vi optimerer dine Google Ads-kampagner for bedre synlighed og flere kvalificerede leads til lavere omkostninger.", "google-ads"),
+        new("web", "WEB", "Hjemmesider bygget til at sælge – ikke bare se flotte ud.", "Konverteringer fordoblet efter relaunch", "Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs. Vi bygger responsive websites der er optimeret for søgninger og designet til at generere flere opgaver.", "webudvikling")
     ];
 
     private string NavbarClass => scrolled ? "navbar scrolled" : "navbar";
@@ -244,5 +306,5 @@
         await JS.InvokeVoidAsync("scrollToSection", fragment[1..]);
     }
 
-    private sealed record ServicePanel(string Key, string Title, string Body, string Href);
+    private sealed record ServicePanel(string Key, string Title, string Teaser, string Case, string Body, string Href);
 }
