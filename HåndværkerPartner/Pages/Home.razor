@@ -197,26 +197,57 @@
                 </ul>
             </div>
 
-            <div class="kpi-right">
+            <aside class="kpi-right" data-count-up-section>
                 <div class="kpi-grid-horizontal">
-                    <div class="kpi-item">
-                        <div class="kpi-value">+1.000</div>
-                        <div class="kpi-label">LEADS GENERERET</div>
-                    </div>
-                    <div class="kpi-item">
-                        <div class="kpi-value">+50</div>
-                        <div class="kpi-label">AKTIVE KUNDER</div>
-                    </div>
-                    <div class="kpi-item">
-                        <div class="kpi-value">33 kr.</div>
-                        <div class="kpi-label">LAVESTE LEADPRIS</div>
-                    </div>
-                    <div class="kpi-item">
-                        <div class="kpi-value">0 DAGES</div>
-                        <div class="kpi-label">BINDING</div>
-                    </div>
+                    @foreach (var kpi in aboutKpis)
+                    {
+                        <article class="kpi-item" data-kpi-reveal>
+                            <div class="kpi-icon" aria-hidden="true">
+                                @switch (kpi.Icon)
+                                {
+                                    case "spark":
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z" />
+                                        </svg>
+                                        break;
+                                    case "users":
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                            <path d="M17 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                                            <path d="M4.5 18a4.5 4.5 0 0 1 9 0" />
+                                            <path d="M14 18a3.5 3.5 0 0 1 6 0" />
+                                        </svg>
+                                        break;
+                                    case "coin":
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <circle cx="12" cy="12" r="7" />
+                                            <path d="M9.5 10.5c.3-1 1.2-1.5 2.5-1.5 1.5 0 2.5.8 2.5 2 0 2.7-4.5 1.4-4.5 4 0 1.2 1 2 2.5 2 1.3 0 2.2-.5 2.5-1.5" />
+                                            <path d="M12 7.5v9" />
+                                        </svg>
+                                        break;
+                                    default:
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M7 12.5 10.2 16 17 8.5" />
+                                            <path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9Z" />
+                                        </svg>
+                                        break;
+                                }
+                            </div>
+                            <div class="kpi-value"
+                                 data-count-up
+                                 data-count-end="@kpi.CountEnd"
+                                 data-count-prefix="@kpi.Prefix"
+                                 data-count-suffix="@kpi.Suffix"
+                                 data-count-duration="@kpi.Duration"
+                                 data-count-format="@kpi.Format">
+                                @kpi.InitialValue
+                            </div>
+                            <div class="kpi-label">@kpi.Label</div>
+                            <p class="kpi-note">@kpi.Note</p>
+                        </article>
+                    }
                 </div>
-            </div>
+            </aside>
         </div>
     </div>
 </section>
@@ -252,6 +283,14 @@
         new("meta", "Meta Ads", "Find dine kunder mens de scroller på Facebook & Instagram.", "23 leads genereret på 30 dage", "Kør målrettede Meta-kampagner der rammer præcis de kunder der har brug for en håndværker – og gør dem til kvalificerede leads. Vi håndterer opsætning, optimering og rapportering for maksimal ROI.", "meta"),
         new("google", "Google Ads", "Stå først når kunderne søger efter dit fag.", "Top 3 på Google på 14 dage", "Lad din virksomhed dukke op øverst, præcis når kunderne søger efter det du laver – og betal kun når de klikker. Vi optimerer dine Google Ads-kampagner for bedre synlighed og flere kvalificerede leads til lavere omkostninger.", "google-ads"),
         new("web", "WEB", "Hjemmesider bygget til at sælge – ikke bare se flotte ud.", "Konverteringer fordoblet efter relaunch", "Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs. Vi bygger responsive websites der er optimeret for søgninger og designet til at generere flere opgaver.", "webudvikling")
+    ];
+
+    private readonly List<AboutKpi> aboutKpis =
+    [
+        new("spark", "+1.000", 1000, "+", "", 1800, "da-DK", "Leads genereret", "På tværs af kampagner for håndværks- og servicevirksomheder."),
+        new("users", "+50", 50, "+", "", 1400, "plain", "Aktive kunder", "Virksomheder vi hjælper med stabil tilgang af relevante henvendelser."),
+        new("coin", "33 kr.", 33, "", " kr.", 1500, "plain", "Laveste leadpris", "Et konkret eksempel fra en effektiv kampagne med skarpt lokalt fokus."),
+        new("shield", "0 dage", 0, "", " dage", 900, "plain", "Binding", "Vi vil hellere blive valgt på resultater end på lange aftaler.")
     ];
 
     private string NavbarClass => scrolled ? "navbar scrolled" : "navbar";
@@ -307,4 +346,5 @@
     }
 
     private sealed record ServicePanel(string Key, string Title, string Teaser, string Case, string Body, string Href);
+    private sealed record AboutKpi(string Icon, string InitialValue, int CountEnd, string Prefix, string Suffix, int Duration, string Format, string Label, string Note);
 }

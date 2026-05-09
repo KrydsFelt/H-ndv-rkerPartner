@@ -6,30 +6,41 @@
 
 <main class="web-page">
     <section class="web-hero">
-        <div class="web-hero-copy">
-            <p class="web-label">Web</p>
-            <h1>
-                Hjemmesider der ser
-                <span>skarpe ud</span>
-                og konverterer i praksis.
-            </h1>
-            <p class="web-sub">
-                Vi designer og udvikler hjemmesider til håndværkere, hvor struktur, hastighed, tillid og tydelige budskaber arbejder sammen for at skabe flere henvendelser.
-            </p>
-            <div class="web-hero-actions">
-                <a href="kontakt" class="web-cta">Book en gratis hjemmeside-gennemgang</a>
+        <div class="web-hero-shell">
+            <div class="web-hero-copy">
+                <p class="web-label">Web</p>
+                <h1>
+                    Hjemmesider der ser
+                    <span>skarpe ud</span>
+                    og konverterer i praksis.
+                </h1>
+                <p class="web-sub">
+                    Vi designer og udvikler hjemmesider til håndværkere, hvor struktur, hastighed, tillid og tydelige budskaber arbejder sammen for at skabe flere henvendelser.
+                </p>
+                <ul class="web-hero-points">
+                    <li>Tydeligt budskab og stærk tillid i første skærmbillede</li>
+                    <li>Mobiloplevelse der gør det let at ringe eller sende en forespørgsel</li>
+                    <li>En side bygget til rigtige kunder, ikke bare et pænt design</li>
+                </ul>
+                <div class="web-hero-actions">
+                    <a href="kontakt" class="web-cta">Book en gratis hjemmeside-gennemgang</a>
+                </div>
             </div>
-        </div>
 
+            <aside class="web-hero-note">
+                <p class="web-hero-note-label">Kort fortalt</p>
+                <p class="web-hero-note-text">En god håndværker-hjemmeside skal hurtigt vise hvad du laver, hvorfor man kan stole på dig, og hvordan kunden tager næste skridt uden friktion.</p>
+            </aside>
+        </div>
     </section>
 
     <section class="web-suite">
         <div class="web-suite-intro">
             <p class="web-section-eyebrow">Website Development</p>
             <h2>En hjemmeside skal være mere end bare flot</h2>
+            <p class="web-summary-title">Den skal gøre det nemt for en travl kunde at forstå din ydelse og vælge dig hurtigt.</p>
             <p>
-                Inspirationen her er den samme disciplin, man ser i stærke front-end studios: tydelig struktur, skarpe layouts og en oplevelse der føles gennemtænkt.
-                Hos os bliver det oversat til håndværkerbranchen, så det ikke ender som design for designets skyld.
+                Vi tager den samme disciplin man ser i stærke front-end studios og oversætter den til håndværkerbranchen, så resultatet føles professionelt uden at blive smart for smarthedens skyld.
             </p>
         </div>
 
@@ -45,35 +56,42 @@
         </div>
     </section>
 
-    <section class="web-process" @onmouseleave="ResetActiveStep">
-        <div class="web-process-header">
+    <section class="web-process-shell" @onmouseleave="ResetActiveStep">
+        <div class="web-process-intro">
             <p class="web-section-eyebrow">Process</p>
             <h2>Fra første indtryk til færdig løsning</h2>
+            <p>Vi bygger siden, så strategi, indhold og brugerflow hænger sammen fra starten, i stedet for at det først bliver rettet til bagefter.</p>
         </div>
 
-        <div class="web-process-track">
-            @foreach (var step in processSteps)
-            {
-                var isActive = activeStep == step.Number;
+        <div class="web-process">
+            <div class="web-process-header">
+                <p class="web-process-kicker">Fra wireframe til launch</p>
+            </div>
 
-                <button type="button"
-                        class="web-process-card @(isActive ? "is-active" : null)"
-                        @onmouseover="@(() => SetActiveStep(step.Number))"
-                        aria-expanded="@isActive">
-                    <div class="web-process-top">
-                        <span class="web-process-number">@step.Number</span>
-                    </div>
+            <div class="web-process-track">
+                @foreach (var step in processSteps)
+                {
+                    var isActive = activeStep == step.Number;
 
-                    <div class="web-process-head">
-                        <h3>@step.Title</h3>
-                        <p>@step.Subtitle</p>
-                    </div>
+                    <button type="button"
+                            class="web-process-card @(isActive ? "is-active" : null)"
+                            @onmouseover="@(() => SetActiveStep(step.Number))"
+                            aria-expanded="@isActive">
+                        <div class="web-process-top">
+                            <span class="web-process-number">@step.Number</span>
+                        </div>
 
-                    <div class="web-process-body @(isActive ? "is-active" : null)">
-                        <p>@step.Body</p>
-                    </div>
-                </button>
-            }
+                        <div class="web-process-head">
+                            <h3>@step.Title</h3>
+                            <p>@step.Subtitle</p>
+                        </div>
+
+                        <div class="web-process-body @(isActive ? "is-active" : null)">
+                            <p>@step.Body</p>
+                        </div>
+                    </button>
+                }
+            </div>
         </div>
     </section>
 

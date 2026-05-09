@@ -14,6 +14,11 @@
     align-items: center;
 }
 
+.google-hero-shell {
+    width: 100%;
+    display: block;
+}
+
 .google-hero-inner {
     max-width: 760px;
     text-align: left;
@@ -34,8 +39,8 @@
 
 .google-hero h1 {
     margin: 0;
-    font-size: clamp(2.5rem, 5.6vw, 4.9rem);
-    line-height: 0.94;
+    font-size: clamp(2.2rem, 4.4vw, 4rem);
+    line-height: 0.98;
     letter-spacing: -0.04em;
     font-weight: 400;
 }
@@ -54,6 +59,34 @@
 
 .google-hero-actions {
     margin-top: 2.2rem;
+}
+
+.google-hero-points {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    display: grid;
+    gap: 0.8rem;
+    max-width: 34rem;
+}
+
+.google-hero-points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: #334155;
+    font-size: 0.98rem;
+    line-height: 1.55;
+}
+
+.google-hero-points li::before {
+    content: "";
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-top: 0.34rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f08a3a 0%, #e87722 100%);
+    box-shadow: 0 0 0 5px rgba(232, 119, 34, 0.1);
+    flex-shrink: 0;
 }
 
 .google-cta {
@@ -76,10 +109,69 @@
     box-shadow: 0 12px 24px rgba(232, 119, 34, 0.28);
 }
 
-.google-process {
+.google-process-shell,
+.google-cards-wrap,
+.google-cards,
+.google-faq {
     max-width: 1180px;
-    margin: 0 auto;
-    padding-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.google-summary-title {
+    font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: #15171c;
+    margin: 1rem 0 0;
+}
+
+.google-section-label {
+    margin: 0 0 0.9rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7a6555;
+    font-weight: 600;
+}
+
+.google-process-intro h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 3.2vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: #15171c;
+}
+
+.google-process-intro p {
+    color: #566273;
+}
+
+.google-process-intro .google-summary-title {
+    color: #15171c;
+}
+
+.google-process-shell {
+    margin-top: 3.2rem;
+    display: grid;
+    grid-template-columns: minmax(260px, 0.84fr) minmax(0, 1.16fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+.google-process-intro {
+    position: sticky;
+    top: 7rem;
+}
+
+.google-process-intro p {
+    margin: 1rem 0 0;
+    font-size: 1rem;
+    line-height: 1.68;
+}
+
+.google-process {
+    padding-top: 0.35rem;
 }
 
 .google-process-header {
@@ -96,33 +188,33 @@
 }
 
 .google-process-track {
-    display: flex;
+    display: grid;
     gap: 0.9rem;
     align-items: stretch;
 }
 
 .google-process-card {
     appearance: none;
-    flex: 0 0 13.6%;
-    min-height: 460px;
-    padding: 1.35rem 1.4rem 1.4rem;
+    width: 100%;
+    min-height: 0;
+    padding: 1.2rem 1.3rem 1.3rem;
     border: 1px solid #ddd4ca;
     background: rgba(255,255,255,0.74);
     color: #15171c;
     text-align: left;
-    border-radius: 0;
+    border-radius: 22px;
     display: flex;
     flex-direction: column;
-    transition: flex-basis 0.35s ease, background 0.28s ease, color 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
     overflow: hidden;
 }
 
 .google-process-card.is-active {
-    flex-basis: 39%;
     background: #fffdfa;
     color: #15171c;
     border-color: #d7b796;
     box-shadow: 0 18px 40px rgba(35, 28, 20, 0.08);
+    transform: translateY(-2px);
 }
 
 .google-process-top {
@@ -142,7 +234,7 @@
 }
 
 .google-process-head {
-    margin-top: 1.35rem;
+    margin-top: 1rem;
 }
 
 .google-process-head h2 {
@@ -161,8 +253,8 @@
 }
 
 .google-process-body {
-    margin-top: 2rem;
-    max-width: 34rem;
+    margin-top: 1rem;
+    max-width: 40rem;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity .22s ease, transform .22s ease;
@@ -182,62 +274,11 @@
     color: #5b6472;
 }
 
-.google-kpi-section {
-    max-width: 1180px;
-    margin: 4rem auto 0;
-}
-
-.google-kpi-grid {
-    display: flex;
-    gap: 0;
-    border-top: 1px solid #ddd4ca;
-    border-bottom: 1px solid #ddd4ca;
-}
-
-.google-kpi-card {
-    flex: 1 1 0;
-    padding: 1.7rem 1.2rem;
-    border: none;
-    background: transparent;
-    text-align: center;
-    position: relative;
-}
-
-.google-kpi-card:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 50%;
-    width: 1px;
-    height: 52px;
-    transform: translateY(-50%);
-    background: #ddd4ca;
-}
-
-.google-kpi-value {
-    font-size: clamp(1.9rem, 2.8vw, 2.7rem);
-    line-height: 1;
-    letter-spacing: -0.04em;
-    color: #15171c;
-    font-weight: 600;
-}
-
-.google-kpi-label {
-    margin-top: 0.55rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #6a7280;
-    font-weight: 600;
-}
-
 .google-cards {
-    max-width: 1160px;
     margin: 1.4rem auto 0;
 }
 
 .google-cards-wrap {
-    max-width: 1160px;
     margin: 4rem auto 0;
     display: flex;
     align-items: flex-end;
@@ -357,7 +398,6 @@
 }
 
 .google-faq {
-    max-width: 1160px;
     margin: 5rem auto 0;
     display: grid;
     grid-template-columns: 0.92fr 1.08fr;
@@ -456,18 +496,26 @@
         min-height: calc(86vh - 5.25rem);
     }
 
+    .google-process-shell,
+    .google-faq {
+        grid-template-columns: 1fr;
+    }
+
     .google-hero-inner {
         max-width: 100%;
         text-align: center;
     }
 
-    .google-process-track {
-        flex-direction: column;
+    .google-hero-points {
+        max-width: none;
+    }
+
+    .google-process-intro {
+        position: static;
     }
 
     .google-process-card,
     .google-process-card.is-active {
-        flex-basis: auto;
         min-height: auto;
     }
 
@@ -481,17 +529,6 @@
         transform: none;
         pointer-events: auto;
     }
-
-    .google-kpi-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0;
-    }
-
-    .google-kpi-card:not(:last-child)::after {
-        display: none;
-    }
-
     .google-cards-wrap {
         flex-direction: column;
         align-items: flex-start;
@@ -522,11 +559,6 @@
         font-size: 1.08rem;
     }
 
-    .google-faq {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-    }
-
     .google-faq-intro h2 {
         font-size: clamp(1.8rem, 8vw, 2.5rem);
     }
@@ -544,11 +576,4 @@
 }
 
 @media (max-width: 640px) {
-    .google-kpi-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .google-kpi-card {
-        padding: 1.3rem 1.1rem;
-    }
 }

@@ -87,40 +87,46 @@ window.scrollToSection = (id) => {
 };
 
 window.initCountUp = () => {
-    const targets = [
-        { selector: '.about-num-0', end: 50, suffix: '+', duration: 1600 },
-        { selector: '.about-num-1', end: 1000, suffix: '+', display: (v) => v.toLocaleString('da-DK') + '+', duration: 1800 },
-        { selector: '.about-num-2', end: 33, suffix: ' kr', duration: 1400 },
-        { selector: '.about-num-3', end: 0, suffix: ' dage', duration: 800 },
-    ];
-
     const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+    const formatValue = (value, format, prefix, suffix) => {
+        const base = format === 'da-DK' ? value.toLocaleString('da-DK') : String(value);
+        return `${prefix}${base}${suffix}`;
+    };
 
-    const animateNum = (el, target) => {
+    const animateNum = (el) => {
+        const end = Number(el.dataset.countEnd ?? 0);
+        const duration = Number(el.dataset.countDuration ?? 1200);
+        const prefix = el.dataset.countPrefix ?? '';
+        const suffix = el.dataset.countSuffix ?? '';
+        const format = el.dataset.countFormat ?? 'plain';
         const start = performance.now();
+
         const step = (now) => {
             const elapsed = now - start;
-            const progress = Math.min(elapsed / target.duration, 1);
-            const value = Math.round(easeOut(progress) * target.end);
-            el.textContent = target.display ? target.display(value) : value + target.suffix;
+            const progress = Math.min(elapsed / duration, 1);
+            const value = Math.round(easeOut(progress) * end);
+            el.textContent = formatValue(value, format, prefix, suffix);
             if (progress < 1) requestAnimationFrame(step);
         };
+
         requestAnimationFrame(step);
     };
 
-    const card = document.querySelector('.about-big-card');
-    if (!card) return;
+    const section = document.querySelector('[data-count-up-section]');
+    if (!section) return;
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
             observer.disconnect();
-            targets.forEach(t => {
-                const el = card.querySelector('.' + t.selector.slice(1) + ' .n');
-                if (el) animateNum(el, t);
+            section.querySelectorAll('[data-kpi-reveal]').forEach((el, index) => {
+                window.setTimeout(() => el.classList.add('is-visible'), index * 90);
+            });
+            section.querySelectorAll('[data-count-up]').forEach((el) => {
+                animateNum(el);
             });
         });
     }, { threshold: 0.4 });
 
-    observer.observe(card);
+    observer.observe(section);
 };
