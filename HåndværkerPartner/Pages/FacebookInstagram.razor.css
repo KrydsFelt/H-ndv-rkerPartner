@@ -94,97 +94,131 @@
 }
 
 .meta-process-track {
-    display: flex;
-    gap: 0.9rem;
-    align-items: stretch;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.35rem 4.5rem;
+    align-items: start;
+    padding: 0.5rem 0;
+}
+
+.meta-process-track::before {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    bottom: 2rem;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(232, 119, 34, 0.42) 0,
+            rgba(232, 119, 34, 0.42) 14px,
+            transparent 14px,
+            transparent 28px
+        );
 }
 
 .meta-process-card {
-    appearance: none;
-    flex: 0 0 13.6%;
-    min-height: 460px;
-    padding: 1.35rem 1.4rem 1.4rem;
+    position: relative;
+    min-height: 0;
+    padding: 1.5rem 1.5rem 1.6rem;
     border: 1px solid #d5dae3;
-    background: #fbfbfc;
+    background:
+        linear-gradient(180deg, #ffffff 0%, #fbfbfc 100%);
     color: #15171c;
     text-align: left;
-    border-radius: 0;
+    border-radius: 26px;
     display: flex;
     flex-direction: column;
-    transition: flex-basis 0.35s ease, background 0.28s ease, color 0.28s ease, border-color 0.28s ease;
-    overflow: hidden;
+    gap: 0.25rem;
+    overflow: visible;
+    box-shadow: 0 18px 40px rgba(17, 17, 17, 0.06);
 }
 
-.meta-process-card.is-active {
-    flex-basis: 39%;
-    background: #1f1f22;
-    color: #f6f7fa;
-    border-color: #1f1f22;
+.meta-process-card:nth-child(odd) {
+    grid-column: 1;
+    margin-right: 1.5rem;
+}
+
+.meta-process-card:nth-child(even) {
+    grid-column: 2;
+    margin-left: 1.5rem;
+    margin-top: 3.25rem;
+}
+
+.meta-process-card::after {
+    content: "";
+    position: absolute;
+    top: 2.25rem;
+    width: 3rem;
+    border-top: 2px dashed rgba(232, 119, 34, 0.42);
+}
+
+.meta-process-card:nth-child(odd)::after {
+    right: -3rem;
+}
+
+.meta-process-card:nth-child(even)::after {
+    left: -3rem;
 }
 
 .meta-process-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .meta-process-number {
-    font-size: 1.8rem;
-    letter-spacing: -0.04em;
-    color: #9ca3af;
+    font-size: 1rem;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    font-weight: 700;
 }
 
-.meta-process-card.is-active .meta-process-number {
-    color: rgba(246, 247, 250, 0.42);
-}
-
-.meta-process-toggle {
-    display: none;
+.meta-process-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    background: var(--orange);
+    box-shadow: 0 0 0 8px rgba(232, 119, 34, 0.12);
 }
 
 .meta-process-head {
-    margin-top: 1.35rem;
+    margin-top: 0.9rem;
 }
 
 .meta-process-head h2 {
     margin: 0;
-    font-size: clamp(1.25rem, 1.7vw, 1.8rem);
-    line-height: 1.02;
-    letter-spacing: -0.045em;
-    color: inherit;
+    font-size: clamp(1.35rem, 1.9vw, 1.95rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    color: #15171c;
 }
 
 .meta-process-head p {
-    margin: 0.9rem 0 0;
-    font-size: 0.98rem;
-    line-height: 1.45;
-    color: #4a5565;
-}
-
-.meta-process-card.is-active .meta-process-head p {
-    color: rgba(246, 247, 250, 0.9);
+    margin: 0.7rem 0 0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7a6555;
+    font-weight: 600;
 }
 
 .meta-process-body {
-    margin-top: 2rem;
+    margin-top: 1.15rem;
     max-width: 34rem;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity .22s ease, transform .22s ease;
-    pointer-events: none;
-}
-
-.meta-process-body.is-active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
 }
 
 .meta-process-body p {
     margin: 0;
     font-size: 1rem;
     line-height: 1.56;
-    color: rgba(230, 235, 245, 0.64);
+    color: #4a5565;
 }
 
 .meta-kpi-section {
@@ -246,24 +280,11 @@
 
 .meta-story-media {
     border: 1px solid #d9dee7;
-    border-radius: 28px;
+    border-radius: 32px;
     overflow: hidden;
-    background: #f7f8fa;
+    background: #ece6dd;
     min-height: 420px;
-}
-
-.meta-story-image {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: contain;
-    background:
-        radial-gradient(circle at top right, rgba(232, 119, 34, 0.14), transparent 34%),
-        #f8f7f5;
-}
-
-.meta-story-image-cover {
-    object-fit: cover;
+    padding: 1rem;
 }
 
 .meta-story-copy {
@@ -300,10 +321,335 @@
     margin-top: 1.2rem;
 }
 
-.meta-story-copy p {
+.meta-story-lead {
+    margin: 1.2rem 0 0;
     font-size: 1rem;
     line-height: 1.72;
     color: #4a5565;
+}
+
+.meta-story-points {
+    list-style: none;
+    display: grid;
+    gap: 0.9rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+}
+
+.meta-story-points li {
+    position: relative;
+    padding-left: 1.6rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: #334155;
+}
+
+.meta-story-points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.52rem;
+    width: 0.58rem;
+    height: 0.58rem;
+    border-radius: 999px;
+    background: var(--orange);
+    box-shadow: 0 0 0 5px rgba(232, 119, 34, 0.12);
+}
+
+.meta-story-visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 396px;
+    border-radius: 28px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 24%),
+        radial-gradient(circle at 18% 82%, rgba(232, 119, 34, 0.28), transparent 26%),
+        linear-gradient(160deg, #1b1d22 0%, #121318 100%);
+}
+
+.meta-story-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 26%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: auto, 44px 44px, 44px 44px;
+    opacity: 0.22;
+}
+
+.meta-story-visual::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 120px;
+    background: linear-gradient(180deg, rgba(18, 19, 24, 0) 0%, rgba(18, 19, 24, 0.92) 100%);
+    pointer-events: none;
+}
+
+.meta-story-orbit {
+    position: absolute;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+
+.meta-story-orbit--one {
+    width: 280px;
+    height: 280px;
+    left: -70px;
+    top: 62px;
+    opacity: 0.18;
+}
+
+.meta-story-orbit--two {
+    width: 190px;
+    height: 190px;
+    right: -30px;
+    top: -20px;
+    opacity: 0.1;
+}
+
+.meta-story-calendar {
+    position: absolute;
+    left: 42px;
+    top: 42px;
+    width: 344px;
+    z-index: 2;
+    transform: perspective(1200px) rotateX(14deg) rotateY(-16deg) rotateZ(-5deg);
+    transform-style: preserve-3d;
+    filter: saturate(0.96);
+}
+
+.meta-story-calendar-top {
+    position: relative;
+    height: 28px;
+    margin: 0 auto -8px;
+    width: 86%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 28px;
+    z-index: 3;
+}
+
+.meta-story-calendar-ring {
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    background: #f4a35e;
+    box-shadow:
+        0 0 0 5px rgba(244, 163, 94, 0.12),
+        0 10px 14px rgba(0, 0, 0, 0.18);
+}
+
+.meta-story-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.82rem;
+    padding: 1.6rem;
+    border-radius: 30px;
+    background:
+        linear-gradient(180deg, #fff8f1 0%, #f2e6da 100%);
+    box-shadow:
+        0 24px 52px rgba(0, 0, 0, 0.2),
+        inset 0 -18px 24px rgba(0, 0, 0, 0.04);
+}
+
+.meta-story-calendar-cell {
+    aspect-ratio: 1;
+    border-radius: 14px;
+    background:
+        linear-gradient(180deg, #ffffff 0%, #efe3d7 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        0 8px 14px rgba(64, 44, 28, 0.08);
+}
+
+.meta-story-calendar-cell.is-focus {
+    background:
+        linear-gradient(180deg, #f2994a 0%, #e87722 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 226, 201, 0.7),
+        0 14px 24px rgba(232, 119, 34, 0.2);
+}
+
+.meta-story-calendar-sheet {
+    position: absolute;
+    right: -10px;
+    top: 118px;
+    width: 152px;
+    padding: 0.9rem 0.85rem;
+    border-radius: 20px;
+    background: rgba(255, 251, 247, 0.97);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.12);
+    transform: translateZ(40px);
+}
+
+.meta-story-calendar-line,
+.meta-story-task-line {
+    display: block;
+    height: 10px;
+    border-radius: 999px;
+    background:
+        linear-gradient(90deg, rgba(23, 24, 29, 0.2), rgba(23, 24, 29, 0.06));
+}
+
+.meta-story-calendar-line + .meta-story-calendar-line,
+.meta-story-task-line + .meta-story-task-line {
+    margin-top: 0.7rem;
+}
+
+.meta-story-calendar-line--short,
+.meta-story-task-line--short {
+    width: 58%;
+}
+
+.meta-story-calendar-line--mid,
+.meta-story-task-line--mid {
+    width: 76%;
+}
+
+.meta-story-card {
+    position: absolute;
+    z-index: 3;
+    display: grid;
+    gap: 0.3rem;
+    padding: 1rem 1.05rem;
+    border-radius: 20px;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
+}
+
+.meta-story-card-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.meta-story-card strong {
+    font-size: 1.15rem;
+    line-height: 1.15;
+    font-weight: 600;
+}
+
+.meta-story-card--lead {
+    right: 1.25rem;
+    top: 4rem;
+    background: rgba(255, 249, 243, 0.96);
+    color: #15171c;
+}
+
+.meta-story-card--lead .meta-story-card-label {
+    color: #8c5a34;
+}
+
+.meta-story-task-card {
+    position: absolute;
+    left: 156px;
+    bottom: 38px;
+    z-index: 3;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 0.88rem 0.95rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.12);
+}
+
+.meta-story-task-list {
+    min-width: 124px;
+}
+
+.meta-story-task-line {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.16));
+}
+
+.meta-story-task-line--short {
+    width: 52%;
+}
+
+.meta-story-task-line--mid {
+    width: 74%;
+}
+
+@media (max-width: 980px) {
+    .meta-story-visual {
+        min-height: 430px;
+    }
+
+    .meta-story-calendar {
+        left: 20px;
+        top: 64px;
+        width: 286px;
+    }
+
+    .meta-story-calendar-sheet {
+        right: -12px;
+        width: 136px;
+    }
+
+    .meta-story-card--lead {
+        right: 1rem;
+    }
+
+    .meta-story-task-card {
+        left: 108px;
+        bottom: 36px;
+    }
+}
+
+@media (max-width: 640px) {
+    .meta-story-visual {
+        min-height: auto;
+        display: grid;
+        gap: 0.9rem;
+        padding: 1rem;
+    }
+
+    .meta-story-visual::before,
+    .meta-story-visual::after,
+    .meta-story-orbit {
+        display: none;
+    }
+
+    .meta-story-calendar,
+    .meta-story-card,
+    .meta-story-task-card {
+        position: relative;
+        inset: auto;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        width: auto;
+        max-width: none;
+        transform: none;
+    }
+
+    .meta-story-calendar {
+        width: 100%;
+    }
+
+    .meta-story-calendar-sheet {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        margin-top: 0.9rem;
+        transform: none;
+    }
+
+    .meta-story-task-list {
+        min-width: 0;
+        flex: 1;
+    }
 }
 
 .meta-cards {
@@ -322,8 +668,8 @@
 
 .meta-cards-headline {
     margin: 0;
-    font-size: clamp(1.5rem, 3.1vw, 2.45rem);
-    line-height: 1.12;
+    font-size: clamp(1.3rem, 2.4vw, 2rem);
+    line-height: 1.08;
     letter-spacing: -0.02em;
     color: #15171c;
 }
@@ -361,29 +707,31 @@
 
 .meta-card {
     min-height: 420px;
-    border: 1px solid #2a3140;
+    border: 1px solid rgba(232, 119, 34, 0.28);
     border-radius: 24px;
     padding: 2rem 2rem 2.2rem;
     background:
-        radial-gradient(circle at 72% 0%, rgba(232, 119, 34, 0.14), transparent 42%),
-        linear-gradient(168deg, #161d28 0%, #0d121d 62%, #090d16 100%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        radial-gradient(circle at 72% 0%, rgba(255, 215, 186, 0.24), transparent 40%),
+        linear-gradient(168deg, #f08a3a 0%, #e87722 58%, #c65f13 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 24px 46px rgba(201, 94, 19, 0.18);
 }
 
 .meta-card h2 {
     margin: 2.2rem 0 0;
-    font-size: clamp(1.55rem, 1.9vw, 2.05rem);
+    font-size: clamp(1.45rem, 1.8vw, 1.9rem);
     line-height: 1.04;
     letter-spacing: -0.02em;
-    color: #f5f7fb;
-    font-weight: 500;
+    color: #fff9f4;
+    font-weight: 600;
 }
 
 .meta-card p {
     margin: 1rem 0 0;
-    font-size: 1.03rem;
+    font-size: 1rem;
     line-height: 1.58;
-    color: rgba(230, 235, 245, 0.76);
+    color: rgba(255, 244, 235, 0.82);
 }
 
 .meta-card-icon {
@@ -396,7 +744,7 @@
 .meta-card-icon svg {
     width: 24px;
     height: 24px;
-    stroke: #f8fafc;
+    stroke: #fff9f4;
     stroke-width: 1.75;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -410,9 +758,34 @@
 
 .meta-card:hover {
     background:
-        radial-gradient(circle at 72% 0%, rgba(240, 138, 58, 0.24), transparent 42%),
-        linear-gradient(168deg, #f08a3a 0%, #e87722 58%, #c65f13 100%);
-    border-color: #f2a15e;
+        radial-gradient(circle at 72% 0%, rgba(255, 231, 211, 0.34), transparent 42%),
+        linear-gradient(168deg, #f39a50 0%, #ea7e27 58%, #cc6314 100%);
+    border-color: rgba(255, 223, 194, 0.58);
+    transform: translateY(-4px);
+}
+
+.meta-card-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 0.9rem 1.15rem;
+    border-radius: 999px;
+    background: rgba(20, 22, 27, 0.92);
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 12px 24px rgba(20, 22, 27, 0.18);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.meta-card-link:hover {
+    background: #111318;
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
@@ -460,13 +833,29 @@
 
 @media (max-width: 980px) {
     .meta-process-track {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
-    .meta-process-card,
-    .meta-process-card.is-active {
-        flex-basis: auto;
-        min-height: auto;
+    .meta-process-track::before {
+        left: 1.2rem;
+        transform: none;
+    }
+
+    .meta-process-card:nth-child(odd),
+    .meta-process-card:nth-child(even) {
+        grid-column: 1;
+        margin: 0 0 0 2.5rem;
+    }
+
+    .meta-process-card:nth-child(even) {
+        margin-top: 0;
+    }
+
+    .meta-process-card::after {
+        left: -1.3rem;
+        right: auto;
+        width: 1.3rem;
     }
 
     .meta-kpi-grid {
@@ -479,22 +868,17 @@
 }
 
 @media (max-width: 640px) {
-    .meta-process-card,
-    .meta-process-card.is-active {
-        background: #1f1f22;
-        color: #f6f7fa;
-        border-color: #1f1f22;
+    .meta-process-track::before {
+        display: none;
     }
 
-    .meta-process-number,
-    .meta-process-card.is-active .meta-process-number {
-        color: rgba(246, 247, 250, 0.42);
+    .meta-process-card:nth-child(odd),
+    .meta-process-card:nth-child(even) {
+        margin-left: 0;
     }
 
-    .meta-process-head p,
-    .meta-process-card.is-active .meta-process-head p,
-    .meta-process-body p {
-        color: rgba(246, 247, 250, 0.9);
+    .meta-process-card::after {
+        display: none;
     }
 
     .meta-kpi-grid {
@@ -511,9 +895,6 @@
 
     .meta-process-body {
         margin-top: 1.4rem;
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
     }
 
     .meta-story {
@@ -526,7 +907,13 @@
 
     .meta-story-media {
         min-height: 300px;
+        padding: 1rem;
     }
+
+    .meta-story-visual {
+        min-height: 360px;
+    }
+
 }
 
 .meta-faq-list {

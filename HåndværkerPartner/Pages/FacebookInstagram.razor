@@ -17,27 +17,22 @@
                 Vi hjælper håndværksvirksomheder med at tiltrække relevante kunder gennem præcis målretning, stærk kommunikation og en plan, der er bygget til stabile resultater.
             </p>
             <div class="meta-hero-actions">
-                <a href="kontakt" class="meta-cta">Book en gratis Meta-gennemgang</a>
+                <a href="/kontakt" class="meta-cta">Book en gratis Meta-gennemgang</a>
             </div>
         </div>
     </section>
 
-    <section class="meta-process" @onmouseleave="ResetActiveProcess">
+    <section class="meta-process">
         <div class="meta-process-header">
             <p class="meta-process-eyebrow">Process</p>
         </div>
         <div class="meta-process-track">
             @foreach (var step in processSteps)
             {
-                var isActive = activeProcessStep == step.Number;
-
-                <button type="button"
-                        class="meta-process-card @(isActive ? "is-active" : null)"
-                        @onmouseover="@(() => SetActiveProcess(step.Number))"
-                        aria-expanded="@isActive">
+                <article class="meta-process-card">
                     <div class="meta-process-top">
                         <span class="meta-process-number">@step.Number</span>
-                        <span class="meta-process-toggle" aria-hidden="true">@(isActive ? "×" : "+")</span>
+                        <span class="meta-process-dot" aria-hidden="true"></span>
                     </div>
 
                     <div class="meta-process-head">
@@ -45,10 +40,10 @@
                         <p>@step.Subtitle</p>
                     </div>
 
-                    <div class="meta-process-body @(isActive ? "is-active" : null)">
+                    <div class="meta-process-body">
                         <p>@step.Body</p>
                     </div>
-                </button>
+                </article>
             }
         </div>
     </section>
@@ -77,26 +72,55 @@
     <section class="meta-story">
         <div class="meta-story-row">
             <div class="meta-story-copy">
-                <h2>Få mere ud af dit annoncebudget og find det, der virker i praksis</h2>
-                <p>
-                    Hos os starter det ikke med platformen. Det starter med din forretning, din kapacitet og den type opgaver, du faktisk vil have ind.
-                    Med flere års praktisk erfaring i marketing for håndværksvirksomheder ved vi, at et annoncebudget kun skaber værdi, hvis det bliver brugt med klar prioritering.
-                </p>
-                <p>
-                    Derfor arbejder vi ikke med standardopsætninger og løse antagelser. Du får en samarbejdspartner, der kombinerer teknisk styr på Meta Ads
-                    med reel forståelse for, hvordan håndværkerbranchen fungerer i praksis, så budgettet ender dér, hvor det giver flest relevante henvendelser.
-                </p>
-                <p>
-                    Stærk performance kommer sjældent af held. Den kommer af erfaring, struktur og løbende test. Gennem årene har vi arbejdet med forskellige
-                    målgrupper, lokalområder og håndværksydelser, og det har lært os, hvor hurtigt resultater ændrer sig, hvis budskab og målretning ikke bliver justeret.
-                </p>
-                <p>
-                    Derfor arbejder vi systematisk med paid social annoncering, hvor data, kreativ retning og branchekendskab spiller sammen. Vi optimerer løbende
-                    dine kampagner, så dine annoncekroner bliver brugt mere præcist, og så din social media annoncering skaber noget, der kan mærkes i kalenderen.
-                </p>
+                <p class="meta-story-eyebrow">Kort fortalt</p>
+                <h2>Du skal kunne mærke det i kalenderen. Ikke kun i en rapport.</h2>
+                <p class="meta-story-lead">Vi gør Meta Ads let at forstå og let at følge med i. Fokus er enkelt: flere relevante henvendelser til en pris der giver mening.</p>
+                <ul class="meta-story-points">
+                    <li>Vi vælger budskaber der passer til de opgaver, du vil have ind.</li>
+                    <li>Vi tester løbende og skruer ned for det, der ikke virker.</li>
+                    <li>Du får klar sparring, uden marketing-snak og unødigt fyld.</li>
+                </ul>
             </div>
             <div class="meta-story-media">
-                <img src="Handvaerker.gif" alt="Håndværker i arbejde" class="meta-story-image meta-story-image-cover" />
+                <div class="meta-story-visual" aria-hidden="true">
+                    <div class="meta-story-orbit meta-story-orbit--one"></div>
+                    <div class="meta-story-orbit meta-story-orbit--two"></div>
+
+                    <div class="meta-story-calendar">
+                        <div class="meta-story-calendar-top">
+                            <span class="meta-story-calendar-ring"></span>
+                            <span class="meta-story-calendar-ring"></span>
+                        </div>
+
+                        <div class="meta-story-calendar-grid">
+                            @for (var i = 0; i < 15; i++)
+                            {
+                                var cellClass = i == 6 ? "meta-story-calendar-cell is-focus" : "meta-story-calendar-cell";
+                                <span class="@cellClass"></span>
+                            }
+                        </div>
+
+                        <div class="meta-story-calendar-sheet">
+                            <span class="meta-story-calendar-line meta-story-calendar-line--short"></span>
+                            <span class="meta-story-calendar-line"></span>
+                            <span class="meta-story-calendar-line meta-story-calendar-line--mid"></span>
+                            <span class="meta-story-calendar-line"></span>
+                        </div>
+                    </div>
+
+                    <div class="meta-story-card meta-story-card--lead">
+                        <span class="meta-story-card-label">Leadpris</span>
+                        <strong>Fra 33 kr.</strong>
+                    </div>
+
+                    <div class="meta-story-task-card">
+                        <div class="meta-story-task-list">
+                            <span class="meta-story-task-line meta-story-task-line--short"></span>
+                            <span class="meta-story-task-line"></span>
+                            <span class="meta-story-task-line meta-story-task-line--mid"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -160,6 +184,7 @@
                 </div>
                 <h2>@card.Title</h2>
                 <p>@card.Body</p>
+                <a href="/kontakt" class="meta-card-link">Kom i gang</a>
             </article>
                 }
             </div>
@@ -218,16 +243,14 @@
         </div>
     </section>
 
-    <ProductPageCta />
 </main>
 
+<ProductPageCta />
 <SiteFooter />
 
 @code {
     private const int CardsPerPage = 2;
     private int cardStartIndex = 0;
-    private string activeProcessStep = "01";
-
     private readonly List<ProcessStep> processSteps =
     [
         new("01", "Afdækning", "Virksomhed, mål og behov", "Vi starter med at gennemgå din virksomhed, hvilke opgaver du gerne vil have mere af, hvor du vil vokse, og hvad der allerede virker i dag. Det giver os et klart billede af, hvilken hjælp du faktisk har brug for, før vi anbefaler noget som helst."),
@@ -248,9 +271,6 @@
     private int MaxSlideIndex => Math.Max(0, cards.Count - CardsPerPage);
     private bool CanGoPrev => cardStartIndex > 0;
     private bool CanGoNext => cardStartIndex < MaxSlideIndex;
-
-    private void SetActiveProcess(string number) => activeProcessStep = number;
-    private void ResetActiveProcess() => activeProcessStep = "01";
 
     private void GoNext()
     {

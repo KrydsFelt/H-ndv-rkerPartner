@@ -15,7 +15,7 @@
             <li><a href="meta">Meta Ads</a></li>
             <li><a href="google-ads">Google Ads</a></li>
             <li><a href="webudvikling">Hjemmesider</a></li>
-            <li><a href="kontakt" class="nav-cta">Kontakt os</a></li>
+            <li><a href="/kontakt" class="nav-cta">Kontakt os</a></li>
         </ul>
         <button class="hamburger" @onclick="ToggleMenu" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -43,7 +43,7 @@
 </h2>
             <p class="hero-sub">Vi hjælper håndværksvirksomheder med flere kundehenvendelser gennem Meta Ads, Google Ads og moderne hjemmesider</p>
             <div class="hero-buttons">
-                <button class="btn-primary" @onclick="HeroScrollKontakt">Bliv kontaktet</button>
+                <a href="/kontakt" class="btn-primary">Bliv kontaktet</a>
             </div>
         </div>
         <div class="hero-arrow">
@@ -116,9 +116,11 @@
                         else
                         {
                             <svg class="service-logo" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path d="M8 7l-5 5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16 7l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M14 4l-4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="3.5" y="5" width="17" height="12" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+                                <path d="M8 19h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M12 17v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M7.5 9.5h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M7.5 12.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
                             </svg>
                         }
                     </div>
@@ -256,17 +258,7 @@
     <ProductPageCta />
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-logo-text">HÅNDVÆRKER<span>PARTNER</span></div>
-        <p style="font-size:14px;">© 2024 HåndværkerPartner – Din faglige samarbejdspartner</p>
-        <ul class="footer-links">
-            <li><a href="#services" @onclick="NavServices" @onclick:preventDefault>Ydelser</a></li>
-            <li><a href="#kontakt" @onclick="NavKontakt" @onclick:preventDefault>Kontakt</a></li>
-        </ul>
-    </div>
-</footer>
+<SiteFooter />
 
 <!-- SCROLL TOP -->
 <button class="@ScrollTopClass" @onclick="ScrollToTop" title="Gå til toppen">↑</button>
@@ -282,7 +274,7 @@
     [
         new("meta", "Meta Ads", "Find dine kunder mens de scroller på Facebook & Instagram.", "23 leads genereret på 30 dage", "Kør målrettede Meta-kampagner der rammer præcis de kunder der har brug for en håndværker – og gør dem til kvalificerede leads. Vi håndterer opsætning, optimering og rapportering for maksimal ROI.", "meta"),
         new("google", "Google Ads", "Stå først når kunderne søger efter dit fag.", "Top 3 på Google på 14 dage", "Lad din virksomhed dukke op øverst, præcis når kunderne søger efter det du laver – og betal kun når de klikker. Vi optimerer dine Google Ads-kampagner for bedre synlighed og flere kvalificerede leads til lavere omkostninger.", "google-ads"),
-        new("web", "WEB", "Hjemmesider bygget til at sælge – ikke bare se flotte ud.", "Konverteringer fordoblet efter relaunch", "Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs. Vi bygger responsive websites der er optimeret for søgninger og designet til at generere flere opgaver.", "webudvikling")
+        new("web", "Hjemmeside", "Hjemmesider bygget til at sælge – ikke bare se flotte ud.", "Konverteringer fordoblet efter relaunch", "Få en hurtig, professionel hjemmeside der faktisk konverterer besøgende til kunder – ingen tomme flotte designs. Vi bygger responsive websites der er optimeret for søgninger og designet til at generere flere opgaver.", "webudvikling")
     ];
 
     private readonly List<AboutKpi> aboutKpis =
@@ -324,9 +316,6 @@
     private async Task NavHero() { menuOpen = false; await ScrollTo("hero"); }
     private async Task NavServices() { menuOpen = false; await ScrollTo("services"); }
     private async Task NavOmOs() { menuOpen = false; await ScrollTo("om-os"); }
-    private async Task NavKontakt() { menuOpen = false; await ScrollTo("kontakt"); }
-
-    private async Task HeroScrollKontakt() => await ScrollTo("kontakt");
     private async Task ScrollToTop() => await ScrollTo("hero");
 
     private async Task ScrollTo(string id)

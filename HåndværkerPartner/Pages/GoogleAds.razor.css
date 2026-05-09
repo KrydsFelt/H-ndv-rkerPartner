@@ -1,7 +1,7 @@
 .google-hero-page {
     background:
         radial-gradient(circle at top right, rgba(232, 119, 34, 0.08), transparent 24%),
-        linear-gradient(180deg, #f6f1eb 0%, #ffffff 42%);
+        linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
     color: #15171c;
     padding: 5.5rem 1.5rem 5.5rem;
 }
@@ -10,18 +10,13 @@
     max-width: 1160px;
     margin: 0 auto;
     min-height: calc(100vh - 5.5rem);
-    display: flex;
-    align-items: center;
-}
-
-.google-hero-shell {
-    width: 100%;
-    display: block;
+    display: grid;
+    place-items: center;
 }
 
 .google-hero-inner {
-    max-width: 760px;
-    text-align: left;
+    max-width: 1020px;
+    text-align: center;
 }
 
 .google-label {
@@ -29,8 +24,8 @@
     margin: 0 0 1.4rem;
     padding: 0.46rem 1rem;
     border-radius: 999px;
-    border: 1px solid #d9d1c8;
-    background: rgba(255,255,255,0.82);
+    border: 1px solid #ccd5e3;
+    background: #f7faff;
     color: var(--orange-dark);
     font-size: 0.78rem;
     font-weight: 100;
@@ -39,10 +34,10 @@
 
 .google-hero h1 {
     margin: 0;
-    font-size: clamp(2.2rem, 4.4vw, 4rem);
-    line-height: 0.98;
-    letter-spacing: -0.04em;
-    font-weight: 400;
+    font-size: clamp(1.7rem, 5.8vw, 2rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    font-weight: 700;
 }
 
 .google-hero h1 span {
@@ -51,42 +46,14 @@
 
 .google-sub {
     margin: 1.8rem 0 0;
-    max-width: 62ch;
-    font-size: clamp(1rem, 1.35vw, 1.15rem);
-    line-height: 1.72;
+    max-width: 78ch;
+    font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+    line-height: 1.6;
     color: #4a5565;
 }
 
 .google-hero-actions {
     margin-top: 2.2rem;
-}
-
-.google-hero-points {
-    list-style: none;
-    margin: 1.6rem 0 0;
-    display: grid;
-    gap: 0.8rem;
-    max-width: 34rem;
-}
-
-.google-hero-points li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    color: #334155;
-    font-size: 0.98rem;
-    line-height: 1.55;
-}
-
-.google-hero-points li::before {
-    content: "";
-    width: 0.7rem;
-    height: 0.7rem;
-    margin-top: 0.34rem;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #f08a3a 0%, #e87722 100%);
-    box-shadow: 0 0 0 5px rgba(232, 119, 34, 0.1);
-    flex-shrink: 0;
 }
 
 .google-cta {
@@ -502,12 +469,8 @@
     }
 
     .google-hero-inner {
-        max-width: 100%;
+        max-width: 1020px;
         text-align: center;
-    }
-
-    .google-hero-points {
-        max-width: none;
     }
 
     .google-process-intro {

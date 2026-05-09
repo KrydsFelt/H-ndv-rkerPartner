@@ -10,7 +10,7 @@
             <li><a href="meta" class="@Active("meta")">Meta Ads</a></li>
             <li><a href="google-ads" class="@Active("google-ads")">Google Ads</a></li>
             <li><a href="webudvikling" class="@Active("webudvikling")">Hjemmesider</a></li>
-            <li><a href="kontakt" class="@("nav-cta " + Active("kontakt"))">Kontakt os</a></li>
+            <li><a href="/kontakt" class="@("nav-cta " + Active("kontakt"))">Kontakt os</a></li>
         </ul>
         <button class="hamburger @(menuOpen ? "open" : "")" @onclick="ToggleMenu" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -28,7 +28,7 @@
                 <a href="google-ads">Google Ads</a>
                 <a href="webudvikling">Hjemmesider</a>
             </nav>
-            <a href="kontakt" class="mobile-menu-cta">Kontakt os</a>
+            <a href="/kontakt" class="mobile-menu-cta">Kontakt os</a>
         </div>
     </div>
 }
