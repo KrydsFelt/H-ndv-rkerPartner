@@ -34,7 +34,7 @@
 
 .google-hero h1 {
     margin: 0;
-    font-size: clamp(1.7rem, 5.8vw, 2rem);
+    font-size: clamp(2rem, 5vw, 3.4rem);
     line-height: 1.04;
     letter-spacing: -0.035em;
     font-weight: 700;
@@ -454,6 +454,129 @@
     padding: 0 1.5rem 1.5rem 0;
 }
 
+.google-trust {
+    max-width: 1180px;
+    margin: 1.5rem auto 0;
+}
+
+.google-trust-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #e5dfd5;
+    border: 1px solid #e5dfd5;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.google-trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 1.6rem 1rem;
+    background: #fffdfa;
+    text-align: center;
+}
+
+.google-trust-num {
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #15171c;
+}
+
+.google-trust-label {
+    font-size: 0.86rem;
+    color: #4a5565;
+    line-height: 1.4;
+}
+
+.google-case {
+    max-width: 1180px;
+    margin: 5rem auto 0;
+}
+
+.google-case-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.google-case-header .google-section-label {
+    margin-bottom: 0.6rem;
+}
+
+.google-case-header h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #15171c;
+}
+
+.google-case-card {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background: #fffdfa;
+    border: 1px solid #e5dfd5;
+    border-radius: 24px;
+    box-shadow: 0 18px 40px rgba(35, 28, 20, 0.06);
+}
+
+.google-case-quote {
+    margin: 0;
+    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: #15171c;
+}
+
+.google-case-author {
+    margin-top: 1.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid #ece4d8;
+}
+
+.google-case-name {
+    font-weight: 700;
+    color: #15171c;
+}
+
+.google-case-role {
+    margin-top: 0.2rem;
+    font-size: 0.92rem;
+    color: #4a5565;
+}
+
+.google-case-stats {
+    margin-top: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.google-case-stat {
+    padding: 1rem;
+    background: #f7f3ec;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.google-case-stat-value {
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--orange);
+}
+
+.google-case-stat-label {
+    margin-top: 0.3rem;
+    font-size: 0.82rem;
+    color: #4a5565;
+}
+
 @media (max-width: 768px) {
     .google-hero-page {
         padding-top: 5.25rem;
@@ -535,6 +658,22 @@
         max-height: none;
         opacity: 1;
         overflow: visible;
+    }
+
+    .google-trust-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .google-case {
+        margin-top: 3.5rem;
+    }
+
+    .google-case-card {
+        padding: 1.8rem;
+    }
+
+    .google-case-stats {
+        grid-template-columns: 1fr;
     }
 }
 

@@ -34,7 +34,7 @@
 
 .web-hero h1 {
     margin: 0;
-    font-size: clamp(1.7rem, 5.8vw, 2rem);
+    font-size: clamp(2rem, 5vw, 3.4rem);
     line-height: 1.04;
     letter-spacing: -0.035em;
     font-weight: 700;
@@ -45,7 +45,7 @@
 }
 
 .web-sub {
-    margin: 1.8rem 0 0;
+    margin: 1.8rem auto 0;
     max-width: 78ch;
     font-size: clamp(0.92rem, 1.2vw, 1.05rem);
     line-height: 1.6;
@@ -268,6 +268,299 @@
     color: rgba(230, 235, 245, 0.68);
 }
 
+.web-trust {
+    max-width: 1180px;
+    margin: 1.5rem auto 0;
+}
+
+.web-trust-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #e5dfd5;
+    border: 1px solid #e5dfd5;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.web-trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 1.6rem 1rem;
+    background: #fffdfa;
+    text-align: center;
+}
+
+.web-trust-num {
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #15171c;
+}
+
+.web-trust-label {
+    font-size: 0.86rem;
+    color: #4a5565;
+    line-height: 1.4;
+}
+
+.web-portfolio {
+    max-width: 1180px;
+    margin: 4.5rem auto 0;
+}
+
+.web-portfolio-intro {
+    max-width: 760px;
+}
+
+.web-portfolio-intro h2 {
+    margin: 0.85rem 0 0;
+    font-size: clamp(2rem, 3.4vw, 3.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+    color: #15171c;
+}
+
+.web-portfolio-intro p {
+    margin: 1rem 0 0;
+    font-size: 1rem;
+    line-height: 1.72;
+    color: #4a5565;
+}
+
+.web-portfolio-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem;
+}
+
+.web-portfolio-card {
+    overflow: hidden;
+    border: 1px solid #ddd4ca;
+    border-radius: 22px;
+    background: #fffdfa;
+    box-shadow: 0 14px 30px rgba(35, 28, 20, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.web-portfolio-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 44px rgba(35, 28, 20, 0.08);
+}
+
+.web-portfolio-thumb {
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.25rem;
+    position: relative;
+}
+
+.web-portfolio-type {
+    display: inline-flex;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #15171c;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.web-portfolio-meta {
+    padding: 1.3rem 1.5rem 1.5rem;
+}
+
+.web-portfolio-meta h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #15171c;
+}
+
+.web-portfolio-result {
+    margin: 0.5rem 0 0;
+    font-size: 0.95rem;
+    color: var(--orange-dark);
+    font-weight: 600;
+}
+
+.web-case {
+    max-width: 1180px;
+    margin: 5rem auto 0;
+}
+
+.web-case-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.web-case-header h2 {
+    margin: 0.6rem 0 0;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #15171c;
+}
+
+.web-case-card {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background: #fffdfa;
+    border: 1px solid #e5dfd5;
+    border-radius: 24px;
+    box-shadow: 0 18px 40px rgba(35, 28, 20, 0.06);
+}
+
+.web-case-quote {
+    margin: 0;
+    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: #15171c;
+}
+
+.web-case-author {
+    margin-top: 1.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid #ece4d8;
+}
+
+.web-case-name {
+    font-weight: 700;
+    color: #15171c;
+}
+
+.web-case-role {
+    margin-top: 0.2rem;
+    font-size: 0.92rem;
+    color: #4a5565;
+}
+
+.web-case-stats {
+    margin-top: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.web-case-stat {
+    padding: 1rem;
+    background: #f7f3ec;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.web-case-stat-value {
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--orange);
+}
+
+.web-case-stat-label {
+    margin-top: 0.3rem;
+    font-size: 0.82rem;
+    color: #4a5565;
+}
+
+.web-faq {
+    max-width: 1180px;
+    margin: 5rem auto 0;
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.web-faq-intro h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+.web-faq-intro p {
+    margin: 1.25rem 0 0;
+    max-width: 42ch;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #425067;
+}
+
+.web-faq-list {
+    border-top: 1px solid #d7dce6;
+}
+
+.faq-item {
+    border-bottom: 1px solid #d7dce6;
+    padding: 0;
+    background: #ffffff;
+}
+
+.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.9rem;
+    align-items: center;
+    font-size: clamp(1.02rem, 1.25vw, 1.55rem);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+    color: #1a202c;
+    padding: 1.9rem 0.2rem 1.9rem 0;
+    position: relative;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-title {
+    padding-right: 1.25rem;
+}
+
+.faq-item summary::after {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid #202734;
+    border-bottom: 2px solid #202734;
+    transform: rotate(45deg);
+    justify-self: end;
+    transition: transform 0.2s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(225deg);
+}
+
+.faq-item p {
+    margin: 0;
+    padding: 0 1.5rem 0 0;
+    font-size: 1.02rem;
+    line-height: 1.72;
+    color: #4a5568;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.2s ease;
+}
+
+.faq-item:hover p {
+    max-height: 260px;
+    opacity: 1;
+    padding: 0 1.5rem 1.5rem 0;
+}
+
 @media (max-width: 980px) {
     .web-process-shell {
         grid-template-columns: 1fr;
@@ -292,6 +585,10 @@
         pointer-events: auto;
         margin-top: 1.3rem;
     }
+
+    .web-faq {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -306,5 +603,44 @@
 
     .web-suite-grid {
         grid-template-columns: 1fr;
+    }
+
+    .web-trust-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .web-portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .web-case {
+        margin-top: 3.5rem;
+    }
+
+    .web-case-card {
+        padding: 1.8rem;
+    }
+
+    .web-case-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .web-faq {
+        margin-top: 3.5rem;
+    }
+
+    .faq-item summary {
+        padding: 1.3rem 0;
+    }
+
+    .faq-item p {
+        padding-left: 0;
+        max-height: none;
+        opacity: 1;
+        overflow: visible;
+    }
+
+    .faq-item:hover p {
+        padding: 0 1.5rem 1.3rem 0;
     }
 }

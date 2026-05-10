@@ -22,6 +22,27 @@
         </div>
     </section>
 
+    <section class="web-trust">
+        <div class="web-trust-inner">
+            <div class="web-trust-item">
+                <span class="web-trust-num">50+</span>
+                <span class="web-trust-label">Hjemmesider lanceret</span>
+            </div>
+            <div class="web-trust-item">
+                <span class="web-trust-num">95+</span>
+                <span class="web-trust-label">Gns. Lighthouse-score</span>
+            </div>
+            <div class="web-trust-item">
+                <span class="web-trust-num">1,2s</span>
+                <span class="web-trust-label">Gns. load-tid</span>
+            </div>
+            <div class="web-trust-item">
+                <span class="web-trust-num">100%</span>
+                <span class="web-trust-label">Mobile-first design</span>
+            </div>
+        </div>
+    </section>
+
     <section class="web-suite">
         <div class="web-suite-intro">
             <p class="web-section-eyebrow">Website Development</p>
@@ -39,6 +60,29 @@
                     <p class="web-suite-kicker">@item.Kicker</p>
                     <h3>@item.Title</h3>
                     <p>@item.Body</p>
+                </article>
+            }
+        </div>
+    </section>
+
+    <section class="web-portfolio">
+        <div class="web-portfolio-intro">
+            <p class="web-section-eyebrow">Portfolio</p>
+            <h2>Et udpluk af hjemmesider vi har bygget</h2>
+            <p>Hver side er bygget til at gøre det nemt for kunden at vælge — ikke bare at se godt ud.</p>
+        </div>
+
+        <div class="web-portfolio-grid">
+            @foreach (var item in portfolioItems)
+            {
+                <article class="web-portfolio-card">
+                    <div class="web-portfolio-thumb" style="background: @item.Gradient;">
+                        <span class="web-portfolio-type">@item.Type</span>
+                    </div>
+                    <div class="web-portfolio-meta">
+                        <h3>@item.Name</h3>
+                        <p class="web-portfolio-result">@item.Result</p>
+                    </div>
                 </article>
             }
         </div>
@@ -83,6 +127,62 @@
         </div>
     </section>
 
+    <section class="web-case">
+        <div class="web-case-header">
+            <p class="web-section-eyebrow">CASE</p>
+            <h2>Tagdækker fra Roskilde: 3× flere henvendelser via ny hjemmeside</h2>
+        </div>
+        <div class="web-case-card">
+            <p class="web-case-quote">"Den gamle side så uprofessionel ud — den nye føles som et rigtigt firma. Vi får henvendelser fra større kunder nu."</p>
+            <div class="web-case-author">
+                <div class="web-case-name">Mikkel Hansen</div>
+                <div class="web-case-role">Ejer, Tagteam Roskilde</div>
+            </div>
+            <div class="web-case-stats">
+                <div class="web-case-stat">
+                    <div class="web-case-stat-value">3×</div>
+                    <div class="web-case-stat-label">Flere henvendelser</div>
+                </div>
+                <div class="web-case-stat">
+                    <div class="web-case-stat-value">+62%</div>
+                    <div class="web-case-stat-label">Konverteringsrate</div>
+                </div>
+                <div class="web-case-stat">
+                    <div class="web-case-stat-value">0,9s</div>
+                    <div class="web-case-stat-label">Load-tid</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="web-faq">
+        <div class="web-faq-intro">
+            <h2>FAQ</h2>
+            <p>
+                Her finder du svar på de spørgsmål vi oftest får om vores hjemmesider, processen og hvad du kan forvente.
+            </p>
+        </div>
+
+        <div class="web-faq-list">
+            <details class="faq-item">
+                <summary><span class="faq-title">Hvor lang tid tager det at bygge en hjemmeside?</span></summary>
+                <p>De fleste projekter er live inden for 4-6 uger fra opstart, afhængigt af omfang og hvor hurtigt vi får indhold og feedback.</p>
+            </details>
+            <details class="faq-item">
+                <summary><span class="faq-title">Hvad koster en hjemmeside hos jer?</span></summary>
+                <p>Vi tilpasser løsningen til din virksomhed, så prisen afhænger af omfang. Du får altid et fast tilbud før vi starter — ingen overraskelser undervejs.</p>
+            </details>
+            <details class="faq-item">
+                <summary><span class="faq-title">Skal jeg selv levere indhold og billeder?</span></summary>
+                <p>Vi hjælper med struktur, tekst og billedretning. Du kender din forretning bedst, men vi sørger for at det bliver præsenteret skarpt.</p>
+            </details>
+            <details class="faq-item">
+                <summary><span class="faq-title">Hvad sker der efter siden er live?</span></summary>
+                <p>Vi kan stå for løbende drift, opdateringer og videreudvikling, så siden følger med din forretning over tid.</p>
+            </details>
+        </div>
+    </section>
+
 </main>
 
 <ProductPageCta />
@@ -110,9 +210,18 @@
         new("05", "Launch", "Test, finpudsning og næste skridt", "Før lancering gennemgår vi siden med fokus på detaljer, hastighed og oplevelse, så den står skarpt fra første dag.")
     ];
 
+    private readonly List<PortfolioItem> portfolioItems =
+    [
+        new("Tagteam Roskilde", "Tagdækker", "linear-gradient(135deg, #f08a3a 0%, #c65f13 100%)", "Konvertering +62%"),
+        new("Nordsjællands Murerservice", "Murervirksomhed", "linear-gradient(135deg, #2d3748 0%, #1a202c 100%)", "5× flere tilbud"),
+        new("VVS Klar Besked", "VVS", "linear-gradient(135deg, #4a5568 0%, #1f2937 100%)", "Henvendelser +180%"),
+        new("Elinstallatør Vest", "Elektriker", "linear-gradient(135deg, #e87722 0%, #b35a18 100%)", "Lighthouse 98")
+    ];
+
     private void SetActiveStep(string number) => activeStep = number;
     private void ResetActiveStep() => activeStep = "01";
 
     private sealed record SuiteItem(string Kicker, string Title, string Body);
     private sealed record ProcessStep(string Number, string Title, string Subtitle, string Body);
+    private sealed record PortfolioItem(string Name, string Type, string Gradient, string Result);
 }
