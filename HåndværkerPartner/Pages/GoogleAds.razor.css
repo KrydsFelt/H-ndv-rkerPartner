@@ -45,7 +45,7 @@
 }
 
 .google-sub {
-    margin: 1.8rem 0 0;
+    margin: 1.8rem auto 0;
     max-width: 78ch;
     font-size: clamp(0.92rem, 1.2vw, 1.05rem);
     line-height: 1.6;
