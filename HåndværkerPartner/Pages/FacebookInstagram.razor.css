@@ -1,18 +1,19 @@
 .meta-hero-page {
     background: #ffffff;
     color: #15171c;
-    padding: 5.5rem 1.5rem 5.5rem;
+    padding: 0 0 5.5rem;
 }
 
 .meta-hero {
-    max-width: 1160px;
+    width: 100%;
+    max-width: none;
     margin: 0 auto;
-    min-height: calc(100vh - 5.5rem);
+    min-height: 100vh;
     display: grid;
     place-items: center;
     position: relative;
     overflow: hidden;
-    border-radius: 32px;
+    border-radius: 0;
     background: #17181d;
 }
 
@@ -31,7 +32,7 @@
     background-image:
         linear-gradient(rgba(12, 12, 12, 0.34) 0%, rgba(12, 12, 12, 0.42) 100%),
         linear-gradient(rgba(240, 138, 58, 0.68), rgba(240, 138, 58, 0.68)),
-        url('/Pictures/2.JPG');
+        url('Pictures/2.JPG');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1005,23 +1006,87 @@
 }
 
 @media (max-width: 768px) {
-    .meta-hero-page {
-        padding-top: 5.25rem;
+    .meta-hero {
+        min-height: 100vh;
     }
 
-    .meta-hero {
-        min-height: calc(86vh - 5.25rem);
-        border-radius: 24px;
+    .meta-hero-inner {
+        width: min(100%, 42rem);
+        padding: calc(5.4rem + env(safe-area-inset-top)) 1.25rem 2.75rem;
+    }
+
+    .meta-label {
+        margin-bottom: 1rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+    }
+
+    .meta-hero h1 {
+        font-size: clamp(2.2rem, 9vw, 3.35rem);
+        line-height: 0.98;
+    }
+
+    .meta-sub {
+        max-width: 32ch;
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
+    .meta-process,
+    .meta-kpi-section,
+    .meta-story,
+    .meta-cards-wrap,
+    .meta-cards,
+    .meta-faq {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .meta-process {
+        margin-top: 2.75rem;
+    }
+
+    .meta-process-card {
+        padding: 1.05rem 1rem 1.15rem;
+        border-radius: 18px;
+    }
+
+    .meta-kpi-grid {
+        gap: 0.85rem;
+    }
+
+    .meta-story {
+        margin-top: 3rem;
+    }
+
+    .meta-story-row {
+        gap: 1rem;
+    }
+
+    .meta-story-copy {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .meta-story-copy h2 {
+        font-size: clamp(1.9rem, 8vw, 2.6rem);
+    }
+
+    .meta-story-lead,
+    .meta-story-points li {
+        font-size: 0.98rem;
+        line-height: 1.6;
     }
 
     .meta-cards-wrap {
         flex-direction: column;
         align-items: flex-start;
+        margin-top: 3rem;
+        gap: 1.1rem;
     }
 
     .meta-cards-controls {
         width: 100%;
-        justify-content: flex-end;
+        justify-content: flex-start;
     }
 
     .meta-cards-track {
@@ -1032,22 +1097,25 @@
 
     .meta-card {
         min-height: auto;
-        padding: 1.5rem;
+        padding: 1.35rem 1.2rem 1.5rem;
+        border-radius: 20px;
     }
 
     .meta-card h2 {
-        margin-top: 2rem;
+        margin-top: 1.35rem;
+        min-height: 0;
+        font-size: clamp(1.45rem, 7vw, 2rem);
     }
 
     .meta-card p,
     .faq-item p {
-        font-size: 1.08rem;
+        font-size: 1rem;
     }
 
     .meta-faq {
         grid-template-columns: 1fr;
         gap: 1.2rem;
-        padding: 0 0.25rem;
+        margin-top: 3.5rem;
     }
 
     .meta-faq-intro h2 {
@@ -1055,13 +1123,43 @@
     }
 
     .faq-item summary {
-        padding: 1.3rem 0.2rem;
+        padding: 1.15rem 0;
+        font-size: 1rem;
     }
 
     .faq-item p {
-        padding: 0 0.2rem 1.3rem;
+        padding: 0 0 1.15rem;
         max-height: none;
         opacity: 1;
         overflow: visible;
+    }
+}
+
+@media (max-width: 480px) {
+    .meta-hero-inner {
+        padding: calc(5rem + env(safe-area-inset-top)) 1rem 2.25rem;
+    }
+
+    .meta-process,
+    .meta-kpi-section,
+    .meta-story,
+    .meta-cards-wrap,
+    .meta-cards,
+    .meta-faq {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+    }
+
+    .meta-kpi-card {
+        padding: 1.15rem 1rem;
+    }
+
+    .meta-story-media {
+        min-height: 260px;
+        padding: 0.8rem;
+    }
+
+    .meta-story-visual {
+        min-height: 300px;
     }
 }

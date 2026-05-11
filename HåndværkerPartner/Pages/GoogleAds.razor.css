@@ -3,18 +3,19 @@
         radial-gradient(circle at top right, rgba(232, 119, 34, 0.08), transparent 24%),
         linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
     color: #15171c;
-    padding: 5.5rem 1.5rem 5.5rem;
+    padding: 0 0 5.5rem;
 }
 
 .google-hero {
-    max-width: 1160px;
+    width: 100%;
+    max-width: none;
     margin: 0 auto;
-    min-height: calc(100vh - 5.5rem);
+    min-height: 100vh;
     display: grid;
     place-items: center;
     position: relative;
     overflow: hidden;
-    border-radius: 32px;
+    border-radius: 0;
     background: #17181d;
 }
 
@@ -33,8 +34,8 @@
     background-image:
         linear-gradient(rgba(12, 12, 12, 0.34) 0%, rgba(12, 12, 12, 0.42) 100%),
         linear-gradient(rgba(240, 138, 58, 0.68), rgba(240, 138, 58, 0.68)),
-        url('/Pictures/3.JPG');
-    background-position: center;
+        url('Pictures/3.JPG');
+    background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 0;
@@ -492,13 +493,32 @@
 }
 
 @media (max-width: 768px) {
-    .google-hero-page {
-        padding-top: 5.25rem;
+    .google-hero {
+        min-height: 100vh;
     }
 
-    .google-hero {
-        min-height: calc(86vh - 5.25rem);
-        border-radius: 24px;
+    .google-hero-inner {
+        width: min(100%, 42rem);
+        max-width: 42rem;
+        padding: calc(5.4rem + env(safe-area-inset-top)) 1.25rem 2.75rem;
+        text-align: center;
+    }
+
+    .google-label {
+        margin-bottom: 1rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+    }
+
+    .google-hero h1 {
+        font-size: clamp(2.2rem, 9vw, 3.35rem);
+        line-height: 0.98;
+    }
+
+    .google-sub {
+        max-width: 32ch;
+        font-size: 1rem;
+        line-height: 1.55;
     }
 
     .google-process-shell,
@@ -506,18 +526,37 @@
         grid-template-columns: 1fr;
     }
 
-    .google-hero-inner {
-        max-width: 1020px;
-        text-align: center;
+    .google-process-shell,
+    .google-cards-wrap,
+    .google-cards,
+    .google-faq {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .google-process-shell {
+        margin-top: 2.75rem;
+        gap: 1.25rem;
     }
 
     .google-process-intro {
         position: static;
     }
 
+    .google-process-intro h2 {
+        font-size: clamp(1.95rem, 8vw, 2.8rem);
+    }
+
+    .google-process-intro p {
+        font-size: 0.98rem;
+        line-height: 1.6;
+    }
+
     .google-process-card,
     .google-process-card.is-active {
         min-height: auto;
+        padding: 1.05rem 1rem 1.15rem;
+        border-radius: 18px;
     }
 
     .google-process-head h2 {
@@ -533,11 +572,13 @@
     .google-cards-wrap {
         flex-direction: column;
         align-items: flex-start;
+        margin-top: 3rem;
+        gap: 1.1rem;
     }
 
     .google-cards-controls {
         width: 100%;
-        justify-content: flex-end;
+        justify-content: flex-start;
     }
 
     .google-cards-track {
@@ -548,28 +589,37 @@
 
     .google-card {
         min-height: auto;
-        padding: 1.5rem;
+        padding: 1.35rem 1.2rem 1.5rem;
+        border-radius: 20px;
     }
 
     .google-card h2 {
-        margin-top: 2rem;
+        margin-top: 1.35rem;
+        min-height: 0;
+        font-size: clamp(1.45rem, 7vw, 2rem);
     }
 
     .google-card p,
     .faq-item p {
-        font-size: 1.08rem;
+        font-size: 1rem;
     }
 
     .google-faq-intro h2 {
         font-size: clamp(1.8rem, 8vw, 2.5rem);
     }
 
+    .google-faq {
+        margin-top: 3.5rem;
+        gap: 1.2rem;
+    }
+
     .faq-item summary {
-        padding: 1.3rem 0.2rem;
+        padding: 1.15rem 0;
+        font-size: 1rem;
     }
 
     .faq-item p {
-        padding: 0 0.2rem 1.3rem;
+        padding: 0 0 1.15rem;
         max-height: none;
         opacity: 1;
         overflow: visible;
@@ -578,4 +628,18 @@
 }
 
 @media (max-width: 640px) {
+}
+
+@media (max-width: 480px) {
+    .google-hero-inner {
+        padding: calc(5rem + env(safe-area-inset-top)) 1rem 2.25rem;
+    }
+
+    .google-process-shell,
+    .google-cards-wrap,
+    .google-cards,
+    .google-faq {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+    }
 }

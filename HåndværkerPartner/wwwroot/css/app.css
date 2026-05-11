@@ -2953,9 +2953,15 @@ textarea.form-control { resize: vertical; min-height: 110px; }
         flex-basis: auto;
         min-height: 300px;
         padding: 24px;
-        background: #1f1f22;
-        border-color: #1f1f22;
+        background: linear-gradient(180deg, #1f1f22 0%, #252830 100%);
+        border-color: #252830;
+        box-shadow: 0 12px 28px rgba(17, 17, 17, 0.18);
+        transform: none;
     }
+    .service-card-new::before,
+    .service-card-new::after,
+    .service-card-new.is-active::before,
+    .service-card-new.is-active::after { display: none; }
     .service-card-new h3,
     .service-card-new.is-active h3,
     .service-card-new .service-logo,
@@ -2997,7 +3003,14 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     }
     .service-card-desc,
     .service-card-new.is-active .service-card-desc {
-        display: none;
+        display: block;
+        opacity: 1;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 0.97rem;
+        line-height: 1.6;
+        -webkit-line-clamp: unset;
+        line-clamp: unset;
+        overflow: visible;
     }
     .service-card-body { opacity: 1; transform: none; pointer-events: auto; }
     .service-card-new h3 { font-size: 21px; }
