@@ -2983,14 +2983,17 @@ textarea.form-control { resize: vertical; min-height: 110px; }
         border-width: 1px;
         overflow: visible;
         pointer-events: auto;
+        background: rgba(232, 119, 34, 0.14);
+        border-color: rgba(232, 119, 34, 0.28);
+        color: #f3c7a7;
     }
-    .service-card-new.is-active .service-card-case {
-        background: rgba(255, 255, 255, 0.06);
-        border-color: rgba(255, 255, 255, 0.14);
-        color: rgba(255, 255, 255, 0.92);
+    .service-card-case::before,
+    .service-card-new.is-active .service-card-case::before {
+        box-shadow: 0 0 0 3px rgba(232, 119, 34, 0.22);
     }
+    .service-card-case-label,
     .service-card-new.is-active .service-card-case-label {
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(243, 199, 167, 0.72);
     }
     .service-card-desc,
     .service-card-new.is-active .service-card-desc {
