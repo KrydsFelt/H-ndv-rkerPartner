@@ -12,11 +12,39 @@
     min-height: calc(100vh - 5.5rem);
     display: grid;
     place-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 32px;
+    background: #17181d;
 }
 
 .google-hero-inner {
+    position: relative;
+    z-index: 2;
     max-width: 1020px;
     text-align: center;
+    padding: 4rem 2rem;
+}
+
+.google-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(12, 12, 12, 0.34) 0%, rgba(12, 12, 12, 0.42) 100%),
+        rgba(240, 138, 58, 0.7),
+        url('/Pictures/2.JPG') center/cover no-repeat;
+    z-index: 0;
+}
+
+.google-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 26%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.24));
+    z-index: 1;
 }
 
 .google-label {
@@ -24,9 +52,9 @@
     margin: 0 0 1.4rem;
     padding: 0.46rem 1rem;
     border-radius: 999px;
-    border: 1px solid #ccd5e3;
-    background: #f7faff;
-    color: var(--orange-dark);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff6ef;
     font-size: 0.78rem;
     font-weight: 100;
     letter-spacing: 0.12em;
@@ -38,10 +66,11 @@
     line-height: 1.04;
     letter-spacing: -0.035em;
     font-weight: 700;
+    color: #ffffff;
 }
 
 .google-hero h1 span {
-    color: var(--orange);
+    color: #ffe1cd;
 }
 
 .google-sub {
@@ -49,7 +78,7 @@
     max-width: 78ch;
     font-size: clamp(0.92rem, 1.2vw, 1.05rem);
     line-height: 1.6;
-    color: #4a5565;
+    color: rgba(255, 247, 240, 0.9);
 }
 
 .google-hero-actions {
@@ -293,6 +322,8 @@
 }
 
 .google-card {
+    display: flex;
+    flex-direction: column;
     min-height: 420px;
     border: 1px solid #2a3140;
     border-radius: 24px;
@@ -324,6 +355,9 @@
 
 .google-card h2 {
     margin: 2.2rem 0 0;
+    min-height: 2.2em;
+    display: flex;
+    align-items: flex-end;
     font-size: clamp(1.55rem, 1.9vw, 2.05rem);
     line-height: 1.04;
     letter-spacing: -0.02em;
@@ -584,6 +618,7 @@
 
     .google-hero {
         min-height: calc(86vh - 5.25rem);
+        border-radius: 24px;
     }
 
     .google-process-shell,
@@ -627,7 +662,7 @@
 
     .google-cards-track {
         --card-width: 100%;
-        --slide-step: 100%;
+        --slide-step: calc(100% + var(--gap));
         --gap: 0.8rem;
     }
 
@@ -650,11 +685,11 @@
     }
 
     .faq-item summary {
-        padding: 1.3rem 0 1.3rem;
+        padding: 1.3rem 0.2rem;
     }
 
     .faq-item p {
-        padding-left: 0;
+        padding: 0 0.2rem 1.3rem;
         max-height: none;
         opacity: 1;
         overflow: visible;

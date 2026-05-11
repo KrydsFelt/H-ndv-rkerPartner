@@ -17,7 +17,7 @@
                 Vi designer og udvikler hjemmesider til håndværkere, hvor struktur, hastighed, tillid og tydelige budskaber arbejder sammen for at skabe flere henvendelser.
             </p>
             <div class="web-hero-actions">
-                <a href="/kontakt" class="web-cta">Book en gratis hjemmeside-gennemgang</a>
+                <a href="/kontakt" class="web-cta">Book uforpligtende samtale</a>
             </div>
         </div>
     </section>
@@ -45,11 +45,11 @@
 
     <section class="web-suite">
         <div class="web-suite-intro">
-            <p class="web-section-eyebrow">Website Development</p>
+            <p class="web-section-eyebrow">Hjemmesider</p>
             <h2>En hjemmeside skal være mere end bare flot</h2>
-            <p class="web-summary-title">Den skal gøre det nemt for en travl kunde at forstå din ydelse og vælge dig hurtigt.</p>
+            <p class="web-summary-title">Den skal gøre det nemt for kunder at forstå, hvad du laver, og tage fat i dig.</p>
             <p>
-                Vi tager den samme disciplin man ser i stærke front-end studios og oversætter den til håndværkerbranchen, så resultatet føles professionelt uden at blive smart for smarthedens skyld.
+                Vi bygger hjemmesider til håndværkere, så de ser ordentlige ud, er nemme at bruge og hjælper dig med at få flere henvendelser. Det skal være enkelt, tydeligt og til at stole på.
             </p>
         </div>
 
@@ -60,29 +60,6 @@
                     <p class="web-suite-kicker">@item.Kicker</p>
                     <h3>@item.Title</h3>
                     <p>@item.Body</p>
-                </article>
-            }
-        </div>
-    </section>
-
-    <section class="web-portfolio">
-        <div class="web-portfolio-intro">
-            <p class="web-section-eyebrow">Portfolio</p>
-            <h2>Et udpluk af hjemmesider vi har bygget</h2>
-            <p>Hver side er bygget til at gøre det nemt for kunden at vælge — ikke bare at se godt ud.</p>
-        </div>
-
-        <div class="web-portfolio-grid">
-            @foreach (var item in portfolioItems)
-            {
-                <article class="web-portfolio-card">
-                    <div class="web-portfolio-thumb" style="background: @item.Gradient;">
-                        <span class="web-portfolio-type">@item.Type</span>
-                    </div>
-                    <div class="web-portfolio-meta">
-                        <h3>@item.Name</h3>
-                        <p class="web-portfolio-result">@item.Result</p>
-                    </div>
                 </article>
             }
         </div>
@@ -127,34 +104,6 @@
         </div>
     </section>
 
-    <section class="web-case">
-        <div class="web-case-header">
-            <p class="web-section-eyebrow">CASE</p>
-            <h2>Tagdækker fra Roskilde: 3× flere henvendelser via ny hjemmeside</h2>
-        </div>
-        <div class="web-case-card">
-            <p class="web-case-quote">"Den gamle side så uprofessionel ud — den nye føles som et rigtigt firma. Vi får henvendelser fra større kunder nu."</p>
-            <div class="web-case-author">
-                <div class="web-case-name">Mikkel Hansen</div>
-                <div class="web-case-role">Ejer, Tagteam Roskilde</div>
-            </div>
-            <div class="web-case-stats">
-                <div class="web-case-stat">
-                    <div class="web-case-stat-value">3×</div>
-                    <div class="web-case-stat-label">Flere henvendelser</div>
-                </div>
-                <div class="web-case-stat">
-                    <div class="web-case-stat-value">+62%</div>
-                    <div class="web-case-stat-label">Konverteringsrate</div>
-                </div>
-                <div class="web-case-stat">
-                    <div class="web-case-stat-value">0,9s</div>
-                    <div class="web-case-stat-label">Load-tid</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="web-faq">
         <div class="web-faq-intro">
             <h2>FAQ</h2>
@@ -193,12 +142,12 @@
 
     private readonly List<SuiteItem> suiteItems =
     [
-        new("01", "Struktur & wireframing", "Vi lægger en klar sidearkitektur, så brugeren hurtigt forstår, hvem du er, hvad du laver, og hvorfor de skal vælge dig."),
-        new("02", "UI design", "Vi designer sider med stærke kontraster, roligt hierarki og et udtryk der føles professionelt uden at blive generisk."),
-        new("03", "Responsiv udvikling", "Siden bygges responsivt fra starten, så den performer stabilt på tværs af skærmstørrelser og brugeradfærd."),
-        new("04", "Konverteringsfokus", "Kontaktpunkter, sektioner og CTA’er placeres med fokus på at skabe konkrete henvendelser frem for bare visuel wow-effekt."),
-        new("05", "Performance & kvalitet", "Vi prioriterer hurtig load, ryddelig frontend og en oplevelse der føles let, skarp og gennemført hele vejen igennem."),
-        new("06", "Løbende videreudvikling", "Når siden er live, kan vi justere indhold, sektioner og brugerflow efter det, der virker bedst i praksis.")
+        new("01", "Klar opbygning", "Vi bygger siden op, så kunder hurtigt kan se, hvem du er, hvad du laver, og hvordan de kontakter dig."),
+        new("02", "Et ordentligt udtryk", "Designet skal få din virksomhed til at se troværdig og professionel ud, uden at det bliver smart for smarthedens skyld."),
+        new("03", "God på mobil", "De fleste kigger fra telefonen. Derfor skal siden være nem at læse og bruge på både mobil, tablet og computer."),
+        new("04", "Flere henvendelser", "Knapper, kontaktfelter og tekster bliver placeret, så det føles naturligt for kunden at tage næste skridt."),
+        new("05", "Hurtig og nem", "Siden skal loade hurtigt og fungere uden bøvl, så kunden ikke falder fra undervejs."),
+        new("06", "Kan justeres løbende", "Når siden er live, kan vi løbende rette tekst, billeder og indhold til, så den følger din forretning.")
     ];
 
     private readonly List<ProcessStep> processSteps =
@@ -210,18 +159,9 @@
         new("05", "Launch", "Test, finpudsning og næste skridt", "Før lancering gennemgår vi siden med fokus på detaljer, hastighed og oplevelse, så den står skarpt fra første dag.")
     ];
 
-    private readonly List<PortfolioItem> portfolioItems =
-    [
-        new("Tagteam Roskilde", "Tagdækker", "linear-gradient(135deg, #f08a3a 0%, #c65f13 100%)", "Konvertering +62%"),
-        new("Nordsjællands Murerservice", "Murervirksomhed", "linear-gradient(135deg, #2d3748 0%, #1a202c 100%)", "5× flere tilbud"),
-        new("VVS Klar Besked", "VVS", "linear-gradient(135deg, #4a5568 0%, #1f2937 100%)", "Henvendelser +180%"),
-        new("Elinstallatør Vest", "Elektriker", "linear-gradient(135deg, #e87722 0%, #b35a18 100%)", "Lighthouse 98")
-    ];
-
     private void SetActiveStep(string number) => activeStep = number;
     private void ResetActiveStep() => activeStep = "01";
 
     private sealed record SuiteItem(string Kicker, string Title, string Body);
     private sealed record ProcessStep(string Number, string Title, string Subtitle, string Body);
-    private sealed record PortfolioItem(string Name, string Type, string Gradient, string Result);
 }

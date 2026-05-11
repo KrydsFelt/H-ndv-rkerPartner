@@ -1,4 +1,4 @@
-a.meta-hero-page {
+.meta-hero-page {
     background: #ffffff;
     color: #15171c;
     padding: 5.5rem 1.5rem 5.5rem;
@@ -10,11 +10,39 @@ a.meta-hero-page {
     min-height: calc(100vh - 5.5rem);
     display: grid;
     place-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 32px;
+    background: #17181d;
 }
 
 .meta-hero-inner {
+    position: relative;
+    z-index: 2;
     max-width: 1020px;
     text-align: center;
+    padding: 4rem 2rem;
+}
+
+.meta-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(12, 12, 12, 0.34) 0%, rgba(12, 12, 12, 0.42) 100%),
+        rgba(240, 138, 58, 0.7),
+        url('/Pictures/1.JPG') center/cover no-repeat;
+    z-index: 0;
+}
+
+.meta-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 26%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.24));
+    z-index: 1;
 }
 
 .meta-label {
@@ -22,9 +50,9 @@ a.meta-hero-page {
     margin: 0 0 1.4rem;
     padding: 0.46rem 1rem;
     border-radius: 999px;
-    border: 1px solid #ccd5e3;
-    background: #f7faff;
-    color: var(--orange-dark);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff6ef;
     font-size: 0.78rem;
     font-weight: 100;
     letter-spacing: 0.12em;
@@ -36,10 +64,11 @@ a.meta-hero-page {
     line-height: 1.04;
     letter-spacing: -0.035em;
     font-weight: 700;
+    color: #ffffff;
 }
 
 .meta-hero h1 span {
-    color: var(--orange);
+    color: #ffe1cd;
 }
 
 .meta-sub {
@@ -47,7 +76,7 @@ a.meta-hero-page {
     max-width: 78ch;
     font-size: clamp(0.92rem, 1.2vw, 1.05rem);
     line-height: 1.6;
-    color: #4a5565;
+    color: rgba(255, 247, 240, 0.9);
 }
 
 .meta-hero-actions {
@@ -706,6 +735,8 @@ a.meta-hero-page {
 }
 
 .meta-card {
+    display: flex;
+    flex-direction: column;
     min-height: 420px;
     border: 1px solid rgba(232, 119, 34, 0.28);
     border-radius: 24px;
@@ -720,6 +751,9 @@ a.meta-hero-page {
 
 .meta-card h2 {
     margin: 2.2rem 0 0;
+    min-height: 2.2em;
+    display: flex;
+    align-items: flex-end;
     font-size: clamp(1.45rem, 1.8vw, 1.9rem);
     line-height: 1.04;
     letter-spacing: -0.02em;
@@ -762,31 +796,6 @@ a.meta-hero-page {
         linear-gradient(168deg, #f39a50 0%, #ea7e27 58%, #cc6314 100%);
     border-color: rgba(255, 223, 194, 0.58);
     transform: translateY(-4px);
-}
-
-.meta-card-link {
-    margin-top: auto;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    padding: 0.9rem 1.15rem;
-    border-radius: 999px;
-    background: rgba(20, 22, 27, 0.92);
-    color: #ffffff;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.8rem;
-    font-weight: 700;
-    box-shadow: 0 12px 24px rgba(20, 22, 27, 0.18);
-    transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.meta-card-link:hover {
-    background: #111318;
-    color: #ffffff;
-    transform: translateY(-2px);
 }
 
 .meta-cards-viewport {
@@ -990,6 +999,7 @@ a.meta-hero-page {
 
     .meta-hero {
         min-height: calc(86vh - 5.25rem);
+        border-radius: 24px;
     }
 
     .meta-cards-wrap {
@@ -1004,7 +1014,7 @@ a.meta-hero-page {
 
     .meta-cards-track {
         --card-width: 100%;
-        --slide-step: 100%;
+        --slide-step: calc(100% + var(--gap));
         --gap: 0.8rem;
     }
 
@@ -1025,6 +1035,7 @@ a.meta-hero-page {
     .meta-faq {
         grid-template-columns: 1fr;
         gap: 1.2rem;
+        padding: 0 0.25rem;
     }
 
     .meta-faq-intro h2 {
@@ -1032,11 +1043,11 @@ a.meta-hero-page {
     }
 
     .faq-item summary {
-        padding: 1.3rem 0 1.3rem;
+        padding: 1.3rem 0.2rem;
     }
 
     .faq-item p {
-        padding-left: 0;
+        padding: 0 0.2rem 1.3rem;
         max-height: none;
         opacity: 1;
         overflow: visible;

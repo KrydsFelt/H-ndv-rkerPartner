@@ -70,3 +70,20 @@
         opacity: 0;
     }
 }
+
+@media (max-width: 640px) {
+    .rl-shell {
+        width: min(92vw, 420px);
+        gap: 10px;
+    }
+
+    .rl-text {
+        font-size: clamp(20px, 8vw, 28px);
+        letter-spacing: 0.02em;
+    }
+
+    .rl-text.rl-subtitle-mode {
+        font-size: clamp(12px, 3.8vw, 16px);
+        letter-spacing: 0.05em;
+    }
+}

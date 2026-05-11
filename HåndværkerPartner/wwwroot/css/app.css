@@ -773,6 +773,10 @@ video {
     color: #1a1a1a;
     object-fit: contain;
 }
+.service-logo--meta {
+    transform: scale(1.16);
+    transform-origin: center;
+}
 .service-card-new.is-active .service-logo {
     color: #ffffff;
 }
@@ -2740,6 +2744,25 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     }
     100% {
         opacity: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .rl-shell {
+        width: min(92vw, 420px);
+        gap: 10px;
+    }
+
+    .rl-text,
+    .route-loader-title,
+    .route-loader-subtitle {
+        font-size: clamp(20px, 8vw, 28px);
+        letter-spacing: 0.02em;
+    }
+
+    .rl-text.rl-subtitle-mode {
+        font-size: clamp(12px, 3.8vw, 16px);
+        letter-spacing: 0.05em;
     }
 }
 
