@@ -2121,15 +2121,6 @@ textarea.form-control { resize: vertical; min-height: 110px; }
         transparent;
 }
 
-.product-page-cta-kicker {
-    margin: 0 0 0.9rem;
-    color: var(--orange-dark);
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-}
-
 .product-page-cta-copy h2 {
     margin: 0;
     font-family: Georgia, "Times New Roman", serif;
@@ -2201,34 +2192,6 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     line-height: 1;
 }
 
-.product-page-cta-note {
-    margin: 0;
-    max-width: 28ch;
-    color: #66584c;
-    font-size: 0.92rem;
-    line-height: 1.55;
-}
-
-.product-page-cta-points {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-top: 1.7rem;
-}
-
-.product-page-cta-points span {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.7rem 0.95rem;
-    border-radius: 999px;
-    background: rgba(23, 24, 29, 0.06);
-    color: #191510;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    border: 1px solid rgba(25, 21, 16, 0.08);
-}
-
 .product-page-cta-contact {
     display: grid;
     align-content: start;
@@ -2242,7 +2205,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 
 .product-page-cta-contact-kicker {
     margin: 0;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgb(255, 255, 255);
     font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -3183,15 +3146,6 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     .product-page-cta-actions {
         flex-direction: column;
         align-items: flex-start;
-    }
-    .product-page-cta-note {
-        max-width: none;
-    }
-    .product-page-cta-points {
-        gap: 0.65rem;
-    }
-    .product-page-cta-points span {
-        font-size: 0.76rem;
     }
     .kpi-layout { grid-template-columns: 1fr; gap: 32px; }
     .kpi-right { gap: 14px; }
