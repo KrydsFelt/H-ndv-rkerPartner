@@ -9,8 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="277db4f8-3b4e-4f9f-ba75-18a02e301cf0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H-ndv-rkerPartner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H-ndv-rkerPartner/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pages/Webudvikling.razor" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pages/Webudvikling.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/wwwroot/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/wwwroot/css/app.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +99,8 @@
       <workItem from="1778008413375" duration="11253000" />
       <workItem from="1778067276655" duration="1313000" />
       <workItem from="1778091592930" duration="1775000" />
+      <workItem from="1778321443436" duration="2200000" />
+      <workItem from="1778337269134" duration="5898000" />
     </task>
     <servers />
   </component>
