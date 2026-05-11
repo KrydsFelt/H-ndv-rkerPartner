@@ -73,17 +73,17 @@
 
 @media (max-width: 640px) {
     .rl-shell {
-        width: min(92vw, 420px);
-        gap: 10px;
+        width: min(90vw, 320px);
+        gap: 8px;
     }
 
     .rl-text {
-        font-size: clamp(20px, 8vw, 28px);
-        letter-spacing: 0.02em;
+        font-size: clamp(15px, 5.8vw, 22px);
+        letter-spacing: 0.015em;
     }
 
     .rl-text.rl-subtitle-mode {
-        font-size: clamp(12px, 3.8vw, 16px);
-        letter-spacing: 0.05em;
+        font-size: clamp(10px, 3vw, 13px);
+        letter-spacing: 0.04em;
     }
 }
