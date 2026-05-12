@@ -12,7 +12,7 @@
     margin: 0 auto;
     min-height: 100vh;
     display: grid;
-    place-items: center;
+    place-items: end center;
     position: relative;
     overflow: hidden;
     border-radius: 0;
@@ -24,7 +24,7 @@
     z-index: 2;
     max-width: 1020px;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 6rem;
 }
 
 .google-hero::before {
