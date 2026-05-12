@@ -285,12 +285,12 @@ video {
 
 /* ── HERO ── */
 .hero {
-    min-height: 100vh;
+    min-height: 72vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 24px 80px;
+    padding: 64px 24px 64px;
     margin-top: 0;
     background: #1a1a1a;
     overflow: hidden;
@@ -302,7 +302,7 @@ video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.72;
+    opacity: 0.48;
     z-index: 0;
     pointer-events: none;
     background: #1a1a1a;
@@ -329,20 +329,20 @@ video {
     text-align: center;
 }
 .hero-badge {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.72);
     letter-spacing: 0.5px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     font-style: italic;
     text-align: center;
 }
 .hero h2 {
-    font-size: clamp(28px, 4vw, 48px);
+    font-size: clamp(32px, 5vw, 60px);
     font-weight: 800;
     color: var(--white);
-    line-height: 1.2;
-    margin-bottom: 20px;
+    line-height: 1.15;
+    margin-bottom: 22px;
     text-align: center;
 }
 .hero-headline {
@@ -350,19 +350,19 @@ video {
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    line-height: 1.15 !important;
+    line-height: 1.1 !important;
     letter-spacing: -0.01em;
-    font-size: clamp(20px, 3.2vw, 40px) !important;
+    font-size: clamp(28px, 4.4vw, 56px) !important;
 }
 .hero-headline span {
     white-space: nowrap;
 }
 .hero-sub {
-    font-size: 17px;
-    color: rgba(255,255,255,0.72);
+    font-size: 20px;
+    color: rgba(255,255,255,0.82);
     margin: 0 auto 40px;
-    max-width: 640px;
-    line-height: 1.75;
+    max-width: 680px;
+    line-height: 1.65;
     text-align: center;
 }
 .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
@@ -1113,53 +1113,53 @@ video {
 /* ── FIT / MATCH SECTION ── */
 .fit-section {
     background: #0c1015;
-    padding: clamp(72px, 9vw, 120px) 24px;
+    padding: clamp(36px, 4.5vw, 60px) 24px;
     color: #e6e8ef;
 }
 .fit-inner {
-    max-width: 1240px;
+    max-width: 980px;
     margin: 0 auto;
 }
 .fit-intro {
     text-align: center;
-    max-width: 760px;
-    margin: 0 auto clamp(40px, 5vw, 64px);
+    max-width: 620px;
+    margin: 0 auto clamp(20px, 2.6vw, 32px);
 }
 .fit-tag {
     color: var(--orange);
     display: inline-block;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
 }
 .fit-title {
     font-family: ui-serif, Georgia, 'Times New Roman', serif;
-    font-size: clamp(28px, 3.6vw, 44px);
+    font-size: clamp(19px, 2.3vw, 28px);
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: -0.01em;
     color: #f5f6f8;
-    margin: 0 0 16px;
+    margin: 0 0 10px;
 }
 .fit-title span {
     color: var(--orange);
     font-style: italic;
 }
 .fit-subtitle {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 13.5px;
+    line-height: 1.5;
     color: rgba(230, 232, 239, 0.65);
     margin: 0;
 }
 .fit-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 4vw, 64px);
+    gap: clamp(18px, 2.4vw, 36px);
 }
 .fit-headline {
     font-family: ui-serif, Georgia, 'Times New Roman', serif;
-    font-size: clamp(22px, 2.4vw, 30px);
+    font-size: clamp(15px, 1.6vw, 20px);
     font-weight: 500;
     color: #f5f6f8;
-    margin: 0 0 22px;
+    margin: 0 0 12px;
     letter-spacing: -0.01em;
 }
 .fit-list {
@@ -1168,17 +1168,17 @@ video {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 7px;
 }
 .fit-item {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 18px 22px;
+    gap: 10px;
+    padding: 10px 15px;
     border-radius: 999px;
     background: #181d24;
     border: 1px solid rgba(255, 255, 255, 0.04);
-    font-size: 15.5px;
+    font-size: 13px;
     color: #d4d8e0;
     line-height: 1.4;
     transition: background 0.2s ease, transform 0.2s ease;
@@ -1189,8 +1189,8 @@ video {
 }
 .fit-icon {
     flex-shrink: 0;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: grid;
     place-items: center;
@@ -1204,18 +1204,18 @@ video {
     color: #fff;
 }
 .fit-icon svg {
-    width: 16px;
-    height: 16px;
+    width: 11px;
+    height: 11px;
     display: block;
 }
 
 @media (max-width: 768px) {
-    .fit-section { padding: 56px 16px; }
-    .fit-grid { grid-template-columns: 1fr; gap: 40px; }
-    .fit-headline { margin-bottom: 16px; }
-    .fit-item { padding: 14px 16px; font-size: 14px; gap: 12px; }
-    .fit-icon { width: 26px; height: 26px; }
-    .fit-icon svg { width: 14px; height: 14px; }
+    .fit-section { padding: 32px 16px; }
+    .fit-grid { grid-template-columns: 1fr; gap: 22px; }
+    .fit-headline { margin-bottom: 10px; }
+    .fit-item { padding: 9px 13px; font-size: 12.5px; gap: 9px; }
+    .fit-icon { width: 19px; height: 19px; }
+    .fit-icon svg { width: 11px; height: 11px; }
 }
 
 /* ── KPI SECTION ── */
@@ -3028,11 +3028,11 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 /* ── RESPONSIVE 768px ── */
 @media (max-width: 768px) {
     /* Hero */
-    .hero { min-height: 100svh; padding: 60px 20px 60px; margin-top: 90px; }
-    .hero-inner { padding: 2rem 1rem; }
+    .hero { min-height: 70svh; padding: 56px 20px 56px; margin-top: 90px; }
+    .hero-inner { padding: 1.5rem 1rem; }
     .hero-content { width: 100%; }
-    .hero h2 { font-size: clamp(24px, 6vw, 40px); }
-    .hero-sub { font-size: 15px; }
+    .hero h2 { font-size: clamp(28px, 7.5vw, 46px); }
+    .hero-sub { font-size: 17px; }
     .hero-buttons { flex-direction: column; width: 100%; justify-content: center; align-items: center; }
     .hero-buttons .btn-primary { padding: 12px 28px; font-size: 15px; }
     .hero-buttons .btn-outline { width: 100%; text-align: center; }
@@ -3275,23 +3275,23 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     }
 
     .hero {
-        padding: 60px 16px 48px;
+        padding: 52px 16px 44px;
         margin-top: 90px;
     }
-    .hero-inner { padding: 1.5rem 0.5rem; }
+    .hero-inner { padding: 1.25rem 0.5rem; }
     .hero-content { width: 100%; }
     .hero-badge {
-        font-size: 13px;
-        margin-bottom: 14px;
+        font-size: 15px;
+        margin-bottom: 16px;
     }
     .hero h2 {
-        font-size: clamp(28px, 9vw, 38px);
+        font-size: clamp(30px, 10vw, 44px);
         line-height: 1.06;
         text-wrap: balance;
     }
     .hero-sub {
-        font-size: 14px;
-        line-height: 1.65;
+        font-size: 16px;
+        line-height: 1.6;
         margin-bottom: 28px;
     }
     .hero-buttons { justify-content: center; }

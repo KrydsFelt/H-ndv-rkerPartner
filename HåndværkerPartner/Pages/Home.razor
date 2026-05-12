@@ -87,66 +87,6 @@
     </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section section--light" id="services">
-    <div class="section-inner">
-        <div class="services-header">
-            <span class="section-tag">Vores ydelser</span>
-            <h2 class="section-title">Få flere kunder med <span>de rigtige værktøjer</span></h2>
-            <p class="section-subtitle">Tre ting der virker, og som tilsammen giver dig flere kunder, mere synlighed og en fuld kalender.</p>
-        </div>
-
-        <div class="services-grid-new" @onmouseleave="ResetActiveServicePanel">
-            @foreach (var service in servicePanels)
-            {
-                var isActive = activeServicePanel == service.Key;
-
-                <div class="service-card-new @(isActive ? "is-active" : null)"
-                     @onmouseover="@(() => SetActiveServicePanel(service.Key))">
-                    <div class="service-card-header">
-                        <h3>@service.Title</h3>
-                        @if (service.Key == "meta")
-                        {
-                            <img src="Pictures/meta-logo.png" alt="Meta" class="service-logo service-logo--meta" />
-                        }
-                        else if (service.Key == "google")
-                        {
-                            <img src="Pictures/google-ads-logo.png" alt="Google Ads" class="service-logo" />
-                        }
-                        else
-                        {
-                            <svg class="service-logo" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <rect x="3.5" y="5" width="17" height="12" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
-                                <path d="M8 19h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                                <path d="M12 17v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                                <path d="M7.5 9.5h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                                <path d="M7.5 12.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                            </svg>
-                        }
-                    </div>
-                    <p class="service-card-teaser">@service.Teaser</p>
-                    <div class="service-card-case">
-                        <span class="service-card-case-label">Resultat:</span>
-                        <span>@service.Case</span>
-                    </div>
-                    @if (isActive)
-                    {
-                        <p class="service-card-desc">@service.Body</p>
-                    }
-                    <a href="@service.Href" class="service-card-hint">
-                        <span>Læs mere</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                            <polyline points="12 5 19 12 12 19"/>
-                        </svg>
-                    </a>
-                </div>
-            }
-        </div>
-
-    </div>
-</section>
-
 <section class="testimonials-fullscreen" id="testimonials">
     <div class="tfs-inner">
         <h2 class="tfs-heading">Lyt ikke kun til os,<br><span>lyt til hvad vores kunder siger</span></h2>
@@ -205,6 +145,66 @@
                 </div>
             </article>
         </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section--light" id="services">
+    <div class="section-inner">
+        <div class="services-header">
+            <span class="section-tag">Vores ydelser</span>
+            <h2 class="section-title">Få flere kunder med <span>de rigtige værktøjer</span></h2>
+            <p class="section-subtitle">Tre ting der virker, og som tilsammen giver dig flere kunder, mere synlighed og en fuld kalender.</p>
+        </div>
+
+        <div class="services-grid-new" @onmouseleave="ResetActiveServicePanel">
+            @foreach (var service in servicePanels)
+            {
+                var isActive = activeServicePanel == service.Key;
+
+                <div class="service-card-new @(isActive ? "is-active" : null)"
+                     @onmouseover="@(() => SetActiveServicePanel(service.Key))">
+                    <div class="service-card-header">
+                        <h3>@service.Title</h3>
+                        @if (service.Key == "meta")
+                        {
+                            <img src="Pictures/meta-logo.png" alt="Meta" class="service-logo service-logo--meta" />
+                        }
+                        else if (service.Key == "google")
+                        {
+                            <img src="Pictures/google-ads-logo.png" alt="Google Ads" class="service-logo" />
+                        }
+                        else
+                        {
+                            <svg class="service-logo" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="3.5" y="5" width="17" height="12" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+                                <path d="M8 19h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M12 17v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M7.5 9.5h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M7.5 12.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            </svg>
+                        }
+                    </div>
+                    <p class="service-card-teaser">@service.Teaser</p>
+                    <div class="service-card-case">
+                        <span class="service-card-case-label">Resultat:</span>
+                        <span>@service.Case</span>
+                    </div>
+                    @if (isActive)
+                    {
+                        <p class="service-card-desc">@service.Body</p>
+                    }
+                    <a href="@service.Href" class="service-card-hint">
+                        <span>Læs mere</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+            }
+        </div>
+
     </div>
 </section>
 
