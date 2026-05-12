@@ -913,11 +913,18 @@ video {
     overflow: hidden;
 }
 .tfs-inner {
-    width: min(100%, 920px);
+    width: min(100%, 1280px);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 42px;
+}
+.tfs-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px;
+    margin-top: 12px;
 }
 .tfs-kicker {
     font-size: 13px;
@@ -953,14 +960,43 @@ video {
 .tfs-card {
     width: 100%;
     position: relative;
-    max-width: 1080px;
-    margin-top: 28px;
-    padding: 32px;
-    border-radius: 22px;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-    gap: 40px;
-    align-items: center;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: stretch;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+    padding: 0;
+    margin-top: 0;
+}
+.tfs-card-image {
+    position: relative;
+    z-index: 2;
+    aspect-ratio: 4 / 5;
+    margin-right: -56px;
+    margin-top: -24px;
+    margin-bottom: -24px;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #2a2a30;
+    box-shadow:
+        0 0 0 1px rgba(232, 119, 34, 0.35),
+        0 22px 48px rgba(0, 0, 0, 0.55),
+        0 0 36px rgba(232, 119, 34, 0.18);
+}
+.tfs-card-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.tfs-card-panel {
+    position: relative;
+    z-index: 1;
+    align-self: center;
+    padding: 36px 32px 32px 88px;
+    border-radius: 22px;
     background:
         radial-gradient(circle at top right, rgba(232, 119, 34, 0.12) 0%, transparent 50%),
         radial-gradient(circle at bottom left, rgba(232, 119, 34, 0.06) 0%, transparent 45%),
@@ -972,38 +1008,18 @@ video {
         0 1px 2px rgba(0, 0, 0, 0.5),
         0 30px 80px rgba(0, 0, 0, 0.5),
         0 60px 160px rgba(232, 119, 34, 0.14);
-    overflow: hidden;
-}
-.tfs-card-avatar {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 420px;
-    border-radius: 18px;
-    box-shadow:
-        0 0 0 1px rgba(232, 119, 34, 0.35),
-        0 14px 40px rgba(0, 0, 0, 0.55);
-    overflow: hidden;
-    background: #2a2a30;
-    grid-row: 1 / -1;
-    grid-column: 1;
-}
-.tfs-card-avatar img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 .tfs-quote {
     position: relative;
     z-index: 1;
-    grid-column: 2;
-    font-size: clamp(20px, 2.1vw, 28px);
+    font-size: clamp(15px, 1.2vw, 17px);
     color: #f5f5f7;
-    line-height: 1.45;
+    line-height: 1.55;
     font-weight: 400;
-    letter-spacing: -0.02em;
-    max-width: 620px;
+    letter-spacing: -0.005em;
     margin: 0;
     text-align: left;
 }
@@ -1019,40 +1035,32 @@ video {
 }
 .tfs-author {
     position: relative;
-    grid-column: 2;
-    left: auto;
-    bottom: auto;
-    transform: none;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    box-shadow: none;
-    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
     text-align: left;
 }
-.tfs-author-info { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
 .tfs-name {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 600;
-    color: #ffffff;
+    color: var(--orange);
     text-align: left;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.005em;
 }
 .tfs-role {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.55);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     text-align: left;
 }
 .tfs-stats {
-    grid-column: 2;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0;
-    margin-top: 28px;
-    padding-top: 22px;
+    margin-top: 6px;
+    padding-top: 18px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
 }
@@ -1068,8 +1076,9 @@ video {
 }
 .tfs-stat {
     text-align: center;
-    padding: 0 16px;
+    padding: 0 6px;
     position: relative;
+    min-width: 0;
 }
 .tfs-stat:not(:last-child)::after {
     content: '';
@@ -1081,7 +1090,7 @@ video {
     background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.1), transparent);
 }
 .tfs-stat-value {
-    font-size: clamp(26px, 2.6vw, 36px);
+    font-size: clamp(18px, 1.6vw, 22px);
     font-weight: 700;
     color: var(--orange);
     line-height: 1.05;
@@ -1089,10 +1098,10 @@ video {
     text-shadow: 0 0 24px rgba(232, 119, 34, 0.25);
 }
 .tfs-stat-label {
-    font-size: 11.5px;
+    font-size: 9.5px;
     color: rgba(255, 255, 255, 0.55);
-    margin-top: 10px;
-    letter-spacing: 0.06em;
+    margin-top: 6px;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1.3;
 }
@@ -3016,26 +3025,24 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     .testimonials-fullscreen { padding: 72px 16px; min-height: 0; }
     .tfs-inner { gap: 30px; }
     .tfs-heading { font-size: clamp(22px, 7vw, 30px); }
+    .tfs-grid { grid-template-columns: 1fr; gap: 28px; }
     .tfs-card {
-        margin-top: 14px;
-        padding: 22px;
-        border-radius: 18px;
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 0;
     }
-    .tfs-card-avatar {
-        grid-row: auto;
-        grid-column: 1;
-        min-height: 280px;
+    .tfs-card-image {
+        aspect-ratio: 4 / 3;
+        margin: 0 0 -24px 0;
         border-radius: 16px;
     }
-    .tfs-quote { grid-column: 1; font-size: 18px; line-height: 1.5; max-width: 100%; text-align: center; }
-    .tfs-quote-mark { font-size: 48px; margin-bottom: 8px; }
-    .tfs-author { grid-column: 1; margin-top: 18px; text-align: center; }
-    .tfs-author-info { align-items: center; }
-    .tfs-name { font-size: 14px; text-align: center; }
-    .tfs-role { font-size: 12px; max-width: none; text-align: center; }
-    .tfs-stats { grid-column: 1; margin-top: 24px; padding-top: 20px; }
+    .tfs-card-panel {
+        padding: 40px 20px 22px;
+        border-radius: 16px;
+    }
+    .tfs-quote { font-size: 15px; line-height: 1.5; }
+    .tfs-name { font-size: 16px; }
+    .tfs-role { font-size: 11px; }
+    .tfs-stats { margin-top: 4px; padding-top: 16px; }
     .tfs-stat { padding: 0 8px; }
     .tfs-stat-value { font-size: 22px; }
     .tfs-stat-label { font-size: 11px; margin-top: 6px; }
@@ -3259,12 +3266,12 @@ textarea.form-control { resize: vertical; min-height: 110px; }
         font-size: 11px;
     }
 
-    .tfs-card {
-        padding: 16px;
-        border-radius: 16px;
+    .tfs-card-panel {
+        padding: 36px 16px 20px;
+        border-radius: 14px;
     }
-    .tfs-card-avatar {
-        min-height: 220px;
+    .tfs-card-image {
+        aspect-ratio: 4 / 3;
         border-radius: 14px;
     }
     .tfs-quote {
