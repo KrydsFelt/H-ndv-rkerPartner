@@ -318,17 +318,15 @@ video {
 .hero-inner {
     position: relative;
     z-index: 2;
-    max-width: 1100px;
+    max-width: 1020px;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    height: 100%;
-    padding: 40px 0;
+    text-align: center;
+    padding: 4rem 2rem;
 }
 .hero-content {
-    max-width: 640px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
 }
 .hero-badge {
     font-size: 14px;
@@ -337,7 +335,7 @@ video {
     letter-spacing: 0.5px;
     margin-bottom: 20px;
     font-style: italic;
-    text-align: left;
+    text-align: center;
 }
 .hero h2 {
     font-size: clamp(28px, 4vw, 48px);
@@ -345,11 +343,12 @@ video {
     color: var(--white);
     line-height: 1.2;
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
 }
 .hero-headline {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 4px;
     line-height: 1.15 !important;
     letter-spacing: -0.01em;
@@ -361,13 +360,19 @@ video {
 .hero-sub {
     font-size: 17px;
     color: rgba(255,255,255,0.72);
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
     max-width: 640px;
     line-height: 1.75;
-    text-align: left;
+    text-align: center;
 }
-.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-start; margin-top: 16px; }
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
 .hero-arrow {
+    position: absolute;
+    bottom: 24px;
+    inset-inline: 0;
+    margin-inline: auto;
+    width: fit-content;
+    z-index: 3;
     color: rgba(255,255,255,0.7);
     cursor: pointer;
     padding: 12px;
@@ -376,7 +381,6 @@ video {
     justify-content: center;
     transition: transform 0.3s ease;
     animation: hero-arrow-bounce 2s ease-in-out infinite;
-    margin-top: 32px;
 }
 .hero-arrow:hover {
     transform: translateY(4px);
@@ -1297,7 +1301,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 /* ── SUBPAGES ── */
 .subpage { padding-top: 0; }
 .subpage-hero { min-height: 60vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 140px 24px 80px; }
-.subpage-hero::before { content: ''; position: absolute; inset: 0; background: url('/Handvaerker.gif') center/cover no-repeat; opacity: 0.18; }
+.subpage-hero::before { content: ''; position: absolute; inset: 0; background: url('../Handvaerker.gif') center/cover no-repeat; opacity: 0.18; }
 .subpage-hero::after { content: ''; position: absolute; inset: 0; background: rgba(232,119,34,0.2); }
 .subpage-hero-inner { position: relative; z-index: 1; max-width: 760px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .subpage-hero-inner h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--white); line-height: 1.12; margin-bottom: 20px; }
@@ -1320,7 +1324,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
         linear-gradient(180deg, #171717 0%, #101010 100%);
 }
 .service-detail-hero::before {
-    background: url('/Handvaerker.gif') center/cover no-repeat;
+    background: url('../Handvaerker.gif') center/cover no-repeat;
     opacity: 0.1;
 }
 .service-detail-hero::after {
@@ -2917,14 +2921,13 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 @media (max-width: 768px) {
     /* Hero */
     .hero { min-height: 100svh; padding: 60px 20px 60px; margin-top: 90px; }
-    .hero-inner { align-items: flex-start; }
+    .hero-inner { padding: 2rem 1rem; }
     .hero-content { width: 100%; }
     .hero h2 { font-size: clamp(24px, 6vw, 40px); }
     .hero-sub { font-size: 15px; }
-    .hero-buttons { flex-direction: column; width: 100%; justify-content: flex-start; }
+    .hero-buttons { flex-direction: column; width: 100%; justify-content: center; align-items: center; }
     .hero-buttons .btn-primary { padding: 12px 28px; font-size: 15px; }
     .hero-buttons .btn-outline { width: 100%; text-align: center; }
-    .hero-arrow { margin-top: auto; }
     .hero-buttons .btn-primary {
         padding: 18px 28px;
         font-size: 18px;
@@ -3167,7 +3170,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
         padding: 60px 16px 48px;
         margin-top: 90px;
     }
-    .hero-inner { align-items: flex-start; }
+    .hero-inner { padding: 1.5rem 0.5rem; }
     .hero-content { width: 100%; }
     .hero-badge {
         font-size: 13px;
@@ -3183,7 +3186,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
         line-height: 1.65;
         margin-bottom: 28px;
     }
-    .hero-buttons { justify-content: flex-start; }
+    .hero-buttons { justify-content: center; }
     .hero-buttons .btn-primary {
         font-size: 17px;
         padding: 16px 20px;
@@ -3192,7 +3195,6 @@ textarea.form-control { resize: vertical; min-height: 110px; }
         font-size: 15px;
         padding: 14px 18px;
     }
-    .hero-arrow { margin-top: auto; }
 
     .section {
         padding: 48px 0;
