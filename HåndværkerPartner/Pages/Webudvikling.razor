@@ -43,7 +43,7 @@
         </div>
     </section>
 
-    <section class="web-process-shell" @onmouseleave="ResetActiveStep">
+    <section class="web-process-shell">
         <div class="web-process-intro">
             <p class="web-section-eyebrow">Process</p>
             <h2>Fra første indtryk til færdig løsning</h2>
@@ -58,12 +58,9 @@
             <div class="web-process-track">
                 @foreach (var step in processSteps)
                 {
-                    var isActive = activeStep == step.Number;
-
                     <button type="button"
-                            class="web-process-card @(isActive ? "is-active" : null)"
-                            @onmouseover="@(() => SetActiveStep(step.Number))"
-                            aria-expanded="@isActive">
+                            class="web-process-card is-active"
+                            aria-expanded="true">
                         <div class="web-process-top">
                             <span class="web-process-number">@step.Number</span>
                         </div>
@@ -73,7 +70,7 @@
                             <p>@step.Subtitle</p>
                         </div>
 
-                        <div class="web-process-body @(isActive ? "is-active" : null)">
+                        <div class="web-process-body is-active">
                             <p>@step.Body</p>
                         </div>
                     </button>
@@ -116,8 +113,6 @@
 <SiteFooter />
 
 @code {
-    private string activeStep = "01";
-
     private readonly List<SuiteItem> suiteItems =
     [
         new("01", "Klar opbygning", "Vi bygger siden op, så kunder hurtigt kan se, hvem du er, hvad du laver, og hvordan de kontakter dig."),
@@ -136,9 +131,6 @@
         new("04", "Vi bygger siden", "Den skal virke godt på både mobil og computer", "Vi bygger hjemmesiden, så den er hurtig, nem at bruge og fungerer ordentligt på alle skærme."),
         new("05", "Vi gør den klar", "Gennemgang, rettelser og publicering", "Inden siden går live, gennemgår vi den sammen og retter det sidste, så den står skarpt fra dag ét.")
     ];
-
-    private void SetActiveStep(string number) => activeStep = number;
-    private void ResetActiveStep() => activeStep = "01";
 
     private sealed record SuiteItem(string Kicker, string Title, string Body);
     private sealed record ProcessStep(string Number, string Title, string Subtitle, string Body);

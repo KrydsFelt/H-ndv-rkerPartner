@@ -3166,8 +3166,9 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     .service-card-new,
     .service-card-new.is-active {
         flex-basis: auto;
+        height: auto;
         min-height: 300px;
-        padding: 24px;
+        padding: 24px 24px 28px;
         background: linear-gradient(180deg, #1f1f22 0%, #252830 100%);
         border-color: #252830;
         box-shadow: 0 12px 28px rgba(17, 17, 17, 0.18);
@@ -3438,7 +3439,10 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     .services-grid-new { flex-direction: column; }
     .service-card-header { flex-direction: column; align-items: flex-start; }
     .service-card-new,
-    .service-card-new.is-active { padding: 24px; }
+    .service-card-new.is-active {
+        height: auto;
+        padding: 24px 24px 28px;
+    }
     .service-card-new h3 { font-size: 19px; }
     .service-logo { width: 28px; height: 28px; }
     .product-page-cta-copy h2 {

@@ -723,8 +723,10 @@
 .meta-cards-controls {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 0.65rem;
-    margin-left: auto;
+    width: 100%;
+    margin-top: 1rem;
 }
 
 .meta-cards-arrow {
@@ -1085,8 +1087,7 @@
     }
 
     .meta-cards-controls {
-        width: 100%;
-        justify-content: flex-start;
+        margin-top: 0.9rem;
     }
 
     .meta-cards-track {

@@ -64,17 +64,6 @@
         <h2 class="google-cards-headline">
             Det her <span>hjælper</span> vi dig med, i din <span>branche</span>.
         </h2>
-        <div class="google-cards-controls">
-            @if (CanGoPrev)
-            {
-                <button type="button" class="google-cards-arrow" @onclick="GoPrev" aria-label="Forrige kort">
-                    <span>←</span>
-                </button>
-            }
-            <button type="button" class="google-cards-arrow" @onclick="GoNext" aria-label="Næste kort" disabled="@(!CanGoNext)">
-                <span>→</span>
-            </button>
-        </div>
     </section>
 
     <section class="google-cards">
@@ -122,6 +111,14 @@
             </article>
                 }
             </div>
+        </div>
+        <div class="google-cards-controls">
+            <button type="button" class="google-cards-arrow" @onclick="GoPrev" aria-label="Forrige kort" disabled="@(!CanGoPrev)">
+                <span>←</span>
+            </button>
+            <button type="button" class="google-cards-arrow" @onclick="GoNext" aria-label="Næste kort" disabled="@(!CanGoNext)">
+                <span>→</span>
+            </button>
         </div>
     </section>
 

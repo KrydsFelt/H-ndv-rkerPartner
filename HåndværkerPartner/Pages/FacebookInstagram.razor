@@ -128,17 +128,6 @@
         <h2 class="meta-cards-headline">
             Det her <span>hjælper</span> vi dig med, i din <span>branche</span>.
         </h2>
-        <div class="meta-cards-controls">
-            @if (CanGoPrev)
-            {
-                <button type="button" class="meta-cards-arrow" @onclick="GoPrev" aria-label="Forrige kort">
-                    <span>←</span>
-                </button>
-            }
-            <button type="button" class="meta-cards-arrow" @onclick="GoNext" aria-label="Næste kort" disabled="@(!CanGoNext)">
-                <span>→</span>
-            </button>
-        </div>
     </section>
 
     <section class="meta-cards">
@@ -186,6 +175,14 @@
                     </article>
                 }
             </div>
+        </div>
+        <div class="meta-cards-controls">
+            <button type="button" class="meta-cards-arrow" @onclick="GoPrev" aria-label="Forrige kort" disabled="@(!CanGoPrev)">
+                <span>←</span>
+            </button>
+            <button type="button" class="meta-cards-arrow" @onclick="GoNext" aria-label="Næste kort" disabled="@(!CanGoNext)">
+                <span>→</span>
+            </button>
         </div>
     </section>
 
