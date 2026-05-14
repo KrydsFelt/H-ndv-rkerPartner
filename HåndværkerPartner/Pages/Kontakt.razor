@@ -42,9 +42,9 @@
 
                         @foreach (var option in interestOptions)
                         {
-                            <label class="contact-radio-option">
-                                <input type="radio" name="interest" checked="@(selectedInterest == option)" @onchange="@(_ => selectedInterest = option)" />
-                                <span class="contact-radio-mark" aria-hidden="true"></span>
+                            <label class="contact-choice-option">
+                                <input type="checkbox" checked="@selectedInterests.Contains(option)" @onchange="@(_ => ToggleInterest(option))" />
+                                <span class="contact-choice-mark" aria-hidden="true"></span>
                                 <span>@option</span>
                             </label>
                         }
@@ -68,7 +68,7 @@
     private string formName = string.Empty;
     private string formEmail = string.Empty;
     private string formMessage = string.Empty;
-    private string selectedInterest = string.Empty;
+    private HashSet<string> selectedInterests = [];
 
     private readonly string[] interestOptions =
     [
@@ -83,9 +83,17 @@
     {
         if (!string.IsNullOrWhiteSpace(formName)
             && !string.IsNullOrWhiteSpace(formEmail)
-            && !string.IsNullOrWhiteSpace(selectedInterest))
+            && selectedInterests.Count > 0)
         {
             formSent = true;
+        }
+    }
+
+    private void ToggleInterest(string option)
+    {
+        if (!selectedInterests.Add(option))
+        {
+            selectedInterests.Remove(option);
         }
     }
 }

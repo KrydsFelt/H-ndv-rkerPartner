@@ -2649,7 +2649,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     color: #c45a2f;
 }
 
-.contact-radio-option {
+.contact-choice-option {
     display: grid;
     grid-template-columns: auto auto 1fr;
     align-items: start;
@@ -2658,17 +2658,17 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     cursor: pointer;
 }
 
-.contact-radio-option input {
+.contact-choice-option input {
     position: absolute;
     opacity: 0;
     pointer-events: none;
 }
 
-.contact-radio-mark {
+.contact-choice-mark {
     width: 1.35rem;
     height: 1.35rem;
     margin-top: 0.1rem;
-    border-radius: 999px;
+    border-radius: 0.38rem;
     border: 1px solid #c8ccd6;
     background: #ffffff;
     display: inline-flex;
@@ -2677,17 +2677,17 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     flex-shrink: 0;
 }
 
-.contact-radio-option input:checked + .contact-radio-mark {
+.contact-choice-option input:checked + .contact-choice-mark {
     border-color: #17181d;
     background: #17181d;
 }
 
-.contact-radio-option input:checked + .contact-radio-mark::after {
-    content: "";
-    width: 0.45rem;
-    height: 0.45rem;
-    border-radius: 999px;
-    background: #d4ff00;
+.contact-choice-option input:checked + .contact-choice-mark::after {
+    content: "✓";
+    font-size: 0.88rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #d4ff00;
 }
 
 .contact-textarea {
