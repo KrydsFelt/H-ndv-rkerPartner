@@ -2564,7 +2564,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     letter-spacing: -0.05em;
     font-weight: 400;
     color: #14161c;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 .contact-split-copy h1 span {
@@ -2573,6 +2573,12 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     font-family: inherit;
     font-weight: 500;
     color: #e87722;
+}
+
+.contact-title-break {
+    display: block !important;
+    color: #14161c !important;
+    font-weight: 400 !important;
 }
 
 .contact-mail-link {
@@ -2588,13 +2594,13 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 
 .contact-form-panel {
     display: flex;
-    align-items: stretch;
+    align-items: center;
 }
 
 .contact-form-shell,
 .contact-success-card {
     width: 100%;
-    min-height: 760px;
+    min-height: 0;
     background: rgba(255,255,255,0.96);
     border: 1px solid rgba(26,26,26,0.08);
     border-radius: 12px;
@@ -2606,7 +2612,9 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 .contact-form-shell {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1.55rem;
+    min-height: 360px;
 }
 
 .contact-form-group {
@@ -2652,6 +2660,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     display: grid;
     place-items: center;
     text-align: center;
+    min-height: 360px;
 }
 
 .contact-success-card h2 {
