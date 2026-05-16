@@ -9,6 +9,18 @@
   <component name="ChangeListManager">
     <list default="true" id="277db4f8-3b4e-4f9f-ba75-18a02e301cf0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.H-ndv-rkerPartner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.H-ndv-rkerPartner/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Layout/MainLayout.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Layout/MainLayout.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pages/Cases.razor" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pages/Cases.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pages/FacebookInstagram.razor" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pages/FacebookInstagram.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pages/GoogleAds.razor" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pages/GoogleAds.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pages/Handelsbetingelser.razor" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pages/Handelsbetingelser.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pages/Home.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pages/Kontakt.razor" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pages/Kontakt.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pages/Privatlivspolitik.razor" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pages/Privatlivspolitik.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pages/Seo.razor" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pages/Seo.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pages/Webudvikling.razor" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pages/Webudvikling.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/Pictures/4.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/Pictures/4.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HåndværkerPartner/wwwroot/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/HåndværkerPartner/wwwroot/css/app.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +113,11 @@
       <workItem from="1778091592930" duration="1775000" />
       <workItem from="1778321443436" duration="2200000" />
       <workItem from="1778337269134" duration="5898000" />
+      <workItem from="1778520402467" duration="4803000" />
+      <workItem from="1778540702546" duration="1158000" />
+      <workItem from="1778601791264" duration="1173000" />
+      <workItem from="1778785219228" duration="1315000" />
+      <workItem from="1778936605165" duration="1752000" />
     </task>
     <servers />
   </component>
