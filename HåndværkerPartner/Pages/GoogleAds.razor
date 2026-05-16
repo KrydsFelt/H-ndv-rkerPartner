@@ -67,7 +67,11 @@
     </section>
 
     <section class="google-cards">
-        <div class="google-cards-viewport">
+        <div class="google-cards-stage">
+            <button type="button" class="google-cards-arrow google-cards-arrow--prev" @onclick="GoPrev" aria-label="Forrige kort" disabled="@(!CanGoPrev)">
+                <span>←</span>
+            </button>
+            <div class="google-cards-viewport">
             <div class="google-cards-track" style="@($"--slide-index:{cardStartIndex};")">
                 @foreach (var card in cards)
                 {
@@ -111,12 +115,8 @@
             </article>
                 }
             </div>
-        </div>
-        <div class="google-cards-controls">
-            <button type="button" class="google-cards-arrow" @onclick="GoPrev" aria-label="Forrige kort" disabled="@(!CanGoPrev)">
-                <span>←</span>
-            </button>
-            <button type="button" class="google-cards-arrow" @onclick="GoNext" aria-label="Næste kort" disabled="@(!CanGoNext)">
+            </div>
+            <button type="button" class="google-cards-arrow google-cards-arrow--next" @onclick="GoNext" aria-label="Næste kort" disabled="@(!CanGoNext)">
                 <span>→</span>
             </button>
         </div>

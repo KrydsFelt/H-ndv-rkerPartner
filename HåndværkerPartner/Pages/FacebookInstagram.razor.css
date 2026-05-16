@@ -720,33 +720,46 @@
     color: var(--orange);
 }
 
-.meta-cards-controls {
+.meta-cards-stage {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.65rem;
-    width: 100%;
-    margin-top: 1rem;
+    gap: 1.25rem;
 }
 
 .meta-cards-arrow {
     appearance: none;
-    width: 44px;
-    height: 44px;
+    flex: 0 0 auto;
+    width: 52px;
+    height: 52px;
     border-radius: 999px;
-    border: 1px solid var(--orange);
-    background: var(--orange);
-    color: #ffffff;
+    border: 1px solid rgba(232, 119, 34, 0.35);
+    background: #ffffff;
+    color: var(--orange);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.05rem;
+    font-size: 1.2rem;
     line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(201, 94, 19, 0.16);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.meta-cards-arrow:hover:not(:disabled) {
+    background: var(--orange);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(201, 94, 19, 0.28);
+}
+
+.meta-cards-arrow:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 .meta-cards-arrow:disabled {
-    opacity: 0.38;
+    opacity: 0.32;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
 .meta-card {
@@ -815,6 +828,8 @@
 
 .meta-cards-viewport {
     overflow: hidden;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .meta-cards-track {
@@ -1086,8 +1101,15 @@
         gap: 1.1rem;
     }
 
-    .meta-cards-controls {
-        margin-top: 0.9rem;
+    .meta-cards-stage {
+        gap: 0.55rem;
+    }
+
+    .meta-cards-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        box-shadow: 0 6px 16px rgba(201, 94, 19, 0.16);
     }
 
     .meta-cards-track {

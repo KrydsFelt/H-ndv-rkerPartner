@@ -131,7 +131,11 @@
     </section>
 
     <section class="meta-cards">
-        <div class="meta-cards-viewport">
+        <div class="meta-cards-stage">
+            <button type="button" class="meta-cards-arrow meta-cards-arrow--prev" @onclick="GoPrev" aria-label="Forrige kort" disabled="@(!CanGoPrev)">
+                <span>←</span>
+            </button>
+            <div class="meta-cards-viewport">
             <div class="meta-cards-track" style="@($"--slide-index:{cardStartIndex};")">
                 @foreach (var card in cards)
                 {
@@ -175,12 +179,8 @@
                     </article>
                 }
             </div>
-        </div>
-        <div class="meta-cards-controls">
-            <button type="button" class="meta-cards-arrow" @onclick="GoPrev" aria-label="Forrige kort" disabled="@(!CanGoPrev)">
-                <span>←</span>
-            </button>
-            <button type="button" class="meta-cards-arrow" @onclick="GoNext" aria-label="Næste kort" disabled="@(!CanGoNext)">
+            </div>
+            <button type="button" class="meta-cards-arrow meta-cards-arrow--next" @onclick="GoNext" aria-label="Næste kort" disabled="@(!CanGoNext)">
                 <span>→</span>
             </button>
         </div>
