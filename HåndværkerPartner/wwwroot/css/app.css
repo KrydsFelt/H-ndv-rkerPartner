@@ -2493,9 +2493,10 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     max-width: 1460px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 0.98fr) minmax(360px, 0.92fr);
-    gap: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
     position: relative;
+    align-items: stretch;
 }
 
 .contact-split::before,
@@ -2593,7 +2594,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 .contact-form-shell,
 .contact-success-card {
     width: 100%;
-    min-height: 100%;
+    min-height: 760px;
     background: rgba(255,255,255,0.96);
     border: 1px solid rgba(26,26,26,0.08);
     border-radius: 12px;
@@ -2944,6 +2945,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 
     .contact-split {
         grid-template-columns: 1fr;
+        gap: 0;
     }
 
     .contact-split::before {
@@ -2968,6 +2970,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 
     .contact-form-shell,
     .contact-success-card {
+        min-height: auto;
         padding: 2rem 1.35rem;
     }
 }
