@@ -8,9 +8,7 @@
     <section class="contact-split">
         <div class="contact-split-copy">
             <p class="contact-eyebrow">Kontakt os</p>
-            <h1>
-                Book et gratis opkald
-            </h1>
+            <h1>Book et <span>gratis</span> opkald</h1>
 
             <a href="mailto:info@haandvaerkerpartner.dk" class="contact-mail-link">
                 <span class="contact-mail-link-text">info@haandvaerkerpartner.dk</span>
@@ -35,11 +33,6 @@
                     <div class="contact-form-group">
                         <input class="contact-input" type="tel" placeholder="Telefonnummer" @bind="formPhone" />
                     </div>
-
-                    <div class="contact-form-group">
-                        <textarea class="contact-textarea" placeholder="Yderligere besked" @bind="formMessage"></textarea>
-                    </div>
-
                     <button class="contact-submit" @onclick="SubmitForm">Send formular ↗</button>
                 </div>
             }
@@ -53,7 +46,6 @@
     private bool formSent;
     private string formEmail = string.Empty;
     private string formPhone = string.Empty;
-    private string formMessage = string.Empty;
 
     private void SubmitForm()
     {
