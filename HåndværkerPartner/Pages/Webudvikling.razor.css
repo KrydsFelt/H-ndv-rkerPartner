@@ -385,7 +385,7 @@
     transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.2s ease;
 }
 
-.faq-item:hover p {
+.faq-item[open] p {
     max-height: 260px;
     opacity: 1;
     padding: 0 1.5rem 1.5rem 0;
@@ -506,13 +506,13 @@
     }
 
     .faq-item p {
-        padding: 0 0.2rem 1.3rem;
-        max-height: none;
-        opacity: 1;
-        overflow: visible;
+        padding: 0;
     }
 
-    .faq-item:hover p {
-        padding: 0 1.5rem 1.3rem 0;
+    .faq-item[open] p {
+        padding: 0 0.2rem 1.3rem;
+        max-height: 20rem;
+        opacity: 1;
+        overflow: visible;
     }
 }

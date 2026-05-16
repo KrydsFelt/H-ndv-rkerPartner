@@ -2627,69 +2627,6 @@ textarea.form-control { resize: vertical; min-height: 110px; }
     color: #787d87;
 }
 
-.contact-interest-group {
-    border: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.95rem;
-}
-
-.contact-interest-group legend {
-    margin-bottom: 0.7rem;
-    color: #6b7080;
-    font-size: 0.88rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-}
-
-.contact-interest-group legend span {
-    color: #c45a2f;
-}
-
-.contact-choice-option {
-    display: grid;
-    grid-template-columns: auto auto 1fr;
-    align-items: start;
-    gap: 0.75rem;
-    color: #2a2f39;
-    cursor: pointer;
-}
-
-.contact-choice-option input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.contact-choice-mark {
-    width: 1.35rem;
-    height: 1.35rem;
-    margin-top: 0.1rem;
-    border-radius: 0.38rem;
-    border: 1px solid #c8ccd6;
-    background: #ffffff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.contact-choice-option input:checked + .contact-choice-mark {
-    border-color: #17181d;
-    background: #17181d;
-}
-
-.contact-choice-option input:checked + .contact-choice-mark::after {
-    content: "✓";
-    font-size: 0.88rem;
-    font-weight: 800;
-    line-height: 1;
-    color: #d4ff00;
-}
-
 .contact-textarea {
     min-height: 8rem;
     resize: vertical;

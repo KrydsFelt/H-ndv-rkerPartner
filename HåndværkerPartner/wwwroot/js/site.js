@@ -130,3 +130,40 @@ window.initCountUp = () => {
 
     observer.observe(section);
 };
+
+window.initFaqHover = () => {
+    if (window.__faqHoverInitialized) return;
+    window.__faqHoverInitialized = true;
+
+    const desktopFaqs = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+    document.addEventListener('mouseover', (event) => {
+        if (!desktopFaqs.matches) return;
+
+        const item = event.target.closest('.faq-item');
+        if (!item || item.contains(event.relatedTarget)) return;
+
+        item.open = true;
+    });
+
+    document.addEventListener('mouseout', (event) => {
+        if (!desktopFaqs.matches) return;
+
+        const item = event.target.closest('.faq-item');
+        if (!item || item.contains(event.relatedTarget)) return;
+
+        item.open = false;
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!desktopFaqs.matches) return;
+
+        const summary = event.target.closest('.faq-item summary');
+        if (!summary) return;
+
+        event.preventDefault();
+        summary.parentElement.open = true;
+    });
+};
+
+window.initFaqHover();

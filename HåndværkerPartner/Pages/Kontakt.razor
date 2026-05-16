@@ -1,6 +1,6 @@
 @page "/kontakt"
 
-<PageTitle>Kontakt – HåndværkerPartner</PageTitle>
+<PageTitle>Kontakt - HåndværkerPartner</PageTitle>
 
 <NavBar />
 
@@ -9,8 +9,7 @@
         <div class="contact-split-copy">
             <p class="contact-eyebrow">Kontakt os</p>
             <h1>
-                Sammen får vi
-                <span>flere kunder ind.</span>
+                Book et gratis opkald
             </h1>
 
             <a href="mailto:info@haandvaerkerpartner.dk" class="contact-mail-link">
@@ -30,28 +29,15 @@
             {
                 <div class="contact-form-shell">
                     <div class="contact-form-group">
-                        <input class="contact-input" type="text" placeholder="Dit fulde navn" @bind="formName" />
-                    </div>
-
-                    <div class="contact-form-group">
                         <input class="contact-input" type="email" placeholder="Email" @bind="formEmail" />
                     </div>
 
-                    <fieldset class="contact-interest-group">
-                        <legend>Hvad er du interesseret i? <span>*</span></legend>
-
-                        @foreach (var option in interestOptions)
-                        {
-                            <label class="contact-choice-option">
-                                <input type="checkbox" checked="@selectedInterests.Contains(option)" @onchange="@(_ => ToggleInterest(option))" />
-                                <span class="contact-choice-mark" aria-hidden="true"></span>
-                                <span>@option</span>
-                            </label>
-                        }
-                    </fieldset>
+                    <div class="contact-form-group">
+                        <input class="contact-input" type="tel" placeholder="Telefonnummer" @bind="formPhone" />
+                    </div>
 
                     <div class="contact-form-group">
-                        <textarea class="contact-textarea" placeholder="Skriv din besked" @bind="formMessage"></textarea>
+                        <textarea class="contact-textarea" placeholder="Yderligere besked" @bind="formMessage"></textarea>
                     </div>
 
                     <button class="contact-submit" @onclick="SubmitForm">Send formular ↗</button>
@@ -65,35 +51,16 @@
 
 @code {
     private bool formSent;
-    private string formName = string.Empty;
     private string formEmail = string.Empty;
+    private string formPhone = string.Empty;
     private string formMessage = string.Empty;
-    private HashSet<string> selectedInterests = [];
-
-    private readonly string[] interestOptions =
-    [
-        "Meta Ads",
-        "Google Ads",
-        "Webudvikling",
-        "SEO",
-        "Noget andet"
-    ];
 
     private void SubmitForm()
     {
-        if (!string.IsNullOrWhiteSpace(formName)
-            && !string.IsNullOrWhiteSpace(formEmail)
-            && selectedInterests.Count > 0)
+        if (!string.IsNullOrWhiteSpace(formEmail)
+            && !string.IsNullOrWhiteSpace(formPhone))
         {
             formSent = true;
-        }
-    }
-
-    private void ToggleInterest(string option)
-    {
-        if (!selectedInterests.Add(option))
-        {
-            selectedInterests.Remove(option);
         }
     }
 }
