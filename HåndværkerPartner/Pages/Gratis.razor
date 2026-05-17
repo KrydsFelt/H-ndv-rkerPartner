@@ -1,0 +1,198 @@
+@page "/gratis"
+@inject IJSRuntime JS
+
+<PageTitle>Prøv HåndværkerPartner gratis i en måned</PageTitle>
+
+<!-- MINIMAL NAVBAR - kun logo -->
+<nav class="navbar scrolled gratis-navbar">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo nav-logo-text">
+            <span class="nav-logo-line1">HÅNDVÆRKER</span><span class="nav-logo-line2">PARTNER</span>
+        </a>
+    </div>
+</nav>
+
+<main class="gratis-page">
+
+    <!-- HERO -->
+    <section class="gratis-hero">
+        <div class="gratis-hero-inner">
+            <p class="hero-badge">Begrænset tilbud</p>
+            <h1 class="gratis-hero-title">Første måned er<br><span>helt gratis</span></h1>
+            <p class="gratis-hero-sub">Se hvad vi kan gøre for din virksomhed – uden risiko. Ingen binding, ingen skjulte gebyrer. Kun resultater.</p>
+            <div class="gratis-hero-actions">
+                <a href="kontakt" class="btn-primary gratis-cta-pulse">Kom i gang – book et møde</a>
+                <p class="gratis-hero-note">Gratis første måned · Ingen binding · Afslut når som helst</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTATER / KPI STRIP -->
+    <section class="gratis-kpi-strip">
+        <div class="gratis-kpi-inner">
+            <div class="gratis-kpi-item">
+                <div class="gratis-kpi-value">+1.000</div>
+                <div class="gratis-kpi-label">Henvendelser skaffet</div>
+            </div>
+            <div class="gratis-kpi-divider"></div>
+            <div class="gratis-kpi-item">
+                <div class="gratis-kpi-value">33 kr.</div>
+                <div class="gratis-kpi-label">Laveste pris pr. henvendelse</div>
+            </div>
+            <div class="gratis-kpi-divider"></div>
+            <div class="gratis-kpi-item">
+                <div class="gratis-kpi-value">30+</div>
+                <div class="gratis-kpi-label">Virksomheder hjulpet</div>
+            </div>
+            <div class="gratis-kpi-divider"></div>
+            <div class="gratis-kpi-item">
+                <div class="gratis-kpi-value">0 kr.</div>
+                <div class="gratis-kpi-label">Første måned</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-fullscreen gratis-testimonials">
+        <div class="tfs-inner">
+            <h2 class="tfs-heading">Rigtige resultater fra<br><span>rigtige håndværkere</span></h2>
+            <div class="tfs-grid">
+                <article class="tfs-card">
+                    <div class="tfs-card-image">
+                        <img src="testimonials/emilsmultifix.jpg" alt="Emil fra Emils Multifix" />
+                    </div>
+                    <div class="tfs-card-panel">
+                        <div class="tfs-author">
+                            <div class="tfs-name">Emil</div>
+                            <div class="tfs-role">Co-founder, Emils Multifix</div>
+                        </div>
+                        <p class="tfs-quote">&ldquo;Fra nul kunder til fuld kalender på bare 2 måneder. Det her var afgørende for os.&rdquo;</p>
+                        <div class="tfs-stats">
+                            <div class="tfs-stat">
+                                <div class="tfs-stat-value">17</div>
+                                <div class="tfs-stat-label">Henvendelser på 30 dage</div>
+                            </div>
+                            <div class="tfs-stat">
+                                <div class="tfs-stat-value">33 kr</div>
+                                <div class="tfs-stat-label">Pris pr. henvendelse</div>
+                            </div>
+                            <div class="tfs-stat">
+                                <div class="tfs-stat-value">4&times;</div>
+                                <div class="tfs-stat-label">Flere henvendelser</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tfs-card">
+                    <div class="tfs-card-image">
+                        <img src="Pictures/4.JPG" alt="Mads fra Mads Murerfirma" />
+                    </div>
+                    <div class="tfs-card-panel">
+                        <div class="tfs-author">
+                            <div class="tfs-name">Mads</div>
+                            <div class="tfs-role">Ejer, Mads Murerfirma</div>
+                        </div>
+                        <p class="tfs-quote">&ldquo;Vi gik fra 5 til 18 opgaver om måneden. Telefonen står ikke stille mere.&rdquo;</p>
+                        <div class="tfs-stats">
+                            <div class="tfs-stat">
+                                <div class="tfs-stat-value">18</div>
+                                <div class="tfs-stat-label">Opgaver om måneden</div>
+                            </div>
+                            <div class="tfs-stat">
+                                <div class="tfs-stat-value">52 kr</div>
+                                <div class="tfs-stat-label">Pris pr. henvendelse</div>
+                            </div>
+                            <div class="tfs-stat">
+                                <div class="tfs-stat-value">3&times;</div>
+                                <div class="tfs-stat-label">Mere arbejde</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRATIS TILBUD SEKTION -->
+    <section class="gratis-offer-section">
+        <div class="gratis-offer-inner">
+            <div class="gratis-offer-badge">Prøveperiode</div>
+            <h2 class="gratis-offer-title">Første måned er gratis</h2>
+            <p class="gratis-offer-text">
+                Vi er så sikre på, at vi kan levere resultater for din virksomhed, at vi tilbyder første måneds arbejde helt uden beregning. Du risikerer ingenting – vi leverer resultater, og bagefter beslutter du selv om du vil fortsætte.
+            </p>
+            <ul class="gratis-offer-list">
+                <li>
+                    <svg class="gratis-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"></polyline></svg>
+                    Opsætning og kørsel af kampagner i 30 dage
+                </li>
+                <li>
+                    <svg class="gratis-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"></polyline></svg>
+                    Klare tal på hvad vi leverer
+                </li>
+                <li>
+                    <svg class="gratis-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"></polyline></svg>
+                    Ingen binding – afslut når som helst
+                </li>
+                <li>
+                    <svg class="gratis-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12 10 17 19 7"></polyline></svg>
+                    Én fast kontaktperson hele vejen
+                </li>
+            </ul>
+            <a href="kontakt" class="btn-primary gratis-offer-cta">
+                Start din gratis prøveperiode →
+            </a>
+        </div>
+    </section>
+
+    <!-- PROCES STEPS -->
+    <section class="gratis-steps-section">
+        <div class="gratis-steps-inner">
+            <span class="section-tag">Sådan starter vi</span>
+            <h2 class="gratis-steps-title">Fra møde til resultater<br><span>på under en uge</span></h2>
+            <div class="gratis-steps-grid">
+                <div class="gratis-step">
+                    <div class="gratis-step-num">01</div>
+                    <h3 class="gratis-step-title">Book et møde</h3>
+                    <p class="gratis-step-text">Vi hører hvad du vil have mere af og vurderer hvor potentialet er størst for din virksomhed.</p>
+                </div>
+                <div class="gratis-step-arrow" aria-hidden="true">→</div>
+                <div class="gratis-step">
+                    <div class="gratis-step-num">02</div>
+                    <h3 class="gratis-step-title">Vi sætter det op</h3>
+                    <p class="gratis-step-text">Vi laver kampagnerne klar og sætter alt op inden for 3-5 hverdage. Du behøver ikke gøre noget.</p>
+                </div>
+                <div class="gratis-step-arrow" aria-hidden="true">→</div>
+                <div class="gratis-step">
+                    <div class="gratis-step-num">03</div>
+                    <h3 class="gratis-step-title">Du får henvendelser</h3>
+                    <p class="gratis-step-text">Telefonen begynder at ringe. Vi følger op med klare tal på hvad vi har leveret efter 30 dage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="gratis-bottom-cta">
+        <div class="gratis-bottom-cta-inner">
+            <h2 class="gratis-bottom-cta-title">Klar til at prøve det?</h2>
+            <p class="gratis-bottom-cta-sub">Book et uforpligtende møde – første måned er gratis.</p>
+            <a href="kontakt" class="btn-primary gratis-cta-pulse">Kom i gang</a>
+            <p class="gratis-bottom-note">Ingen binding · Afslut når som helst · Første måned gratis</p>
+        </div>
+    </section>
+
+</main>
+
+<SiteFooter />
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initCountUp");
+        }
+    }
+}
