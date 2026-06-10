@@ -435,10 +435,9 @@ video {
     .trust-strip { padding: 18px 16px; }
     .trust-strip-inner {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        min-height: 50px;
-        gap: 0;
+k        gap: 12px;
     }
     .trust-item {
         font-size: 13px;
@@ -446,16 +445,6 @@ video {
         text-align: center;
         width: 100%;
         padding: 0 16px;
-        display: none;
-        opacity: 0;
-        transition: opacity 0.8s ease-in-out;
-    }
-    .trust-item.trust-active {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        opacity: 1;
     }
     .trust-item--stat {
         display: none !important;

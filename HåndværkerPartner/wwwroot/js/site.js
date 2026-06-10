@@ -168,37 +168,4 @@ window.initFaqHover = () => {
 
 window.initFaqHover();
 
-window.initTrustCarousel = () => {
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (!isMobile) return;
-
-    const container = document.querySelector('.trust-strip-inner');
-    if (!container) return;
-
-    // Hent kun de 3 første items (ikke stat items)
-    const items = [];
-    container.querySelectorAll('.trust-item').forEach((item, index) => {
-        if (!item.classList.contains('trust-item--stat')) {
-            items.push(item);
-        }
-    });
-
-    if (items.length === 0) return;
-
-    let current = 0;
-
-    // Vis første item
-    items[0].classList.add('trust-active');
-
-    const showNext = () => {
-        items[current].classList.remove('trust-active');
-        current = (current + 1) % items.length;
-        items[current].classList.add('trust-active');
-    };
-
-    // Skift hver 5. sekund
-    setInterval(showNext, 5000);
-};
-
-// Start carousel
-setTimeout(window.initTrustCarousel, 200);
+// Carousel fjernet - alle items vises sammen
