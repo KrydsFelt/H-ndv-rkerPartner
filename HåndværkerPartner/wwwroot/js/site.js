@@ -181,14 +181,18 @@ window.initTrustStripCarousel = () => {
 
     let currentIndex = 0;
 
-    // Vis første item
-    items[0].classList.add('is-active');
-
     const showItem = (index) => {
         items.forEach((item, i) => {
-            item.classList.toggle('is-active', i === index);
+            if (i === index) {
+                item.classList.add('is-active');
+            } else {
+                item.classList.remove('is-active');
+            }
         });
     };
+
+    // Vis første item med det samme
+    showItem(0);
 
     const advance = () => {
         currentIndex = (currentIndex + 1) % items.length;
@@ -200,8 +204,6 @@ window.initTrustStripCarousel = () => {
 };
 
 // Initialiser carousel når DOM er klar
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', window.initTrustStripCarousel);
-} else {
+setTimeout(() => {
     window.initTrustStripCarousel();
-}
+}, 100);
