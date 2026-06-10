@@ -170,15 +170,30 @@ window.initFaqHover();
 
 window.initTrustStripCarousel = () => {
     const trustStrip = document.querySelector('.trust-strip-inner');
-    if (!trustStrip) return;
+    if (!trustStrip) {
+        console.log('Trust strip ikke fundet');
+        return;
+    }
 
     const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
 
-    if (!isMobile()) return;
+    if (!isMobile()) {
+        console.log('Ikke mobile, carousel deaktiveret');
+        return;
+    }
 
-    // Kun hent items uden stat-klasse (de første 3)
-    const items = trustStrip.querySelectorAll('.trust-item:not(.trust-item--stat)');
-    if (items.length === 0) return;
+    // Hent alle items
+    const allItems = Array.from(trustStrip.querySelectorAll('.trust-item'));
+
+    // Filtrer bort stat items (de med trust-item--stat klasse)
+    const items = allItems.filter(item => !item.classList.contains('trust-item--stat'));
+
+    console.log('Carousel items:', items.length);
+
+    if (items.length === 0) {
+        console.log('Ingen items fundet for carousel');
+        return;
+    }
 
     let currentIndex = 0;
 
@@ -194,10 +209,12 @@ window.initTrustStripCarousel = () => {
 
     // Vis første item med det samme
     showItem(0);
+    console.log('Carousel initialiseret med', items.length, 'items');
 
     const advance = () => {
         currentIndex = (currentIndex + 1) % items.length;
         showItem(currentIndex);
+        console.log('Carousel gik til item:', currentIndex);
     };
 
     // Gå videre hver 5. sekund
@@ -205,6 +222,10 @@ window.initTrustStripCarousel = () => {
 };
 
 // Initialiser carousel når DOM er klar
-setTimeout(() => {
-    window.initTrustStripCarousel();
-}, 100);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(window.initTrustStripCarousel, 100);
+    });
+} else {
+    setTimeout(window.initTrustStripCarousel, 100);
+}
