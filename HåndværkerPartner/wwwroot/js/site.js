@@ -177,29 +177,26 @@ window.initTrustStripCarousel = () => {
     if (!isMobile()) return;
 
     const items = trustStrip.querySelectorAll('.trust-item');
+    if (items.length === 0) return;
+
     let currentIndex = 0;
 
-    const scrollToItem = (index) => {
-        const item = items[index];
-        if (item) {
-            item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-        }
+    // Vis første item
+    items[0].classList.add('is-active');
+
+    const showItem = (index) => {
+        items.forEach((item, i) => {
+            item.classList.toggle('is-active', i === index);
+        });
     };
 
     const advance = () => {
         currentIndex = (currentIndex + 1) % items.length;
-        scrollToItem(currentIndex);
+        showItem(currentIndex);
     };
 
     // Gå videre hver 5. sekund
     setInterval(advance, 5000);
-
-    // Nulstil indeks hvis bruger scrolls manuelt
-    trustStrip.addEventListener('scroll', () => {
-        const scrollLeft = trustStrip.scrollLeft;
-        const itemWidth = trustStrip.offsetWidth;
-        currentIndex = Math.round(scrollLeft / itemWidth);
-    }, { passive: true });
 };
 
 // Initialiser carousel når DOM er klar
