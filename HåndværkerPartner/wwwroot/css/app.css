@@ -437,8 +437,10 @@ video {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 16px;
+        gap: 0;
         justify-content: center;
+        min-height: 50px;
+        position: relative;
     }
     .trust-item {
         font-size: 13px;
@@ -446,6 +448,15 @@ video {
         text-align: center;
         width: 100%;
         padding: 0 16px;
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+        pointer-events: none;
+    }
+    .trust-item.trust-active {
+        opacity: 1;
+        position: relative;
+        pointer-events: auto;
     }
     .trust-item--stat {
         display: none !important;
