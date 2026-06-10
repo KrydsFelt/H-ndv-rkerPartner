@@ -455,6 +455,9 @@ video {
         opacity: 1;
         pointer-events: auto;
     }
+    .trust-item--stat {
+        display: none;
+    }
     .trust-stat-num { font-size: 15px; }
 }
 

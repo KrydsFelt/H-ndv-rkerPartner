@@ -176,7 +176,8 @@ window.initTrustStripCarousel = () => {
 
     if (!isMobile()) return;
 
-    const items = trustStrip.querySelectorAll('.trust-item');
+    // Kun hent items uden stat-klasse (de første 3)
+    const items = trustStrip.querySelectorAll('.trust-item:not(.trust-item--stat)');
     if (items.length === 0) return;
 
     let currentIndex = 0;
