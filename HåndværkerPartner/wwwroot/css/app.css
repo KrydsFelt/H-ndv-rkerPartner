@@ -435,12 +435,10 @@ video {
     .trust-strip { padding: 18px 16px; }
     .trust-strip-inner {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 0;
         justify-content: center;
         min-height: 50px;
-        position: relative;
+        gap: 0;
     }
     .trust-item {
         font-size: 13px;
@@ -448,15 +446,16 @@ video {
         text-align: center;
         width: 100%;
         padding: 0 16px;
-        position: absolute;
+        display: none;
         opacity: 0;
         transition: opacity 0.8s ease-in-out;
-        pointer-events: none;
     }
     .trust-item.trust-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
         opacity: 1;
-        position: relative;
-        pointer-events: auto;
     }
     .trust-item--stat {
         display: none !important;
