@@ -167,3 +167,44 @@ window.initFaqHover = () => {
 };
 
 window.initFaqHover();
+
+window.initTrustStripCarousel = () => {
+    const trustStrip = document.querySelector('.trust-strip-inner');
+    if (!trustStrip) return;
+
+    const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+    if (!isMobile()) return;
+
+    const items = trustStrip.querySelectorAll('.trust-item');
+    let currentIndex = 0;
+
+    const scrollToItem = (index) => {
+        const item = items[index];
+        if (item) {
+            item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        }
+    };
+
+    const advance = () => {
+        currentIndex = (currentIndex + 1) % items.length;
+        scrollToItem(currentIndex);
+    };
+
+    // Gå videre hver 5. sekund
+    setInterval(advance, 5000);
+
+    // Nulstil indeks hvis bruger scrolls manuelt
+    trustStrip.addEventListener('scroll', () => {
+        const scrollLeft = trustStrip.scrollLeft;
+        const itemWidth = trustStrip.offsetWidth;
+        currentIndex = Math.round(scrollLeft / itemWidth);
+    }, { passive: true });
+};
+
+// Initialiser carousel når DOM er klar
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', window.initTrustStripCarousel);
+} else {
+    window.initTrustStripCarousel();
+}
